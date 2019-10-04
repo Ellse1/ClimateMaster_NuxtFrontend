@@ -28,7 +28,8 @@ export default {
   ** Plugins to load before mounting the App
   */
   plugins: [
-    '~/plugins/vue-scrollto'
+    '~/plugins/vue-scrollto',
+     '~/plugins/mixins/user'
   ],
   /*
   ** Nuxt.js dev-modules
@@ -41,6 +42,8 @@ export default {
   modules: [
     // Doc: https://bootstrap-vue.js.org/docs/
     'bootstrap-vue/nuxt',
+    //For Authentication
+    '@nuxtjs/auth',
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
   ],
@@ -49,6 +52,19 @@ export default {
   ** See https://axios.nuxtjs.org/options
   */
   axios: {
+    baseURL: 'http://localhost:8000/api'
+  },
+  //For Authentication
+  auth: {
+    strategies: {
+      local: {
+        endpoints: {
+          login: { url: 'login', method: 'post', propertyName: 'meta.token' },
+          user: { url: 'user', method: 'get', propertyName: 'data' },
+          logout: {url: 'logout', method: 'post'}
+        }
+      }
+    }
   },
   /*
   ** Build configuration

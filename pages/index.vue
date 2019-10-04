@@ -1,8 +1,6 @@
 <template>
     <div>
       
-      <nuxt-link to="/HandlungsvorschalgHinzufuegen" exact-active-class="active">Handlungsmoeglichkeit hinzufuegen</nuxt-link>
-
       <!-- Überschriften -->
       <ueberschriftenAnimation />
 

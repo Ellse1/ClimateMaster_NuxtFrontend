@@ -1,0 +1,41 @@
+<template>
+    <div class="container">
+        <h2>Login</h2>
+        <form class="mt-5" @submit.prevent="addUser">
+            <div class="form-group">
+                <label for="email">E-Mail</label>
+                <input name="email" type="email" v-model="userForm.email" id="email" class="form-control col-md-6" placeholder="email" required/>
+                <span class="invalid-feedback" role="alert"><strong></strong></span>
+            </div>
+            <div class="form-group">
+                <label for="password">Passwort</label>
+                <input name="password" type="password" v-model="userForm.password"  id="password" class="form-control col-md-6" placeholder="password" required/>
+                <span class="invalid-feedback" role="alert"><strong></strong></span>
+            </div>
+            <button type="submit" class="btn btn-default border">login</button>
+        </form>
+    </div>
+</template>
+
+<script>
+export default {
+    data() {
+        return {
+            userForm: {
+                email: '',
+                password: ''
+            }
+        }
+    },
+    methods: {
+        async addUser() {
+            await this.$auth.login({
+                data: this.userForm
+            });
+            this.$router.push({
+                path: '/'
+            });
+        }
+    }
+}
+</script>
