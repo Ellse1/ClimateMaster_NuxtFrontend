@@ -1,7 +1,10 @@
 <template>
     <div class="container">
         <h2>Login</h2>
-        <form class="mt-5" @submit.prevent="addUser">
+
+        <Notification :message="error" v-if="error" class="mt-4"/>
+
+        <form class="" @submit.prevent="addUser">
             <div class="form-group">
                 <label for="email">E-Mail</label>
                 <input name="email" type="email" v-model="userForm.email" id="email" class="form-control col-md-6" placeholder="email" required/>
@@ -18,23 +21,32 @@
 </template>
 
 <script>
+import Notification from '~/components/Notification';
+
 export default {
+    components: {
+        Notification
+    },
+
     data() {
         return {
             userForm: {
                 email: '',
                 password: ''
-            }
+            },
+            error: null,
+            success: null
         }
     },
     methods: {
         async addUser() {
-            await this.$auth.login({
-                data: this.userForm
-            });
-            this.$router.push({
-                path: '/'
-            });
+            try{
+                await this.$auth.login({
+                    data: this.userForm
+                });
+            }catch(e){
+                this.error = e.response.data.message;
+            }
         }
     }
 }

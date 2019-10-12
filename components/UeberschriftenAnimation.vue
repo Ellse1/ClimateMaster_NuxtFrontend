@@ -1,7 +1,13 @@
 <template>
     <!-- Überschriften -->
     <div class="text-center">
-        <h1 class="display-3" style="margin-top:200px;">
+        <h1 id="ueberschriftGross" class="display-3" style="margin-top:200px;">
+          <b>         
+            <span class="master">Master</span>
+            <span class="text-success climate">Climate</span>
+          </b>
+        </h1>
+        <h1 id="ueberschriftKlein" class="display-5" style="margin-top:200px;">
           <b>         
             <span class="master">Master</span>
             <span class="text-success climate">Climate</span>
@@ -10,7 +16,7 @@
         <h1 class="display-3">
             <span class="now">now!</span>
         </h1>
-        <h2 class="mb-4">
+        <h2 class="mb-4 text-center">
           Für Klimaschutz gegen Klimaerwärmung
         </h2>
     </div>
@@ -34,7 +40,10 @@
   -webkit-animation: fadeOut 2s linear forwards 1s;
   animation: fadeOut 2s linear forwards 1s;
 }
-
+/* Normaly dont show small  */
+#ueberschriftKlein{
+  display: none;
+}
 
 @keyframes goleft {
   100% {
@@ -56,5 +65,24 @@
 
 }
 
+
+@media only screen and (max-width: 600px) {
+  #ueberschriftGross{
+    display: none;
+  }
+  #ueberschriftKlein{
+    display: block;
+  }
+  @keyframes goleft {
+  100% {
+    right: 140px;
+  }
+}
+@keyframes goright {
+  100% {
+    left: 140px;
+  }
+}
+}
 
 </style>

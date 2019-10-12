@@ -102,7 +102,7 @@
 
 @keyframes goUp {
   100% {
-    bottom: 160px;
+    bottom: 130px;
   }
 }
 
