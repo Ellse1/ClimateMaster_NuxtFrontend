@@ -8,7 +8,7 @@
     <nuxt />
   
     <div v-if="loggedIn" class="text-center"> 
-        <nuxt-link to="/HandlungsvorschalgHinzufuegen" exact-active-class="active">Handlungsmoeglichkeit hinzufuegen</nuxt-link> |
+        <nuxt-link to="/HandlungsvorschlagHinzufuegen" exact-active-class="active">Handlungsvorschlag hinzufuegen</nuxt-link> |
         <nuxt-link to="/" exact-active-class="active">Home</nuxt-link> |
         <a @click.prevent="logout" href="#">logout</a>
     </div>

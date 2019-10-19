@@ -2,7 +2,7 @@
     <div class="container">
         <h2>Login</h2>
 
-        <Notification :message="error" v-if="error" class="mt-4"/>
+        <Notification :message="error" v-if="error" class="mt-4 text-danger"/>
 
         <form class="" @submit.prevent="addUser">
             <div class="form-group">

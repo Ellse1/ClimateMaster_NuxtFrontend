@@ -25,7 +25,7 @@
                     </div>
                     
                     <h4 id="hoverDiv_privat_text">
-                        Werde jetzt leicht <span class="text-success">Climate</span>Master. <br>
+                        Werde jetzt <span class="text-success">Climate</span>Master. <br>
                         Es gibt Unterstützung!
                     </h4>
                 </div>
@@ -104,6 +104,14 @@
   100% {
     bottom: 130px;
   }
+}
+
+@media only screen and (max-width: 600px) {
+@keyframes goUp {
+  100% {
+    bottom: 60px;
+  }
+}
 }
 
 </style>
