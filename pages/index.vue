@@ -1,33 +1,33 @@
 <template>
     <div>
       
-      <!-- Überschriften -->
-      <ueberschriftenAnimation />
+      <!-- HeaderAnimation -->
+      <headerAnimation />
+      <!-- Private and Communitiies Cards-->
+      <privateAndCommunitiesCards/>
 
-      <privatUndOrganisationen/>
-
-      <privatClimateMasterWerden :handlungsvorschlaege="handlungsvorschlaege"/>
+      <becomeClimateMasterPrivate :climadvices="climadvices"/>
      
 
     </div>
 </template>
 
  <script>
-import ueberschriftenAnimation from '~/components/UeberschriftenAnimation.vue'
-import privatUndOrganisationen from '~/components/PrivatUndOrganisationen.vue'
-import privatClimateMasterWerden from '~/components/PrivatClimateMasterWerden.vue'
+import headerAnimation from '~/components/HeaderAnimation.vue'
+import privateAndCommunitiesCards from '~/components/PrivateAndCommunitiesCards.vue'
+import becomeClimateMasterPrivate from '~/components/BecomeClimateMasterPrivate.vue'
 import axios from 'axios';
 
 export default {
   components: {
-    ueberschriftenAnimation,
-    privatUndOrganisationen,
-    privatClimateMasterWerden
+    headerAnimation,
+    privateAndCommunitiesCards,
+    becomeClimateMasterPrivate
   },
   
   async asyncData(){
-      const hv = await axios.get('http://localhost:8000/api/handlungsvorschlag');
-      return {handlungsvorschlaege: hv.data.data};
+      const climadvicesData = await axios.get('http://localhost:8000/api/climadvice/index');
+      return {climadvices: climadvicesData.data.data};
   }
 }
  </script>

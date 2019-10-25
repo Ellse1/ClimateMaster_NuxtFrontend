@@ -1,13 +1,13 @@
 <template>
     <!-- Überschriften -->
     <div class="text-center">
-        <h1 id="ueberschriftGross" class="display-3" style="margin-top:200px;">
+        <h1 id="headerBig" class="display-3" style="margin-top:200px;">
           <b>         
             <span class="text-success climate">Climate</span>
             <span class="master">Master</span>
           </b>
         </h1>
-        <h1 id="ueberschriftKlein" class="display-5" style="margin-top:200px;">
+        <h1 id="headerSmall" class="display-5" style="margin-top:200px;">
           <b>         
             <span class="text-success climate">Climate</span>
             <span class="master">Master</span>
@@ -44,7 +44,7 @@
               /* fadeOut 1s linear forwards 7s; */
 }
 /* Normaly dont show small  */
-#ueberschriftKlein{
+#headerSmall{
   display: none;
 }
 
@@ -78,10 +78,10 @@
 
 
 @media only screen and (max-width: 600px) {
-  #ueberschriftGross{
+  #headerBig{
     display: none;
   }
-  #ueberschriftKlein{
+  #headerSmall{
     display: block;
   }
   @keyframes goleftThenBack {

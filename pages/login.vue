@@ -1,18 +1,18 @@
 <template>
-    <div class="container">
+    <div class="container text-center">
         <h2>Login</h2>
 
         <Notification :message="error" v-if="error" class="mt-4 text-danger"/>
 
-        <form class="" @submit.prevent="addUser">
+        <form class="text-center" @submit.prevent="addUser">
             <div class="form-group">
                 <label for="email">E-Mail</label>
-                <input name="email" type="email" v-model="userForm.email" id="email" class="form-control col-md-6" placeholder="email" required/>
+                <input name="email" type="email" v-model="userForm.email" id="email" class="form-control col-md-6 text-center" style="margin:auto;" placeholder="email" required/>
                 <span class="invalid-feedback" role="alert"><strong></strong></span>
             </div>
             <div class="form-group">
                 <label for="password">Passwort</label>
-                <input name="password" type="password" v-model="userForm.password"  id="password" class="form-control col-md-6" placeholder="password" required/>
+                <input name="password" type="password" v-model="userForm.password"  id="password" class="form-control col-md-6 text-center" style="margin:auto;" placeholder="password" required/>
                 <span class="invalid-feedback" role="alert"><strong></strong></span>
             </div>
             <button type="submit" class="btn btn-default border">login</button>

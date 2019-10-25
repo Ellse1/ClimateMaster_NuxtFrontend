@@ -6,62 +6,65 @@
         <Notification :message="success" v-if="success" class="mt-4 text-success"/>
 
 
-        <form @submit.prevent="handlungsvorschlagHinzufuegen">
+        <form @submit.prevent="addClimadvice">
             <div class="form-group mt-3">
-                <label for="titel" class="">Titel</label>
-                <input type="text" class="form-control col-md-6" v-model="titel" id="titel" name="titel" placeholder="Titel"/>
+                <label for="title" class="">Titel</label>
+                <input type="text" class="form-control col-md-6" v-model="title" id="title" name="title" placeholder="Titel"/>
             </div>
             <div class="form-group mt-3">
-                <label for="kurzbeschreibung" class="">Kurzbeschreibung</label>
-                <input type="text" class="form-control" v-model="kurzbeschreibung" id="kurzbeschreibung" name="kurzbeschreibung" placeholder="Kurzbeschreibung"/>
+                <label for="shortDescription" class="">Kurzbeschreibung</label>
+                <input type="text" class="form-control" v-model="shortDescription" id="shortDescription" name="shortDescription" placeholder="Kurzbeschreibung"/>
             </div>
             <div class="form-group mt-3">
-                <label for="detailbeschreibung" class="">Detailbeschreibung (Langer text der bei Klick angezeigt wird)</label>
-                <textarea type="text" class="form-control" v-model="detailbeschreibung" id="detailbeschreibung" name="detailbeschreibung" rows="6">
+                <label for="detailedDescription">Detailbeschreibung (Langer text der bei Klick angezeigt wird)</label>
+                <textarea type="text" class="form-control" v-model="detailedDescription" id="detailedDescription" name="detailedDescription" rows="6">
                     Detailbeschreibung
                 </textarea>
             </div>
             <div class="form-group mt-3">
-                <label for="vorschlagIcon" class="">Vorschlag Icon, welches bei diesem Vorschlag angezeigt wird</label>
+                <label for="climadviceIcon">Vorschlag Icon, welches bei diesem Climadvice angezeigt wird</label>
                 <br>
-                <input type="file" ref="icon" v-on:change="handleIconUpload()" class="col-md-6"  id="vorschlagIcon" name="vorschlagIcon"/>
+                <input type="file" ref="icon" v-on:change="handleIconUpload()" class="col-md-6"  id="climadviceIcon" name="climadviceIcon"/>
             </div>
             <input type="submit" class="btn btn-default border" value="speichern und anzeigen"/>
         </form>
+
+
+
     </div>
 </template>
 
 <script>
 import Notification from '~/components/Notification';
 
-
 export default {
     middleware : 'auth',
     
+    
     components: {
-        Notification
+        Notification,
     },
     data(){
         return {
-            titel: '',
-            kurzbeschreibung: '',
-            detailbeschreibung: '',
+            title: '',
+            shortDescription: '',
+            detailedDescription: '',
             error: null,
             success: null
         }
     },
     
     methods:{
-        async handlungsvorschlagHinzufuegen(){
+        async addClimadvice(){
 
             let formData = new FormData();
-            formData.append('vorschlagIcon', this.vorschlagIcon);
-            formData.append('titel', this.titel);
-            formData.append('kurzbeschreibung', this.kurzbeschreibung);
-            formData.append('detailbeschreibung', this.detailbeschreibung);
+            formData.append('climadviceIcon', this.climadviceIcon);
+            formData.append('title', this.title);
+            formData.append('shortDescription', this.shortDescription);
+            formData.append('detailedDescription', this.detailedDescription);
 
             try{
-                const{data} = await this.$axios.post( 'handlungsvorschlagHinzufuegen',
+                const{data} = await this.$axios.post( 'climadvice/store',
                 formData,
                 {
                     headers: {
@@ -81,9 +84,10 @@ export default {
             }
         },
         handleIconUpload(){
-            this.vorschlagIcon = this.$refs.icon.files[0];
+            this.climadviceIcon = this.$refs.icon.files[0];
         }
-    }
+    },
+
 
 }
 </script>
