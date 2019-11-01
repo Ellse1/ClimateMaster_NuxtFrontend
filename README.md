@@ -1,6 +1,6 @@
 # ClimateMaster
 
-> Active against climate change and for climate protection
+> Active for climate protection
 
 ## Build Setup
 
