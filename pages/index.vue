@@ -4,9 +4,11 @@
       <!-- HeaderAnimation -->
       <headerAnimation />
       <!-- Private and Communitiies Cards-->
-      <privateAndCommunitiesCards/>
+      <privateAndCommunitiesCards @gotClimadvices="gotClimadvices"/>
 
-      <becomeClimateMasterPrivate :climadvices="climadvices"/>
+      <span id="id_over_becomeClimateMasterPrivate"></span>
+      <becomeClimateMasterPrivate v-if="climadvices" :climadvices="climadvices"/>
+      
      
 
     </div>
@@ -15,19 +17,25 @@
  <script>
 import headerAnimation from '~/components/HeaderAnimation.vue'
 import privateAndCommunitiesCards from '~/components/PrivateAndCommunitiesCards.vue'
-import becomeClimateMasterPrivate from '~/components/BecomeClimateMasterPrivate.vue'
+import becomeClimateMasterPrivate from '~/components/Climadvice/BecomeClimateMasterPrivate.vue'
 import axios from 'axios';
-
+var VueScrollTo = require('vue-scrollto');
 export default {
   components: {
     headerAnimation,
     privateAndCommunitiesCards,
     becomeClimateMasterPrivate
   },
-  
-  async asyncData(){
-      const climadvicesData = await axios.get('http://localhost:8000/api/climadvice/index');
-      return {climadvices: climadvicesData.data.data};
+  data(){
+    return{
+      climadvices: null
+    }
+  },
+  methods: {
+    gotClimadvices(climadvices){
+      this.climadvices = climadvices;
+      var scrollTo = VueScrollTo.scrollTo('#id_over_becomeClimateMasterPrivate');
+    }
   }
 }
  </script>

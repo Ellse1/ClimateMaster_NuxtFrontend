@@ -14,7 +14,7 @@ export default {
 </script>
 
 <style scoped>
-.notification{
+/* .notification{
     animation: fadeIn 10s linear forwards;
     -webkit-animation: fadeIn 10s linear forwards;
 }
@@ -28,6 +28,6 @@ export default {
   0% {opacity: 1;}
   50%{opacity: 1;}
  100%{opacity: 0;}
-}
+} */
 
 </style>

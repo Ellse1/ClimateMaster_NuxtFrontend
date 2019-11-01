@@ -1,7 +1,7 @@
 <template>
     <!-- Überschriften -->
     <div class="text-center">
-        <h1 id="headerBig" class="display-3" style="margin-top:200px;">
+        <h1 id="headerBig" class="display-3" style="margin-top:100px;">
           <b>         
             <span class="text-success climate">Climate</span>
             <span class="master">Master</span>
