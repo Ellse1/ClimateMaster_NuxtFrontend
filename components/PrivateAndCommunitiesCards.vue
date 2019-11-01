@@ -3,7 +3,7 @@
         <!-- Private and Communities / Companies -->
         <div class="container" style="max-width:900px;margin-top:100px;">
             <div class="card-deck text-center">        
-                <div class="card mb-5" v-on:click="getClimadvicesPrivat">
+                <div class="card mb-5" v-on:click="goToPrivate">
                     <img src="~/static/IconPrivate.png" alt="Kein Icon gefunden." class="card-img-top"/>
                     <div class="card-body text-center">
                         <h3>Privat</h3>
@@ -54,16 +54,12 @@
     </div>
 </template> 
 <script>
-import axios from 'axios';
-var climadvices = null;
+var scrollTo = require('vue-scrollto');
 export default {
     methods:{
-        async getClimadvicesPrivat(){
-            if(climadvices == null){
-                const climadvicesData = await axios.get('http://localhost:8000/api/climadvice/index');
-                climadvices = climadvicesData.data.data;
-            }
-            this.$emit('gotClimadvices', climadvices)
+        goToPrivate(){
+            this.$router.push('/private');
+            var scroll = scrollTo.scrollTo('#id_becomeClimateMasterPrivate');
         }
     }
 }

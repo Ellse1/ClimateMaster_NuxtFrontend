@@ -25,6 +25,7 @@
 <script>
 import climadviceAdd from '~/components/Climadvice/ClimadviceAdd';
 var VueScrollTo = require('vue-scrollto');
+var openedClimadviceID = null;
 export default {
     props:['climadvices'],
     components:{
@@ -35,7 +36,11 @@ export default {
             this.climadvices.push(climadvice);
         },
         climadviceClicked(climadviceID){
+            if(openedClimadviceID != null && openedClimadviceID != climadviceID){
+                $("#" + openedClimadviceID).removeClass("col-md-12").addClass("col-md-4");
+            }
             $("#" + climadviceID).removeClass("col-md-4").addClass("col-md-12");
+            openedClimadviceID = climadviceID;
             var scrollTo = VueScrollTo.scrollTo("#" + climadviceID);
         }
     }

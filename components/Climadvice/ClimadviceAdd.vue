@@ -45,7 +45,7 @@
 </template>
 
 <script>
-import notification from '~/components/Notification';
+import notification from '~/components/MainComponents/Notification';
 export default {
     components:{
         notification

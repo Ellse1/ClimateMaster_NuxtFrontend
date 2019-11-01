@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import Notification from '~/components/Notification';
+import Notification from '~/components/MainComponents/Notification';
 
 export default {
     components: {

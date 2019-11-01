@@ -1,10 +1,7 @@
 <template>
     <div>
       
-      <!-- HeaderAnimation -->
-      <headerAnimation />
-      <!-- Private and Communitiies Cards-->
-      <privateAndCommunitiesCards @gotClimadvices="gotClimadvices"/>
+
 
       <span id="id_over_becomeClimateMasterPrivate"></span>
       <becomeClimateMasterPrivate v-if="climadvices" :climadvices="climadvices"/>
@@ -15,14 +12,14 @@
 </template>
 
  <script>
-import headerAnimation from '~/components/HeaderAnimation.vue'
 import privateAndCommunitiesCards from '~/components/PrivateAndCommunitiesCards.vue'
 import becomeClimateMasterPrivate from '~/components/Climadvice/BecomeClimateMasterPrivate.vue'
 import axios from 'axios';
 var VueScrollTo = require('vue-scrollto');
+
 export default {
+  layout: 'indexLayout',
   components: {
-    headerAnimation,
     privateAndCommunitiesCards,
     becomeClimateMasterPrivate
   },
