@@ -26,14 +26,7 @@
                     </form>                   
                     
                     
-                    <!-- <h5>Title</h5>
-                    <p class="card-text">
-                        shortDescription
-                    </p>          
-                    <div class="text-center">
-                        Image
-                        <img :src="'http://localhost:8000/images/climadviceIcons/' + climadvice.iconName" class="mx-center" alt="not found"  width="100px"/>                        
-                    </div> -->
+                    
                 </div>
             </div>
 
@@ -61,6 +54,9 @@ export default {
     },
     methods: {
         showFormAdd(){
+            this.name = null;
+            this.title = null;
+            this.shortDescription = null;
             $('#id_form_add').css("display", "block");
             $('#id_plus_addClimadvice').css("display", "none");
             return;

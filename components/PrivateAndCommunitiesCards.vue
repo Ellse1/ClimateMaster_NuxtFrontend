@@ -26,8 +26,8 @@
                         
                         <div id="hoverDiv_private_text" style="">
                             <h4>
-        	                    Werde jetzt <span class="text-success">Climate</span>Master.<br>
-                                Es gibt Unterstützung! 
+        	                    Jetzt <span class="text-success">Climate</span>Master werden<br>
+                                Es lohnt sich
                             </h4>
                         </div>
                         
