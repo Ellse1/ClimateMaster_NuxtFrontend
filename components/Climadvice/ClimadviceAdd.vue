@@ -20,7 +20,6 @@
                         <div class="row mt-2">
                             <button type="submit" class="btn btn-primary col m-2">speichern</button><br>
                             <button type="button" v-on:click="hideFormAdd" class="btn btn-default border col m-2">abbrechen</button>
-
                         </div>
                         
                     </form>                   

@@ -15,7 +15,9 @@
                                 <h6>Energie</h6>
                             </div>
                             <div class="col-4">
-                                <img src="~/static/IconMobility.png" alt="Kein Icon gefunden." class="hoverDiv_privat_imageIcon"/>  
+                                <span>
+                                    <img src="~/static/IconMobility.png" style="position:relative;" alt="Kein Icon gefunden." class="hoverDiv_privat_imageIcon" id="id_icon_mobility"/>  
+                                </span>
                                 <h6>Mobilität</h6>
                             </div>
                             <div class="col-4" style="margin-top:140px;">
@@ -58,6 +60,8 @@ var scrollTo = require('vue-scrollto');
 export default {
     methods:{
         goToPrivate(){
+            $("#id_icon_mobility").addClass("iconMobilityToRotate");
+            setTimeout(function(){$("#id_icon_mobility").removeClass("iconMobilityToRotate");}, 2000);
             this.$router.push('/private');
             var scroll = scrollTo.scrollTo('#id_becomeClimateMasterPrivate');
         }
@@ -96,6 +100,9 @@ export default {
 .hoverDiv_privat_imageIcon{
     max-width: 50%;
 }
+.iconMobilityToRotate{
+    animation:spin 0.5s ease-in-out;
+}
 
 
 #hoverDiv_communities{
@@ -118,11 +125,13 @@ export default {
 }
 
 
-@keyframes goUp {
-  100% {
-    bottom: 130px;
-  }
-}
+
+@keyframes goUp {100% {bottom: 130px;}}
+@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+
+
 
 @media only screen and (max-width: 600px) {
 @keyframes goUp {

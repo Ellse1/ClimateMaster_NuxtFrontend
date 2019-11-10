@@ -1,7 +1,7 @@
 <template>
     <!-- Überschriften -->
     <div class="text-center">
-        <h1 id="headerBig" class="display-3" style="margin-top:100px;">
+        <h1 id="headerBig" class="display-3" style="margin-top:50px;">
           <b>         
             <span class="text-success climate">Climate</span>
             <span class="master">Master</span>
@@ -17,7 +17,8 @@
             <span class="now">now!</span>
         </h1>
         <h2 class="mb-4 text-center">
-          Für Klimaschutz gegen Klimaerwärmung
+          Klimaschutz der Sinn macht<br>
+          Klimaneutral 2020
         </h2>
     </div>
 

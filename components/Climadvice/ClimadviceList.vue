@@ -3,10 +3,15 @@
         <div class="row">
             <div class="col-md-4" v-for="climadvice in climadvices" v-bind:key="climadvice.id" :id="climadvice.name" >
                 <div class="card mb-3">
-                    <div class="card-body" v-on:click="climadviceClicked(climadvice.name)">
+                    <div class="card-body" >
 
-                        <h5>{{climadvice.title}}</h5>
-                        <p class="card-text">
+                        <!-- x to close -->
+                        <span class="x_to_close_climadvice" :id="'id_x_to_close_' + climadvice.name" v-on:click="closeClimadvice(climadvice.name)" style="display:none;position:absolute;top:10px;right:10px; transform:rotate(20deg);"><h2>+</h2></span>
+
+                        <!-- v-on:clicked here on title and shortDescription because i cannot put it on the whole element!
+                        whole element: if i click for example the 'x' to close, this "climadviceClikcked" is also triggerd -->
+                        <h5 v-on:click="climadviceClicked(climadvice.name)">{{climadvice.title}}</h5>
+                        <p class="card-text" v-on:click="climadviceClicked(climadvice.name)">
                             {{climadvice.shortDescription}}
                         </p>
                         <div class="text-center">
@@ -53,13 +58,26 @@ export default {
         climadviceAdded(climadvice){
             this.climadvices.push(climadvice);
         },
-        climadviceClicked(climadviceID){
-            if(openedClimadviceID != null && openedClimadviceID != climadviceID){
+        //one Climadvice card was clicked
+        climadviceClicked(climadviceNameID){
+            //If other is opened -> close and dont show 'x' to close
+            if(openedClimadviceID != null && openedClimadviceID != climadviceNameID){
                 $("#" + openedClimadviceID).removeClass("col-md-12").addClass("col-md-4");
+                $("#id_x_to_close_" + openedClimadviceID).css("display", "none");
             }
-            $("#" + climadviceID).removeClass("col-md-4").addClass("col-md-12");
-            openedClimadviceID = climadviceID;
-            var scrollTo = VueScrollTo.scrollTo("#" + climadviceID);
+            //open the climadvice which was clicked
+            $("#" + climadviceNameID).removeClass("col-md-4").addClass("col-md-12");
+            openedClimadviceID = climadviceNameID;
+            var scrollTo = VueScrollTo.scrollTo("#" + climadviceNameID);
+            $("#id_x_to_close_" + climadviceNameID).css("display", "block");
+        },
+        closeClimadvice(climadviceNameID){
+            //if this climadvice is allready opened -> close
+            if(openedClimadviceID != null && openedClimadviceID == climadviceNameID){
+                $("#" + climadviceNameID).removeClass("col-md-12").addClass("col-md-4");
+                $("#id_x_to_close_" + climadviceNameID).css("display", "none");
+                openedClimadviceID = null;
+            }
         },
         editClimadvice(climadvice){
             this.climadviceForEdit = climadvice;
@@ -82,11 +100,21 @@ export default {
 </script>
 
 
-<style>
+<style scoped>
 .card{
     cursor: pointer;
 }
 .card:hover{
     box-shadow: 0 0 10px gray;
 }
+
+.x_to_close_climadvice:hover{
+    animation:spin 0.3s ease-out;
+}
+
+
+
+@-moz-keyframes spin { 100% { -moz-transform: rotate(180deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(180deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(180deg); transform:rotate(180deg); } }
 </style>
