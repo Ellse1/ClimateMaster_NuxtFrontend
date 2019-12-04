@@ -17,7 +17,7 @@
             <span class="now">now!</span>
         </h1>
         <h2 class="mb-4 text-center">
-          Klimaschutz der Sinn macht<br>
+          Klimaschutz, weil es sich lohnt<br>
           Klimaneutral 2020
         </h2>
     </div>
