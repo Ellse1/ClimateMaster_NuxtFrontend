@@ -29,7 +29,7 @@ export default {
         };
     },
     async asyncData(){
-        var blogPostsData = await axios.get('http://localhost:8000/api/blogPost/index');
+        var blogPostsData = await axios.get('https://www.climate-master.com:8000/api/blogPost/index');
         return {blogPosts: blogPostsData.data.data};
     }
 }

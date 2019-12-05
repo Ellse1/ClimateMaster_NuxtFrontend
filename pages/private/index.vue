@@ -13,7 +13,7 @@ export default {
         becomeClimateMasterPrivate
     },
     async asyncData(){
-        const climadvicesData = await axios.get('https://climate-master.com:8000/api/climadvice/index');
+        const climadvicesData = await axios.get('https://www.climate-master.com:8000/api/climadvice/index');
         return {climadvices: climadvicesData.data.data}
     },
     data(){
