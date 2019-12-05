@@ -53,7 +53,8 @@ export default {
   */
   axios: {
     https: false,
-    baseURL: 'http://localhost:8000/api'
+    baseURL: 'http://localhost:8000/api',
+    //browserBaseURL: 'http://www.climate-master.com:8000/api'
   },
   //For Authentication
   auth: {
