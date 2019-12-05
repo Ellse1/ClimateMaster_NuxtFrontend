@@ -28,9 +28,9 @@ export default {
             blogPosts: null
         };
     },
-    async asyncData(){
-        var blogPostsData = await axios.get('https://www.climate-master.com:8000/api/blogPost/index');
-        return {blogPosts: blogPostsData.data.data};
+    async asyncData({$axios}){
+        var blogPostsData = await $axios.$get('blogPost/index');
+        return {blogPosts: blogPostsData.data};
     }
 }
 </script>
