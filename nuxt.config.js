@@ -52,6 +52,7 @@ export default {
   ** See https://axios.nuxtjs.org/options
   */
   axios: {
+    https: false,
     baseURL: 'http://localhost:8000/api'
   },
   //For Authentication

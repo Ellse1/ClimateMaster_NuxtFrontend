@@ -78,7 +78,7 @@ export default {
             formData.append('shortDescription', this.shortDescription);
 
             try{
-                const{data} = await this.$axios.post( 'climadvice/store',
+                const{data} = await this.$axios.post('climadvice/store',
                 formData,
                 {
                     headers: {
