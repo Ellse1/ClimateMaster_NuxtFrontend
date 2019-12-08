@@ -14,12 +14,12 @@
           </b>
         </h1>
         <h1 class="display-3">
-            <span class="now">now!</span>
+            <span class="now">today!</span>
         </h1>
-        <h2 class="mb-4 text-center">
-          Klimaschutz, weil es sich lohnt<br>
-          Klimaneutral 2020
-        </h2>
+        <h4 class="mb-4 text-center">
+          <!-- Klimaschutz, weil es sich lohnt<br> -->
+          <!-- Klimaneutral 2020 -->
+        </h4>
     </div>
 
 </template>

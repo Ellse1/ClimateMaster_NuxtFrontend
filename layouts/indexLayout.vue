@@ -12,8 +12,8 @@
     <HeaderAnimation />
 
 
-    <!-- Private and Communitiies Cards-->
-    <privateAndCommunitiesCards/>
+    <!-- Private and Communitiies Cards -->
+    <!-- <privateAndCommunitiesCards/> -->
 
 
     <nuxt />

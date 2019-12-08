@@ -3,7 +3,7 @@
         <div class="container">
             <div class=" row">
                 <nuxt-link class="col text-center h2 text-dark" to="/" exact-active-class="">Home</nuxt-link>
-                <nuxt-link class="col text-center h2 text-dark" to="/blog/" exact-active-class="">Blog</nuxt-link>
+                <!-- <nuxt-link class="col text-center h2 text-dark" to="/blog/" exact-active-class="">Blog</nuxt-link> -->
                 <nuxt-link class="col text-center h2 text-dark" to="/aboutUs" exact-active-class="">Wir</nuxt-link>
             </div>
         </div>
@@ -12,9 +12,9 @@
 </template>
 <style scoped>
 #navigationBar{
-    opacity: 0;
-    animation: fadeIn forwards linear 2s 1s;
-    -webkit-animation: fadeIn forwards linear 2s 1s;
+    opacity: 1;
+     /* animation: fadeIn forwards linear 2s 1s;
+    -webkit-animation: fadeIn forwards linear 2s 1s;  */
 }
 
 
