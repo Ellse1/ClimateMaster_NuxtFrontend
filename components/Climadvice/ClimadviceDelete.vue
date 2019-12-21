@@ -61,6 +61,7 @@ export default {
                 }
             } catch (e) {
                 alert(e);
+                this.error = e.response.data.message;
             }
         }
     }

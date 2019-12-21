@@ -70,6 +70,7 @@ export default {
                         'Content-Type': 'multipart/form-data'
                     }
                 });
+
                 if(data.state == "error"){
                     this.error = data.message;
                     this.success = null;
@@ -80,7 +81,8 @@ export default {
                     this.$emit('climadviceEdited', data.data);
                 }
             }catch(e){
-                alert("error: " + e);
+                alert("Error: " + e);
+                this.error = e.response.data.message;
             }
         }
 

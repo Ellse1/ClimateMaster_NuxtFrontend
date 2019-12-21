@@ -100,7 +100,7 @@ export default {
 </script>
 
 
-<style scoped>
+<style>
 .card{
     cursor: pointer;
 }

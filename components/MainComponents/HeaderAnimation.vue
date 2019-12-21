@@ -1,21 +1,21 @@
 <template>
     <!-- Überschriften -->
     <div class="text-center">
-        <h1 id="headerBig" class="display-3" style="margin-top:50px;">
+        <h1 id="headerBig" class="display-3" style="margin-top:20px;">
           <b>         
             <span class="text-success climate">Climate</span>
             <span class="master">Master</span>
           </b>
         </h1>
-        <h1 id="headerSmall" class="display-5" style="margin-top:200px;">
+        <h1 id="headerSmall" class="display-5" style="margin-top:20px;">
           <b>         
             <span class="text-success climate">Climate</span>
             <span class="master">Master</span>
           </b>
         </h1>
-        <h1 class="display-3">
+        <!-- <h1 class="display-3">
             <span class="now">today!</span>
-        </h1>
+        </h1> -->
         <h4 class="mb-4 text-center">
           <!-- Klimaschutz, weil es sich lohnt<br> -->
           <!-- Klimaneutral 2020 -->

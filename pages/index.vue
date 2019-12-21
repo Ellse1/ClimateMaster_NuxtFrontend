@@ -3,7 +3,7 @@
       <div class="container text-center">
         <h4>Schön, dass du Interesse an konkretem, umweltfreundlichem Klimaschutz hast!</h4>
         Wir sind noch im Aufbau, unter "Wir" kannst du mehr über uns erfahren:<br>
-        <nuxt-link id="id_button_link" class="btn btn-default mt-3 pl-5 pr-5" to="/aboutUs"><span>Wir</span></nuxt-link>
+        <nuxt-link id="id_button_link" class="btn btn-default mt-3 pl-5 pr-5 mb-5" to="/we"><span>Wir</span></nuxt-link>
       </div>
     </div>
 </template>

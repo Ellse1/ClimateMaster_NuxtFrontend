@@ -4,7 +4,7 @@
     <NavigationBar />
     
     <div v-if="loggedIn" class="text-center">
-      <h3>Hallo {{user.name}}</h3>
+      <h3>Hallo {{user.firstname}}</h3>
     </div>
 
     <nuxt />
