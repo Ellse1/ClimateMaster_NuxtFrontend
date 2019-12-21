@@ -9,7 +9,7 @@
                 </div>
             </div>
             <div class="col">
-                <div style="max-width: 400px; margin:auto; margin-top:20%;" class="border border-success rounded p-4">
+                <div style="max-width: 400px; margin:auto; margin-top:100px;" class="border border-success rounded p-4">
                     <div class="text-center">
                         <h4>Register at</h4>
                         <h4><span class="text-success">Climate</span>Master</h4>
@@ -57,7 +57,7 @@
                         </div>
                     </form>
                 </div>
-                <div style="margin:auto; max-width:400px;" class="text-center mt-3 border border-success rounded">
+                <div style="margin:auto; max-width:400px;" class="text-center mt-3 border border-success rounded mb-3">
                     Schon ein <span class="text-success">Climate</span>Master Konto?<br>
                     <nuxt-link to="/login" class="btn btn-success m-3 pl-5 pr-5">login</nuxt-link> 
                 </div>
