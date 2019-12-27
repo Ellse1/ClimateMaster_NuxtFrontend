@@ -51,7 +51,11 @@
 
                             <div class="col-12 mt-3">
                                 <div class="text-center">
-                                    <button class="btn btn-success pl-5 pr-5">register</button>
+                                    <button id="id_button_register" class="btn btn-success pl-5 pr-5">
+                                        <!-- register -->
+                                        <!-- loading ring -->
+                                        register
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -88,6 +92,9 @@ export default {
     },
     methods:{
         async registerUser(){
+
+            $('#id_button_register').addClass("loading-animation");
+
             let formData = new FormData();
             formData.append('firstname', this.firstname);
             formData.append('lastname', this.lastname);
@@ -114,13 +121,15 @@ export default {
                     this.error = null;
                     this.success = data.message;
 
-                    this.$router.push('/login');
+                  //  this.$router.push('/login');
                 }
 
+                $('#id_button_register').removeClass('loading-animation');
 
             }catch (e){
                 alert("Error: " + e);
                 this.error = e.response.data.message;
+                $('#id_button_register').removeClass('loading-animation');                
             }
         }
     }
@@ -131,6 +140,10 @@ export default {
 
 <style scoped>
 
+
+
+
+/* Dont display one side if on smartphone */
 @media only screen and (max-width: 600px){
 #id_col_1{
     display: none;

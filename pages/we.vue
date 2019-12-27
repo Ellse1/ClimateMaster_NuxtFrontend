@@ -1,5 +1,8 @@
 <template>
     <div>
+        <div style="overflow:hidden;position:fixed;z-index:-10;">
+            <img src="~/static/pictures/forSpecialSites/we/greenland.jpg" alt="kein Bild gefunden"/>
+        </div>
         <div class="container">
             <div class="container" style="max-width:800px;">
                 <div>
@@ -36,7 +39,7 @@
                 </div>
 
             </div>
-            <div class="container text-center mt-3 mb-5" style="max-width:800px;">
+            <div class="container text-center mt-3 mb-5 bg-light border border-success rounded" style="max-width:800px;">
                 Unser Ziel ist es, umweltfreundlichen Klimaschutz voran zu bringen, um die drastischen,
                 katastrophalen Folgen einer globalen Erwärmung abzuwenden. Dafür beraten wir dich,
                 zeigen dir, welche klimafreundlichen Lösungen heute möglich sind und helfen dir schon 2020

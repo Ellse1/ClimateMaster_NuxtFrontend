@@ -18,7 +18,8 @@
                             <input name="password" type="password" v-model="userForm.password"  id="password" class="form-control text-center" style="margin:auto;" placeholder="password" required/>
                             <span class="invalid-feedback" role="alert"><strong></strong></span>
                         </div>
-                        <button type="submit" class="btn m-2 btn-success pl-5 pr-5">login</button>
+
+                        <button id="id_button_login" type="submit" class="btn m-2 btn-success pl-5 pr-5">login</button>
                     </form>
                 </div>
                 <div style="max-width:400px;" class="container mt-2 border border-success rounded text-center">
@@ -50,6 +51,7 @@ export default {
     },
     methods: {
         async addUser() {
+            $("#id_button_login").addClass('loading-animation')
             try{
                 await this.$auth.login({
                     data: this.userForm
@@ -57,6 +59,8 @@ export default {
             }catch(e){
                 this.error = e.response.data.message;
             }
+            $("#id_button_login").removeClass('loading-animation')
+
         }
     }
 }
