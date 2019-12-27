@@ -1,5 +1,5 @@
 <template>
-    <div class="container mt-4">
+    <div class="container mt-4 text-center" style="max-width:400px;">
 
         <h4>Verifizierungslink noch einmal senden.</h4>
         <p>Geben Sie Ihre E-Mail ein. Wir senden Ihnen dann einen Verifizierungslink an Ihre E-Mail Adresse.
@@ -7,14 +7,14 @@
         </p>
         <form @submit.prevent="sendVerificatioLink">
             <div class="form-group">
-                <input class="form-control col-md-6" v-model="email" placeholder="Email Adresse" required/>
+                <input class="form-control text-center" style="margin:auto;" v-model="email" placeholder="Email Adresse" required/>
             </div>
             <div class="form-group">
-                <button id="id_button_sendVerificationLink" class="btn btn-success col-md-6">Verifizierungslink senden</button>
+                <button id="id_button_sendVerificationLink" class="btn btn-success">Verifizierungslink senden</button>
             </div>
         </form>
-        <notification :message="error" v-if="error" class="text-danger col-md-6" />
-        <notification :message="success" v-if="success" class="text-success col-md-6" />
+        <notification :message="error" v-if="error" class="text-danger" />
+        <notification :message="success" v-if="success" class="text-success" />
 
     </div>
 </template>

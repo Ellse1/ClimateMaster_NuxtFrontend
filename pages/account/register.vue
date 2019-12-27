@@ -63,7 +63,7 @@
                 </div>
                 <div style="margin:auto; max-width:400px;" class="text-center mt-3 border border-success rounded mb-3">
                     Schon ein <span class="text-success">Climate</span>Master Konto?<br>
-                    <nuxt-link to="/login" class="btn btn-success m-3 pl-5 pr-5">login</nuxt-link> 
+                    <nuxt-link to="/account/login" class="btn btn-success m-3 pl-5 pr-5">login</nuxt-link> 
                 </div>
             </div>
         </div>
