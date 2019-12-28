@@ -4,6 +4,45 @@
         <h4>Schön, dass du Interesse an konkretem, umweltfreundlichem Klimaschutz hast!</h4>
         Wir sind noch im Aufbau, unter "Wir" kannst du mehr über uns erfahren:<br>
         <nuxt-link id="id_button_link" class="btn btn-default mt-3 pl-5 pr-5 mb-5" to="/we"><span>Wir</span></nuxt-link>
+
+        <div class="row">
+          <div class="col-md-4 mb-3">
+              <div class="border border-success rounded pt-4 pb-4" style="background-color:rgba(247, 247, 247, 0.3)">
+                  <h4>Registieren und loslegen</h4>
+                  <p>Registriere dich jetzt und werde 2020 umweltfreundlichem klimaneutral.</p>
+                  <div class="row">
+                      <div class="col-6">
+                          <nuxt-link to="/account/register" class="btn btn-success" style="width:80%;border-radius:20px;">registrieren</nuxt-link>
+                      </div>
+                      <div class="col-6">
+                          <nuxt-link to="/account/login" class="btn btn-success" style="width:80%;border-radius:20px;">einloggen</nuxt-link>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="col-md-4 mb-3">
+            <div class="border border-success rounded pt-4 pb-4" style="background-color:rgba(247, 247, 247, 0.3)">
+                <h4>Climadvices</h4>
+                <p>Finde hier die effizientesten Möglichkeiten, umwelt- und klimafreundlich zu leben.</p>
+                <nuxt-link to="/private" class="btn btn-success mb-3" style="width:80%;border-radius:20px;">climadvices</nuxt-link>
+            </div>
+          </div>
+          <div class="col-md-4 mb-3">
+            <div class="border border-success rounded pt-4 pb-4" style="background-color:rgba(247, 247, 247, 0.3)">
+                <h4>Wir</h4>
+                <p>Finde heraus, wer wir sind, was uns antreibt und werde Teil unserer Familie</p>
+                  <div class="row mb-3">
+                      <div class="col-6">
+                          <nuxt-link to="/we" class="btn btn-success" style="width:80%;border-radius:20px;">Wir</nuxt-link>
+                      </div>
+                      <div class="col-6">
+                          <nuxt-link to="/blog" class="btn btn-success" style="width:80%;border-radius:20px;">Blog</nuxt-link>
+                      </div>
+                  </div>                
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
 </template>
