@@ -1,7 +1,7 @@
 <template>
   <div>
 
-    <NavigationBar />
+    <NavigationBar class="mb-5"/>
     
     <div style="overflow:hidden;position:fixed;z-index:-10;">
       <img id="id_img_background" src="~/static/pictures/forSpecialSites/index/greenland.jpg" alt="leier kein Foto" />

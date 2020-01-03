@@ -1,7 +1,7 @@
 <template>
   <div>
 
-    <NavigationBar />
+    <NavigationBar class="mb-5"/>
     
     <div v-if="loggedIn" class="text-center">
       <h3>Hallo {{user.firstname}}</h3>
