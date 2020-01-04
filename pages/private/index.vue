@@ -8,7 +8,6 @@ import becomeClimateMasterPrivate from '~/components/Climadvice/BecomeClimateMas
 import axios from 'axios';
 var VueScrooTo = require('vue-scrollto')
 export default {
-    layout: 'indexLayout',
     components:{
         becomeClimateMasterPrivate
     },

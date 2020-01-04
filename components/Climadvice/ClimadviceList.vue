@@ -101,12 +101,6 @@ export default {
 
 
 <style>
-.card{
-    cursor: pointer;
-}
-.card:hover{
-    box-shadow: 0 0 10px gray;
-}
 
 .x_to_close_climadvice:hover{
     animation:spin 0.3s ease-out;

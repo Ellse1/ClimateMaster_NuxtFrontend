@@ -1,19 +1,19 @@
 <template>
   <div>
 
-    <NavigationBar class="mb-5"/>
+    <NavigationBar />
     
-    <div v-if="loggedIn" class="text-center">
-      <h3>Hallo {{user.firstname}}</h3>
+    <!-- Background Image -->
+    <div style="overflow:hidden;position:fixed;top:0px;z-index:-10;">
+        <img id="id_img_background" src="~/static/pictures/forSpecialSites/index/greenland.jpg" alt="leier kein Foto" />
     </div>
 
-    <nuxt />
+
   
-    <div v-if="loggedIn" class="text-center"> 
-        <nuxt-link to="/" exact-active-class="active">Home</nuxt-link> |
-        <a @click.prevent="logout" href="#">logout</a>
-    </div>
-
+    <!-- All the rest -->
+    <nuxt style="margin-top:100px;"/>
+  
+  
   </div>
 </template>
 <script>
@@ -51,4 +51,13 @@ export default {
     transform: rotate(360deg);
   }
 }
+
+/* For Cards */
+.card{
+    cursor: pointer;
+}
+.card:hover{
+    box-shadow: 0 0 10px gray;
+}
+
 </style>

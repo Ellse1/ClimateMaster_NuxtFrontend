@@ -1,14 +1,14 @@
 <template>
     <div>
-        <div style="overflow:hidden;position:fixed;z-index:-10;">
+        <!-- <div style="overflow:hidden;position:fixed;z-index:-10;">
             <img src="~/static/pictures/forSpecialSites/we/greenland.jpg" alt="kein Bild gefunden"/>
-        </div>
+        </div> -->
         <div class="container">
-            <div class="container" style="max-width:800px;">
+            <!-- <div class="container" style="max-width:800px;">
                 <div>
                     <img src="~/static/pictures/forSpecialSites/we/BannerTransparent.png" alt="Leider kein Bild gefunden" style="max-width:100%;" class="">
                 </div>
-            </div>
+            </div> -->
 
             <div class="container text-center mt-3" style="max-width:600px;">
                 <h2>Wir</h2>
@@ -52,6 +52,6 @@
 
 <script>
 export default{
-    // layout: 'indexLayout',
+    layout: 'indexLayout',
 }
 </script>

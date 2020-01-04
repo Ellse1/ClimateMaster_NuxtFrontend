@@ -20,7 +20,6 @@
 <script>
 import axios from 'axios';
 export default {
-    layout: 'indexLayout',
     components:{
 
     },
@@ -36,7 +35,8 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+
 .card{
     cursor: pointer;
 }

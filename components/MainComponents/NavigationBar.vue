@@ -30,10 +30,18 @@
                         </div>
 
                         <div class="nav-item dropdown ml-md-5">
-                            <a class="nav-link dropdown-toggle text-white" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Mein Profil</a>
-                            <div class="dropdown-menu" aria-labelledby="dropdown04">
+                            <a class="nav-link dropdown-toggle text-white" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Mein ClimateMaster</a>
+                            <!-- if not logged in -->
+                            <div class="dropdown-menu" v-if="loggedIn === false" aria-labelledby="dropdown04">
                                 <nuxt-link to="/account/register" class="dropdown-item">Registrieren</nuxt-link>
                                 <nuxt-link to="/account/login" class="dropdown-item">Einloggen</nuxt-link>
+                            </div>
+                            <!-- if logged in -->
+                            <div class="dropdown-menu" v-if="loggedIn === true" aria-labelledby="dropdown04">
+                                <nuxt-link to="/account/register" class="dropdown-item">Mein Profil</nuxt-link>
+                                <div class="text-center">
+                                    <button class="btn btn-danger"  v-on:click="logout()">Ausloggen</button>
+                               </div>
                             </div>
                         </div>
                     </div>
@@ -43,3 +51,13 @@
 
 
 </template>
+
+<script>
+export default {
+    methods: {
+        logout(){
+        this.$auth.logout();
+        }
+    }
+}
+</script>

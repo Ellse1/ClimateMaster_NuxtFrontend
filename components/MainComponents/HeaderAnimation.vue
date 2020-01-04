@@ -7,10 +7,10 @@
             <span class="master">Master</span>
           </b>
         </h1>
-        <h1 id="headerSmall" class="display-5" style="margin-top:20px;">
+        <h1 id="headerSmall" class="display-3" style="margin-top:20px;">
           <b>         
-            <span class="text-success climate">Climate</span>
-            <span class="master">Master</span>
+            <div class="text-success">Climate</div>
+            <div class="">Master</div>
           </b>
         </h1>
         <!-- <h1 class="display-3">
@@ -85,7 +85,7 @@
   #headerSmall{
     display: block;
   }
-  @keyframes goleftThenBack {
+  /* @keyframes goleftThenBack {
     0%{right: 7px;}
     10%{right: 150px;}
     20%{right: 150px;}
@@ -96,7 +96,7 @@
     10%{left: 150px;}
     20%{left: 150px;}
     30%{left: 7px;}
-  }
+  } */
 }
 
 </style>

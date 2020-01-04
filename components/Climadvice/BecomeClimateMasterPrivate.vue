@@ -1,6 +1,7 @@
 <template>
-     <div class="container mt-5 pt-5 border-top mb-5">
-        <h1 class="mb-3" id="id_becomeClimateMasterPrivat">Privat</h1>
+     <div class="container mb-5">
+        <h1 class="mb-3 text-center" id="id_becomeClimateMasterPrivat">Climadvices</h1>
+        <p class="text-center">Effiziente Möglichkeiten für klimafreundliches Leben</p>
 
         <climadviceList :climadvices="climadvices" />
 

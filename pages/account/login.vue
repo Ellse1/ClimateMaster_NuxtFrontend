@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                <div style="max-width:400px;margin-top:100px;" class="container border border-success rounded text-center">
+                <div style="max-width:400px;margin-top:100px;background-color:rgba(247, 247, 247, 0.3)" class="container border border-success rounded text-center">
                     <h4>Login at</h4> 
                     <h4><span class="text-success">Climate</span>Master</h4>
                     <Notification :message="error" v-if="error" class="mt-4 text-danger"/>
@@ -25,7 +25,7 @@
 
                     </form>
                 </div>
-                <div style="max-width:400px;" class="container mt-2 border border-success rounded text-center">
+                <div style="max-width:400px;background-color:rgba(247, 247, 247, 0.3)" class="container mt-2 border border-success rounded text-center">
                     Noch kein <span class="text-success">Climate</span>Master Konto?<br>
                     <nuxt-link to="/account/register" class="btn btn-success m-2 pl-4 pr-4">register</nuxt-link>
                 </div>
