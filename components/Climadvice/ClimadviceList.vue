@@ -18,15 +18,17 @@
                             <img :src="'https://www.climate-master.com:8000/images/climadviceIcons/' + climadvice.iconName" class="mx-center" alt="not found"  width="100px"/>                        
                         </div>
                     </div>
-                    <div class="card-footer text-center" v-if="loggedIn">
+
+                    <!-- If admin -->
+                    <div class="card-footer text-center" v-if="user.role === 'admin'">
                         <button v-on:click="editClimadvice(climadvice)" class="btn btn-default border">Bearbeiten</button>
                         <button v-on:click="deleteClimadvice(climadvice)" class="btn btn-default border">Löschen</button>
                     </div>
                 </div>
             </div>
 
-            <!-- To add a climadvice -->
-            <climadviceAdd id="id_climadviceAdd" v-if="loggedIn" @climadviceAdded="climadviceAdded"/>
+            <!--If admin ->  To add a climadvice -->
+            <climadviceAdd id="id_climadviceAdd" v-if="user.role === 'admin'" @climadviceAdded="climadviceAdded"/>
 
         </div>
 
