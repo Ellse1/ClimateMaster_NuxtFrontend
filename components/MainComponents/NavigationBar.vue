@@ -18,7 +18,7 @@
                         </div>
 
                         <div class="nav-item ml-md-5">
-                            <nuxt-link to="/private" class="nav-link text-white">Climadvices</nuxt-link>
+                            <nuxt-link to="/climadvices" class="nav-link text-white">Climadvices</nuxt-link>
                         </div>
                         
                         <div class="nav-item dropdown ml-md-5">
@@ -34,11 +34,14 @@
                             <!-- if not logged in -->
                             <div class="dropdown-menu" v-if="loggedIn === false" aria-labelledby="dropdown04">
                                 <nuxt-link to="/account/register" class="dropdown-item">Registrieren</nuxt-link>
-                                <nuxt-link to="/account/login" class="dropdown-item">Einloggen</nuxt-link>
+                                <div class="text-center">
+                                    <nuxt-link to="/account/login" class="btn btn-success">Einloggen</nuxt-link>
+                               </div>
                             </div>
                             <!-- if logged in -->
                             <div class="dropdown-menu" v-if="loggedIn === true" aria-labelledby="dropdown04">
-                                <nuxt-link to="/account/register" class="dropdown-item">Mein Profil</nuxt-link>
+                                <nuxt-link to="/account/myProfile" class="dropdown-item">Mein Profil</nuxt-link>
+                                <nuxt-link to="/myClimateMaster" class="dropdown-item" >Mein Klimaschutz</nuxt-link>
                                 <div class="text-center">
                                     <button class="btn btn-danger"  v-on:click="logout()">Ausloggen</button>
                                </div>

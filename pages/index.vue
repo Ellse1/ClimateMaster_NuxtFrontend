@@ -6,25 +6,35 @@
         <nuxt-link id="id_button_link" class="btn btn-default mt-3 pl-5 pr-5 mb-5" to="/we"><span>Wir</span></nuxt-link>
 
         <div class="row">
-          <div class="col-md-4 mb-3">
+          <!-- If not logged in  -->
+          <div class="col-md-4 mb-3" v-if="loggedIn === false">
               <div class="border border-success rounded pt-4 pb-4" style="background-color:rgba(247, 247, 247, 0.3)">
                   <h4>Registieren und loslegen</h4>
                   <p>Registriere dich jetzt und werde 2020 umweltfreundlichem klimaneutral.</p>
                   <div class="row">
                       <div class="col-6">
-                          <nuxt-link to="/account/register" class="btn btn-success" style="width:80%;border-radius:20px;">registrieren</nuxt-link>
+                          <nuxt-link to="/account/register" class="btn btn-success" style="width:80%;border-radius:20px;">Registrieren</nuxt-link>
                       </div>
                       <div class="col-6">
-                          <nuxt-link to="/account/login" class="btn btn-success" style="width:80%;border-radius:20px;">einloggen</nuxt-link>
+                          <nuxt-link to="/account/login" class="btn btn-success" style="width:80%;border-radius:20px;">Einloggen</nuxt-link>
                       </div>
                   </div>
               </div>
           </div>
+          <!-- if logged in  -->
+          <div class="col-md-4 mb-3" v-if="loggedIn === true">
+              <div class="border border-success rounded pt-4 pb-4" style="background-color:rgba(247, 247, 247, 0.3)">
+                  <h4>Mein ClimateMaster</h4>
+                  <p>Dein Fortschritt verbessert die Zukunft folgender Generationen.</p>
+                  <nuxt-link to="/myClimateMaster" class="btn btn-success mb-3" style="width:80%;border-radius:20px;">Mein Klimaschutz</nuxt-link> 
+              </div>
+          </div>
+
           <div class="col-md-4 mb-3">
             <div class="border border-success rounded pt-4 pb-4" style="background-color:rgba(247, 247, 247, 0.3)">
                 <h4>Climadvices</h4>
                 <p>Finde hier die effizientesten Möglichkeiten, umwelt- und klimafreundlich zu leben.</p>
-                <nuxt-link to="/private" class="btn btn-success mb-3" style="width:80%;border-radius:20px;">climadvices</nuxt-link>
+                <nuxt-link to="/climadvices" class="btn btn-success mb-3" style="width:80%;border-radius:20px;">Climadvices</nuxt-link>
             </div>
           </div>
           <div class="col-md-4 mb-3">
