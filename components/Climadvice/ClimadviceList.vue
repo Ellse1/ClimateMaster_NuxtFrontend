@@ -15,7 +15,7 @@
                             {{climadvice.shortDescription}}
                         </p>
                         <div class="text-center">
-                            <img :src="'http://localhost:8000/images/climadviceIcons/' + climadvice.iconName" class="mx-center" alt="not found"  width="100px"/>                        
+                            <img :src="'https://www.climate-master.com:8000/images/climadviceIcons/' + climadvice.iconName" class="mx-center" alt="not found"  width="100px"/>                        
                         </div>
                     </div>
                     <div class="card-footer text-center" v-if="loggedIn">

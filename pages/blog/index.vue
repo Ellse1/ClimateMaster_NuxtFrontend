@@ -4,7 +4,7 @@
         <div class="row">
             <div class="col-md-4 mt-3" v-for="blogPost in blogPosts" v-bind:key="blogPost.id">
                 <div class="card">
-                    <img v-if="blogPost.imageName" :src="'http://localhost:8000/images/BlogPostImages/' + blogPost.imageName" class="card-img-top" alt="not found">
+                    <img v-if="blogPost.imageName" :src="'https://www.climate-master.com:8000/images/BlogPostImages/' + blogPost.imageName" class="card-img-top" alt="not found">
                     <div class="card-body">
                         <div v-html="blogPost.previewContent"></div>
                     </div>
