@@ -10,15 +10,18 @@
             <input type="file" class="mt-2" ref="image" id="id_postImage" name="climadviceIcon" v-on:change="handleImageUpload" data-buttonText="Bild auswählen"/>
         </div>
 
+        <label>Überschrift</label>
+        <input class="form-control col-md-6" v-model="heading"/> 
 
         <label>Kurzmessage für Vorschau</label>
-        <div class="">
-            <ckeditor :editor="editor" v-model="previewContent" :config="editorConfig"></ckeditor>
-        </div>
-        <label for="" class="mt-3">Eigentlicher News Content</label>
-        <div class="">
-            <ckeditor :editor="editor" v-model="postContent" :config="editorConfig"></ckeditor>
-        </div>
+        <textarea class="form-control" rows=3 v-model="previewContent">
+            Kurzvorschau
+        </textarea>
+
+        <label>Eigentlicher News Content</label>
+        <textarea class="form-control" rows=6 v-model="postContent">
+            Eigentlicher Content
+        </textarea>
 
 
         <notification v-if="error" :message="error" class="text-danger" />
@@ -35,41 +38,32 @@
 </template>
 <script>
 import notification from '~/components/MainComponents/Notification';
-
-let ClassicEditor
-let CKEditor
-
-if (process.client) {
-    ClassicEditor = require('@ckeditor/ckeditor5-build-classic')
-    CKEditor = require('@ckeditor/ckeditor5-vue')
-}else{
-    CKEditor = { component : {template:'<div></div>'}}
-}
 export default {
-    middleware: 'auth',
+    // middleware: 'auth',
     components:{
-        ckeditor: CKEditor.component,
         notification
     },
     data(){
         return{
-            editor: ClassicEditor,            
+            heading: '',
             previewContent: '',
             postContent: '',
-            editorConfig: {
-            
-            },
             success : null,
             error: null
             
-            }
+        }
 
     },
     methods:{
+        mounted(){
+            this.previewContent = 'Etwas';
+            this.postContent = '<p>Etwas anderes</p>'
+        },
         async savePost(){
 
             var formData = new FormData();
             formData.append('postImage', this.postImage);
+            formData.append('heading', this.heading);
             formData.append('previewContent', this.previewContent);
             formData.append('postContent', this.postContent);
 
