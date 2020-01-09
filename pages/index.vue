@@ -11,7 +11,7 @@
               <div class="border border-success rounded pt-4 pb-4" style="background-color:rgba(247, 247, 247, 0.3)">
                   <h4>Registieren und loslegen</h4>
                   <p>Registriere dich jetzt und werde 2020 umweltfreundlichem klimaneutral.</p>
-                  <div class="row">
+                  <div class="row mb-3">
                       <div class="col-6">
                           <nuxt-link to="/account/register" class="btn btn-success" style="width:80%;border-radius:20px;">Registrieren</nuxt-link>
                       </div>

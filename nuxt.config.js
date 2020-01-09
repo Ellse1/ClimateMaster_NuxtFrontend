@@ -71,6 +71,9 @@ export default {
           logout: {url: 'logout', method: 'post'}
         }
       }
+    },
+    redirect:{
+      login: '/account/login'
     }
   },
   /*

@@ -13,6 +13,7 @@
                     <div class="text-center">
                         <h4>Register at</h4>
                         <h4><span class="text-success">Climate</span>Master</h4>
+                        <p>Die Registrierung ist aus rechtlichen Gründen noch nicht gestattet.</p>
                     </div>
                     <form @submit.prevent="registerUser">
                         <div class="row">
