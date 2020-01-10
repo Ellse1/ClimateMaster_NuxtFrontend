@@ -11,10 +11,10 @@ export default {
     components:{
         becomeClimateMasterPrivate
     },
-    async asyncData({$axios}){
-        const climadvicesData = await $axios.$get('climadvice/index');
-        return {climadvices: climadvicesData.data}
-    },
+    // async asyncData({$axios}){
+    //     const climadvicesData = await $axios.$get('climadvice/index');
+    //     return {climadvices: climadvicesData.data}
+    // },
     data(){
         return{
             climadvices : null
