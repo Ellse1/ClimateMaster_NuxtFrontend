@@ -11,6 +11,7 @@
 
 
         <div class="row">
+          <client-only>
           <!-- If not logged in  -->
           <div class="col-md-4 mb-3" v-if="loggedIn === false">
               <div class="border border-success rounded pt-4 pb-4" style="background-color:rgba(247, 247, 247, 0.3)">
@@ -34,6 +35,7 @@
                   <nuxt-link to="/myClimateMaster" class="btn btn-success mb-3" style="width:80%;border-radius:20px;">Mein Klimaschutz</nuxt-link> 
               </div>
           </div>
+          </client-only>
 
           <div class="col-md-4 mb-3">
             <div class="border border-success rounded pt-4 pb-4" style="background-color:rgba(247, 247, 247, 0.3)">

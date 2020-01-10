@@ -1,5 +1,5 @@
 <template>
-    <div class="">
+    <div>
         <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
             
             <div class="" style="">
@@ -29,6 +29,7 @@
                             </div>
                         </div>
 
+                        <client-only>
                         <div class="nav-item dropdown ml-md-5">
                             <a class="nav-link dropdown-toggle text-white" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Mein ClimateMaster</a>
                             <!-- if not logged in -->
@@ -47,12 +48,11 @@
                                </div>
                             </div>
                         </div>
+                        </client-only>
                     </div>
             </div>
         </nav>
     </div>
-
-
 </template>
 
 <script>
