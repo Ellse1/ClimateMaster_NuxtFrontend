@@ -1,7 +1,7 @@
 <template>
     <div class="container">
-<!-- 
-        <!- Error message if no posts --
+
+        <!-- Error message if no posts -->
         <div class="text-center">
             <notification :message="error" v-if="error" class="text-danger mt-3"></notification>
             <div id="id_div_loading_animation" class="text-success"></div>
@@ -19,7 +19,7 @@
                     </div>
                     <div class="card-footer" style="absolute;bottom:0px;">
                         <small>{{blogPost.created_at}}</small>
-                        <!- link to edit / delete--
+                        <!-- link to edit / delete-->
                         <div class="row" v-if="user.role === 'admin'">
                             <div class="col text-center">
                                 <nuxt-link :to="{name: 'blog-editPost-id', params: {id: blogPost.id}}" class="btn btn-default border">Bearbeiten</nuxt-link>
@@ -32,7 +32,7 @@
                 </div>
             </div>
 
-            <!- Link to add post --
+            <!-- Link to add post -->
             <div class="col-md-4 mt-3" v-if="user.role === 'admin'">
                 <div class="card">
                     <div class="card-body text-center">
@@ -44,7 +44,7 @@
                     </div>
                 </div>
             </div>
-        </div> -->
+        </div>
     </div>
 </template>
 
