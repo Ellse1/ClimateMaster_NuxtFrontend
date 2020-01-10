@@ -16,6 +16,12 @@
 
                         <textarea type="text" id="id_input_shortDescription" class="form-control mt-2" name="shortDescription" :value="climadviceForEdit.shortDescription" placeholder="Kurzbeschreibung" rows="3"/>
                         
+                        <input type="text" id="id_input_iconName" class="form-control mt-2"  name="iconName" v-model="climadviceForEdit.iconName" placeholder="iconName"/>
+                      
+                        <span class="mr-3">Eher einfach?</span>
+                        <input type="checkbox" id="id_input_easy" name="easy" value="true" v-model="climadviceForEdit.easy"/>
+                        
+                        <input type="text" id="id_input_climateMasterArea" class="form-control mt-2"  name="climateMasterArea" v-model="climadviceForEdit.climateMasterArea" placeholder="ClimateMasterArea"/>
 
                         <div class="row mt-2">
                             <button type="submit" class="btn btn-default border col m-2">speichern</button><br>
@@ -61,6 +67,15 @@ export default {
             formData.append('name', $("#id_input_name").val());
             formData.append('title', $("#id_input_title").val());
             formData.append('shortDescription', $("#id_input_shortDescription").val());
+            formData.append('iconName', $("#id_input_iconName").val());
+            // For The Checkbox
+            var checkboxValue = $("#id_input_easy").is(":checked");
+            if(checkboxValue == true){
+                formData.append('easy', 1);               
+            }else{
+                formData.append('easy', 0);     
+            }
+            formData.append('climateMasterArea', $("#id_input_climateMasterArea").val());
 
             try{
                 const {data} = await this.$axios.post('climadvice/update',

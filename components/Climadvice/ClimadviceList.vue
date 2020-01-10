@@ -15,7 +15,9 @@
                             {{climadvice.shortDescription}}
                         </p>
                         <div class="text-center">
-                            <img :src="'https://www.climate-master.com:8000/images/climadviceIcons/' + climadvice.iconName" class="mx-center" alt="not found"  width="100px"/>                        
+                            <font-awesome-icon :icon=climadvice.iconName class="text-success" style="font-size: 100px"/> 
+                            <!-- <font-awesome-icon icon="dollar-sign"  style="font-size: 30px"/> -->
+        
                         </div>
                     </div>
 

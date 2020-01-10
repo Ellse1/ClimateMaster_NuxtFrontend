@@ -15,7 +15,14 @@
 
                         <textarea type="text" class="form-control mt-2" name="shortDescription" v-model="shortDescription" placeholder="Kurzbeschreibung" rows="3"/>
                         
-                        <input type="file" class="mt-2" ref="icon" id="climadviceIcon" name="climadviceIcon" v-on:change="handleIconUpload" data-buttonText="Bild auswählen"/>
+                        <input type="text" class="form-control mt-2"  name="iconName" v-model="iconName" placeholder="iconName"/>
+
+                      
+                        <span class="mr-3">Eher einfach?</span>
+                        <input type="checkbox" name="easy" v-model="easy" />
+                        
+
+                        <input type="text" class="form-control mt-2"  name="climateMasterArea" v-model="climateMasterArea" placeholder="ClimateMasterArea"/>
 
                         <div class="row mt-2">
                             <button type="submit" class="btn btn-primary col m-2">speichern</button><br>
@@ -47,6 +54,9 @@ export default {
             name: '',
             title: '',
             shortDescription: '',
+            iconName: '',
+            easy: false,
+            climateMasterArea: '',
             error: null,
             success: null
         };
@@ -56,6 +66,10 @@ export default {
             this.name = null;
             this.title = null;
             this.shortDescription = null;
+            this.iconName = null;
+            this.easy = false;
+            this.climateMasterArea = null;
+
             $('#id_form_add').css("display", "block");
             $('#id_plus_addClimadvice').css("display", "none");
             return;
@@ -65,10 +79,6 @@ export default {
             $('#id_plus_addClimadvice').css("display", "block");
             return;
         },
-
-        handleIconUpload(){
-            this.climadviceIcon = this.$refs.icon.files[0];
-        },
         async addClimadvice(){
 
             let formData = new FormData();
@@ -76,6 +86,9 @@ export default {
             formData.append('name', this.name);
             formData.append('title', this.title);
             formData.append('shortDescription', this.shortDescription);
+            formData.append('iconName', this.iconName);
+            formData.append('easy', this.easy);
+            formData.append('climateMasterArea', this.climateMasterArea);
 
             try{
                 const{data} = await this.$axios.post('climadvice/store',

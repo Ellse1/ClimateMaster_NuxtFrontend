@@ -5,6 +5,11 @@
         Wir sind noch im Aufbau, unter "Wir" kannst du mehr über uns erfahren:<br>
         <nuxt-link id="id_button_link" class="btn btn-default mt-3 pl-5 pr-5 mb-5" to="/we"><span>Wir</span></nuxt-link>
 
+        <!-- font-awesome icon example -->
+        <!-- <font-awesome-icon :icon="['fas', 'adjust']"  /> -->
+        <!-- <font-awesome-icon :icon="['fas', 'home']" /> -->
+
+
         <div class="row">
           <!-- If not logged in  -->
           <div class="col-md-4 mb-3" v-if="loggedIn === false">
@@ -58,6 +63,7 @@
 </template>
 
  <script>
+ import fontawesome from '@fortawesome/free-solid-svg-icons';
 export default {
   layout: 'indexLayout',
 }
