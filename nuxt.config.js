@@ -70,12 +70,10 @@ export default {
   axios: {
     https: true,
     baseURL: 'http://localhost:8000/api',
-    browserBaseURL: 'http://www.climate-master.com/api',
+    browserBaseURL: 'http://www.climate-master.com:8000/api',
     proxy: true
   },
-  proxy:{
-    '/api': 'https://www.climate-master.com:8000'
-  },
+
   //For Authentication
   auth: {
     strategies: {
