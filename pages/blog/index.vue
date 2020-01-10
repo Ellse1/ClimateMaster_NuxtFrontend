@@ -10,23 +10,25 @@
         <div class="row">
             <div class="col-md-4 mt-3" style="" v-for="blogPost in blogPosts" v-bind:key="blogPost.id">
                 <div class="card" style="height:350px">             
-                    <div class="card-body" style="max-height:260px;overflow:hidden;">
+                    <div class="card-body" style="overflow:hidden;">
                         <img v-if="blogPost.imageName" :src="'https://www.climate-master.com:8000/images/BlogPostImages/' + blogPost.imageName" class="card-img-top" alt="not found">
                         <nuxt-link :to="{name: 'blog-showPost-id', params: {id: blogPost.id}}" >
                             <h3 class="card-title text-dark"><b>{{blogPost.heading}}</b></h3>
                         </nuxt-link>
                         <div v-html="blogPost.previewContent"></div>
                     </div>
-                    <div class="card-footer" style="min-height:90px;">
+                    <div class="card-footer" style="absolute;bottom:0px;">
                         <small>{{blogPost.created_at}}</small>
-                        <!-- link to edit -->
+                        <!-- link to edit / delete-->
                         <div class="row" v-if="user.role === 'admin'">
-                            <div class="col">
+                            <div class="col text-center">
                                 <nuxt-link :to="{name: 'blog-editPost-id', params: {id: blogPost.id}}" class="btn btn-default border">Bearbeiten</nuxt-link>
+                            </div>
+                            <div class="col text-center">
+                                <nuxt-link :to="{name: 'blog-deletePost-id', params: {id: blogPost.id}}" class="btn btn-default border">Löschen</nuxt-link>
                             </div>
                         </div>
                     </div>
-                    
                 </div>
             </div>
 

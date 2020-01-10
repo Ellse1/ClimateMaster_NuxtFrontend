@@ -70,6 +70,7 @@
 <script>
 import notification from '~/components/MainComponents/Notification';
 export default {
+    middleware: 'auth',
     validate ({ params }) {
         // Must be a number
         return /^\d+$/.test(params.id)
