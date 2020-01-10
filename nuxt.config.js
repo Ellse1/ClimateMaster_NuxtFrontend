@@ -71,7 +71,6 @@ export default {
     https: true,
     baseURL: 'http://localhost:8000/api',
     browserBaseURL: 'http://www.climate-master.com:8000/api',
-    proxy: true
   },
 
   //For Authentication
