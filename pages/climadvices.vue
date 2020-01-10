@@ -1,15 +1,15 @@
 <template>
     <div>
-        <becomeClimateMasterPrivate :climadvices="climadvices" id="id_becomeClimateMasterPrivate"/>
+        <!-- <becomeClimateMasterPrivate :climadvices="climadvices" id="id_becomeClimateMasterPrivate"/> -->
     </div>
 </template>
 <script>
-import becomeClimateMasterPrivate from '~/components/Climadvice/BecomeClimateMasterPrivate';
+// import becomeClimateMasterPrivate from '~/components/Climadvice/BecomeClimateMasterPrivate';
 import axios from 'axios';
 var VueScrooTo = require('vue-scrollto')
 export default {
     components:{
-        becomeClimateMasterPrivate
+        // becomeClimateMasterPrivate
     },
     // async asyncData({$axios}){
     //     const climadvicesData = await $axios.$get('climadvice/index');
