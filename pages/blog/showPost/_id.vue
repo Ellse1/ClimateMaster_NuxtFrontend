@@ -1,6 +1,6 @@
 <template>
     <div>
-        <!-- Error message if no post -->
+        <!-- Error message if no post
         <div class="text-center">
                 <notification :message="error" v-if="error" class="text-danger mt-3"></notification>
                 <div id="id_div_loading_animation" class="text-success"></div>
@@ -18,7 +18,7 @@
 
             <p v-html="postContent"></p>
 
-        </div>
+        </div> -->
     </div>
 
 </template>
