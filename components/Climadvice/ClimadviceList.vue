@@ -15,7 +15,7 @@
                             {{climadvice.shortDescription}}
                         </p>
                         <div class="text-center">
-                            <font-awesome-icon :icon=climadvice.iconName class="text-success" style="font-size: 100px"/> 
+                            <!-- <font-awesome-icon :icon=climadvice.iconName class="text-success" style="font-size: 100px"/>  -->
                             <!-- <font-awesome-icon icon="dollar-sign"  style="font-size: 30px"/> -->
         
                         </div>
