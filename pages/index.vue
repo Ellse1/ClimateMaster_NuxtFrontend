@@ -16,7 +16,7 @@
           <div class="col-md-4 mb-3" v-if="loggedIn === false">
               <div class="border border-success rounded pt-4 pb-4" style="background-color:rgba(247, 247, 247, 0.3)">
                   <h4>Registieren und loslegen</h4>
-                  <p>Registriere dich jetzt und werde 2020 umweltfreundlichem klimaneutral.</p>
+                  <p>Registriere dich jetzt und werde 2020 umweltfreundlich klimaneutral.</p>
                   <div class="row mb-3">
                       <div class="col-6">
                           <nuxt-link to="/account/register" class="btn btn-success" style="width:80%;border-radius:20px;">Registrieren</nuxt-link>
@@ -47,7 +47,7 @@
           <div class="col-md-4 mb-3">
             <div class="border border-success rounded pt-4 pb-4" style="background-color:rgba(247, 247, 247, 0.3)">
                 <h4>Wir</h4>
-                <p>Finde heraus, wer wir sind, was uns antreibt und werde Teil unserer Familie</p>
+                <p>Finde heraus, wer wir sind, was uns antreibt und werde Teil des ClimateMaster Teams</p>
                   <div class="row mb-3">
                       <div class="col-6">
                           <nuxt-link to="/we" class="btn btn-success" style="width:80%;border-radius:20px;">Wir</nuxt-link>

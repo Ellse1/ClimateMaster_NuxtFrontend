@@ -1,20 +1,11 @@
 <template>
     <div>
-        <!-- <div style="overflow:hidden;position:fixed;z-index:-10;">
-            <img src="~/static/pictures/forSpecialSites/we/greenland.jpg" alt="kein Bild gefunden"/>
-        </div> -->
         <div class="container">
-            <!-- <div class="container" style="max-width:800px;">
-                <div>
-                    <img src="~/static/pictures/forSpecialSites/we/BannerTransparent.png" alt="Leider kein Bild gefunden" style="max-width:100%;" class="">
-                </div>
-            </div> -->
-
             <div class="container text-center mt-3" style="max-width:600px;">
                 <h2>Wir</h2>
 
                 <div class="row">
-                    <div class="col-6">
+                    <div class="col-md-6 mt-3">
                         <div class="card">
                             <img src="~/static/pictures/forSpecialSites/we/Elias.jpg" alt="Leider kein Bild" class="card-img-top" style="">
                             <div class="card-footer text-center">
@@ -25,7 +16,7 @@
                         </div>
                     </div>
 
-                    <div class="col-6">
+                    <div class="col-md-6 mt-3">
                         <div class="card">
                     
                             <img src="~/static/pictures/forSpecialSites/we/Joshua.jpg" alt="Leider kein Bild" class="card-img-top" style="object-fit:cover;">
@@ -39,12 +30,14 @@
                 </div>
 
             </div>
-            <div class="container text-center mt-3 mb-5 bg-light border border-success rounded" style="max-width:800px;">
-                Unser Ziel ist es, umweltfreundlichen Klimaschutz voran zu bringen, um die drastischen,
-                katastrophalen Folgen einer globalen Erwärmung abzuwenden. Dafür beraten wir dich,
-                zeigen dir, welche klimafreundlichen Lösungen heute möglich sind und helfen dir schon 2020
-                klimaneutral zu werden.<br>Um die Emissionen von Treibhausgasen wirksam zu senken, brauchen
-                wir dich, deine Unterstützung und deine Ideen. 
+            <div class="container text-center mt-3 mb-5 bg-light border border-success rounded p-5" style="max-width:800px;">
+                <h5>Unser Antrieb</h5>
+                <p style="text-align:justify;" ><b>Der Klimawandel stellt eine der größten Herausforderungen unserer Zeit dar, unsere Generation ist direkt 
+                von den Folgen einer globalen Erwärmung betroffen. An uns liegt es auch etwas zu verändern.</b><br>
+                Mit unserer Plattform wollen wir privaten Klimaschutz unterstützen, vereinfachen und würdigen, 
+                um das Gefühl der Machtlosigkeit zu verhindern und positive Selbstwirksamkeit transparent zu belegen.
+                Jeder kann heute schon klimaneutral leben und damit die Zukunft folgender Generation verbessern.</p>
+                
             </div>
         </div>
     </div>
