@@ -68,9 +68,9 @@ export default {
   ** See https://axios.nuxtjs.org/options
   */
   axios: {
-    https: false,
+    https: true,
     baseURL: 'http://localhost:8000/api',
-    //browserBaseURL: 'http://www.climate-master.com:8000/api',
+    browserBaseURL: 'http://www.climate-master.com:8000/api',
   },
 
   //For Authentication

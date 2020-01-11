@@ -1,5 +1,9 @@
 <template>
     <div>
+        <div class="text-center">
+            <notification :message="error" v-if="error" class="text-danger mt-3" />
+        </div>
+
         <div class="container mb-5">
             <h1 class="mb-3 text-center" id="id_becomeClimateMasterPrivat">Climadvices</h1>
             <p class="text-center">Effiziente Möglichkeiten für klimafreundliches Leben</p>
@@ -16,8 +20,8 @@
             </div>
             </div>
 
-            <climadviceList :climadvices="climadvicesToShow" />
-
+            <climadviceList  :climadvices="climadvicesToShow" />
+            
         </div>
     </div>
 </template>
