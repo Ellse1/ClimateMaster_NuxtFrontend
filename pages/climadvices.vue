@@ -56,10 +56,8 @@ export default {
             if(data.state == "success"){
                 this.success = data.message;
                 this.error = null;
-                alert(data.data);
                 this.climadvices = data.data;
                 this.climadvicesToShow = this.climadvices;
-                alert(data.data);
             }
             if(data.state == null){
                 this.error = "Es konnte kein 'state' geladen werden";
