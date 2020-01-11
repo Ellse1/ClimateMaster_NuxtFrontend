@@ -61,6 +61,9 @@ export default {
                 this.climadvicesToShow = this.climadvices;
                 alert(data.data);
             }
+            if(data.state == null){
+                this.error = "Es konnte kein 'state' geladen werden";
+            }
 
         } catch (e) {
             this.error = e.response.data.message;
