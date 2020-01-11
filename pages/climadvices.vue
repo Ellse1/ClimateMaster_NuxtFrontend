@@ -16,7 +16,7 @@
             </div>
             </div>
 
-            <climadviceList v-if="climadvicesToShow" :climadvices="climadvicesToShow" />
+            <climadviceList :climadvices="climadvicesToShow" />
 
         </div>
     </div>
@@ -46,14 +46,14 @@ export default {
             const{data} = await this.$axios.get("climadvice/index");
 
             if(data.state == "error"){
-            this.error = data.message;
-            this.success = false;
+                this.error = data.message;
+                this.success = false;
             }
             if(data.state == "success"){
                 this.success = data.message;
                 this.error = null;
                 this.climadvices = data.data;
-                this.climadvicesToShow = data.data;
+                this.climadvicesToShow = this.climadvices;
             }
 
         } catch (e) {
