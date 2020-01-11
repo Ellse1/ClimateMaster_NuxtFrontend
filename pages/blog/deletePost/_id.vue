@@ -1,17 +1,17 @@
 <template>
     <div>
 
-        <!-- <div class="text-center">
+        <div class="text-center">
             <h4>Blogpost wirklich löschen?</h4>
         </div>
 
-        <!-- Error message if no post --
+        <!-- Error message if no post -->
         <div class="text-center">
                 <notification :message="error" v-if="error" class="text-danger mt-3"></notification>
                 <div id="id_div_loading_animation" class="text-success"></div>
         </div>
 
-        <!-- show Content if one post is there--
+        <!-- show Content if one post is there-->
         <div v-if="success"  class="container">
 
             <div class="bg-light" id="id_div_postContent">
@@ -26,14 +26,14 @@
                 <p v-html="postContent"></p>
             </div>
 
-            <!-- id and delete button --
+            <!-- id and delete button -->
             <input v-model="id" type="hidden" />
             <div class="text-center">
                <button id="id_button_delete" class="btn btn-light" v-on:click="destroyPost">Löschen</button>
                 <notification :message="success" v-if="success" class="text-success mt-3"></notification>
             </div>
 
-        </div> -->
+        </div>
     </div>
 </template>
 

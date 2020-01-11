@@ -1,8 +1,8 @@
 <template>
      <div class="container">
-       <!-- <div class="text-center">
+       <div class="text-center">
             <div id="id_div_loading_animation"></div>
-            <!-- error notification --
+            <!-- error notification -->
             <notification :message="error" v-if="error" class="text-danger mt-3" ></notification>
         </div>
 
@@ -10,7 +10,7 @@
             <h2>Blog Post ändern</h2>    
         </div>
 
-        <!-- Change image --
+        <!-- Change image -->
         <div class="col-md-6 text-center">
             <label>Bild</label>
         </div>
@@ -30,22 +30,22 @@
             </div>
         </div>
 
-        <!-- id --
+        <!-- id -->
         <input v-model="id" type="hidden"/>
 
-        <!--heading --
+        <!--heading -->
         <div class="form-group mt-4">
             <label>Überschrift</label>
             <input class="form-control col-md-6" v-model="heading"/> 
         </div>
-        <!-- previewContent --
+        <!-- previewContent -->
         <div class="from-group mt-4">
             <label>Kurzmessage für Vorschau</label>
             <textarea class="form-control" rows=3 v-model="previewContent">
                 Kurzvorschau
             </textarea>
         </div>
-        <!-- postContent --
+        <!-- postContent -->
         <div class="form-group mt-4">
             <label>Eigentlicher News Content</label>
             <textarea class="form-control" rows=6 v-model="postContent">
@@ -59,10 +59,10 @@
             </button>
         </div>
 
-        <!-- notification success ->
+        <!-- notification success -->
         <div class="text-center">
             <notification :message="success" v-if="success" class="text-success mt-3" ></notification>
-        </div> -->
+        </div>
 
     </div>
 </template>
