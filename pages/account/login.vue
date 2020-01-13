@@ -17,7 +17,7 @@
                             <input name="password" type="password" v-model="userForm.password"  id="password" class="form-control text-center" style="margin:auto;" placeholder="password" required/>
                         </div>
                         <div class="form-group">
-                            <button id="id_button_login" type="submit" class="btn mb-2 btn-success pl-5 pr-5">login</button>
+                            <button id="id_button_login" type="submit" class="btn mb-2 btn-success pl-5 pr-5">Einloggen</button>
                         </div>
                         <div class="form-group">
                             <nuxt-link to="/account/passwordreset"><small>Passwort vergessen</small></nuxt-link>
@@ -27,7 +27,7 @@
                 </div>
                 <div style="max-width:400px;background-color:rgba(247, 247, 247, 0.3)" class="container mt-2 border border-success rounded text-center">
                     Noch kein <span class="text-success">Climate</span>Master Konto?<br>
-                    <nuxt-link to="/account/register" class="btn btn-success m-2 pl-4 pr-4">register</nuxt-link>
+                    <nuxt-link to="/account/register" class="btn btn-success m-2 pl-4 pr-4">Registrieren</nuxt-link>
                 </div>
             </div>
         </div>

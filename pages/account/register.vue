@@ -18,10 +18,13 @@
                     <form @submit.prevent="registerUser">
                         <div class="row">
                             <div class="col-6">
-                                <input class="form-control" v-model="firstname" required placeholder="Vorname" />
+                                <input class="form-control" v-model="firstname" required placeholder="Vorname"/>
                             </div>
                             <div class="col-6">
                                 <input class="form-control" v-model="lastname" required placeholder="Nachname" />
+                            </div>                           
+                            <div class="col-12 mt-3">
+                                <input class="form-control" v-model="username" required placeholder="Benutzername" />
                             </div>
                             <div class="col-12 mt-3">
                                 <input class="form-control" v-model="email" required placeholder="e-mail" />
@@ -29,13 +32,13 @@
                             <div class="col-12 mt-3">
                                 <input class="form-control" v-model="password" required placeholder="Neues Passwort" type="password"/>
                             </div>
-                            <div class="col-12">
+                            <!-- <div class="col-12">
                                 <small>optional</small>
-                            </div>
-                            <div class="col-8">
+                            </div> -->
+                            <!-- <div class="col-8 mt-3">
                                 <input class="form-control" v-model="street"  placeholder="Straße" />
                             </div>
-                            <div class="col-4">
+                            <div class="col-4 mt-3">
                                 <input class="form-control" v-model="house_number"  placeholder="Nr." />                               
                             </div>
                             <div class="col-4 mt-3">
@@ -43,7 +46,7 @@
                             </div>
                             <div class="col-8 mt-3">
                                 <input class="form-control" v-model="residence" placeholder="Wohnort"/>                               
-                            </div>
+                            </div> -->
 
                             <div class="col-12 text-center">
                                 <notification :message="error" v-if="error" class="mt-4 text-danger"/>
@@ -55,7 +58,7 @@
                                     <button id="id_button_register" class="btn btn-success pl-5 pr-5">
                                         <!-- register -->
                                         <!-- loading ring -->
-                                        register
+                                        Registrieren
                                     </button>
                                 </div>
                             </div>
@@ -64,7 +67,7 @@
                 </div>
                 <div style="margin:auto; max-width:400px;background-color:rgba(247, 247, 247, 0.3)" class="text-center mt-3 border border-success rounded mb-3">
                     Schon ein <span class="text-success">Climate</span>Master Konto?<br>
-                    <nuxt-link to="/account/login" class="btn btn-success m-3 pl-5 pr-5">login</nuxt-link> 
+                    <nuxt-link to="/account/login" class="btn btn-success m-3 pl-5 pr-5">Einloggen</nuxt-link> 
                 </div>
             </div>
         </div>
@@ -81,6 +84,7 @@ export default {
         return{
             firstname: '',
             lastname: '',
+            username: '',
             email: '',
             password: '',
             street: '',
@@ -99,6 +103,7 @@ export default {
             let formData = new FormData();
             formData.append('firstname', this.firstname);
             formData.append('lastname', this.lastname);
+            formData.append('username', this.username);
             formData.append('email', this.email);
             formData.append('password', this.password);
             formData.append('street', this.street);
