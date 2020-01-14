@@ -12,10 +12,12 @@
                     <div id="id_div_loading" class="bg-success rounded mt-2 mb-2" style="width:50%;margin:auto;"></div>
                     <!-- image if profile picture available -->
                     <div  id="id_div_profilePicture" style="width:200px;height:200px;border-radius:50%;overflow:hidden;display:none;" class="border bg-dark">
-                        <img id="id_img_profilePicture" style="height:100%;margin:auto;">
+                        <img id="id_img_profilePicture" style="height:100%;">
                     </div>
                     
-                    <br>
+                    <small id="id_message_typeAndSize_profilePicture" class="text-danger">
+                        jpg, png, max:2MB<br>
+                    </small>
                     <small>
                         Bild hochladen
                     </small>
@@ -143,4 +145,11 @@ export default {
     box-shadow: 0 0 10px gray;
     cursor: pointer;
 }
+#id_message_typeAndSize_profilePicture{
+    display: none;
+}
+#id_div_uploadProfilePicture:hover #id_message_typeAndSize_profilePicture {
+    display: block;
+}
+
 </style>
