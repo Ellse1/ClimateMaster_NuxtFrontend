@@ -9,9 +9,9 @@
                 <div class="border border-dark pl-3 pr-3 pt-3" style="border-radius:50px;" id="id_div_uploadProfilePicture">
                     <!-- icon if no profile_picture -->
                     <font-awesome-icon v-if="profile_picture_name === null" icon="user-circle" id="id_icon_profile_picture" style="font-size: 200px;"/> 
+                    <div id="id_div_loading" class="bg-success rounded mt-2 mb-2" style="width:50%;margin:auto;"></div>
                     <!-- image if profile picture available -->
                     <div  id="id_div_profilePicture" style="width:200px;height:200px;border-radius:50%;overflow:hidden;display:none;" class="border bg-dark">
-                        <div id="id_div_loading"></div>
                         <img id="id_img_profilePicture" style="height:100%;margin:auto;">
                     </div>
                     
