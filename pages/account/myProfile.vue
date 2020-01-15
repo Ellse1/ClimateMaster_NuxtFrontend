@@ -8,7 +8,7 @@
             <label for="id_profilePicture">
                 <div class="border border-dark pl-3 pr-3 pt-3" style="border-radius:50px;" id="id_div_uploadProfilePicture">
                     <!-- icon if no profile_picture -->
-                    <font-awesome-icon v-if="profile_picture_name === null" icon="user-circle" id="id_icon_profile_picture" style="font-size: 200px;"/> 
+                    <font-awesome-icon v-if="profile_picture_name == null" icon="user-circle" id="id_icon_profile_picture" style="font-size: 200px;"/> 
                     <div id="id_div_loading" class="bg-success rounded mt-2 mb-2" style="width:50%;margin:auto;"></div>
                     <!-- image if profile picture available -->
                     <div  id="id_div_profilePicture" style="width:200px;height:200px;border-radius:50%;overflow:hidden;display:none;" class="border bg-dark">
@@ -56,7 +56,7 @@
                         <input class="form-control text-center" v-model="house_number" placeholder="Nr."/>
                     </div>
                     <div class="col-4 text-center mt-3">
-                        <input class="form-control text-center" v-model="postcode" placeholder="Plz."/>
+                        <input type="number" class="form-control text-center" v-model="postcode" placeholder="Plz."/>
                     </div>
                     <div class="col-8 text-center mt-3">
                         <input class="form-control text-center" v-model="residence" placeholder="Wohnort" />
@@ -86,21 +86,45 @@ export default {
         return{
             error:null,
             success: null,
-            profile_picture_name: this.$auth.user.profile_picture_name,
-            firstname: this.$auth.user.firstname,
-            lastname: this.$auth.user.lastname,
-            username: this.$auth.user.username,
-            email: this.$auth.user.email,
-            street: this.$auth.user.street,
-            house_number: this.$auth.user.house_number,
-            postcode: this.$auth.user.postcode,
-            residence: this.$auth.user.residence
+            profile_picture_name: null,
+            firstname: null,
+            lastname: null,
+            username: null,
+            email: null,
+            street: null,
+            house_number: null,
+            postcode: null,
+            residence: null,
         };
     },
     async mounted(){
-        //Get profile Picture if available
-        
+
+        //Get the updated UserData of loggedIn User
         $("#id_div_loading").addClass("loading-animation");
+        try {
+            const{data} = await this.$axios.get("/user");
+
+            if(data.state == 'error'){
+                this.error = data.message;
+                this.success = null;
+            }
+            if(data.state == 'success'){
+                this.firstname = data.data.firstname;
+                this.lastname = data.data.lastname;
+                this.username = data.data.username;
+                this.email = data.data.email,
+                this.profile_picture_name = data.data.profilePicture;
+                this.street = data.data.street;
+                this.house_number = data.data.house_number;
+                this.postcode = data.data.postcode;
+                this.residence = data.data.residence;
+            }
+
+        } catch (error) {
+            this.error = "Error: Konnte den aktullen User nicht bekommen" + error.response.data.message;
+        }
+
+        //Get profile Picture if available   
         try {
             const{data} = await this.$axios.post("user/getProfilePicture");
             
@@ -115,11 +139,10 @@ export default {
                 $("#id_icon_profile_picture").hide();
             }
         } catch (e) {
-            
+            this.error = "Error. Konnte das Profilbild nicht laden. " + e.response.data.message;
         }
         
         $("#id_div_loading").removeClass("loading-animation");
-
     },
     methods:{
 
@@ -160,10 +183,18 @@ export default {
             $("#id_button_save").addClass("loading-animation");
 
             let formData = new FormData();
-            formData.append('street', this.street);
-            formData.append('house_number', this.house_number);
-            formData.append('postcode', this.postcode);
-            formData.append('residence', this.residence);
+            if(this.street != null){
+                formData.append('street', this.street);
+            }
+            if(this.house_number != null){
+                formData.append('house_number', this.house_number);               
+            }
+            if(this.postcode != null){
+                formData.append('postcode', this.postcode);
+            }
+            if(this.residence != null){
+                formData.append('residence', this.residence);            
+            }
 
             try {
                 const{data} = await this.$axios.post("user/saveAddress",
