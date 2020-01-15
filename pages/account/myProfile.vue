@@ -32,16 +32,16 @@
                 <h4 class="text-center">Meine Persönlichen Daten</h4>
                 <div class="row">
                     <div class="col-6">
-                        <input class="form-control text-center" v-model="user.firstname" disabled/>
+                        <input class="form-control text-center" v-model="firstname" disabled/>
                     </div>
                     <div class="col-6">
-                        <input class="form-control text-center" v-model="user.lastname" disabled/>
+                        <input class="form-control text-center" v-model="lastname" disabled/>
                     </div>
                     <div class="col-12 mt-3">
-                        <input class="form-control text-center" v-model="user.username" disabled/>
+                        <input class="form-control text-center" v-model="username" disabled/>
                     </div>
                     <div class="col-12 text-center mt-3">
-                        <input class="form-control text-center" v-model="user.email" disabled/>
+                        <input class="form-control text-center" v-model="email" disabled/>
                     </div>
                 </div>
             </div>
@@ -50,33 +50,51 @@
                 <h4 class="text-center">Mein zu Hause</h4>
                 <div class="row">
                     <div class="col-9">
-                        <input class="form-control text-center" v-bind="user.street" placeholder="Staße"/>
+                        <input class="form-control text-center" v-model="street" placeholder="Staße"/>
                     </div>
                     <div class="col-3">
-                        <input class="form-control text-center" v-model="user.house_number" placeholder="Nr."/>
+                        <input class="form-control text-center" v-model="house_number" placeholder="Nr."/>
                     </div>
                     <div class="col-4 text-center mt-3">
-                        <input class="form-control text-center" v-model="user.postcode" placeholder="Plz."/>
+                        <input class="form-control text-center" v-model="postcode" placeholder="Plz."/>
                     </div>
                     <div class="col-8 text-center mt-3">
-                        <input class="form-control text-center" v-model="user.residence" placeholder="Wohnort" />
+                        <input class="form-control text-center" v-model="residence" placeholder="Wohnort" />
                     </div>
                 </div>
             </div>
         </div>
 
         <div class="col-md-12 mt-4 text-center" >
-            <button class="btn btn-success mb-4 " style="width:90%">Änderungen speichern</button>
+            <button id="id_button_save" class="btn btn-success mb-4 " style="width:90%" v-on:click="saveAddress">Änderungen speichern</button>
+        
+            <notification :message="error" v-if="error" class="text-danger mt-3" />
+            <notification :message="success" v-if="success" class="text-success mt-3" />
         </div>
+
 
     </div>
 </template>
 <script>
+import notification from "~/components/MainComponents/Notification"
 export default {
     middleware: 'auth',
+    components:{
+        notification
+    },
     data(){
         return{
-            profile_picture_name: this.$auth.user.profile_picture_name
+            error:null,
+            success: null,
+            profile_picture_name: this.$auth.user.profile_picture_name,
+            firstname: this.$auth.user.firstname,
+            lastname: this.$auth.user.lastname,
+            username: this.$auth.user.username,
+            email: this.$auth.user.email,
+            street: this.$auth.user.street,
+            house_number: this.$auth.user.house_number,
+            postcode: this.$auth.user.postcode,
+            residence: this.$auth.user.residence
         };
     },
     async mounted(){
@@ -136,6 +154,42 @@ export default {
 
             $("#id_div_loading").removeClass("loading-animation");
 
+        },
+
+        async saveAddress(){
+            $("#id_button_save").addClass("loading-animation");
+
+            let formData = new FormData();
+            formData.append('street', this.street);
+            formData.append('house_number', this.house_number);
+            formData.append('postcode', this.postcode);
+            formData.append('residence', this.residence);
+
+            try {
+                const{data} = await this.$axios.post("user/saveAddress",
+                formData,{
+                    headers:{
+                        "Content-Type" : "multipart/form-data"
+                }
+                });
+
+                if(data.state == 'error'){
+                    this.error = data.message;
+                    this.success = null;
+                }
+                else if(data.state == 'success'){
+                    this.success = data.message;
+                    this.error = null;
+                }
+                else{
+                    this.error = "Konnte nicht gespeichert werden, versuchen Sie es später noch einmal."
+                }
+
+            } catch (e) {
+                this.error = e.response.data.message;
+            }
+            
+            $("#id_button_save").removeClass("loading-animation");
         }
     }
 }
