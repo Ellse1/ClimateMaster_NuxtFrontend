@@ -19,7 +19,7 @@
 
                       
                         <span class="mr-3">Eher einfach?</span>
-                        <input type="checkbox" name="easy" v-model="easy" />
+                        <input type="checkbox" id="id_input_easy" name="easy" value="true" v-model="easy" />
                         
 
                         <input type="text" class="form-control mt-2"  name="climateMasterArea" v-model="climateMasterArea" placeholder="ClimateMasterArea"/>
@@ -87,7 +87,13 @@ export default {
             formData.append('title', this.title);
             formData.append('shortDescription', this.shortDescription);
             formData.append('iconName', this.iconName);
-            formData.append('easy', this.easy);
+            // For The Checkbox
+            var checkboxValue = $("#id_input_easy").is(":checked");
+            if(checkboxValue == true){
+                formData.append('easy', 1);               
+            }else{
+                formData.append('easy', 0);     
+            }
             formData.append('climateMasterArea', this.climateMasterArea);
 
             try{

@@ -4,6 +4,7 @@
 
             <h2 class="mb-5">Mein ClimateMaster</h2>
 
+
             <calculateEmissions />
            
             <reduceShortTerm class="mt-4"/>
@@ -15,6 +16,10 @@
     	    <presentProgressAndBeRewarded class="mt-4" />
 
             <reduceLongTerm class="mt-4" />
+               
+  
+  
+
             
         </div>
     </div>

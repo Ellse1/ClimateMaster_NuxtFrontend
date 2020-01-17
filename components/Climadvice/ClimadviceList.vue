@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-md-4" v-for="climadvice in climadvices" v-bind:key="climadvice.id" :id="climadvice.name" >
                 <div class="card mb-3">
-                    <div class="card-body" >
+                    <div class="card-body">
 
                         <!-- x to close -->
                         <span class="x_to_close_climadvice" :id="'id_x_to_close_' + climadvice.name" v-on:click="closeClimadvice(climadvice.name)" style="display:none;position:absolute;top:10px;right:10px; transform:rotate(20deg);"><h2>+</h2></span>
@@ -16,9 +16,12 @@
                         </p>
                         <div class="text-center">
                             <font-awesome-icon :icon=climadvice.iconName class="text-success" style="font-size: 100px"/> 
-                            <!-- <font-awesome-icon icon="dollar-sign"  style="font-size: 30px"/> -->
-        
                         </div>
+
+                        <!-- Individual ClimadviceComponent -->
+                        <component v-bind:is="climadvice.name"  v-if="openedClimadviceNameIDForIndividualComponent == climadvice.name" />
+
+
                     </div>
 
                     <client-only>
@@ -46,6 +49,20 @@
 import climadviceEdit from '~/components/Climadvice/ClimadviceEdit';
 import climadviceAdd from '~/components/Climadvice/ClimadviceAdd';
 import climadviceDelete from '~/components/Climadvice/ClimadviceDelete';
+
+import buyLess from '~/components/ClimadviceContent/buyLess/buyLess';
+import buyGreenElectricity from '~/components/ClimadviceContent/buyGreenElectricity/buyGreenElectricity';
+import installPhotovoltaik from '~/components/ClimadviceContent/installPhotovoltaik/installPhotovoltaik';
+import eatVegetarian from '~/components/ClimadviceContent/eatVegetarian/eatVegetarian';
+import houseIsolation from '~/components/ClimadviceContent/houseIsolation/houseIsolation';
+import climateFriendlyHeating from '~/components/ClimadviceContent/climateFriendlyHeating/climateFriendlyHeating';
+import buyElectricCar from '~/components/ClimadviceContent/buyElectricCar/buyElectricCar';
+import usePublicTransport from '~/components/ClimadviceContent/usePublicTransport/usePublicTransport';
+import dontFly from '~/components/ClimadviceContent/dontFly/dontFly';
+import buyRegionalSeasonal from '~/components/ClimadviceContent/buyRegionalSeasonal/buyRegionalSeasonal';
+import climateFriendlyInvestment from '~/components/ClimadviceContent/climateFriendlyInvestment/climateFriendlyInvestment';
+
+
 import Vue from 'vue';
 var VueScrollTo = require('vue-scrollto');
 var openedClimadviceID = null;
@@ -54,11 +71,23 @@ export default {
     components:{
         climadviceAdd,
         climadviceEdit,
-        climadviceDelete
+        climadviceDelete,
+        buyLess,
+        buyGreenElectricity,
+        installPhotovoltaik,
+        eatVegetarian,
+        houseIsolation,
+        climateFriendlyHeating,
+        buyElectricCar,
+        usePublicTransport,
+        dontFly,
+        buyRegionalSeasonal,
+        climateFriendlyInvestment
     },
     data(){
         return{
-            climadviceForEdit: {id: '', name : '', title: '', shortDescription: ''}
+            climadviceForEdit: {id: '', name : '', title: '', shortDescription: ''},
+            openedClimadviceNameIDForIndividualComponent : '',
         };
     },
     methods:{
@@ -75,6 +104,7 @@ export default {
             //open the climadvice which was clicked
             $("#" + climadviceNameID).removeClass("col-md-4").addClass("col-md-12");
             openedClimadviceID = climadviceNameID;
+            this.openedClimadviceNameIDForIndividualComponent = climadviceNameID;
             var scrollTo = VueScrollTo.scrollTo("#" + climadviceNameID);
             $("#id_x_to_close_" + climadviceNameID).css("display", "block");
         },
@@ -84,6 +114,7 @@ export default {
                 $("#" + climadviceNameID).removeClass("col-md-12").addClass("col-md-4");
                 $("#id_x_to_close_" + climadviceNameID).css("display", "none");
                 openedClimadviceID = null;
+                this.openedClimadviceNameIDForIndividualComponent = '';
             }
         },
         editClimadvice(climadvice){
