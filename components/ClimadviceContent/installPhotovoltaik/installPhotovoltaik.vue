@@ -16,46 +16,39 @@
                         
                         <div class="carousel-item active">
                             <div class="col-md-4">
-                                <div class="card card-body">
-                                    <img class="img-fluid" src="http://placehold.it/380?text=1">
+                                <div class="card card-body h-100">
+                                    <img class="img-fluid" src="~/static/pictures/forSpecialSites/installPhotovoltaik/photovoltaik1.jpg">
                                 </div>
                             </div>
                         </div>
                         <div class="carousel-item">
                             <div class="col-md-4">
-                                <div class="card card-body">
-                                    <img class="img-fluid" src="http://placehold.it/380?text=2">
+                                <div class="card card-body h-100">
+                                    <img class="img-fluid" src="~/static/pictures/forSpecialSites/installPhotovoltaik/photovoltaik2.jpg">
                                 </div>
                             </div>
                         </div>
                         <div class="carousel-item">
                             <div class="col-md-4">
-                                <div class="card card-body">
-                                    <img class="img-fluid" src="http://placehold.it/380?text=3">
-                                </div>
-                            </div>
-                        </div>
-                        <!-- <div class="carousel-item">
-                            <div class="col-md-4">
-                                <div class="card card-body">
-                                    <img class="img-fluid" src="http://placehold.it/380?text=4">
+                                <div class="card card-body h-100">
+                                    <img class="img-fluid" src="~/static/pictures/forSpecialSites/installPhotovoltaik/photovoltaik3.jpg">
                                 </div>
                             </div>
                         </div>
                         <div class="carousel-item">
                             <div class="col-md-4">
-                                <div class="card card-body">
-                                    <img class="img-fluid" src="http://placehold.it/380?text=5">
+                                <div class="card card-body h-100">
+                                    <img class="img-fluid" src="~/static/pictures/forSpecialSites/installPhotovoltaik/photovoltaik4.jpg">
                                 </div>
                             </div>
                         </div>
                         <div class="carousel-item">
                             <div class="col-md-4">
-                                <div class="card card-body">
-                                    <img class="img-fluid" src="http://placehold.it/380?text=6">
+                                <div class="card card-body h-100">
+                                    <img class="img-fluid" src="~/static/pictures/forSpecialSites/installPhotovoltaik/photovoltaik5.jpg">
                                 </div>
                             </div>
-                        </div> -->
+                        </div>
 
                     </div>
                     <a class="carousel-control-prev w-auto" href="#id_div_carousel_photovoltaikPictures" role="button" data-slide="prev">
@@ -88,7 +81,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="carousel-item">
+                        <!-- <div class="carousel-item">
                             <div class="col-md-4">
                                 <div class="card card-body">
                                     <img class="img-fluid" src="http://placehold.it/380?text=2">
@@ -122,7 +115,7 @@
                                     <img class="img-fluid" src="http://placehold.it/380?text=6">
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                     <a class="carousel-control-prev w-auto" href="#id_div_carousel_photovoltaikComanies" role="button" data-slide="prev">
                         <span class="carousel-control-prev-icon bg-dark border border-dark rounded-circle" aria-hidden="true"></span>
