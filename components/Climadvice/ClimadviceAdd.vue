@@ -89,6 +89,8 @@ export default {
             formData.append('iconName', this.iconName);
             // For The Checkbox
             var checkboxValue = $("#id_input_easy").is(":checked");
+            
+            
             if(checkboxValue == true){
                 formData.append('easy', 1);               
             }else{

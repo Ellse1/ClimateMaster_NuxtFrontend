@@ -19,7 +19,7 @@
                         <input type="text" id="id_input_iconName" class="form-control mt-2"  name="iconName" v-model="climadviceForEdit.iconName" placeholder="iconName"/>
                       
                         <span class="mr-3">Eher einfach?</span>
-                        <input type="checkbox" id="id_input_easy" name="easy" value="true" v-model="climadviceForEdit.easy"/>
+                        <input type="checkbox" id="id_input_easy" name="easy"  v-model="climadviceForEdit.easy"/>
                         
                         <input type="text" id="id_input_climateMasterArea" class="form-control mt-2"  name="climateMasterArea" v-model="climadviceForEdit.climateMasterArea" placeholder="ClimateMasterArea"/>
 
@@ -69,7 +69,8 @@ export default {
             formData.append('shortDescription', $("#id_input_shortDescription").val());
             formData.append('iconName', $("#id_input_iconName").val());
             // For The Checkbox
-            var checkboxValue = $("#id_input_easy").is(":checked");
+            var checkboxValue = this.climadviceForEdit.easy;
+
             if(checkboxValue == true){
                 formData.append('easy', 1);               
             }else{
