@@ -19,7 +19,7 @@
         <HeaderAnimation />
 
         <!-- ShortText -->
-        <h4 class="text-center">Schön, dass du Interesse an konkretem, umweltfreundlichem Klimaschutz hast!</h4>
+        <h4 class="text-center">Schön, dass du Interesse an konkretem, umweltfreundlichen Klimaschutz hast!</h4>
 
     </div>
 
