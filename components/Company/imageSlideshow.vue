@@ -7,7 +7,7 @@
 
         <div class="row">
 
-            <div class="col-md-3">
+            <div class="col-md-3 mb-2">
                 <div class="card card-body">
                     <label for="id_inputfile_slideshowimage">
                         <font-awesome-icon id="id_icon_camera" icon="camera" style="font-size: 60px;"/> 
