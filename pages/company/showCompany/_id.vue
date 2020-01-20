@@ -12,79 +12,67 @@
                     <label for="id_input_headerImage" id="id_label_headerImage" class="text-center bg-white" style="height:200px;width:100%">
                         <!-- If image Exists -->
                         <div  v-if="header_image_name" class="h-100" style="overflow:hidden;width:100%height:100%;">
-                            <img id="id_img_headerImage" class="img-fluid" :src="`http://localhost:8000/images/companyImages/headerImages/${header_image_name}`" />
+                            <img id="id_img_headerImage" class="img-fluid" :src="`https://www.climate-master.com:8000/images/companyImages/headerImages/${header_image_name}`" />
                         </div>
-                        <h2 v-if="header_image_name === null">Banner hochladen</h2>
+                        <h2 v-if="header_image_name === null"></h2>
                     </label>
 
                     <!-- Logo -->
                     <div style="position:relative;top:-140px;margin:auto;width:200px;">
                         <div style="position:relative;">       
-                            <label for="id_input_logoImage" class="text-center" id="id_label_logoImage">
+                            <label class="text-center" id="id_label_logoImage">
                                 <div class="border bg-white border-dark mx-auto" style="border-radius:50%;width:200px;height:200px;overflow:hidden;">
                                     <font-awesome-icon v-if="logo_image_name == null" icon="user-circle" class="mx-auto mt-2" style="font-size:160px;"/> 
-                                    <img v-if="logo_image_name" :src="`http://localhost:8000/images/companyImages/logoImages/${logo_image_name}`" class="h-100" />
-                                    <p id="id_p_uploadHeaderImageAndLogoImage"><small class="text-danger">jpg, png, max:2MB</small></p>  
+                                    <img v-if="logo_image_name" :src="`http://www.climate-master.com:8000/images/companyImages/logoImages/${logo_image_name}`" class="h-100" />
                                 </div>
                             </label>
                         </div>
                     </div>
                 </div>
 
-                <input type="file" id="id_input_headerImage" ref="headerImage" v-on:change="uploadHeaderImage" style="display:none;"/>
-                <input type="file" id="id_input_logoImage" ref="logoImage" v-on:change="uploadLogoImage" style="display:none;"/>
-                
-
                 <!-- Input for company Data -->
-                <div class="container" style="margin-top:-140px;">
-                    <form @submit.prevent="updateCompany">
+                <div class="container text-center" style="margin-top:-140px;">
+    
+                    <h2 class="col-md-8 mx-auto" >{{name}}</h2>
+                    <h5>{{residence}}</h5>
+                    
+                    <p>
+                        {{description}}
+                    </p>
 
-                        <div class="form-group col-md-8 mx-auto">
-                            <input class="mt-5 form-control text-center" v-model="name" placeholder="Firmenname" style="font-size:30px;"/>
-                        </div>
-                        <div class="form-group">
-                            <textarea class="form-control" v-model="description" placeholder="Firmenbeschreibung" rows="5"></textarea>
-                        </div>
-
-
-                        <!-- Slideshow -->
-                        <imageSlideshow :addForm="true" :company_id="this.$route.params.id" />
+                    <!-- Slideshow -->
+                    <imageSlideshow :company_id="this.$route.params.id" />
 
 
+                    
+                    <!-- Address -->
+                    <div class="text-center pt-5">
+                        <h4>Firmenanschrift</h4>
+                    </div>
+                    <div class="col-md-4 row mx-auto mt-2">
                         
-                        <!-- Address -->
-                        <div class="text-center pt-5">
-                            <h4>Firmenanschrift</h4>
+                        <div class="col-6 text-center">
+                            <b>{{street}}</b>
                         </div>
-                        <div class="col-md-6 form-row mx-auto mt-2">
-                            
-                            <div class="col-10">
-                                <input class="form-control" v-model="street" placeholder="Straße"/>
-                            </div>
-                            <div class="col-2">
-                                <input class="form-control" v-model="house_number" placeholder="Nr." />                                
-                            </div>
-                            
-                            <div class="col-4 mt-2">
-                                <input type="number" v-model="postcode" class="form-control" placeholder="Plz." />
-                            </div>
-                            <div class="col-8 mt-2">
-                                <input class="form-control" v-model="residence" placeholder="Ort" />
-                            </div>
-                            <div class="col-12 mt-2">
-                                <input type="email" v-model="email" class="form-control" placeholder="Kontakt E-Mail" />
-                            </div>
+                        <div class="col-6 text-center">
+                            <b>{{house_number}}</b>
                         </div>
-
-                        <div class="text-center mt-2">
-                            <button id="id_button_save" type="submit" class="btn btn-success" >Änderungen speichern</button>
+                        
+                        <div class="col-6 mt-2 text-center">
+                            <b>{{postcode}}</b>
                         </div>
+                        <div class="col-6 mt-2 text-center">
+                            <b>{{residence}}</b>
+                        </div>
+                        <div class="col-12 mt-2 text-center">
+                            <p>Wir freuen uns auf gemeinsamen Klimaschutz</p>
+                            <b>{{email}}</b>
+                        </div>
+                    </div>
 
-                        <notification :message="error" v-if="error" class="text-danger mt-2 text-center" />
-                        <notification :message="success" v-if="success" class="text-success mt-2 text-center" />
+                    <notification :message="error" v-if="error" class="text-danger mt-2 text-center" />
+                    <notification :message="success" v-if="success" class="text-success mt-2 text-center" />
 
-
-                    </form>
                 </div>
 
 
@@ -97,7 +85,6 @@
 import notification from '~/components/MainComponents/Notification';
 import imageSlideshow from '~/components/Company/imageSlideshow';
 export default {
-    middleware: 'auth',
     validate ({ params }) {
         // Must be a number
         return /^\d+$/.test(params.id)
@@ -301,18 +288,4 @@ export default {
 </script>
 
 <style scoped>
-#id_label_headerImage:hover, #id_label_logoImage:hover{
-    cursor: pointer;
-}
-
-#id_p_uploadHeaderImageAndLogoImage{
-    display: none;;
-}
-
-#id_label_logoImage:hover #id_p_uploadHeaderImageAndLogoImage{
-    display: block;
-}
-
-
-
 </style>

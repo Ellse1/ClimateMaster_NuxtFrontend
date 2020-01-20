@@ -69,6 +69,7 @@
 <script>
 import notification from '~/components/MainComponents/Notification';
 export default {
+    middleware: 'auth',
     components:{
         notification
     },

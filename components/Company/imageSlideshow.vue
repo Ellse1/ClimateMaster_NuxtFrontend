@@ -1,13 +1,13 @@
 <template>
     <div>
         <!-- Infomessage CompanyPictures -->
-        <div class="text-center pt-2">
-            <h3>Bilder für die Slideshow hochladen</h3>
+        <div class="text-center pt-4">
+            <h3>Wir und unsere Arbeit</h3>
         </div>
 
         <div class="row">
 
-            <div class="col-md-3 mb-2">
+            <div class="col-md-3 mb-2" v-if="addForm == true">
                 <div class="card card-body">
                     <label for="id_inputfile_slideshowimage">
                         <font-awesome-icon id="id_icon_camera" icon="camera" style="font-size: 60px;"/> 
@@ -19,10 +19,11 @@
             </div>
 
             <!-- If more than 2 pictures inside -->
-            <div class="col-md-9" v-if="companySlideshowimages.length >= 3">
+            <div class="col-md-9 mx-auto" v-if="companySlideshowimages.length >= 3">
                 <div class="row mx-auto my-auto">
                     <div id="id_div_carousel_companyPictures" class="carousel slide w-100" data-ride="carousel">
                         <div class="carousel-inner w-100" role="listbox">
+                            
                             <div v-for="slideshowimage in companySlideshowimages" class="carousel-item" v-bind:key="slideshowimage.id" >
                                     <div class="col-md-4">
                                         <div class="card" style="height:200px;">
@@ -47,7 +48,7 @@
                         </a>
 
                     </div>
-                    <notification v-if="success" :message="success" class="text-success mt-1" />
+                    <notification v-if="success && addForm" :message="success" class="text-success mt-1" />
 
                 </div>
             </div>
@@ -76,7 +77,7 @@
 <script>
 import notification from "~/components/MainComponents/Notification";
 export default {
-    props: ['company_id'],
+    props: ['company_id', 'addForm'],
     components:{
         notification
     },
