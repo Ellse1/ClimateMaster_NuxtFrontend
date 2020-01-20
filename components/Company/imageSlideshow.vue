@@ -2,7 +2,7 @@
     <div>
         <!-- Infomessage CompanyPictures -->
         <div class="text-center pt-4">
-            <h3>Wir und unsere Arbeit</h3>
+            <h3 v-if="companySlideshowimages.length >= 1" >Wir und unsere Arbeit</h3>
         </div>
 
         <div class="row">

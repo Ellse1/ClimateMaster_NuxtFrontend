@@ -5,7 +5,8 @@
             <h2 class="font-weight-light" v-if="companies.length >= 1">Firmen</h2>
 
             <div class="row mx-auto my-auto" v-if="companies.length >= 3">
-                <div id="id_div_carousel_photovoltaikComanies" class="carousel slide w-100" data-ride="carousel">
+                <!-- maby Problem here -->
+                <div v-bind:id="'id_div_carousel_companies_' + climadvice_name" class="carousel slide w-100" data-ride="carousel">
                     <div class="carousel-inner w-100" role="listbox">
                         
                         <div v-for="company in companies" v-bind:key="company.id" class="carousel-item companySlideshow">
@@ -30,11 +31,11 @@
                         </div>
 
                     </div>
-                    <a class="carousel-control-prev w-auto" href="#id_div_carousel_photovoltaikComanies" role="button" data-slide="prev">
+                    <a class="carousel-control-prev w-auto" v-bind:href="'#id_div_carousel_companies_' + climadvice_name" role="button" data-slide="prev">
                         <span class="carousel-control-prev-icon bg-dark border border-dark rounded-circle" aria-hidden="true"></span>
                         <span class="sr-only">Previous</span>
                     </a>
-                    <a class="carousel-control-next w-auto" href="#id_div_carousel_photovoltaikComanies" role="button" data-slide="next">
+                    <a class="carousel-control-next w-auto" v-bind:href="'#id_div_carousel_companies_' + climadvice_name" role="button" data-slide="next">
                         <span class="carousel-control-next-icon bg-dark border border-dark rounded-circle" aria-hidden="true"></span>
                         <span class="sr-only">Next</span>
                     </a>
@@ -67,6 +68,7 @@
 </template>
 <script>
 export default {
+    props: ['climadvice_name'],
     data(){
         return {
             error: null,
@@ -75,11 +77,11 @@ export default {
         }
     },
     async mounted(){
-        //Get the companies with climadviceName "installPhotovoltaik"
+        //Get the companies with current climadvice_name 
         try {
             const{data} = await this.$axios.get("company/getCompaniesByClimadviceName",{
                 params:{
-                    climadvice_name: "installPhotovoltaik"
+                    climadvice_name: this.climadvice_name
                 }
             });
 
