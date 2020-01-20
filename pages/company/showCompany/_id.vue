@@ -23,7 +23,7 @@
                             <label class="text-center" id="id_label_logoImage">
                                 <div class="border bg-white border-dark mx-auto" style="border-radius:50%;width:200px;height:200px;overflow:hidden;">
                                     <font-awesome-icon v-if="logo_image_name == null" icon="user-circle" class="mx-auto mt-2" style="font-size:160px;"/> 
-                                    <img v-if="logo_image_name" :src="`http://www.climate-master.com:8000/images/companyImages/logoImages/${logo_image_name}`" class="h-100" />
+                                    <img v-if="logo_image_name" :src="`https://www.climate-master.com:8000/images/companyImages/logoImages/${logo_image_name}`" class="h-100" />
                                 </div>
                             </label>
                         </div>

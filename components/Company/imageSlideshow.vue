@@ -27,7 +27,7 @@
                             <div v-for="slideshowimage in companySlideshowimages" class="carousel-item" v-bind:key="slideshowimage.id" >
                                     <div class="col-md-4">
                                         <div class="card" style="height:200px;">
-                                            <img class="card-img" :src="`http://www.climate-master.com:8000/images/companyImages/slideshowimages/${slideshowimage.image_name}`">
+                                            <img class="card-img" :src="`https://www.climate-master.com:8000/images/companyImages/slideshowimages/${slideshowimage.image_name}`">
                                             <div class="card-img-overlay text-center">
                                                 <div class="rounded" style="background-color:rgba(247, 247, 247, 0.3)">
                                                     <h5 class="card-title" style="margin-top:140px;">{{slideshowimage.caption}}</h5>
@@ -55,7 +55,7 @@
             <div class="col-md-9 row" v-else>
                 <div v-for="slideshowimage in companySlideshowimages" v-bind:key="slideshowimage.id" class="col-md-4">
                     <div class="card" style="height:200px;overflow:hidden;">
-                        <img class="card-img" :src="`http://www.climate-master.com:8000/images/companyImages/slideshowimages/${slideshowimage.image_name}`">
+                        <img class="card-img" :src="`https://www.climate-master.com:8000/images/companyImages/slideshowimages/${slideshowimage.image_name}`">
                         <div class="card-img-overlay text-center">
                             <div class="rounded" style="background-color:rgba(247, 247, 247, 0.3)">
                                 <h5 class="card-title" style="margin-top:140px;">{{slideshowimage.caption}}</h5>

@@ -13,10 +13,10 @@
                                 <nuxt-link :to="{name: 'company-showCompany-id', params: { id:company.id } }">
                                     <div class="card">
                                         <div class="card-body" style="height:200px;overflow:hidden;">
-                                            <img class="card-img" :src="`http://www.climate-master.com:8000/images/companyImages/headerImages/${company.header_image_name}`">
+                                            <img class="card-img" :src="`https://www.climate-master.com:8000/images/companyImages/headerImages/${company.header_image_name}`">
                                             <div class="card-img-overlay text-center">
                                                 <div class="mx-auto border" style="width:70px;height:70px;border-radius:50%;overflow:hidden;margin-top:80px;">
-                                                    <img class="img-fluid" :src="`http://www.climate-master.com:8000/images/companyImages/logoImages/${company.logo_image_name}`">
+                                                    <img class="img-fluid" :src="`https://www.climate-master.com:8000/images/companyImages/logoImages/${company.logo_image_name}`">
                                                 </div>
                                             </div>
                                         </div>
@@ -45,10 +45,10 @@
                     <nuxt-link :to="{name: 'company-showCompany-id', params: { id:company.id } }">
                         <div class="card">
                             <div class="card-body" style="height:200px;overflow:hidden;">
-                                <img class="card-img" :src="`http://www.climate-master.com:8000/images/companyImages/headerImages/${company.header_image_name}`">
+                                <img class="card-img" :src="`https://www.climate-master.com:8000/images/companyImages/headerImages/${company.header_image_name}`">
                                 <div class="card-img-overlay text-center">
                                     <div class="mx-auto border" style="width:70px;height:70px;border-radius:50%;overflow:hidden;margin-top:80px;">
-                                        <img class="img-fluid" :src="`http://www.climate-master.com:8000/images/companyImages/logoImages/${company.logo_image_name}`">
+                                        <img class="img-fluid" :src="`https://www.climate-master.com:8000/images/companyImages/logoImages/${company.logo_image_name}`">
                                     </div>
                                 </div>
                             </div>

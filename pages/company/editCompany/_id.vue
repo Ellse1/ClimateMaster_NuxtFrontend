@@ -12,7 +12,7 @@
                     <label for="id_input_headerImage" id="id_label_headerImage" class="text-center bg-white" style="height:200px;width:100%">
                         <!-- If image Exists -->
                         <div  v-if="header_image_name" class="h-100" style="overflow:hidden;width:100%height:100%;">
-                            <img id="id_img_headerImage" class="img-fluid" :src="`http://www.climate-master.com:8000/images/companyImages/headerImages/${header_image_name}`" />
+                            <img id="id_img_headerImage" class="img-fluid" :src="`https://www.climate-master.com:8000/images/companyImages/headerImages/${header_image_name}`" />
                         </div>
                         <h2 v-if="header_image_name === null">Banner hochladen</h2>
                     </label>
@@ -23,7 +23,7 @@
                             <label for="id_input_logoImage" class="text-center" id="id_label_logoImage">
                                 <div class="border bg-white border-dark mx-auto" style="border-radius:50%;width:200px;height:200px;overflow:hidden;">
                                     <font-awesome-icon v-if="logo_image_name == null" icon="user-circle" class="mx-auto mt-2" style="font-size:160px;"/> 
-                                    <img v-if="logo_image_name" :src="`http://www.climate-master.com:8000/images/companyImages/logoImages/${logo_image_name}`" class="h-100" />
+                                    <img v-if="logo_image_name" :src="`https://www.climate-master.com:8000/images/companyImages/logoImages/${logo_image_name}`" class="h-100" />
                                     <p id="id_p_uploadHeaderImageAndLogoImage"><small class="text-danger">jpg, png, max:2MB</small></p>  
                                 </div>
                             </label>
