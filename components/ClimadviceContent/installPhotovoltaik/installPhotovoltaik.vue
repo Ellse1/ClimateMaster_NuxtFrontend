@@ -67,16 +67,16 @@
 
 
         <!-- PV Beispielfirmen -->
-        <companySlideshow />
+        <photovoltaikCompanySlideshow />
 
     </div>
 </template>
 
 <script>
-import companySlideshow from '~/components/ClimadviceContent/installPhotovoltaik/companySlideshow';
+import photovoltaikCompanySlideshow from '~/components/ClimadviceContent/installPhotovoltaik/photovoltaikCompanySlideshow';
 export default {
     components:{
-        companySlideshow
+        photovoltaikCompanySlideshow
     },
     mounted(){
 

@@ -157,36 +157,6 @@ export default {
 
 
         $('#id_div_loading_animation').removeClass("loading-animation");
-
-
-        //Slideshow in component imageSlideshow -> If i load it in the component, it doesn't work
-        //-> I have to load it in the parent
-        //If medium-> show 3 in one line
-        let counter = 0;
-        $('.carousel .carousel-item').each(function(){
-            
-            if(counter == 0){
-                $(this).addClass("active");
-                counter ++;
-            }
-            var minPerSlide = 3;
-            var next = $(this).next();
-            if (!next.length) {
-                next = $(this).siblings(':first');
-            }
-            next.children(':first-child').clone().appendTo($(this));
-            
-            for (var i=0;i<minPerSlide;i++) {
-                next=next.next();
-                if (!next.length) {
-                    next = $(this).siblings(':first');
-                }
-                
-                next.children(':first-child').clone().appendTo($(this));
-            }
-        });
-
-
     },
     methods:{
         async updateCompany(){
