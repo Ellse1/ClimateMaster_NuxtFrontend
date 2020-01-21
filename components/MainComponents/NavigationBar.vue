@@ -14,7 +14,7 @@
                     <div class="navbar-nav ml-auto">
 
                         <div class="nav-item">
-                            <nuxt-link to="/" class="nav-link text-white">Home</nuxt-link>
+                            <nuxt-link to="/" class="nav-link text-white">Startseite</nuxt-link>
                         </div>
 
                         <div class="nav-item ml-md-5">
@@ -43,6 +43,8 @@
                             <div class="dropdown-menu" v-if="loggedIn === true" aria-labelledby="dropdown04">
                                 <nuxt-link to="/account/myProfile" class="dropdown-item">Mein Profil</nuxt-link>
                                 <nuxt-link to="/myClimateMaster" class="dropdown-item" >Mein Klimaschutz</nuxt-link>
+                                <!-- If admin -->
+                                <nuxt-link v-if="user.role === 'admin'" to="/admin/dashboard" class="dropdown-item">Admin Dashboard</nuxt-link>
                                 <div class="text-center">
                                     <button class="btn btn-danger"  v-on:click="logout()">Ausloggen</button>
                                </div>

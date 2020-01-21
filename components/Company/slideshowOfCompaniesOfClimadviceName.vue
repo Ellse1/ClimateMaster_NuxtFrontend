@@ -83,7 +83,7 @@ export default {
     async mounted(){
         //Get the companies with current climadvice_name 
         try {
-            const{data} = await this.$axios.get("company/getCompaniesByClimadviceName",{
+            const{data} = await this.$axios.get("company/getActivatedCompaniesByClimadviceName",{
                 params:{
                     climadvice_name: this.climadvice_name
                 }

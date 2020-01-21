@@ -5,7 +5,7 @@
             <h3 v-if="companySlideshowimages.length >= 1" >Wir und unsere Arbeit</h3>
         </div>
 
-        <p v-if="companySlideshowimages.length >= 3 && addForm == true">Bild immer an Position 1 Löschen</p>
+        <p v-if="companySlideshowimages.length >= 3 && addForm == true">Löschen an Position 1. Danach Seite neu laden.</p>
         <div class="row">
             <!-- Add image -->
             <div class="col-md-3 mb-2" v-if="addForm == true">
@@ -193,6 +193,7 @@ export default {
             $("#id_icon_camera").addClass("text-success");
         },
         async deleteSlideshowimage(slideshowimageID, index){
+            var slideshowimages_temp = [];
             try {
                 const{data} = await this.$axios.post("companyslideshowimage/destroy",{
                     id: slideshowimageID
@@ -204,7 +205,7 @@ export default {
                 else if(data.state == "success"){
                     this.error = null;
                     this.success = data.message;
-                    this.companySlideshowimages.splice(index, 1)
+                    this.companySlideshowimages.splice(index, 1);
                 }
                 else{
                     this.error = "Das Slideshowimage konnte leider nicht gelöscht werden. Versuchen Sie es später noch einmal.";
