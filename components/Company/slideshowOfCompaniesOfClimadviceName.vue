@@ -17,7 +17,7 @@
                                             <img class="card-img" :src="`https://www.climate-master.com:8000/images/companyImages/headerImages/${company.header_image_name}`">
                                             <div class="card-img-overlay text-center">
                                                 <div class="mx-auto border" style="width:70px;height:70px;border-radius:50%;overflow:hidden;margin-top:80px;">
-                                                    <img class="img h-100" :src="`https://www.climate-master.com:8000/images/companyImages/logoImages/${company.logo_image_name}`">
+                                                    <img class="h-100" :src="`https://www.climate-master.com:8000/images/companyImages/logoImages/${company.logo_image_name}`">
                                                 </div>
                                             </div>
                                         </div>
@@ -61,6 +61,10 @@
                     </nuxt-link>
                 </div>
             </div>
+
+
+            <!-- Link to add company -->
+            <nuxt-link :to="{name: 'company-addCompany-climadvice_name', params: { climadvice_name: this.climadvice_name } }" class="btn btn-success mt-3 ml-3">Firma hinzufügen</nuxt-link>
 
 
         </div>
