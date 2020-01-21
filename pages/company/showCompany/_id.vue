@@ -7,7 +7,7 @@
 
 
             <div class="bg-light pb-3 mb-4 text-center" style="min-height:600px;position:relative">
-
+                <!-- Header image -->
                 <div style="position:relative;top:0px;left:0px;width:100%;" class="text-center">
                     <label for="id_input_headerImage" id="id_label_headerImage" class="text-center bg-white" style="height:200px;width:100%">
                         <!-- If image Exists -->
@@ -30,7 +30,7 @@
                     </div>
                 </div>
 
-                <!-- Input for company Data -->
+                <!-- show company Data -->
                 <div class="container text-center" style="margin-top:-140px;">
     
                     <h2 class="col-md-8 mx-auto" >{{name}}</h2>
@@ -69,15 +69,16 @@
                             <b>{{email}}</b>
                         </div>
                     </div>
-
                     <notification :message="error" v-if="error" class="text-danger mt-2 text-center" />
                     <notification :message="success" v-if="success" class="text-success mt-2 text-center" />
-
+                </div>
+                
+                <!-- link to edit -->
+                <div v-if="isCompanyAdmin" class="col-md-3 col-sm-6 mx-auto mt-2">
+                        <nuxt-link :to="{name: 'company-editCompany-id', params:{ id:this.id}}" class="btn btn-success">Firmenauftritt bearbeiten</nuxt-link>
                 </div>
 
-
             </div>
-
         </div>
     </div>
 </template>
@@ -107,10 +108,13 @@ export default {
             house_number: null,
             postcode: null,
             residence: null,
-            email: null
+            email: null,
+            isCompanyAdmin: false
         };
     },
     async mounted(){
+        var company_id;
+        // GetCompany
         $('#id_div_loading_animation').addClass("loading-animation");
         try {
             const{data} = await this.$axios.get('company/getCompany',{
@@ -125,6 +129,7 @@ export default {
             }
             else if(data.state == 'success'){
                 this.id = data.data.id;
+                company_id = data.data.id;
                 this.logo_image_name = data.data.logo_image_name;
                 this.header_image_name = data.data.header_image_name;
                 this.climadvice_name = data.data.climadvice_name;
@@ -141,10 +146,29 @@ export default {
         } catch (e) {
             this.error= "Error" + e.response.data.message;   
         }
-
-
         $('#id_div_loading_animation').removeClass("loading-animation");
 
+
+        // Check if is companyAdmin
+        if(this.loggedIn){
+            try {
+                const{data} = await this.$axios.post('user/isCompanyAdmin',{
+                        company_id: company_id
+                });
+
+                if(data.state == 'error'){}
+                else if(data.state == 'success'){
+                    if(data.isCompanyAdmin){
+                        this.isCompanyAdmin = true;
+                    }else{
+                        this.isCompanyAdmin = false;
+                    }
+                }
+                else{}
+            } catch (e) {
+                //Do nothing -> the user does't have to realize that something happend
+            }
+        }
     },
     methods:{
         async updateCompany(){

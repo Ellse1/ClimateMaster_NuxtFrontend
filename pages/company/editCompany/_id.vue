@@ -80,6 +80,11 @@
                             <button id="id_button_save" type="submit" class="btn btn-success" >Änderungen speichern</button>
                         </div>
 
+                        <!-- Button to go to company page -->
+                        <div class="text-center mt-2">
+                            <nuxt-link :to="{name: 'company-showCompany-id', params:{ id:this.id}}" class="btn btn-success">Firmenauftritt ansehen</nuxt-link>
+                        </div>
+
                         <notification :message="error" v-if="error" class="text-danger mt-2 text-center" />
                         <notification :message="success" v-if="success" class="text-success mt-2 text-center" />
 
