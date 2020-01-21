@@ -55,7 +55,7 @@
                 </div>
             </div>
             <div class="col-md-9 mx-auto row" v-else>
-                <div v-for="slideshowimage in companySlideshowimages" v-bind:key="slideshowimage.id" class="col-md-4 mx-auto">
+                <div v-for="(slideshowimage, index) in companySlideshowimages" v-bind:key="slideshowimage.id" class="col-md-4 mx-auto">
                     <div class="card" style="height:200px;overflow:hidden;">
                         <img class="card-img" :src="`https://www.climate-master.com:8000/images/companyImages/slideshowimages/${slideshowimage.image_name}`">
                         <div class="card-img-overlay text-center">
@@ -193,6 +193,8 @@ export default {
             $("#id_icon_camera").addClass("text-success");
         },
         async deleteSlideshowimage(slideshowimageID, index){
+            alert('id: ' + slideshowimageID);
+            alert('index' + index);
             try {
                 const{data} = await this.$axios.post("companyslideshowimage/destroy",{
                     id: slideshowimageID
