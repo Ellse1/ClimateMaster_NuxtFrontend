@@ -193,8 +193,6 @@ export default {
             $("#id_icon_camera").addClass("text-success");
         },
         async deleteSlideshowimage(slideshowimageID, index){
-            alert('id: ' + slideshowimageID);
-            alert('index' + index);
             try {
                 const{data} = await this.$axios.post("companyslideshowimage/destroy",{
                     id: slideshowimageID
