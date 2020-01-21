@@ -36,7 +36,7 @@
                                         </div>
                                     </div>
                                      <!-- Button to delete slideshowimage -->
-                                    <button v-if="addForm == true" :id="`id_button_delete_${slideshowimage.id}`" class="btn btn-default border" @click.prevent="deleteSlideshowimage(slideshowimage.id, index);">Löschen</button>
+                                    <button v-if="addForm == true" class="btn btn-default border" v-on:click="deleteSlideshowimage(slideshowimage.id, index);">Löschen</button>
                                 </div>
                             </div>
 
