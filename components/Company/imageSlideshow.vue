@@ -27,7 +27,7 @@
                             
                             <div v-for="(slideshowimage, index) in companySlideshowimages" class="carousel-item" v-bind:key="slideshowimage.id" v-bind:id="slideshowimage.id" >
                                 <div class="col-md-4">
-                                    <div class="card" style="height:200px;">
+                                    <div class="card" style="height:200px;overflow:hidden;">
                                         <img class="card-img" :src="`https://www.climate-master.com:8000/images/companyImages/slideshowimages/${slideshowimage.image_name}`">
                                         <div class="card-img-overlay text-center">
                                             <div class="rounded" style="background-color:rgba(247, 247, 247, 0.3)">
@@ -36,7 +36,7 @@
                                         </div>
                                     </div>
                                      <!-- Button to delete slideshowimage -->
-                                    <button v-if="addForm == true" :id="`id_button_delete_${slideshowimage.id}`" class="btn btn-default border" v-on:click="deleteSlideshowimage(slideshowimage.id, index);">Löschen</button>
+                                    <button v-if="addForm == true" :id="`id_button_delete_${slideshowimage.id}`" class="btn btn-default border" @click.prevent="deleteSlideshowimage(slideshowimage.id, index);">Löschen</button>
                                 </div>
                             </div>
 
