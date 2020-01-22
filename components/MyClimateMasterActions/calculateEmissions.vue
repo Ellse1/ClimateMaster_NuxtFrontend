@@ -1,15 +1,20 @@
 <template>
     <div>
         <div class="border border-dark rounded container">
-            <div class="header-for-action row" style="width:100%;" data-toggle="collapse" data-target="#id_div_calculateCO2Collapse">
-                <div class="col-1 text-center">
-                    <font-awesome-icon icon="calculator" class="mt-1" style="font-size:30px;"/>     
+            <div class="w-100 row">
+                <div class="col-1">
+                    <font-awesome-icon icon="calculator" class="mt-1" style="font-size:50px;"/>     
                 </div>
-                <div class="col-10 text-center">
-                    <h4>Persönlichen CO2 Ausstoß berechnen</h4>
+                <div class="col-10">
+                    <div class="number-class mx-auto mt-1">
+                        1
+                    </div>
                 </div>
             </div>
-            <div class="collapse" id="id_div_calculateCO2Collapse">
+            <div class="text-center">
+                <h4>CO2 Ausstoß berechnen</h4>
+            </div>
+            <div>
                 <p> 
                     Klimaktiv gibt uns mit dem CO2 Rechner die Möglichkeit, deinen individuellen CO2 Ausstoß zu berechnen.
                     Mit dieser Berechnung ist es uns möglich, dir individuell effiziente Möglichkeiten für 

@@ -1,15 +1,19 @@
 <template>
     <div>
         <div class="border border-dark rounded container">
-            <div class="header-for-action row" style="width:100%;" data-toggle="collapse" data-target="#id_div_reduceLongTerm">
+            <div class="w-100 row">
                <div class="col-1">
-                    <font-awesome-icon icon="globe" class="mt-1" style="font-size:30px;"/>                         
+                    <font-awesome-icon icon="globe" class="mt-1" style="font-size:50px;"/>                         
                </div>
                <div class="col-10">
-                    <h4>Langfristige Maßnahmen einleiten</h4>
+                   <div class="number-class mx-auto mt-1">
+                       6
+                   </div>
                </div>
             </div>
-            <div class="collapse" id="id_div_reduceLongTerm">
+            <h4>Langfristige Maßnahmen einleiten</h4>
+
+            <div class="container">
                 <p>
                     Es ist wirklich sehr bemerkenswert, wie du dich für konsequenten Klimaschutz einsetzt.
                     Unter "Climadvices" findest du noch einmal die effizientesten Möglichkeiten, Umweltfreundlich

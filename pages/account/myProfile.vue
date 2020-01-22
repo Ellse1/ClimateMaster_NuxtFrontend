@@ -2,9 +2,11 @@
     <div class="container bg-light pt-4" style="min-height:400px;">
         <h2 class="text-center">Mein ClimateMaster Profil</h2>
 
+        <hr class="col-md-5 mx-auto">
 
         <!-- For profile picture -->
-        <div class="text-center">
+        <div class="text-center ">
+            <h4>Profilbild</h4>
             <label for="id_profilePicture">
                 <div class="border border-dark pl-3 pr-3 pt-3" style="border-radius:50px;" id="id_div_uploadProfilePicture">
                     <!-- icon if no profile_picture -->

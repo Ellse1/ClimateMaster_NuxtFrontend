@@ -1,15 +1,18 @@
 <template>
     <div>
         <div class="border border-dark rounded container">
-            <div class="header-for-action row" style="width:100%" data-toggle="collapse" data-target="#id_div_costumizeCalculation">
+            <div class="w-100 row">
                 <div class="col-1">
-                    <font-awesome-icon icon="calculator" class="mt-1" style="font-size:30px;"/>     
+                    <font-awesome-icon icon="calculator" class="mt-1" style="font-size:50px;"/>     
                 </div>
                 <div class="col-10">
-                    <h4>Berechnung anpassen</h4>
+                    <div class="number-class mx-auto mt-1">
+                        3
+                    </div>
                 </div>
             </div>
-            <div class="collapse container" id="id_div_costumizeCalculation">
+            <h4>Berechnung anpassen</h4>
+            <div class="container">
                 <p>
                     Bevor du im nächsten Schritt <span class="text-success">Climate</span>Master wirst, hast du hier noch einmal die
                     Möglichkeit, deine CO2 Berechnung an die Realität anzupassen. Ist dir schon ein Fortschritt bei persönlichem
