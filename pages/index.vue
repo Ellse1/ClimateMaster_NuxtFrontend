@@ -58,8 +58,15 @@
             </div>
           </div>
         </div>
-
       </div>
+
+          <!-- Link zum Impressum -->
+    <div class="text-center fixed-bottom w-100" style="background-color:rgba(247, 247, 247, 0.3)">
+        <small> <nuxt-link to="/we" class="">Über uns</nuxt-link></small> |
+        <small> <nuxt-link to="/we" class="">Impressum</nuxt-link></small> |
+        <small> <nuxt-link to="/privacyStatement" class="">Datenschutzerklärung</nuxt-link></small>
+
+    </div>
     </div>
 </template>
 

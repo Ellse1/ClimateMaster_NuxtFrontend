@@ -47,6 +47,25 @@
                     <a target="_blanc" href="http://localhost:8000/api/file/concept" class="btn btn-default border">Unser Konzept (PDF)</a>
                 </div> -->
             
+            </div>
+
+            <!-- Impressum -->
+            <div class="container text-center mt-3 mb-5 bg-light border border-success rounded p-5" style="max-width:800px;">
+                <h5>Impressum</h5>
+                <div class="row">
+                    <div class="col-md-6 text-left">
+                        <p>Elias Singer</p>
+                        <p>Schulstraße 34</p>
+                        <p>78337 Öhningen - Schienen</p>
+                        <p>elias.singer@online.de</p>
+                        <p>0049 17643326722</p>
+                    </div>
+                    <div class="col-md-6">
+                        Vielen Dank für Ihren Besuch auf unserer Webseite. Wir freuen uns sehr über Anregungen, Fragen oder Hinweise. 
+                        Wenden Sie sich mit Ihrem Anliegen gerne an elias.singer@online.de.<br><b>Vielen Dank für Ihre Unterstützung!</b>
+                    </div>
+                </div>
+
 
             </div>
         </div>

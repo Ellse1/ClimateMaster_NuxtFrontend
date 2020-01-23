@@ -20,7 +20,7 @@
                     Mit dieser Berechnung ist es uns möglich, dir individuell effiziente Möglichkeiten für 
                     persönlichen Klimaschutz zu nennen. <b>Viel Spaß beim Berechnen!</b>
                 </p>
-                <a href="https://uba.co2-rechner.de/de_DE/" class="btn btn-default border">CO2 Berechnen <b>&rsaquo;&rsaquo;</b></a>
+                <a target="_blanc" href="https://uba.co2-rechner.de/de_DE/" class="btn btn-default border">CO2 Berechnen <b>&rsaquo;&rsaquo;</b></a>
                 <div>
                     <label class="mt-2">Link der Berechnung einfügen</label>
 

@@ -3,8 +3,8 @@
         <div class="row">
             <div class="col">
                 <div style="max-width:400px;margin-top:100px;background-color:rgba(247, 247, 247, 0.3)" class="container border border-success rounded text-center">
-                    <h4>Login at</h4> 
-                    <h4><span class="text-success">Climate</span>Master</h4>
+                    <h4><span class="text-success">Climate</span>Master</h4>                    
+                    <h5>Einloggen</h5> 
                     <Notification :message="error" v-if="error" class="mt-4 text-danger"/>
 
                     <form class="text-center" @submit.prevent="addUser">

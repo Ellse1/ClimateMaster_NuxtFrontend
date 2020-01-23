@@ -11,9 +11,9 @@
             <div class="col">
                 <div style="max-width: 400px; margin:auto; margin-top:100px;background-color:rgba(247, 247, 247, 0.3)" class="border border-success rounded p-4">
                     <div class="text-center">
-                        <h4>Register at</h4>
                         <h4><span class="text-success">Climate</span>Master</h4>
-                        <p>Die Registrierung ist aus rechtlichen Gründen noch nicht gestattet bzw. freigegeben.</p>
+                        <h5>Registrierung</h5>
+                        <!-- <p>Die Registrierung ist aus rechtlichen Gründen noch nicht gestattet bzw. freigegeben.</p> -->
                     </div>
                     <form @submit.prevent="registerUser">
                         <div class="row">
@@ -27,26 +27,18 @@
                                 <input class="form-control" v-model="username" required placeholder="Benutzername" />
                             </div>
                             <div class="col-12 mt-3">
-                                <input class="form-control" v-model="email" required placeholder="e-mail" />
+                                <input class="form-control" type="email" v-model="email" required placeholder="e-mail" />
                             </div>
                             <div class="col-12 mt-3">
-                                <input class="form-control" v-model="password" required placeholder="Neues Passwort" type="password"/>
+                                <input class="form-control" v-model="password" required placeholder="Neues Passwort" type="password"  minlength="8"/>
                             </div>
-                            <!-- <div class="col-12">
-                                <small>optional</small>
-                            </div> -->
-                            <!-- <div class="col-8 mt-3">
-                                <input class="form-control" v-model="street"  placeholder="Straße" />
+
+                            <div class="text-center">
+                                <small><label for="id_input_checkboxPrivacyStatement">Ich habe die <nuxt-link to="/privacyStatement">Datenschutzerklärung</nuxt-link> gelesen und akzeptiere diese.</label></small><br>
+                                <input type="checkbox" id="id_input_checkboxPrivacyStatement" class="mx-center" required>
+                                <small><label for="id_input_checkboxPrivacyStatement"> akzeptieren</label></small><br>
+  
                             </div>
-                            <div class="col-4 mt-3">
-                                <input class="form-control" v-model="house_number"  placeholder="Nr." />                               
-                            </div>
-                            <div class="col-4 mt-3">
-                                <input class="form-control" v-model="postcode"  placeholder="Plz." type="number"/>                               
-                            </div>
-                            <div class="col-8 mt-3">
-                                <input class="form-control" v-model="residence" placeholder="Wohnort"/>                               
-                            </div> -->
 
                             <div class="col-12 text-center">
                                 <notification :message="error" v-if="error" class="mt-4 text-danger"/>
