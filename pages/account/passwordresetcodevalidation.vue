@@ -23,6 +23,10 @@
 
             <notification :message="error" v-if="error" class="text-danger text-center" />
             <notification :message="success" v-if="success" class="text-success text-center" />
+            
+            <div class="text-cente">
+                <nuxt-link to="/account/login" style="display:none;" class="btn btn-success" id="id_button_login">Einloggen</nuxt-link>
+            </div>
 
         </div>
     </div>
@@ -66,6 +70,7 @@ export default {
                 if(data.state == 'success'){
                     this.success = data.message;
                     this.error = null;
+                    $("#id_button_login").show();
                 }
 
             } catch (e) {

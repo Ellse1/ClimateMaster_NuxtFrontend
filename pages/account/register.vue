@@ -40,9 +40,13 @@
   
                             </div>
 
-                            <div class="col-12 text-center">
+                            <div class="col-12 text-center rounded" style="background-color:rgba(247, 247, 247, 0.5)">
                                 <notification :message="error" v-if="error" class="mt-4 text-danger"/>
                                 <notification :message="success" v-if="success" class="mt-4 text-success"/>
+                            </div>
+
+                            <div class="col-12 text-center mt-1" id="id_link_newCode" style="display:none;">
+                                <nuxt-link to="/account/resendVerification" class="btn btn-success" >Link erneut anfordern</nuxt-link>
                             </div>
 
                             <div class="col-12 mt-3">
@@ -56,6 +60,8 @@
                             </div>
                         </div>
                     </form>
+
+
                 </div>
                 <div style="margin:auto; max-width:400px;background-color:rgba(247, 247, 247, 0.3)" class="text-center mt-3 border border-success rounded mb-3">
                     Schon ein <span class="text-success">Climate</span>Master Konto?<br>
@@ -118,7 +124,7 @@ export default {
                 if(data.state == 'success'){
                     this.error = null;
                     this.success = data.message;
-
+                    $("#id_link_newCode").show();
                   //  this.$router.push('/login');
                 }
 

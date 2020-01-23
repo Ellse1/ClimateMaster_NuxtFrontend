@@ -6,7 +6,12 @@
         <div class="text-center">
             <notification :message='error' v-if="error" class="mt-4 text-danger" />
             <notification :message='success' v-if="success" class="mt-4 text-success" />
+        
+            <!-- Link to login -->
+            <nuxt-link to="/account/login" class="btn btn-success" id="id_button_login" >Einloggen</nuxt-link>
         </div>
+
+
     </div>
 </template>
 
@@ -31,7 +36,6 @@ export default {
         formData.append('verificationCode', this.$route.query.verificationCode);
 
         try {
-
             const{data} = await this.$axios.post('verification',
             formData, {
                 headers :{
@@ -46,6 +50,7 @@ export default {
             if(data.state == 'success'){
                 this.success = data.message;
                 this.error = null;
+                $("#id_button_login").show();
             }
 
             $('#id_div_loading_animation').removeClass('loading-animation');
