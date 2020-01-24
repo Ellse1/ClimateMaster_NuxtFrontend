@@ -8,7 +8,7 @@
             <notification :message='success' v-if="success" class="mt-4 text-success" />
         
             <!-- Link to login -->
-            <nuxt-link to="/account/login" class="btn btn-success" id="id_button_login" >Einloggen</nuxt-link>
+            <nuxt-link to="/account/login" class="btn btn-success" id="id_button_login" style="display:none;">Einloggen</nuxt-link>
         </div>
 
 

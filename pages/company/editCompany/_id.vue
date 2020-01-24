@@ -37,7 +37,6 @@
 
                 <!-- Input for company Data -->
                 <div class="container" style="margin-top:-140px;">
-                    <form @submit.prevent="updateCompany">
 
                         <div class="form-group col-md-8 mx-auto">
                             <input class="mt-5 form-control text-center" v-model="name" placeholder="Firmenname" style="font-size:30px;"/>
@@ -74,10 +73,34 @@
                             <div class="col-12 mt-2">
                                 <input type="email" v-model="email" class="form-control" placeholder="Kontakt E-Mail" />
                             </div>
+                        
+
+                            <!-- Add admin -->
+                            <h4 class="mx-auto w-100 mt-3">Firmenadmins</h4>
+
+                            <div class="col-8">
+                                <input v-model="email_to_add_admin_to_company" type="email" class="form-control" placeholder="email" />
+                            </div>
+                            <div class="col-4">
+                                <button class="btn btn-success w-100" id="id_button_addAdmin" v-on:click="addAdminToCompany">Hinzufügen</button>
+                            </div>     
+                            <div v-for="(admin, index) in admins" v-bind:key="admin.id" class="w-100 form-row mt-2">
+                                <div class="col-8 text-center">
+                                    <span>{{admin.firstname}}</span> <span>{{admin.lastname}}</span> ({{admin.email}})
+                                </div>
+                                <div class="col-4 text-center">
+                                    <button class="btn btn-danger" v-on:click="removeAdminFromCompany(admin.id, index)" >Entfernen</button>
+                                </div>
+                            </div>
+
+
+
+
                         </div>
 
-                        <div class="text-center mt-2">
-                            <button id="id_button_save" type="submit" class="btn btn-success" >Änderungen speichern</button>
+                        <!-- Button to save address data -->
+                        <div class="text-center mt-4">
+                            <button id="id_button_save" v-on:click="updateCompany" class="btn btn-success" >Änderungen speichern</button>
                         </div>
 
                         <!-- Button to go to company page -->
@@ -89,7 +112,10 @@
                         <notification :message="success" v-if="success" class="text-success mt-2 text-center" />
 
 
-                    </form>
+
+
+
+
                 </div>
 
 
@@ -125,7 +151,9 @@ export default {
             house_number: null,
             postcode: null,
             residence: null,
-            email: null
+            email: null,
+            admins: [],
+            email_to_add_admin_to_company: null
         };
     },
     async mounted(){
@@ -154,14 +182,36 @@ export default {
                 this.residence = data.data.residence;
                 this.email = data.data.email;
             }
-
-
         } catch (e) {
             this.error= "Error" + e.response.data.message;   
         }
 
 
+        // Get Admins of company
+        try {
+            const{data} = await this.$axios.post("company/getAdminsOfCompany", {
+                id: this.id
+            });
+            
+            if(data.state == "error"){
+                this.error += data.message;
+                this.success = null;
+            }
+            if(data.state == "success"){
+                this.admins = data.data;
+            }
+            else{
+                this.error += "Die Admins konnten nicht geladen werden."
+            }
+            
+        } catch (e) {
+            this.error += "Die Admins konnten leider nicht geladen werden. Versuchen Sie es später noch einmal.";
+        }
+        
+
         $('#id_div_loading_animation').removeClass("loading-animation");
+
+
     },
     methods:{
         async updateCompany(){
@@ -268,6 +318,56 @@ export default {
 
             } catch (e) {
                 this.error = e.response.data.message;
+            }
+        },
+        async addAdminToCompany(){
+            $("#id_button_addAdmin").addClass("loading-animation");
+            try {
+                const{data} = await this.$axios.post("company/addAdmin", {
+                    id: this.id,
+                    email: this.email_to_add_admin_to_company
+                });
+                if(data.state == "error"){
+                    this.error = data.message;
+                    this.success = null;
+                }
+                else if(data.state == "success"){
+                    this.admins.push(data.data)
+                }
+                else{
+                    this.error += "Es konnte leider kein Admin hinzugefügt werden.";
+                }
+
+
+            } catch (e) {
+                this.error += "Es konnte leider kein Admin hinzugefügt werden. Versuchen Sie es später noch einmal.";
+            }
+
+            $("#id_button_addAdmin").removeClass("loading-animation");
+
+        },
+        async removeAdminFromCompany(adminID, index){
+            try {
+                const{data} = await this.$axios.post("company/removeAdmin", {
+                    id: this.id,
+                    user_id: adminID
+                });
+
+                if(data.state == "error"){
+                    this.error = data.message;
+                    this.success = null;
+                }
+                else if(data.state == "success"){
+                    this.success = data.message;
+                    this.error = null;
+                    this.admins.splice(index, 1);
+                }
+                else{
+                    this.error = "Der Admin konnte leider nicht entfernt werden ";
+                }
+
+            } catch (e) {
+                this.error = "Der Admin konnte leider nicht entfernt werden. Versuchen Sie es später noch einmal. ";
             }
         }
     }
