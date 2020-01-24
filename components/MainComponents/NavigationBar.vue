@@ -42,7 +42,7 @@
                             <!-- if logged in -->
                             <div class="dropdown-menu" v-if="loggedIn === true" aria-labelledby="dropdown04">
                                 <nuxt-link to="/account/myProfile" class="dropdown-item">Mein Profil</nuxt-link>
-                                <nuxt-link to="/myClimateMaster" class="dropdown-item bg-success" >Mein Klimaschutz</nuxt-link>
+                                <nuxt-link to="/myClimateMaster" class="dropdown-item" >Mein Klimaschutz</nuxt-link>
                                 <!-- If admin -->
                                 <nuxt-link v-if="user.role === 'admin'" to="/admin/dashboard" class="dropdown-item">Admin Dashboard</nuxt-link>
                                 <div class="text-center">
