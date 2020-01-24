@@ -43,6 +43,18 @@ export default {
   border-color: #fff transparent #fff transparent;
   animation: loading-animation 1.2s linear infinite;
 }
+.loading-animation-green:after {
+  content: " ";
+  display: block;
+  width: 20px;
+  height: 20px;
+  /* margin: 8px; */
+  margin:auto;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  border-color: green transparent green transparent;
+  animation: loading-animation 1.2s linear infinite;
+}
 @keyframes loading-animation {
   0% {
     transform: rotate(0deg);

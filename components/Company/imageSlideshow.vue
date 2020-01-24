@@ -15,7 +15,7 @@
                     </label>
                     <input type="file" v-on:change="imageInputChanged" ref="slideshowimage" id="id_inputfile_slideshowimage" style="display:none">
                     <input class="form-control text-center" v-model="caption" maxlength="15" placeholder="Stichwort zum Bild"/>
-                    <button class="btn btn-default border mt-1" v-on:click="saveSlideshowImage">Speichern</button>
+                    <button id="id_button_saveSlideshowimage" class="btn btn-default border mt-1" v-on:click="saveSlideshowImage">Speichern</button>
                 </div>
             </div>
 
@@ -36,7 +36,7 @@
                                         </div>
                                     </div>
                                      <!-- Button to delete slideshowimage -->
-                                    <button v-if="addForm == true" class="btn btn-default border" @submit.prevent="deleteSlideshowimage(slideshowimage.id, index);">Löschen</button>
+                                    <button v-if="addForm == true" class="btn btn-default border" v-on:click="deleteSlideshowimage(slideshowimage.id, index);">Löschen</button>
                                 </div>
                             </div>
 
@@ -158,6 +158,8 @@ export default {
             let slideshowimage = this.$refs.slideshowimage.files[0];
             $("#id_icon_camera").removeClass("text-success");
 
+    	    $("#id_button_saveSlideshowimage").addClass("loading-animation-green");
+
             let formData = new FormData;
             formData.append('company_id', this.company_id);
             formData.append('caption', this.caption);
@@ -188,6 +190,9 @@ export default {
             } catch (e) {
                 this.error = "Error, Bild konnte nicht gespeichert werden: " + e.response.data.message;
             }
+
+    	    $("#id_button_saveSlideshowimage").removeClass("loading-animation-green");
+
         },
         imageInputChanged(){
             $("#id_icon_camera").addClass("text-success");

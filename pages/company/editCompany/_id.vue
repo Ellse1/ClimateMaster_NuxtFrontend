@@ -340,7 +340,7 @@ export default {
 
 
             } catch (e) {
-                this.error += "Es konnte leider kein Admin hinzugefügt werden. Versuchen Sie es später noch einmal.";
+                this.error = e.response.data.message;
             }
 
             $("#id_button_addAdmin").removeClass("loading-animation");
@@ -367,7 +367,7 @@ export default {
                 }
 
             } catch (e) {
-                this.error = "Der Admin konnte leider nicht entfernt werden. Versuchen Sie es später noch einmal. ";
+                this.error = e.response.data.message;
             }
         }
     }
