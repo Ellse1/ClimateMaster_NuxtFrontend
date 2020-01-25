@@ -1,15 +1,23 @@
 <template>
     <div>
       <div class="container text-center">
-        Wir sind noch im Aufbau, unter "Wir" kannst du mehr über uns erfahren:<br>
-        <nuxt-link id="id_button_link" class="btn btn-default mt-3 pl-5 pr-5 mb-5" to="/we"><span>Wir</span></nuxt-link>
+        <div v-if="loggedIn == false">
+            Wir sind noch im Aufbau, unter "Wir" kannst du mehr über uns erfahren:<br>
+            <nuxt-link id="id_button_link" class="btn btn-default mt-3 pl-5 pr-5" to="/we"><span>Wir</span></nuxt-link>
+        </div>
 
-        <!-- font-awesome icon example -->
-        <!-- <font-awesome-icon :icon="['fas', 'adjust']"  /> -->
-        <!-- <font-awesome-icon :icon="['fas', 'home']" /> -->
+        <div v-if="loggedIn == true && user.last_login == null">
+            <span style="font-size:20px;">
+              Unter <b>Mein Profil</b> findest du alles über dein ClimateMaster konto heraus.<br>
+              Mit unseren <b>Climadvice</b> wollen wir dir dabei helfen, klimafreundlich zu leben. <br>
+              <b>Mein Klimaschutz</b> hilft dir, noch 2020 umweltfreundlich klimaneutral zu werden. <br>
+              <b>Viel Spaß!</b>
+            </span>
+        </div>
+      
+        
 
-
-        <div class="row">
+        <div class="row mt-5">
           <client-only>
           <!-- If not logged in  -->
           <div class="col-md-4 mb-3" v-if="loggedIn === false">
