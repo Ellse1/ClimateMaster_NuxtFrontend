@@ -18,14 +18,15 @@
         <!-- ClimateMasterHeader -->
         <HeaderAnimation />
 
-        <div class="text-center" v-if="loggedIn == true">
-            <h3 v-if="user.last_login == null">Willkommen {{user.firstname}}, <br>Schön, dass du dabei bist!</h3>
-            <h3 v-if="user.last_login != null">Hallo {{user.firstname}}</h3>
-        </div>
+        <client-only>
+            <div class="text-center" v-if="loggedIn == true">
+                <h3 v-if="user.last_login == null">Willkommen {{user.firstname}}, <br>Schön, dass du dabei bist!</h3>
+                <h3 v-if="user.last_login != null">Hallo {{user.firstname}}</h3>
+            </div>
 
-        <!-- ShortText -->
-        <h4 class="text-center" v-if="loggedIn == false || user.last_login != null">Schön, dass du Interesse an konkretem, umweltfreundlichen Klimaschutz hast!</h4>
-
+            <!-- ShortText -->
+            <h4 class="text-center" v-if="loggedIn == false || user.last_login != null">Schön, dass du Interesse an konkretem, umweltfreundlichen Klimaschutz hast!</h4>
+        </client-only>
     </div>
 
     <div id="">
