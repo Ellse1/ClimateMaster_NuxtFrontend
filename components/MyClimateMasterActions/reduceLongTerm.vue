@@ -17,8 +17,12 @@
                 <p>
                     Es ist wirklich sehr bemerkenswert, wie du dich für konsequenten Klimaschutz einsetzt.
                     Unter "Climadvices" findest du noch einmal die effizientesten Möglichkeiten, Umweltfreundlich
-                    zu leben. Kannst in diesem Jahr vielleicht eine Sache realisieren?
+                    zu leben. Kannst in diesem Jahr vielleicht langfristige Klimaschutzmaßnahme einleiten?
                 </p>
+
+
+                <co2calculationChart />
+
 
                 <nuxt-link to="climadvices" class="btn btn-success mb-2">Climadvices</nuxt-link>
 
@@ -26,3 +30,12 @@
         </div>
     </div>
 </template>
+<script>
+import co2calculationChart from '~/components/MyClimateMasterActions/Resources/myCO2CalculationChart';
+
+export default {
+    components:{
+        co2calculationChart
+    }
+}
+</script>

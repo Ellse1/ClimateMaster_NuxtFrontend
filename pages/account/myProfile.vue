@@ -74,15 +74,18 @@
             <notification :message="success" v-if="success" class="text-success mt-3" />
         </div>
 
+        <co2calculationChart class="mt-4" />
 
     </div>
 </template>
 <script>
 import notification from "~/components/MainComponents/Notification"
+import co2calculationChart from '~/components/MyClimateMasterActions/Resources/myCO2CalculationChart';
 export default {
     middleware: 'auth',
     components:{
-        notification
+        notification,
+        co2calculationChart
     },
     data(){
         return{
