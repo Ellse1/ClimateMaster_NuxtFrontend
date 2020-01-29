@@ -192,7 +192,7 @@ export default {
     data(){
         return{
             climateMasterActionsOpened: [false, false, false, false, false, false],
-            climatemaster_steps_completed: {}
+            climatemaster_steps_completed: {},
         }
     },
     async mounted(){
@@ -221,8 +221,32 @@ export default {
             //If this step is already done -> don't open
             if(this.climatemaster_steps_completed[stepname] != true){
                 temp[indexNumber] = true;
-                this.climateMasterActionsOpened = temp;
-                var scrollTo = VueScrollTo.scrollTo("#id_div_climateMasterSteps_integrated");
+
+                //if want to open step 2, 3 or 4 -> the step before has to be done!
+                if(temp[1]){
+                    if(this.climatemaster_steps_completed['calculate']){
+                        this.climateMasterActionsOpened = temp;
+                        var scrollTo = VueScrollTo.scrollTo("#id_div_climateMasterSteps_integrated"); 
+                    }
+                }
+                else if(temp[2]){
+                    if(this.climatemaster_steps_completed['reduce_short_term']){
+                        this.climateMasterActionsOpened = temp;
+                        var scrollTo = VueScrollTo.scrollTo("#id_div_climateMasterSteps_integrated"); 
+                    }
+                }
+                else if(temp[3]){
+                    if(this.climatemaster_steps_completed['customize_calculation']){
+                        this.climateMasterActionsOpened = temp;
+                        var scrollTo = VueScrollTo.scrollTo("#id_div_climateMasterSteps_integrated"); 
+                    }
+                }
+                // If other not completed step is clicked => just open
+                else{
+                    this.climateMasterActionsOpened = temp;
+                    var scrollTo = VueScrollTo.scrollTo("#id_div_climateMasterSteps_integrated");
+                }
+
             }
         },
         async climatemaster_steps_completed_changed(){
