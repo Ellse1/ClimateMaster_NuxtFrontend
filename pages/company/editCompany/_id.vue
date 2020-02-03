@@ -37,12 +37,13 @@
 
                 <!-- Input for company Data -->
                 <div class="container" style="margin-top:-140px;">
+                        <p v-if="verified == false" class="text-danger">Diese Firma wurde noch nicht von einem Admin verifiziert und ist damit noch nicht sichtbar.</p>
 
                         <div class="form-group col-md-8 mx-auto">
                             <input class="mt-5 form-control text-center" v-model="name" placeholder="Firmenname" style="font-size:30px;"/>
                         </div>
                         <div class="form-group">
-                            <textarea class="form-control" v-model="description" placeholder="Firmenbeschreibung" rows="5"></textarea>
+                            <textarea class="form-control text-center" v-model="description" placeholder="Firmenbeschreibung" rows="5"></textarea>
                         </div>
 
 
@@ -152,6 +153,7 @@ export default {
             postcode: null,
             residence: null,
             email: null,
+            verified: null,
             admins: [],
             email_to_add_admin_to_company: null
         };
@@ -181,6 +183,7 @@ export default {
                 this.postcode = data.data.postcode;
                 this.residence = data.data.residence;
                 this.email = data.data.email;
+                this.verified = data.data.verified;
             }
         } catch (e) {
             this.error= "Error" + e.response.data.message;   

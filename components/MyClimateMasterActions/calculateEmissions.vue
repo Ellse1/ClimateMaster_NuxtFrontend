@@ -30,7 +30,12 @@
                     <form @submit.prevent="saveCO2Calculation">
                         
                         <input class="form-control" v-model="link_uba_co2calculation" placeholder="https://uba.co2-rechner.de/de_DE/?bookmark=kAi4dpLEzOyBIYNl (So ähnlich sieht dein Link aus)" required/>
-                
+
+                        <div class="form-group">
+                            <input id="id_checkbox_accept" type="checkbox" required />
+                            <label style="max-width:400px;" for="id_checkbox_accept">Übertragung der CO2 Berechnen akzeptieren</label>
+                        </div>
+
                         <button id="id_button_save" type="submit" class="btn btn-success mt-2 mb-3">
                             Link speichern und Schritt abschließen
                             <font-awesome-icon icon="check-circle" style="font-size:20x;"/>     

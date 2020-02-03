@@ -78,13 +78,17 @@ export default {
             this.co2calculation = co2calculation;
         },
         pay(roundup){
+
+            // var domain = "http://localhost:8000";
+            var domain = "https://www.climate-master.com:8000";
+
             if(roundup == false){
                 $("#id_button_pay_without_roundup").addClass("loading-animation")
-                window.location.href = "https://www.climate-master.com:8000/api/paypal/payment?id=" + this.user.id + "&roundup=0";
+                window.location.href = domain + "/api/paypal/payment?id=" + this.user.id + "&roundup=0";
             }
             else if(roundup == true){
                 $("#id_button_pay_with_roundup").addClass("loading-animation")
-                window.location.href = "https://www.climate-master.com:8000/api/paypal/payment?id=" + this.user.id + "&roundup=1";
+                window.location.href = domain + "/api/paypal/payment?id=" + this.user.id + "&roundup=1";
             }
         }
     }
