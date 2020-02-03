@@ -41,7 +41,6 @@
 
                 <notification :message="error" v-if="error" class="text-danger mt-2" />
                 <notification :message="success" v-if="success" class="text-success mt-2" />
-
                
 
             </div>

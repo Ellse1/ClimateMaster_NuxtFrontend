@@ -136,8 +136,12 @@ export default {
         try {
             const{data} = await this.$axios.post("user/getProfilePicture");
             
-            if(data.state != 'error'){
-                var rawResponse = data;
+            if(data.state == 'error'){
+                this.error = data.message;
+                this.success = null;
+            }
+            else if(data.state == 'success'){
+                var rawResponse = data.image_base64;
                 //Give picture to element
                 $("#id_img_profilePicture").attr('src', 'data:image/jfif;base64,'+rawResponse);
 
@@ -145,6 +149,9 @@ export default {
                 $("#id_div_profilePicture").show();
                 $("#id_img_profilePicture").show();
                 $("#id_icon_profile_picture").hide();
+            }
+            else{
+                this.error = "Das profilbild konnte nicht geholt werden."
             }
         } catch (e) {
             this.error = "Error. Konnte das Profilbild nicht laden. " + e.response.data.message;
@@ -170,17 +177,32 @@ export default {
                         'Content-Type' : 'multipart/form-data'
                     }
                 })
-                var rawResponse = data;
-                //Give picture to element
-                $("#id_img_profilePicture").attr('src', 'data:image/jfif;base64,'+rawResponse);
 
-                //Show right element
-                $("#id_div_profilePicture").show();
-                $("#id_img_profilePicture").show();
-                $("#id_icon_profile_picture").hide();
+                if(data.state == "error"){
+                    this.error = data.message;
+                    this.success = null;
+                }
+                else if(data.state == "success"){
+                    this.error = null;
+                    this.success = data.message;
+
+                    var rawResponse = data.image_base64;
+                    //Give picture to element
+                    $("#id_img_profilePicture").attr('src', 'data:image/jfif;base64,'+rawResponse);
+
+                    //Show right element
+                    $("#id_div_profilePicture").show();
+                    $("#id_img_profilePicture").show();
+                    $("#id_icon_profile_picture").hide();
+                }
+                else{
+                    this.success = null;
+                    this.error = "Das Bild konnte nicht gespeichert werden."
+                }
                 
             } catch (e) {
-                
+                this.success = null;
+                this.error = "Das Bild konnte nicht gespeichert werden. Versuchen Sie es später noch einmal.";
             }
 
             $("#id_div_loading").removeClass("loading-animation");

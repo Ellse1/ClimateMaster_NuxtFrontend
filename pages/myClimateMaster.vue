@@ -135,10 +135,11 @@
         <calculationCompleted id="id_congratulation_calculationCompleted" style="display:none;" @hideCongratulation_calculationCompleted="hideCongratulation_calculationCompleted"/>
         <reduceShortTermCompleted id="id_congratulation_reduceShortTermCompleted" style="display:none;" @hideCongratulation_reduceShortTermCompleted="hideCongratulation_reduceShortTermCompleted"/>
         <customizeCalculationCompleted id="id_congratulation_customizeCalculationCompleted" style="display:none;" @hideCongratulation_customizeCalculationCompleted="hideCongratulation_customizeCalculationCompleted"/>
+        <becomeClimatemasterCompleted id="id_congratulation_becomeClimatemasterCompleted" style="display:none;" @hideCongratulation_becomeClimatemasterCompleted="hideCongratulation_becomeClimatemasterCompleted"/>
 
 
 
-        <!-- Show the steps on the end of page -->
+        <!-- Show the steps content on the end of page -->
         <div class="mt-4 bg-light rounded"  id="id_div_climateMasterSteps_integrated">
 
             <div class="container pt-2 pb-2 text-center rounded">
@@ -172,6 +173,8 @@ import reduceLongTerm from '~/components/MyClimateMasterActions/reduceLongTerm';
 import calculationCompleted from '~/components/MyClimateMasterActions/Awards/calculationCompleted';
 import reduceShortTermCompleted from '~/components/MyClimateMasterActions/Awards/reduceShortTermCompleted';
 import customizeCalculationCompleted from '~/components/MyClimateMasterActions/Awards/customizeCalculationCompleted';
+import becomeClimatemasterCompleted from '~/components/MyClimateMasterActions/Awards/becomeClimatemasterCompleted';
+
 
 var VueScrollTo = require('vue-scrollto');
 
@@ -187,7 +190,8 @@ export default {
 
         calculationCompleted,
         reduceShortTermCompleted,
-        customizeCalculationCompleted
+        customizeCalculationCompleted,
+        becomeClimatemasterCompleted
     },
     data(){
         return{
@@ -205,6 +209,14 @@ export default {
             }
             else if(data.state == "success"){
                 this.climatemaster_steps_completed = data.data;
+
+                // If the user has just paid to get climatemaster (-> the route will be myClimateMaster?paid=true)
+                if(this.$route.query.paid != undefined){
+                    if(this.$route.query.paid == "true" && this.climatemaster_steps_completed['become_climatemaster'] == true){
+                        $("#id_congratulation_becomeClimatemasterCompleted").show();
+                    }
+                }
+            
             }
             else{
                 
@@ -287,7 +299,10 @@ export default {
         },
         hideCongratulation_customizeCalculationCompleted(){
             $("#id_congratulation_customizeCalculationCompleted").hide();
-        }
+        },        
+        hideCongratulation_becomeClimatemasterCompleted(){
+            $("#id_congratulation_becomeClimatemasterCompleted").hide();
+        },
     }
 }
 </script>

@@ -20,11 +20,11 @@
             </div>
             </div>
             <div class="text-center mb-3">
-                <button class="btn btn-light m-2 buttonClimateMasterArea" id="id_button_public_emissions" v-on:click="showonlyOfClimateMasterArea('public_emissions')">Öffentliche Emissionen</button>
-                <button class="btn btn-light m-2 buttonClimateMasterArea" id="id_button_consumption" v-on:click="showonlyOfClimateMasterArea('consumption')">Konsum</button>
-                <button class="btn btn-light m-2 buttonClimateMasterArea" id="id_button_nutrition" v-on:click="showonlyOfClimateMasterArea('nutrition')">Ernährung</button>
-                <button class="btn btn-light m-2 buttonClimateMasterArea" id="id_button_mobility" v-on:click="showonlyOfClimateMasterArea('mobility')">Mobilität</button>
                 <button class="btn btn-light m-2 buttonClimateMasterArea" id="id_button_heating_electricity" v-on:click="showonlyOfClimateMasterArea('heating_electricity')">Heizung und Strom</button>
+                <button class="btn btn-light m-2 buttonClimateMasterArea" id="id_button_mobility" v-on:click="showonlyOfClimateMasterArea('mobility')">Mobilität</button>
+                <button class="btn btn-light m-2 buttonClimateMasterArea" id="id_button_consumption" v-on:click="showonlyOfClimateMasterArea('consumption')">Konsum</button>
+                <button class="btn btn-light m-2 buttonClimateMasterArea" id="id_button_public_emissions" v-on:click="showonlyOfClimateMasterArea('public_emissions')">Öffentliche Emissionen</button>
+                <button class="btn btn-light m-2 buttonClimateMasterArea" id="id_button_nutrition" v-on:click="showonlyOfClimateMasterArea('nutrition')">Ernährung</button>
             </div>
 
 
