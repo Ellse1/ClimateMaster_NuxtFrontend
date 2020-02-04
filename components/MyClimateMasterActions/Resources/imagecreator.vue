@@ -31,6 +31,9 @@
                 <div class="mt-4">
                     <h6>Dieses Bild veröffentlichen</h6>
                     <toggle-button :sync="true" v-model="picture_single_for_imagecreator.sharing_permitted" @change="sharingPermittetChanged()"/><br>
+                    <div v-if="picture_single_for_imagecreator.sharing_permitted == false">
+                        Aktuell: nicht veröffentlichen!
+                    </div>
                     <p v-if="picture_single_for_imagecreator.sharing_permitted == false">
                         Lieber {{user.firstname}},<br>Es ist wirklich super, dass du dich so konsequent für nachhaltigen Klimaschutz einsetzt
                         und mit deiner Investition in Vermeidung von Treibhausgasen einen großen Beitrag zum Klimaschutz leistest. Falls du einverstanden bist, würden wir
