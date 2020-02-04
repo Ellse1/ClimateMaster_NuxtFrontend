@@ -26,7 +26,7 @@
             </div>
             <!-- Area to edit picture -->
             <div class="col-md-4">
-                <button class="btn btn-default border-dark" v-on:click="downloadPicture">Dieses Bild herunterladen</button>
+                <button id="id_button_download_picture" class="btn btn-default border-dark" v-on:click="downloadPicture">Dieses Bild herunterladen</button>
                 
                 <div class="mt-4">
                     <h6>Dieses Bild veröffentlichen</h6>
@@ -194,6 +194,9 @@ export default {
             }
         },
         async downloadPicture(){
+            
+            $("#id_button_download_picture").addClass('loading-animation-green');
+
             var id = this.picture_single_for_imagecreator.id;
             try {
                 const{data} = await this.$axios.post("picture_for_imagecreator/download", {
@@ -244,6 +247,9 @@ export default {
             } catch (error) {
                 
             }
+
+            $("#id_button_download_picture").removeClass('loading-animation-green');
+
         },
         async sharingPermittetChanged(){
             try {
