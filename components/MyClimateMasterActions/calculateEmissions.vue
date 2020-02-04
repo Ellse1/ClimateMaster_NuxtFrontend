@@ -17,8 +17,8 @@
 
                 <p> 
                     Mit dem CO2 Rechner des Umweltbundesamtes kannst du deinen individuellen Ausstoß von Treibhausgasen (z.B. CO2) berechnen.
-                    Mit dieser Berechnung wollen wir dir zukünftig individuell effiziente Möglichkeiten für 
-                    persönlichen Klimaschutz vorschlagen. Deinen Ausstoß berechnen kannst du natürlich jetzt schon, der Link zu deiner Berechnung verfällt nicht.<br><b>Viel Spaß beim Berechnen!</b>
+                    Mit dieser Berechnung können wir dir individuell effiziente Möglichkeiten für 
+                    persönlichen Klimaschutz vorschlagen. Wenn du die Berechnung speicherst, bekommst du einen Link. Füge diesen Link hier ein, um die Berechnung zu übertragen.<br><b>Viel Spaß beim Berechnen!</b>
                 </p>
                 
                 
