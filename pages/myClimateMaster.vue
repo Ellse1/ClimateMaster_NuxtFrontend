@@ -3,13 +3,13 @@
 
         <!-- Dieser Teil ist noch im Aufbau -->
         <div class="bg-light border border-success text-center p-3">
-            <h4>Noch im Aufbau</h4>
+            <h4>Werde Klimaneutral</h4>
             Hallo {{user.firstname}},<br>
-            Diese Seite ist leider noch im Aufbau, deshalb können wir dich noch nicht so umfangreich bei den einzelnen
-            Schritten zur persönlichen Klimaneutralität unterstützen, wie wir es gerne würden. 
-            Trotzdem kannst du diesen Schritten folgen, um deinen persönlichen Treibhausgasausstoß zu verringern und klimaneutral zu werden.
-            Bei weiteren Fragen kannst du dich gerne an uns wenden: elias.singer@online.de. <br>
-            <b>Vielen Dank für dein Verständnis und deine Anstrengungen für den Umwelt- und Klimaschutz!</b>
+            Diese Seite hilft dir dabei 2020 Klimaneutral und ClimateMaster zu werden. Konkret bedeutet das, dass
+            durch deinen Lebensstiel nicht mehr Treibhausgase in die Atmosphaire gelangen, als du auch wieder verhinderst.
+            Folgen den 6 Schritten, um deinen persönlichen Treibhausgasausstoß zu verringern und klimaneutral zu werden.
+            Bei Fragen oder Anregungen freuen wir uns über eine E-Mail an elias.singer@online.de.<br>
+            <b>Vielen Dank für deine Anstrengungen für konsequenten Umwelt- und Klimaschutz!</b>
         </div>
 
 
