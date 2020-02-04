@@ -5,8 +5,12 @@
 
           <client-only>
               <div v-if="loggedIn == false">
-                  Wir sind noch im Aufbau, unter "Wir" kannst du mehr über uns erfahren:<br>
-                  <nuxt-link id="id_button_link" class="btn btn-default mt-3 pl-5 pr-5" to="/we"><span>Wir</span></nuxt-link>
+                  <!-- Wir sind noch im Aufbau, unter "Wir" kannst du mehr über uns erfahren:<br>
+                  <nuxt-link id="id_button_link" class="btn btn-default mt-3 pl-5 pr-5" to="/we"><span>Wir</span></nuxt-link> -->
+
+                  <div class="rounded p-3" style="background-color:rgba(247, 247, 247, 0.5)">
+                      <h2>Werde <span class="text-success">Climate</span>Master 2020</h2>
+                  </div>
               </div>
 
               <!-- After login: last_login is already set to "now"!  So i take "last_logout". As long as the user didn't logout the first time, he will see this message -->
