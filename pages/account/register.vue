@@ -40,7 +40,7 @@
   
                             </div>
 
-                            <div class="col-12 text-center rounded" style="background-color:rgba(247, 247, 247, 0.5)">
+                            <div class="col-12 text-center rounded" style="">
                                 <notification :message="error" v-if="error" class="mt-4 text-danger"/>
                                 <notification :message="success" v-if="success" class="mt-4 text-success"/>
                             </div>

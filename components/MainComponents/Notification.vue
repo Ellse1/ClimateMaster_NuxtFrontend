@@ -1,6 +1,6 @@
 <template>
     <div>
-        <p class="notification">
+        <p class="notification p-2 rounded" style="background-color:rgba(247, 247, 247, 0.5)">
             {{message}}
         </p>
     </div>
