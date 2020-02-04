@@ -99,7 +99,7 @@
                     <div v-if="climatemaster_steps_completed['present_progress'] == true" class="text-center text-success">
                         <font-awesome-icon icon="check-circle" class="mt-1" style="font-size:50px;"/>                         
                     </div>
-                    <h3 class="text-center">Fortschritt präsentieren und Mittmenschen begeistern</h3>
+                    <h3 class="text-center">Fortschritt präsentieren und Mittmenschen helfen</h3>
                 </div>
             </div>
             <div class="col-md-1 if-device-large" id="id_div_center_right" style="height:150px;border-bottom: 10px dashed green;"></div>
