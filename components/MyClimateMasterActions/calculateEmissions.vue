@@ -33,7 +33,7 @@
 
                         <div class="form-group">
                             <input id="id_checkbox_accept" type="checkbox" required />
-                            <label style="max-width:400px;" for="id_checkbox_accept">Übertragung der CO2 Berechnen akzeptieren</label>
+                            <label style="max-width:400px;" for="id_checkbox_accept">Übertragung der CO2 Berechnung akzeptieren</label>
                         </div>
 
                         <button id="id_button_save" type="submit" class="btn btn-success mt-2 mb-3">

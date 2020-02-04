@@ -14,7 +14,7 @@
                         </div>
                         <div class="form-group">
                             <!-- <label for="password">Passwort</label> -->
-                            <input name="password" type="password" v-model="userForm.password"  id="password" class="form-control text-center" style="margin:auto;" placeholder="password" required/>
+                            <input name="password" type="password" v-model="userForm.password"  id="password" class="form-control text-center" style="margin:auto;" placeholder="password" required minlength="8"/>
                         </div>
                         <div class="form-group">
                             <button id="id_button_login" type="submit" class="btn mb-2 btn-success pl-5 pr-5">Einloggen</button>

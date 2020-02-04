@@ -31,6 +31,13 @@
                 <form @submit.prevent="saveCO2Calculation">
                     <label><b>Link der aktualisierten Berechnung einfügen</b></label>
                     <input class="form-control" v-model="link_uba_co2calculation" placeholder="https://uba.co2-rechner.de/de_DE/?bookmark=kAi4dpLEzOyBIYNl (Link der angepassten Berechnung)" required>
+                    
+                    <!-- Checkbox -->
+                    <div class="form-group">
+                        <input id="id_checkbox_accept" type="checkbox" required />
+                        <label style="max-width:400px;" for="id_checkbox_accept">Übertragung der CO2 Berechnung akzeptieren</label>
+                    </div>
+                    
                     <button id="id_button_save" type="submit" class="btn btn-success mt-2 mb-2">
                         Berechnung speichern
                     </button>
@@ -40,6 +47,7 @@
                     Schritt mit dieser Berechnung abschließen
                     <font-awesome-icon icon="check-circle" style="font-size:20x;"/> 
                 </button>
+                <p>Dannach können Sie Ihre Berechnung wieder am 01. Januar 2021 anpassen.</p>
                 
             </div>
 

@@ -9,7 +9,8 @@
                   <nuxt-link id="id_button_link" class="btn btn-default mt-3 pl-5 pr-5" to="/we"><span>Wir</span></nuxt-link>
               </div>
 
-              <div v-if="loggedIn == true && user.last_login == null">
+              <!-- After login: last_login is already set to "now"!  So i take "last_logout". As long as the user didn't logout the first time, he will see this message -->
+              <div v-if="loggedIn == true && user.last_logout == null">
                   <span style="font-size:20px;">
                     Unter <b>Mein Profil</b> findest du alles über dein ClimateMaster konto heraus.<br>
                     Mit unseren <b>Climadvice</b> wollen wir dir dabei helfen, klimafreundlich zu leben. <br>

@@ -65,12 +65,29 @@
                         <div class="col-8 text-center mt-3">
                             <input class="form-control text-center" v-model="residence" placeholder="Wohnort" />
                         </div>
+                        <div class="col-9 text-center mt-3">
+                            <input class="form-control text-center" v-model="instagram_name" placeholder="Instagram Name" />
+                        </div>
+                        <div class="col-3 dropdown mt-3" >
+                            <a class="btn btn-default w-100 border" href="#" id="dropdownInstagram" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">?</a>
+                            <div class="dropdown-menu p-2" aria-labelledby="dropdownInstagram">
+                                <p> 
+                                    Wenn du auf deinem Instagram Account ein ClimateMaster Bild hochlädst, folgen wir dir mit 
+                                    unserem Offiziellen Account (climatemasterandfriends). Damit können sich ClimateMaster noch besser vernetzen.
+                                </p>
+                            </div>
+                        </div>
+                        <!-- <div class="col-6 text-center mt-3">
+                            <a href="#" class="btn btn-default border dropdown-toggle" id="dropdownInstagram" data-toggle="instagram_name_description" aria-haspopup="true" aria-expanded="false" >?</a>
+                            <div id="instagram_name_description" aria-labelledby="dropdownInstagram" style="">
+                               </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
 
             <div class="col-md-12 mt-4 text-center" >
-                <button id="id_button_save" class="btn btn-success mb-4 " style="width:90%" v-on:click="saveAddress">Änderungen speichern</button>
+                <button id="id_button_save" class="btn btn-success mb-4 " style="width:90%" v-on:click="saveAddressAndInstagram">Änderungen speichern</button>
             
                 <notification :message="error" v-if="error" class="text-danger mt-3" />
                 <notification :message="success" v-if="success" class="text-success mt-3" />
@@ -103,6 +120,7 @@ export default {
             house_number: null,
             postcode: null,
             residence: null,
+            instagram_name: null
         };
     },
     async mounted(){
@@ -126,6 +144,7 @@ export default {
                 this.house_number = data.data.house_number;
                 this.postcode = data.data.postcode;
                 this.residence = data.data.residence;
+                this.instagram_name = data.data.instagram_name;
             }
 
         } catch (error) {
@@ -209,7 +228,7 @@ export default {
 
         },
 
-        async saveAddress(){
+        async saveAddressAndInstagram(){
             $("#id_button_save").addClass("loading-animation");
 
             let formData = new FormData();
@@ -225,9 +244,12 @@ export default {
             if(this.residence != null){
                 formData.append('residence', this.residence);            
             }
+            if(this.instagram_name != null){
+                formData.append('instagram_name', this.instagram_name);            
+            }
 
             try {
-                const{data} = await this.$axios.post("user/saveAddress",
+                const{data} = await this.$axios.post("user/saveAddressAndInstagram",
                 formData,{
                     headers:{
                         "Content-Type" : "multipart/form-data"

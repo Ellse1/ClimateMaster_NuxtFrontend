@@ -36,7 +36,7 @@ export default {
   plugins: [
     '~/plugins/vue-scrollto',
      '~/plugins/mixins/user',
-      {src:'~/plugins/vue-js-toggle-button', mode:'client'}
+      {src:'~/plugins/vue-js-toggle-button', mode:'client'},
   ],
   /*
   ** Nuxt.js dev-modules
