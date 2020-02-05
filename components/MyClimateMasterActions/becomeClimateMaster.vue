@@ -72,9 +72,9 @@ export default {
     },
     methods:{
         getCO2CalculationFromChildComponent(co2calculation){
-            this.price_small = co2calculation.total_emissions * 23;
+            this.price_small = (co2calculation.total_emissions * 23).toFixed(2);
             this.total_emission_uprounded = Math.ceil(co2calculation.total_emissions)
-            this.price_uprounded = this.total_emission_uprounded * 23;
+            this.price_uprounded = (this.total_emission_uprounded * 23).toFixed(2);
             this.co2calculation = co2calculation;
         },
         pay(roundup){
