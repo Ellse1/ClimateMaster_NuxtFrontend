@@ -53,7 +53,9 @@
             </div>
             
             <co2calculationChart v-if="success" />
-
+            
+            <button id="id_button_open_next_step" class="btn btn-success mb-2 mt-2 px-4" v-on:click="openNextStep" style="display:none">Weiter</button>
+            
         </div>
     </div>
 </template>
@@ -90,6 +92,7 @@ export default {
                     this.success = data.message;
                     this.error = null;
                     $("#id_div_hideAfterSave").hide();
+                    $("#id_button_open_next_step").show();
                     this.$emit('climatemaster_steps_completed_changed');
                 }
                 else{
@@ -102,7 +105,9 @@ export default {
 
             $("#id_button_save").removeClass("loading-animation");
         },
-        
+        openNextStep(){
+            this.$emit('open_next_step');
+        }
     }
 }
 </script>

@@ -144,11 +144,11 @@
 
             <div class="container pt-2 pb-2 text-center rounded">
                             
-                <calculateEmissions v-if="climateMasterActionsOpened[0]" @climatemaster_steps_completed_changed="climatemaster_steps_completed_changed"/>
+                <calculateEmissions v-if="climateMasterActionsOpened[0]" @climatemaster_steps_completed_changed="climatemaster_steps_completed_changed" @open_next_step="openClimateMasterAction(1, 'reduce_short_term')"/>
             
-                <reduceShortTerm v-if="climateMasterActionsOpened[1]"  @climatemaster_steps_completed_changed="climatemaster_steps_completed_changed"/>
+                <reduceShortTerm v-if="climateMasterActionsOpened[1]"  @climatemaster_steps_completed_changed="climatemaster_steps_completed_changed" @open_next_step="openClimateMasterAction(2, 'customize_calculation')"/>
 
-                <customizeCalculation v-if="climateMasterActionsOpened[2]" @climatemaster_steps_completed_changed="climatemaster_steps_completed_changed"/>
+                <customizeCalculation v-if="climateMasterActionsOpened[2]" @climatemaster_steps_completed_changed="climatemaster_steps_completed_changed" @open_next_step="openClimateMasterAction(3, 'become_climatemaster')"/>
 
                 <becomeClimateMaster v-if="climateMasterActionsOpened[3]"/>
 
@@ -214,6 +214,8 @@ export default {
                 if(this.$route.query.paid != undefined){
                     if(this.$route.query.paid == "true" && this.climatemaster_steps_completed['become_climatemaster'] == true){
                         $("#id_congratulation_becomeClimatemasterCompleted").show();
+                        //open next step
+                        this.openClimateMasterAction(4, 'present_progress');
                     }
                 }
             
