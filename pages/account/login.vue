@@ -7,6 +7,8 @@
                     <h5>Einloggen</h5> 
                     <Notification :message="error" v-if="error" class="mt-4 text-danger"/>
 
+                    <small><nuxt-link class="" id="id_link_resendverification" style="display:none;" to="/account/resendverification" >Verifizierungslink erneut senden</nuxt-link></small>
+
                     <form class="text-center" @submit.prevent="addUser">
                         <div class="form-group">
                             <!-- <label for="email">E-Mail</label> -->
@@ -60,6 +62,11 @@ export default {
                     data: this.userForm
                 });
             }catch(e){
+
+                if(e.response.data.verified == false){
+                    $("#id_link_resendverification").show();
+                }
+
                 this.error = e.response.data.message;
             }
             $("#id_button_login").removeClass('loading-animation')
