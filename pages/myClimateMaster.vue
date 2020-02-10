@@ -150,7 +150,7 @@
 
                 <customizeCalculation v-if="climateMasterActionsOpened[2]" @climatemaster_steps_completed_changed="climatemaster_steps_completed_changed" @open_next_step="openClimateMasterAction(3, 'become_climatemaster')"/>
 
-                <becomeClimateMaster v-if="climateMasterActionsOpened[3]"/>
+                <becomeClimateMaster v-if="climateMasterActionsOpened[3]" @climatemaster_steps_completed_changed="climatemaster_steps_completed_changed" @open_next_step="openClimateMasterAction(4, 'present_progress')"/>
 
                 <presentProgressAndBeRewarded v-if="climateMasterActionsOpened[4]" />
 
@@ -208,17 +208,7 @@ export default {
                 
             }
             else if(data.state == "success"){
-                this.climatemaster_steps_completed = data.data;
-
-                // If the user has just paid to get climatemaster (-> the route will be myClimateMaster?paid=true)
-                if(this.$route.query.paid != undefined){
-                    if(this.$route.query.paid == "true" && this.climatemaster_steps_completed['become_climatemaster'] == true){
-                        $("#id_congratulation_becomeClimatemasterCompleted").show();
-                        //open next step
-                        this.openClimateMasterAction(4, 'present_progress');
-                    }
-                }
-            
+                this.climatemaster_steps_completed = data.data;          
             }
             else{
                 
@@ -282,6 +272,9 @@ export default {
                     }
                     else if(this.climatemaster_steps_completed['customize_calculation'] == true && this.climatemaster_steps_completed['become_climatemaster'] == false){
                         $("#id_congratulation_customizeCalculationCompleted").show();
+                    }
+                    else if(this.climatemaster_steps_completed['become_climatemaster']){
+                        $("#id_congratulation_becomeClimatemasterCompleted").show();
                     }
                 }
                 else{

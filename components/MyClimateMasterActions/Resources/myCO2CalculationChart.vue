@@ -17,6 +17,7 @@
                     <div class="col-2" style="word-wrap: break-word;">Ernährung</div>
                     <div class="col-2" style="word-wrap: break-word;">Mobilität</div>
                     <div class="col-2" style="word-wrap: break-word;">Heizung und Strom</div>
+                    <div class="col-2" style="word-wrap: break-word;" v-if="props_with_compensation == true">Kompensierung (Alles!)</div>
                 </div>
 
                 <div class="text-center">
@@ -33,7 +34,7 @@
 var VueScrollTo = require('vue-scrollto');
 
 export default {
-    props: ['props_co2calculation'],
+    props: ['props_co2calculation', 'props_with_compensation'],
     data(){
         return{
             error: null,
@@ -43,58 +44,65 @@ export default {
         }
     },
     async mounted(){
-        if(this.props_co2calculation != null){
-            var emissions_minimized = {};
-            emissions_minimized['public_emissions'] = props_co2calculation['public_emissions'];
-            emissions_minimized['consumption'] = props_co2calculation['consumption'];
-            emissions_minimized['nutrition'] = props_co2calculation['nutrition'];
-            emissions_minimized['mobility'] = props_co2calculation['mobility'];
-            emissions_minimized['heating_electricity'] = props_co2calculation['heating_electricity'];
-            this.emissions = emissions_minimized;
+
+        try {
+            const{data} = await this.$axios.post("co2calculation/getLatestCalculation");
+
+            if(data.state == "error"){
+                this.error = data.message;
+                this.success = null;
+            }
+            else if(data.state == "success"){
+                this.success = data.message;
+                this.error = null;
+
+                var emissions_minimized = {};
+                emissions_minimized['public_emissions'] = data.data['public_emissions'];
+                emissions_minimized['consumption'] = data.data['consumption'];
+                emissions_minimized['nutrition'] = data.data['nutrition'];
+                emissions_minimized['mobility'] = data.data['mobility'];
+                emissions_minimized['heating_electricity'] = data.data['heating_electricity'];
+
+                //It it should show the compensation bar too
+                if(this.props_with_compensation == true){
+                    emissions_minimized['total_emissions'] = data.data['total_emissions'];
+                }
+
+                this.emissions = emissions_minimized;
+
+                this.total_emissions = data.data['total_emissions'];
+
+                //Returns this co2calculation to parent -> if parent needs it, not necessary to get again
+                this.$emit('saveCO2Calculation', data.data);
+            }
+            else{
+                this.error = "Die Daten konnten nicht geholt werden";
+            }
+        } catch (e) {
+            this.error = "Es konnte keine Berechnung geholt werden. " + e.response.data.message;
+        }  
+        
+    },
+    beforeUpdate(){
+        // If it should show the whole compensation too -> from parent set "props_with_compensation" = true -> rerender here
+        if(this.props_with_compensation == true){
+            this.emissions['total_emissions'] = this.total_emissions;
         }
-        else{
-            try {
-                const{data} = await this.$axios.post("co2calculation/getLatestCalculation");
-
-                if(data.state == "error"){
-                    this.error = data.message;
-                    this.success = null;
-                }
-                else if(data.state == "success"){
-                    this.success = data.message;
-                    this.error = null;
-
-                    var emissions_minimized = {};
-                    emissions_minimized['public_emissions'] = data.data['public_emissions'];
-                    emissions_minimized['consumption'] = data.data['consumption'];
-                    emissions_minimized['nutrition'] = data.data['nutrition'];
-                    emissions_minimized['mobility'] = data.data['mobility'];
-                    emissions_minimized['heating_electricity'] = data.data['heating_electricity'];
-                    this.emissions = emissions_minimized;
-
-                    this.total_emissions = data.data['total_emissions'];
-
-                    //Returns this co2calculation to parent -> if parent needs it, not necessary to get again
-                    this.$emit('saveCO2Calculation', data.data);
-                }
-                else{
-                    this.error = "Die Daten konnten nicht geholt werden";
-                }
-            } catch (e) {
-                this.error = "Es konnte keine Berechnung geholt werden. " + e.response.data.message;
-            }  
-        }
-    },    
+    }, 
     updated(){
         // For calculation the factor 
-        var biggestEmission = 0;
-
-        if(this.emissions['public_emissions'] > biggestEmission){biggestEmission=this.emissions['public_emissions'];}
-        if(this.emissions['consumption'] > biggestEmission){biggestEmission=this.emissions['consumption'];}
-        if(this.emissions['nutrition'] > biggestEmission){biggestEmission=this.emissions['nutrition'];}
-        if(this.emissions['mobility'] > biggestEmission){biggestEmission=this.emissions['mobility'];}
-        if(this.emissions['heating_electricity'] > biggestEmission){biggestEmission=this.emissions['heating_electricity'];}
-
+        var biggestEmission = 0.00;
+        
+        if(parseFloat(this.emissions['public_emissions']) > biggestEmission){biggestEmission=parseFloat(this.emissions['public_emissions']);}
+        if(parseFloat(this.emissions['consumption']) > biggestEmission){biggestEmission=parseFloat(this.emissions['consumption']);}
+        if(parseFloat(this.emissions['nutrition']) > biggestEmission){biggestEmission=parseFloat(this.emissions['nutrition']);}
+        if(parseFloat(this.emissions['mobility']) > biggestEmission){biggestEmission=parseFloat(this.emissions['mobility']);}
+        if(parseFloat(this.emissions['heating_electricity']) > biggestEmission){biggestEmission=parseFloat(this.emissions['heating_electricity']);}
+       
+        // If it should show the whole compensation too
+        if(this.props_with_compensation == true){
+            if(parseFloat(this.emissions['total_emissions']) > biggestEmission){biggestEmission=parseFloat(this.emissions['total_emissions']);}
+        }
         //The height of the div is 300px -> take 250 of that
         var faktor = 250/biggestEmission; 
 
@@ -104,7 +112,10 @@ export default {
         $("#nutrition").height(this.emissions['nutrition'] * faktor);
         $("#mobility").height(this.emissions['mobility'] * faktor);
         $("#heating_electricity").height(this.emissions['heating_electricity'] * faktor);
-
+        if(this.props_with_compensation == true){
+            $("#total_emissions").height(this.emissions['total_emissions'] * faktor);
+            $("#total_emissions").addClass("bg-success");
+        }
     }
 }
 </script>
