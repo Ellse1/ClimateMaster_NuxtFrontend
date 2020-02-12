@@ -97,6 +97,7 @@ export default {
                     return actions.order.create({
                         purchase_units: [{
                             amount: {
+                                currency_code: 'EUR',
                                 value: price
                                 },
                             description: 'CO2 Kompensierung: ' + total_emission + ' Tonnen'
@@ -108,6 +109,11 @@ export default {
                     //Show loading animation and approve the payment server side
                     $("#id_div_loading_animation_paid").show();
                     $("#id_div_loading_animation_paid").addClass('loading-animation-green');
+
+                    //VERRY IMPORTANT!!!  Captur the payment : VERRY IMPORTANT!!!!! if not -> not charged!!!
+                    const order = await actions.order.capture();
+
+                    //Sent to backend -> check payment and save in DB
                     const{data} = await thisApp.$axios.post("paypal/checkPayment",{
                         order_id : response_data.orderID
                     });
@@ -127,6 +133,9 @@ export default {
                         $("#id_div_co2calculationChart").deleteClass("col-md-9").addClass("col-md-12");
                     }
 
+                },
+                onError: error => {
+                    console.log(error);
                 }
             }).render('#id_paypal_button_container');
             this.paypal_button_rendered = true;
