@@ -18,7 +18,7 @@ export default {
       { src: 'https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js' },
       { src: 'https://code.jquery.com/jquery-3.3.1.slim.min.js' },
       { src: 'https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js' },
-      { src: 'https://www.paypal.com/sdk/js?client-id=AWGc4rt_bRO39-MfyCAw9qkSOqbmOvjJz-5Juv5s5SUUAwxfuqaaiQYAwX3bk3cQw_-le63DFHHwg88T&currency=EUR'}
+      { src: 'https://www.paypal.com/sdk/js?client-id=AZ2WeCHVS1LJyjAxz3XB-Fh5MiTCWJyOZjJ3iZOcq19iS32_4wSCRHipiAB0LHuluQfCZsw29FMk_E7g&currency=EUR'}
       
     ]
   },
