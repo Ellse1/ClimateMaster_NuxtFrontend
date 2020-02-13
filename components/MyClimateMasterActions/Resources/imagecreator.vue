@@ -21,6 +21,7 @@
                 
                 <div style="position:absolute;bottom:10px;background-color:rgba(247, 247, 247, 0.3)" class="w-100 mx-auto">
                     <h2><span class="text-success">Climate</span>Master 2020</h2>
+                    <h6>Umweltfreundlich klimaneutral</h6>
                 </div>
                 <!-- </div> -->
             </div>
