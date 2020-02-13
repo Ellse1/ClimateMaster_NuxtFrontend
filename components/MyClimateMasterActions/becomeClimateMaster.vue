@@ -55,7 +55,7 @@
             <notification :message="error" v-if="error" class="text-danger mt-2" />
             <notification :message="success" v-if="success" class="text-success mt-2" />
 
-            <button id="id_button_open_next_step" class="btn btn-success mb-2 mt-2 mx-auto" v-on:click="openNextStep">Weiter (nach Kompensationszahlung)</button>
+            <button id="id_button_open_next_step" class="btn btn-success mb-2 mt-2 mx-auto" v-on:click="openNextStep">Weiter (nach Klimaschutzunterstützung)</button>
 
             
             <!-- Project descriptions -->
