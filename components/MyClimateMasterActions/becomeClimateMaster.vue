@@ -55,7 +55,7 @@
             <notification :message="error" v-if="error" class="text-danger mt-2" />
             <notification :message="success" v-if="success" class="text-success mt-2" />
 
-            <button id="id_button_open_next_step" class="btn btn-success mb-2 mt-2 mx-auto" v-on:click="openNextStep">Weiter</button>
+            <button id="id_button_open_next_step" class="btn btn-success mb-2 mt-2 mx-auto" v-on:click="openNextStep">Weiter (nach Kompensationszahlung)</button>
 
             
             <!-- Project descriptions -->
@@ -65,7 +65,9 @@
                 Wir machen mit deiner Spende keine Cent Gewinn, im Gegenteil müssen wir sogar noch die PayPal Gebüren beisteuern.
                 Die Klimaschutzprojekte werden durch die gemeinnützige GmbH (gGmbH) 
                 <a target="_blanc" href="https://www.atmosfair.de/">Atmosfair</a>
-                 ausgewählt, begleitet und Dokumentiert.
+                 ausgewählt, begleitet und Dokumentiert. Uns, als vom Klimawandel betroffene, ist es egal, ob die
+                 Treibhausgase in Deutschland oder in anderen Ländern verhindert werden. Treibhausgase sollen
+                 dort eingespart werden, wo mit kleiner Anstrengung möglichst viel CO2 verhindert werden kann.
             </p>
             <div class="row mb-3">
                 <div class="col-md-4">
