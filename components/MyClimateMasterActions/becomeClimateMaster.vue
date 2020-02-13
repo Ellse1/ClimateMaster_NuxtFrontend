@@ -57,6 +57,75 @@
 
             <button id="id_button_open_next_step" class="btn btn-success mb-2 mt-2 mx-auto" v-on:click="openNextStep">Weiter</button>
 
+            
+            <!-- Project descriptions -->
+            
+            <h4 class="mt-4">Projekte, die durch deine Spende ermöglicht werden</h4>
+            <p>
+                Wir machen mit Ihrer Spende keine Cent Gewinn, im Gegenteil müssen wir sogar noch die PayPal gebüren beisteuern.
+                Die klimaschutzprojekte werden durch die gemeinnützige GmbH (gGmbH) 
+                <a target="_blanc" href="https://www.atmosfair.de/">Atmosfair</a>
+                 ausgewählt, begleitet und Dokumentiert.
+            </p>
+            <div class="row mb-3">
+                <div class="col-md-4">
+                    <div class="card">
+                        <img class="card-img-top" src="https://www.atmosfair.de/wp-content/uploads/merina-dakhar.jpg" alt="Leider kein Bild gefunden.">
+                        <div class="card-body">
+                            <h5 class="card-title">Senegal: Sauberer Strom aus Photovoltaikanlagen</h5>
+                            <a target="_blanc" href="https://www.atmosfair.de/de/klimaschutzprojekte/solarenergie/senegal-sauberer-strom-aus-solaranlagen/">Projektbeschreibung ansehen</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <img class="card-img-top" src="https://www.atmosfair.de/wp-content/uploads/landschaftsaufnahme.jpg" alt="Leider kein Bild gefunden.">
+                        <div class="card-body">
+                            <h5 class="card-title">Nicaragua: Sauberer Strom aus Windkraft</h5>
+                            <a target="_blanc" href="https://www.atmosfair.de/de/klimaschutzprojekte/windkraft/nicaragua/">Projektbeschreibung ansehen</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <img class="card-img-top" src="https://www.atmosfair.de/wp-content/uploads/kep2-015.jpg" alt="Leider kein Bild gefunden.">
+                        <div class="card-body">
+                            <h5 class="card-title">Nigeria: Effiziente Öfen</h5>
+                            <a target="_blanc" href="https://www.atmosfair.de/de/klimaschutzprojekte/energieeffizienz/nigeria/">Projektbeschreibung ansehen</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mt-2">
+                    <div class="card">
+                        <img class="card-img-top" src="https://www.atmosfair.de/wp-content/uploads/7-kochen-frau-mit-kind_bearbeitet-1.jpg" alt="Leider kein Bild gefunden.">
+                        <div class="card-body">
+                            <h5 class="card-title">Ruanda: Effiziente Öfen</h5>
+                            <a target="_blanc" href="https://www.atmosfair.de/de/klimaschutzprojekte/energieeffizienz/ruanda/">Projektbeschreibung ansehen</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mt-2">
+                    <div class="card">
+                        <img class="card-img-top" src="https://www.atmosfair.de/wp-content/uploads/esperanza_honduras_reservoiriii-e1500479903724.jpg" alt="Leider kein Bild gefunden.">
+                        <div class="card-body">
+                            <h5 class="card-title">Honduras: Kleinwasserkraftwerk</h5>
+                            <a target="_blanc" href="https://www.atmosfair.de/de/klimaschutzprojekte/wasserkraft/honduras/">Projektbeschreibung ansehen</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mt-2">
+                    <div class="card">
+                        <img class="card-img-top" src="https://www.atmosfair.de/wp-content/uploads/anlage_ausbau.jpg" alt="Leider kein Bild gefunden.">
+                        <div class="card-body">
+                            <h5 class="card-title">Energieversorgung des Flüchtlingscamps Mam Rashan im Irak</h5>
+                            <a target="_blanc" href="https://www.atmosfair.de/de/klimaschutzprojekte/solarenergie/irak/">Projektbeschreibung ansehen</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            Alle Bilder: &copy; Atmosfair gGmbH
+
+
 
             </div>
         </div>
