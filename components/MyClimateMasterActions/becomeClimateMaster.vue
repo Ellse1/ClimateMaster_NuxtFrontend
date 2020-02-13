@@ -62,7 +62,7 @@
             
             <h4 class="mt-4">Projekte, die durch deine Spende ermöglicht werden</h4>
             <p>
-                Wir machen mit Ihrer Spende keine Cent Gewinn, im Gegenteil müssen wir sogar noch die PayPal gebüren beisteuern.
+                Wir machen mit deiner Spende keine Cent Gewinn, im Gegenteil müssen wir sogar noch die PayPal gebüren beisteuern.
                 Die klimaschutzprojekte werden durch die gemeinnützige GmbH (gGmbH) 
                 <a target="_blanc" href="https://www.atmosfair.de/">Atmosfair</a>
                  ausgewählt, begleitet und Dokumentiert.
