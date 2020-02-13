@@ -21,10 +21,10 @@
                 </p>
 
 
-                <co2calculationChart :props_with_compensation="true" />
+                <co2calculationChart :props_with_compensation="is_climatemaster" />
 
 
-                <nuxt-link to="climadvices" class="btn btn-success mb-2">Climadvices</nuxt-link>
+                <nuxt-link to="climadvices" class="btn btn-success mt-2 mb-2 px-4">Climadvices</nuxt-link>
 
             </div>
         </div>
@@ -36,6 +36,27 @@ import co2calculationChart from '~/components/MyClimateMasterActions/Resources/m
 export default {
     components:{
         co2calculationChart
+    },
+    data(){
+        return {
+            is_climatemaster: false
+        };
+    },
+    async mounted(){
+        //Check if User is climatemaster -> show compensation too
+        try {
+            const{data} = await this.$axios.post("climatemaster_steps_completed/getCurrentClimatemaster_steps_completed");
+
+            //If current user didn't do the first step -> has no climatemaster_steps_completed for this year
+            if(data.state == "error"){
+                $is_climatemaster = false;
+            }
+            if(data.state == "success"){
+                this.is_climatemaster = data.data['become_climateamster'];
+            }
+        } catch (e) {
+            
+        }
     }
 }
 </script>

@@ -45,6 +45,10 @@ export default {
     },
     async mounted(){
 
+
+
+
+
         try {
             const{data} = await this.$axios.post("co2calculation/getLatestCalculation");
 
@@ -90,9 +94,8 @@ export default {
         }
     }, 
     updated(){
-        // For calculation the factor 
+        // For calculation the factor to draw the diagram
         var biggestEmission = 0.00;
-        
         if(parseFloat(this.emissions['public_emissions']) > biggestEmission){biggestEmission=parseFloat(this.emissions['public_emissions']);}
         if(parseFloat(this.emissions['consumption']) > biggestEmission){biggestEmission=parseFloat(this.emissions['consumption']);}
         if(parseFloat(this.emissions['nutrition']) > biggestEmission){biggestEmission=parseFloat(this.emissions['nutrition']);}
