@@ -1,13 +1,16 @@
 <template>
     <div>
         <div class="container">
-            <div class="container text-center mt-3" style="max-width:600px;">
-                <h2>Wir</h2>
+            <div class="container text-center mt-3 col-md-10 bg-light border rounded pb-1 border-success">
+                <h2>Unser Team</h2>
 
-                <div class="row">
+                <div class="container" style="max-height:500px;overflow:hidden;">
+                    <img class="img-fluid" src="~/static/pictures/forSpecialSites/we/climatemaster_we_1.jpg" alt="Leider kein Bild gefunden">
+                </div>
+                <!-- <div class="row">
                     <div class="col-md-6 mt-3">
                         <div class="card">
-                            <img src="~/static/pictures/forSpecialSites/we/Elias.jpg" alt="Leider kein Bild" class="card-img-top" style="">
+                            <img class="card-img-top" src="~/static/pictures/forSpecialSites/we/Elias.jpg" alt="Leider kein Bild" class="card-img-top" style="">
                             <div class="card-footer text-center">
                                 Elias Singer<br>
                                 ClimateMaster 2020<br>
@@ -19,7 +22,7 @@
                     <div class="col-md-6 mt-3">
                         <div class="card">
                     
-                            <img src="~/static/pictures/forSpecialSites/we/Joshua.jpg" alt="Leider kein Bild" class="card-img-top" style="object-fit:cover;">
+                            <img class="card-img-top" src="~/static/pictures/forSpecialSites/we/Joshua.jpg" alt="Leider kein Bild" class="card-img-top" style="object-fit:cover;">
                             <div class="card-footer text-center">
                                 Joshua Singer<br>
                                 ClimateMaster 2020<br>
@@ -27,10 +30,13 @@
                             </div>
                         </div>
                     </div>
-                </div>
-
+                </div> -->
             </div>
-            <div class="container text-center mt-3 mb-5 bg-light border border-success rounded p-5" style="max-width:800px;">
+
+
+
+
+            <div class="container text-center mt-3 mb-5 bg-light border border-success rounded p-5 col-md-8" style="">
                 <h5>Unser Antrieb</h5>
                 <p style="text-align:justify;" ><b>Der Klimawandel stellt eine der größten Herausforderungen unserer Zeit dar, unsere Generation ist direkt 
                     von den Folgen einer globalen Erwärmung betroffen. An uns liegt es auch etwas zu verändern.</b><br>
@@ -50,7 +56,7 @@
             </div>
 
             <!-- Impressum -->
-            <div class="container text-center mt-3 mb-5 bg-light border border-success rounded p-5" style="max-width:800px;">
+            <div class="container text-center mt-3 mb-5 bg-light border border-success rounded p-5 col-md-10" style="">
                 <h5>Impressum</h5>
                 <div class="row">
                     <div class="col-md-6 text-left">
