@@ -9,21 +9,25 @@
     
     <div id="">
         <NavigationBar />
-        
-        <!-- Climate Master Logo -->
-        <div class="text-center" style="margin-top:100px;">
-            <img src="~/static/pictures/generalPictures/LogoTransparent.png" alt="Leider kein Bild gefunden" style="max-width:150px;" class="">
+
+        <div style="margin-top:100px;">
+            <client-only>
+                <div class="text-center" v-if="loggedIn == true">
+                    <h3 v-if="user.last_login == null">Willkommen {{user.firstname}}, <br>Schön, dass du dabei bist!</h3>
+                    <h3 v-if="user.last_login != null">Hallo {{user.firstname}}</h3>
+                </div>
+            </client-only>
+            
+            <!-- Climate Master Logo -->
+            <div class="text-center">
+                <img src="~/static/pictures/generalPictures/LogoTransparent.png" alt="Leider kein Bild gefunden" style="max-width:150px;" class="">
+            </div>
+
+            <!-- ClimateMasterHeader -->
+            <HeaderAnimation />
         </div>
 
-        <!-- ClimateMasterHeader -->
-        <HeaderAnimation />
 
-        <client-only>
-            <div class="text-center" v-if="loggedIn == true">
-                <h3 v-if="user.last_login == null">Willkommen {{user.firstname}}, <br>Schön, dass du dabei bist!</h3>
-                <h3 v-if="user.last_login != null">Hallo {{user.firstname}}</h3>
-            </div>
-        </client-only>
     </div>
 
     <div id="">
