@@ -13,13 +13,8 @@
             <div class="">Master</div>
           </b>
         </h1>
-        <!-- <h1 class="display-3">
-            <span class="now">today!</span>
-        </h1> -->
-        <h4 class="mb-4 text-center">
-          <!-- Klimaschutz, weil es sich lohnt<br> -->
-          <!-- Klimaneutral 2020 -->
-        </h4>
+
+        <h4>Umweltfreunlich klimaneutral</h4>
     </div>
 
 </template>
