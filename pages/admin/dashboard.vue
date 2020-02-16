@@ -7,18 +7,24 @@
                 <hr class="col-md-6">
             </div>
 
-            
+            <!-- To Verify companies -->
             <verifyCompanies />
+
+            <!-- To Show all Users -->
+            <showAllUsers />
+
                 
         </div>
     </div>
 </template>
 <script>
 import verifyCompanies from '~/components/AdminDashboard/verifyCompanies';
+import showAllUsers from '~/components/AdminDashboard/showAllUsers';
 export default {
     middleware: 'auth',
     components:{
-        verifyCompanies
+        verifyCompanies,
+        showAllUsers
     },
     mounted(){
         if(this.user.role != 'admin'){
