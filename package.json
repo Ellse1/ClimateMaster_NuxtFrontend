@@ -1,7 +1,7 @@
 {
   "name": "ClimateMaster",
   "version": "1.0.0",
-  "description": "Unser Ziel: Deine umweltfreundliche Klimaneutralität 2020. Wir helfen dir, einfach, umweltfreundlich klimaneutral zu werden. Gemeinsam können wir dem Klimawandel etwas entgegensetzen und deine CO2 Emissionen auf 0 senken. Schütze jetzt die Welt der jungen Generation.",
+  "description": "Unser Ziel: Deine umweltfreundliche Klimaneutralität 2020. Wir helfen dir, einfach, umweltfreundlich klimaneutral zu werden.",
   "author": "Elias Singer",
   "private": true,
   "scripts": {

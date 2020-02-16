@@ -43,11 +43,15 @@
                     Mit unserer Plattform wollen wir privaten Klimaschutz unterstützen, vereinfachen und würdigen, 
                     um das Gefühl der Machtlosigkeit zu verhindern und positive Selbstwirksamkeit transparent zu belegen.
                     Jeder kann heute schon klimaneutral leben und damit die Zukunft folgender Generation verbessern.
+                    Unsere Plattform verknüpft die Analyse des individuellen Ausstoßes von Treibhausgasen mit der 
+                    Reduktionsmöglichkeit und der anschließenden Kompensationsmöglichkeit.
                 </p>
 
                 
                 <div class="text-center">
                     <a target="_blanc" href="https://www.climate-master.com:8000/api/file/conceptSummary" class="btn btn-default border">Konzept Zusammenfassung (PDF)</a>
+                    <a target="_blanc" href="https://www.climate-master.com:8000/api/file/concept" class="btn btn-default border">Konzept Langfassung (PDF)</a>
+
                 </div>
                 <!-- <div class="col-6 text-center">
                     <a target="_blanc" href="http://localhost:8000/api/file/concept" class="btn btn-default border">Unser Konzept (PDF)</a>
