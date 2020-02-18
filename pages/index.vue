@@ -89,6 +89,30 @@
 
 
         </client-only>
+
+
+        <!-- Links to the social media platforms -->
+        <div class="mx-auto mb-5 col-md-6 text-center mt-4 rounded border border-success p-2" style="background-color:rgba(247, 247, 247, 0.3)">
+            <h4>Online</h4>
+            <div class="row">
+                <div class="col text-center">
+                  <a target="_blanc" href="https://www.facebook.com/ClimateMaster-107052057423304">
+                    <img src="~/static/pictures/generalPictures/facebookLogo.png" alt="Bild leider nicht gefunden" width="30px;" >
+                    <h5 class="text-dark">ClimateMaster</h5>
+                  </a>
+                </div>
+                <div class="col text-center">
+                  <a target="_blanc" href="https://www.instagram.com/climatemasterandfriends">
+                    <img src="~/static/pictures/generalPictures/instagramLogo.png" alt="Bild leider nicht gefunden" width="30px;" >             
+                    <h5 class="text-dark">climatemasterandfriends</h5>
+                  </a>
+                </div>
+            </div>
+
+        </div>
+
+
+
       </div>
 
       <!-- Link zum Impressum -->
