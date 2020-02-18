@@ -26,6 +26,11 @@
                     <!-- If it is paid -> show also compensation -->
                     <co2calculationChart @saveCO2Calculation="getCO2CalculationFromChildComponent" :props_with_compensation="paid"/>
                 </div>
+
+
+                <!-- the fixed top div to show pay info -->
+                <infoToPay id="id_div_info_to_pay" :total_price="price" style="display:none;" />
+
                 <div id="id_div_container_for_payment" class="col-md-3 p-2 border border-success rounded text-center mb-2" v-if="co2calculation != null && paid == false">
                     
                     <h4>Climatemaster werden</h4>
@@ -33,21 +38,20 @@
                     <p>Preis pro Tonne: <b>23€</b></p>
                     <p>Preis gesamt: <b>{{price}} €</b> </p>
 
-                    <div id="id_paypal_button_container">
+                    <a class="btn btn-success" target="_blanc" href="https://www.atmosfair.de/de/spenden/">Direktspende an Atmosfair</a>
 
-                    </div>
+                    <p>
+                        Schicke uns danach einfach den entsprechenden Beleg und deinen Benutzernamen ({{user.username}}) an elias@climate-master.com.
+                        Wir schicken dir nach einer Überprüfung dann eine Bestätigung und schalten dich als <span class="text-success">Climate</span>Master 2020 frei.
+                    </p>
                     
-                    <!-- link to pay without roundup --
-                    <button id="id_button_pay_without_roundup" v-on:click="pay(false)" class="btn btn-primary">{{co2calculation.total_emissions}} Tonnen kompensieren</button><br>
-                    <small>{{price_small}} €</small><br>
+                    <a href="#" onclick="return false;" v-on:click="showInfoToPay">Mehr Info</a>
+  
 
-                    <b>Aufrunden:</b>
-                    <-- Link to pay with roundup --
-                    <button id="id_button_pay_with_roundup" v-on:click="pay(true)" class="btn btn-primary">{{total_emission_uprounded}} Tonnen kompensieren</button><br>
-                    <small>{{price_uprounded}} €</small>
+                    <!-- <div id="id_paypal_button_container">
 
-
-                    <h4 class="mt-5">Bezahlung per Paypal</h4> -->
+                    </div> -->
+                    
                 </div>
             </div>
 
@@ -55,14 +59,15 @@
             <notification :message="error" v-if="error" class="text-danger mt-2" />
             <notification :message="success" v-if="success" class="text-success mt-2" />
 
-            <button id="id_button_open_next_step" class="btn btn-success mb-2 mt-2 mx-auto" v-on:click="openNextStep">Weiter (nach Klimaschutzunterstützung)</button>
+            <!-- Button only if paypal is active -> after payment open next step -->
+            <!-- <button id="id_button_open_next_step" class="btn btn-success mb-2 mt-2 mx-auto" v-on:click="openNextStep">Weiter (nach Klimaschutzunterstützung)</button> -->
 
             
             <!-- Project descriptions -->
             
             <h4 class="mt-4">Projekte, die durch deine Spende ermöglicht werden</h4>
             <p>
-                Wir machen mit deiner Spende keine Cent Gewinn, im Gegenteil müssen wir sogar noch die PayPal Gebüren beisteuern.
+                Wir machen mit deiner Spende keine Cent Gewinn, im Gegenteil müssen wir sogar noch die PayPal Gebüren beisteuern (Bei Bezahlungen über PayPal).
                 Die Klimaschutzprojekte werden durch die gemeinnützige GmbH (gGmbH) 
                 <a target="_blanc" href="https://www.atmosfair.de/">Atmosfair</a>
                  ausgewählt, begleitet und Dokumentiert. Uns, als vom Klimawandel betroffene, ist es egal, ob die
@@ -127,6 +132,8 @@
             </div>
             Alle Bilder: &copy; Atmosfair gGmbH
 
+            
+
 
 
             </div>
@@ -136,10 +143,12 @@
 <script>
 import co2calculationChart from '~/components/MyClimateMasterActions/Resources/myCO2CalculationChart';
 import notification from '~/components/MainComponents/Notification';
+import infoToPay from '~/components/MyClimateMasterActions/Resources/pay';
 export default {
     components:{
         co2calculationChart,
-        notification
+        notification,
+        infoToPay
     },
     data(){
         return {
@@ -149,7 +158,7 @@ export default {
             co2calculation: null,
             price: null,
             total_emission : null,
-            paid: false
+            paid: false,
         };
     },
     mounted(){
@@ -159,58 +168,58 @@ export default {
         let total_emission = this.total_emission;
         //Render the paypal button
 
-        var thisApp = this;
-        if(this.paypal_button_rendered == false){
-            paypal.Buttons(
-            {
-                createOrder: function(data, actions) {
-                // This function sets up the details of the transaction, including the amount and line item details.
-                    return actions.order.create({
-                        purchase_units: [{
-                            amount: {
-                                currency_code: 'EUR',
-                                value: price
-                                },
-                            description: 'CO2 Kompensierung: ' + total_emission + ' Tonnen'
-                        }]
-                    });
-                },
-                onApprove: async function(response_data, actions) {
+        // var thisApp = this;
+        // if(this.paypal_button_rendered == false){
+        //     paypal.Buttons(
+        //     {
+        //         createOrder: function(data, actions) {
+        //         // This function sets up the details of the transaction, including the amount and line item details.
+        //             return actions.order.create({
+        //                 purchase_units: [{
+        //                     amount: {
+        //                         currency_code: 'EUR',
+        //                         value: price
+        //                         },
+        //                     description: 'CO2 Kompensierung: ' + total_emission + ' Tonnen'
+        //                 }]
+        //             });
+        //         },
+        //         onApprove: async function(response_data, actions) {
                     
-                    //Show loading animation and approve the payment server side
-                    $("#id_div_loading_animation_paid").show();
-                    $("#id_div_loading_animation_paid").addClass('loading-animation-green');
+        //             //Show loading animation and approve the payment server side
+        //             $("#id_div_loading_animation_paid").show();
+        //             $("#id_div_loading_animation_paid").addClass('loading-animation-green');
 
-                    //VERRY IMPORTANT!!!  Captur the payment : VERRY IMPORTANT!!!!! if not -> not charged!!!
-                    const order = await actions.order.capture();
+        //             //VERRY IMPORTANT!!!  Captur the payment : VERRY IMPORTANT!!!!! if not -> not charged!!!
+        //             const order = await actions.order.capture();
 
-                    //Sent to backend -> check payment and save in DB
-                    const{data} = await thisApp.$axios.post("paypal/checkPayment",{
-                        order_id : response_data.orderID
-                    });
+        //             //Sent to backend -> check payment and save in DB
+        //             const{data} = await thisApp.$axios.post("paypal/checkPayment",{
+        //                 order_id : response_data.orderID
+        //             });
 
-                    $("#id_div_loading_animation_paid").removeClass('loading-animation-green');
-                   $("#id_div_loading_animation_paid").hide();
+        //             $("#id_div_loading_animation_paid").removeClass('loading-animation-green');
+        //            $("#id_div_loading_animation_paid").hide();
 
-                    if(data.state == 'error'){
-                        thisApp.error = data.message;
-                        thisApp.success = null;
-                    }
-                    else if(data.state == 'success'){
-                        thisApp.success = data.message;
-                        thisApp.error = null;
-                        thisApp.paid = true;
-                        $("#id_div_container_for_payment").hide();
-                        $("#id_div_co2calculationChart").deleteClass("col-md-9").addClass("col-md-12");
-                    }
+        //             if(data.state == 'error'){
+        //                 thisApp.error = data.message;
+        //                 thisApp.success = null;
+        //             }
+        //             else if(data.state == 'success'){
+        //                 thisApp.success = data.message;
+        //                 thisApp.error = null;
+        //                 thisApp.paid = true;
+        //                 $("#id_div_container_for_payment").hide();
+        //                 $("#id_div_co2calculationChart").deleteClass("col-md-9").addClass("col-md-12");
+        //             }
 
-                },
-                onError: error => {
-                    console.log(error);
-                }
-            }).render('#id_paypal_button_container');
-            this.paypal_button_rendered = true;
-        }
+        //         },
+        //         onError: error => {
+        //             console.log(error);
+        //         }
+        //     }).render('#id_paypal_button_container');
+        //     this.paypal_button_rendered = true;
+        // }
 
         //if it is already paid -> set green check and open congratulation
         if(this.paid == true){
@@ -227,6 +236,9 @@ export default {
             if(this.paid == true){
                 this.$emit('open_next_step');
             }
+        },
+        showInfoToPay(){
+            $("#id_div_info_to_pay").show();
         }
     }
 }

@@ -1,6 +1,6 @@
 <template>
     <div> 
-        <h3 class="mt-5">Firmen Anfragen</h3>
+        <h4>Firmen Anfragen</h4>
         <div v-for="(company, index) in companies" v-bind:key="company.id">
             <div class="row mt-2">
                 <div class="col-md-6">
