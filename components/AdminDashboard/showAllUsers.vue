@@ -1,5 +1,6 @@
 <template>
     <div>
+        <!-- Show all Users -->
         <h4>Angemeldete Benutzer</h4>
         <div id="id_div_loading_animation"></div>
         <div v-for="(user, index) in allUsers" v-bind:key="user.id" class="mt-1">
@@ -34,8 +35,12 @@
                     <p>Preis um Climatemaster zu werden</p>
                     <h5>{{priceForUserToBecomeClimatemaster}} €</h5>
 
-                    <button class="btn btn-success">Ja, die Person hat bezahlt</button>
+                    <button id="id_button_make_user_climatemaster" class="btn btn-success" v-on:click="makeUserClimatemaster">Ja, die Person hat bezahlt</button>
                     <button class="btn btn-danger" v-on:click="closeWindowToMakeUserClimatemaster">Schließen</button>
+                
+                    <!-- Notification -->
+                    <notification :message="error" v-if="error" class="text-danger mt-2" />
+                    <notification :message="success" v-if="success" class="text-success mt-2" />
                 </div>
             </div>
         </div>
@@ -91,6 +96,7 @@ export default {
                 this.success = null;
             }
             else if(data.state == 'success'){
+                this.error = null;
                 this.latestCo2calculationOfUser = data.data;
                 this.priceForUserToBecomeClimatemaster = (data.data.total_emissions * 23).toFixed(2);
                 this.userToMakeClimatemaster = this.allUsers[index];
@@ -100,6 +106,31 @@ export default {
             }
 
             $("#id_div_loading_animation").removeClass('loading-animation-green');
+        },
+        async makeUserClimatemaster(){
+            $("#id_button_make_user_climatemaster").addClass('loading-animation');
+            try {
+                const{data} = await this.$axios.post('admin/setUserClimatemaster', {
+                    user_id: this.userToMakeClimatemaster.id
+                });
+
+                if(data.state == "error"){
+                    this.error = data.message;
+                    this.success = null;
+                }
+                else if (data.state == "success"){
+                    this.error = null;
+                    this.success = data.message;
+                }
+                else{
+                    this.error = "Der User konnte nicht zum ClimateMaster gemacht werden.";
+                }
+
+            } catch (e) {
+                this.error = "Der User konnte nicht zum Climatemaster gemacht werden." + e.response.data.message;
+            }
+            
+            $("#id_button_make_user_climatemaster").removeClass('loading-animation');
         },
         closeWindowToMakeUserClimatemaster(){
             this.userToMakeClimatemaster = null;

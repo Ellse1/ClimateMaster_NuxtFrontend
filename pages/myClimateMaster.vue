@@ -200,9 +200,8 @@ export default {
         }
     },
     async mounted(){
-        
+        //Get the already completed climatemastersteps of this user
         try {
-            //Get the already completed climatemastersteps of this user
             const{data} = await this.$axios.post("climatemaster_steps_completed/getCurrentClimatemaster_steps_completed");
             if(data.state == "error"){
                 
@@ -214,6 +213,20 @@ export default {
                 
             }
         } catch (e) {
+            
+        }
+
+        //Check if the user should see the gratulation for becoming climatemaster
+        try {
+            const{data} = await this.$axios.post("user/checkShowGratulationBecomingClimateMaster");
+            if(data.state == "error"){
+            }
+            else if(data.state == "success"){
+                if(data.show_gratulation == true){
+                    $("#id_congratulation_becomeClimatemasterCompleted").show();
+                }
+            }
+        } catch (err) {
             
         }
 
