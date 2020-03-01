@@ -12,6 +12,8 @@
                     <div class="w-100 rounded">
                         <button class="w-100 btn btn-default" v-on:click="changeOpenedDashboardComponent('verifyCompanies')">Firmenanfragen</button>
                         <button class="w-100 btn btn-default" v-on:click="changeOpenedDashboardComponent('showAllUsers')">Benutzer</button>
+                        <button class="w-100 btn btn-default" v-on:click="changeOpenedDashboardComponent('imagecreatorSharingPermitted')">Imagecreator</button>
+                    
                     </div>
                 </div>
                 <div class="col-md-9 mt-4">
@@ -20,6 +22,9 @@
 
                     <!-- To Show all Users -->
                     <showAllUsers v-if="openedDashboardComponent == 'showAllUsers'"/>
+
+                    <!-- To download images from imagecreator -> download pictures of all users with "sharing_permitted" = true -->
+                    <imagecreatorSharingPermitted v-if="openedDashboardComponent == 'imagecreatorSharingPermitted'" />
                 </div>
             </div>
 
@@ -32,11 +37,14 @@
 <script>
 import verifyCompanies from '~/components/AdminDashboard/verifyCompanies';
 import showAllUsers from '~/components/AdminDashboard/showAllUsers';
+import imagecreatorSharingPermitted from '~/components/AdminDashboard/imagecreatorSharingPermitted';
+
 export default {
     middleware: 'auth',
     components:{
         verifyCompanies,
-        showAllUsers
+        showAllUsers,
+        imagecreatorSharingPermitted
     },
     data(){
         return{

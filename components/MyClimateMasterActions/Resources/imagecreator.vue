@@ -29,7 +29,7 @@
             <div class="col-md-4">
                 <button id="id_button_download_picture" class="btn btn-default border-dark" v-on:click="downloadPicture">Dieses Bild herunterladen</button>
                 
-                <div class="mt-4">
+                <div class="mt-4" v-if="admin != true">
                     <h6>Dieses Bild veröffentlichen</h6>
                     <toggle-button :sync="true" v-model="picture_single_for_imagecreator.sharing_permitted" @change="sharingPermittetChanged()"/><br>
                     <div v-if="picture_single_for_imagecreator.sharing_permitted == false">
@@ -49,11 +49,13 @@
             </div>
         </div>
 
-        <label id="id_label_upload_picture" for="id_picture_for_imagecreator" class="btn btn-default border rounded">
-            Neues Bild hochladen<br>
-            <small class="text-danger">png, jpg, Max:2MB</small>
-        </label>
-        <input type="file" class="mt-2" ref="image" id="id_picture_for_imagecreator" v-on:change="handleImageUpload" style="display:none;"/>
+        <div v-if="admin != true">
+            <label id="id_label_upload_picture" for="id_picture_for_imagecreator" class="btn btn-default border rounded">
+                Neues Bild hochladen<br>
+                <small class="text-danger">png, jpg, Max:2MB</small>
+            </label>
+            <input type="file" class="mt-2" ref="image" id="id_picture_for_imagecreator" v-on:change="handleImageUpload" style="display:none;"/>
+        </div>
 
         <notification v-if="error" :message="error" class="text-danger mt-2" />
         <notification v-if="success" :message="success" class="text-success mt-2" />
@@ -76,10 +78,10 @@
 </template>
 <script>
 import notification from '~/components/MainComponents/Notification';
-
 export default {
+    props: ['admin'], //if admin -> admin -> download pictures for imagecreator with "sharing_permitted == true"
     components:{
-        notification
+        notification,
     },
     data(){
         return{
@@ -93,22 +95,28 @@ export default {
     async mounted(){
         //Get picture_for_imagecreator if available   
         try {
-            const{data} = await this.$axios.post("picture_for_imagecreator/getPicturesOfCurrentUser");
-            
-            if(data.state == 'error'){
-                this.error = data.message;
+            const data = null;
+            if(this.admin != true){
+                this.data = await this.$axios.$post("picture_for_imagecreator/getPicturesOfCurrentUser");
+            }
+            else{
+                this.data = await this.$axios.$post("admin/getAllImagesForPublication");
+            }
+            if(this.data.state == 'error'){
+                this.error = this.data.message;
                 this.success = null;
             }
-            if(data.state != 'error'){
+            if(this.data.state != 'error'){
 
                 //dont show message "no image"
                 $("#id_div_message_no_picture_for_imagecreator").hide();
-
-                this.pictures_for_imagecreator = data.data;
+                this.pictures_for_imagecreator = this.data.data;
                 //Show first picture in big div
                 //set 0 = false, 1 = true
-                this.pictures_for_imagecreator[0].sharing_permitted = !!+this.pictures_for_imagecreator[0].sharing_permitted
-                this.picture_single_for_imagecreator = this.pictures_for_imagecreator[0];
+                if(this.pictures_for_imagecreator.length >= 1){
+                    this.pictures_for_imagecreator[0].sharing_permitted = !!+this.pictures_for_imagecreator[0].sharing_permitted
+                    this.picture_single_for_imagecreator = this.pictures_for_imagecreator[0];
+                }
             }
         } catch (e) {
             this.error = "Error. Konnte das Picture_for_imagecreator nicht laden. " + e.response.data.message;
@@ -200,21 +208,30 @@ export default {
 
             var id = this.picture_single_for_imagecreator.id;
             try {
-                const{data} = await this.$axios.post("picture_for_imagecreator/download", {
-                    id : this.picture_single_for_imagecreator.id
-                });
+                const data = null;
 
-                if(data.state == "error"){
-                    this.error = data.message;
+                if(this.admin != true){
+                    this.data = await this.$axios.$post("picture_for_imagecreator/download", {
+                        id : this.picture_single_for_imagecreator.id
+                    });
+                }
+                else{
+                    this.data = await this.$axios.$post("admin/downloadPictureFromImagecreator", {
+                        picture_for_imagecreator_id : this.picture_single_for_imagecreator.id
+                    });
+                }
+
+                if(this.data.state == "error"){
+                    this.error = this.data.message;
                     this.success = null;
                 }
-                else if(data.state == "success"){
+                else if(this.data.state == "success"){
                     
                     this.error = null;
-                    this.success = data.message;
+                    this.success = this.data.message;
 
                     // atob to base64_decode the data-URI
-                    var image_data = atob(data.picture_base64);
+                    var image_data = atob(this.data.picture_base64);
                     // Use typed arrays to convert the binary data to a Blob
                     var arraybuffer = new ArrayBuffer(image_data.length);
                     var view = new Uint8Array(arraybuffer);
