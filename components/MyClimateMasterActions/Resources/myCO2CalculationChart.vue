@@ -2,7 +2,7 @@
     <div style="max-width:100%;overflow:hidden;">
             <div class="" v-if="success">
                 <h4 class="text-center">Aktuelle CO2 Analyse</h4>
-                <div class="row">
+                <div class="row w-100">
                     <div class="col-2" v-for="(emission, key) in emissions" v-bind:key="key" style="position:relative;height:300px;">
                         <b>{{emission}}</b> Tonnen
                         <nuxt-link :to="{path:'/climadvices',query:{climatemasterarea: key}}" class="h-100 w-100">
@@ -11,7 +11,7 @@
                         </nuxt-link>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row w-100">
                     <div class="col-2" style="word-wrap: break-word;">Öffentliche Emissionen</div>
                     <div class="col-2" style="word-wrap: break-word;">Konsum</div>
                     <div class="col-2" style="word-wrap: break-word;">Ernährung</div>
