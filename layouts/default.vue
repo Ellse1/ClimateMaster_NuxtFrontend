@@ -5,7 +5,7 @@
     
     <!-- Background Image -->
     <div style="overflow:hidden;position:fixed;top:0px;z-index:-10;">
-        <img id="id_img_background" src="~/static/pictures/forSpecialSites/index/greenland.jpg" alt="leier kein Foto" />
+        <img id="id_img_background" src="~/static/pictures/forSpecialSites/index/greenland.jpg" alt="leier kein Foto" style="min-height:100%;"/>
     </div>
 
 
