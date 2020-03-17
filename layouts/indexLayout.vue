@@ -20,7 +20,7 @@
             
             <!-- Climate Master Logo -->
             <div class="text-center">
-                <img src="~/static/pictures/generalPictures/LogoTransparent.png" alt="Leider kein Bild gefunden" style="max-width:150px;" class="">
+                <img src="~/static/pictures/generalPictures/Logo_bold.png" alt="Leider kein Bild gefunden" style="max-width:150px;" class="">
             </div>
 
             <!-- ClimateMasterHeader -->

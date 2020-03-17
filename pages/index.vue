@@ -81,7 +81,7 @@
                                   <nuxt-link to="/we" class="btn btn-success" style="width:80%;border-radius:20px;">Wir</nuxt-link>
                               </div>
                               <div class="col-6">
-                                  <nuxt-link to="/blog" class="btn btn-success" style="width:80%;border-radius:20px;">Blog</nuxt-link>
+                                  <nuxt-link to="/theplatform" class="btn btn-success" style="width:80%;border-radius:20px;">Die Plattform</nuxt-link>
                               </div>
                           </div>                
                     </div>

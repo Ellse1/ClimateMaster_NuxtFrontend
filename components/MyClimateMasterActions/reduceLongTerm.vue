@@ -21,7 +21,7 @@
                 </p>
 
 
-                <co2calculationChart :props_with_compensation="is_climatemaster" />
+                <co2calculationChart />
 
 
                 <nuxt-link to="climadvices" class="btn btn-success mt-2 mb-2 px-4">Climadvices</nuxt-link>

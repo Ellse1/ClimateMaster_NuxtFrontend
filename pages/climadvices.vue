@@ -87,7 +87,10 @@ export default {
             }
 
         } catch (e) {
-            this.error = e.response.data.message;
+            this.error = "Es konnten keine Climadvices geladen werden.";
+            if(e.response != null){
+                this.error += e.response.data.message;
+            }
             this.success = null;
         }
 

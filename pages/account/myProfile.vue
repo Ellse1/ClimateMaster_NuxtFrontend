@@ -93,19 +93,22 @@
                 <notification :message="success" v-if="success" class="text-success mt-3" />
             </div>
 
-            <co2calculationChart class="mt-4" />
+
+
+            <!-- To edit the public visible profile (if the user is climatemaster) -->
+            <publicUserProfileEdit :profile_picture_base64="profile_picture_base64_for_public_profile" />
         
         </div>
     </div>
 </template>
 <script>
 import notification from "~/components/MainComponents/Notification"
-import co2calculationChart from '~/components/MyClimateMasterActions/Resources/myCO2CalculationChart';
+import publicUserProfileEdit from '~/components/PublicUserProfile/edit'
 export default {
     middleware: 'auth',
     components:{
         notification,
-        co2calculationChart
+        publicUserProfileEdit
     },
     data(){
         return{
@@ -120,7 +123,8 @@ export default {
             house_number: null,
             postcode: null,
             residence: null,
-            instagram_name: null
+            instagram_name: null,
+            profile_picture_base64_for_public_profile: null,
         };
     },
     async mounted(){
@@ -161,6 +165,7 @@ export default {
             }
             else if(data.state == 'success'){
                 var rawResponse = data.image_base64;
+                this.profile_picture_base64_for_public_profile = rawResponse;
                 //Give picture to element
                 $("#id_img_profilePicture").attr('src', 'data:image/jfif;base64,'+rawResponse);
 
@@ -196,7 +201,6 @@ export default {
                         'Content-Type' : 'multipart/form-data'
                     }
                 })
-
                 if(data.state == "error"){
                     this.error = data.message;
                     this.success = null;
@@ -206,9 +210,10 @@ export default {
                     this.success = data.message;
 
                     var rawResponse = data.image_base64;
+                    this.profile_picture_base64_for_public_profile = rawResponse;
                     //Give picture to element
                     $("#id_img_profilePicture").attr('src', 'data:image/jfif;base64,'+rawResponse);
-
+                    
                     //Show right element
                     $("#id_div_profilePicture").show();
                     $("#id_img_profilePicture").show();
