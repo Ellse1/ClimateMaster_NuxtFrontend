@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div style="max-width:100%;overflow:hidden;">
             <div class="" v-if="success">
                 <h4 class="text-center">Aktuelle CO2 Analyse</h4>
                 <div class="row">
