@@ -235,11 +235,11 @@ export default {
     methods:{
         openClimateMasterAction(indexNumber, stepname){
             var temp = [false, false, false, false, false, false]
-            //If this step is already done -> don't open
-            if(this.climatemaster_steps_completed[stepname] != true){
+            //If this step is already done -> don't open (not for step 3 )
+            if(this.climatemaster_steps_completed[stepname] != true || indexNumber == 2 /*customize calculation*/){
                 temp[indexNumber] = true;
 
-                //if want to open step 2, 3 or 4 -> the step before has to be done!
+                //if want to open step 2 or 4 -> the step before has to be done!
                 if(temp[1]){
                     if(this.climatemaster_steps_completed['calculate']){
                         this.climateMasterActionsOpened = temp;

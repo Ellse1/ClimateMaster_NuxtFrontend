@@ -43,11 +43,17 @@
                     </button>
                 </form>
 
+                <!-- Notification -->        
+                <div class="text-center">
+                    <notification :message="error" v-if="error" class="text-danger mt-3" />
+                    <notification :message="success" v-if="success" class="text-success mt-3" />                   
+                </div>
+
+
                 <button id="id_button_completed" class="btn btn-success mt-2 mb-2" v-on:click="costumizeCalculationCompleted">
                     Schritt mit dieser Berechnung abschließen
                     <font-awesome-icon icon="check-circle" style="font-size:20x;"/> 
                 </button>
-                <p>Dannach können Sie Ihre Berechnung wieder am 01. Januar 2021 anpassen.</p>
                 
             </div>
 
@@ -59,12 +65,17 @@
 </template>
 <script>
 import co2calculationChart from '~/components/MyClimateMasterActions/Resources/myCO2CalculationChart';
+import notification from '~/components/MainComponents/Notification';
+
 export default {
     components:{
-        co2calculationChart
+        co2calculationChart,
+        notification
     },
     data(){
         return {
+            success: null,
+            error: null,
             co2calculation: null,
             link_uba_co2calculation: null,
             keyReloadChart: 0
