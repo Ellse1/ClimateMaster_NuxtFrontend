@@ -25,7 +25,7 @@
                             <a class="nav-link dropdown-toggle text-white" href="#" id="dropdownCompany" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Unternehmen</a>
                             <div class="dropdown-menu" aria-labelledby="dropdownCompany">
                                 <nuxt-link to="/we" class="dropdown-item">Wir</nuxt-link>
-                                <nuxt-link to="/blog" class="dropdown-item">Blog</nuxt-link>
+                                <nuxt-link to="/theplatform" class="dropdown-item">Die Plattform</nuxt-link>
                             </div>
                         </div>
 

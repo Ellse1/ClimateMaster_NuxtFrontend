@@ -39,6 +39,9 @@
             zu präsentieren. Sei mutig und präsentiere dich als Klimaschützer bzw. ClimateMaster. Das motiviert 
             auch Andere unseren Planeten konsequent zu schützen. Eine Beispielpräsentation eines unserer 
             Teammitglieder findest du unter <nuxt-link to="/perfect/EliasSi">www.climate-master.com/perfect/EliasSi</nuxt-link>.
+            <br>Anmerkung: Wenn du deinen CO2 Ausstoß noch nicht kompensiert hast, aber weniger als
+             9 Tonnen CO2 Äquivalent pro Jahr verursachst, bist du ClimateMaster Starter. Der deutsche Durchschnitt liegt 
+             bei 11,6 Tonnen pro Jahr.
         </p>
 
 
