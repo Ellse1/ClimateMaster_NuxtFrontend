@@ -16,9 +16,8 @@
 
             <hr class="col-md-5 mx-auto">
 
-
             <!-- show only if real publicUserProfile is created in DB -> id != null -->
-            <div v-if="publicUserProfile.id != null && publicUserProfile.public == true">
+            <div v-if="publicUserProfile.id != null && publicUserProfile.public == true" class="pb-2">
 
                 <!-- <a data-toggle="collapse" href="#collapseContent" role="button" aria-expanded="false" aria-controls="collapseContent">
                     anzeigen
@@ -33,8 +32,6 @@
                     <textarea class="form-control" v-model="publicUserProfile.information_general" placeholder="Warum willst du ClimateMaster werden? Warum sind dir Umweltschutz und Klimaschutz wichtig? Für wen schützt du den Planeten?"></textarea>
                 </div>
 
-
-                <co2calculationChart class="mt-4 mx-auto col-md-8" style="mx-auto" />
                 
                 <div class="mt-2 col-md-8 mx-auto">
                     <label><b>Kommentar Heizung und Strom</b></label>
@@ -56,10 +53,11 @@
                     <label><b>Kommentar Öffentliche Emissionen</b></label>
                     <textarea class="form-control" v-model="publicUserProfile.information_public_emissions" placeholder="Diese Emissionen kannst du nur indirekt beeinflussen. Nimmst du an Fridays For Future Demonstationen teil? Teilst du deine Klimaschutz Fortschritte mit Freunden und bekannten?"></textarea>
                 </div>
-                <div class="row col-md-8 mx-auto mt-2 mb-3">
-                    <button v-on:click="updatePublicProfile" id="id_button_savePublicProfile" class="btn btn-success col m-2">Änderungen am öffentlichen Profil speichern</button>
-                    <nuxt-link :to="'/perfect/'+user.username" class="btn btn-success col m-2">Mein Profil ansehen</nuxt-link>
-                </div>
+                
+
+                <button v-on:click="updatePublicProfile" id="id_button_savePublicProfile" class="btn btn-success col-md-4 mt-3">Änderungen am öffentlichen Profil speichern</button>
+                <nuxt-link :to="'/perfect/'+user.username" class="btn btn-success col-md-4 mt-3">Mein Profil ansehen</nuxt-link>
+                
 
                 
                 <!-- Notification -->
@@ -73,14 +71,12 @@
     </div>
 </template>
 <script>
-import co2calculationChart from '~/components/MyClimateMasterActions/Resources/myCO2CalculationChart';
 import notification from '~/components/MainComponents/Notification';
 
 export default {
     props: ['profile_picture_base64'],
     components:{
-        notification,
-        co2calculationChart
+        notification
     },
     data(){
         return {

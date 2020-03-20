@@ -94,9 +94,11 @@
             </div>
 
 
+            <!-- CO2Calculation Chart -->
+            <co2calculationChart class="mt-4 mx-auto col-md-8" style="mx-auto" />
 
             <!-- To edit the public visible profile (if the user is climatemaster) -->
-            <publicUserProfileEdit :profile_picture_base64="profile_picture_base64_for_public_profile" />
+            <publicUserProfileEdit :profile_picture_base64="profile_picture_base64_for_public_profile" class="mt-4" />
         
         </div>
     </div>
@@ -104,11 +106,14 @@
 <script>
 import notification from "~/components/MainComponents/Notification"
 import publicUserProfileEdit from '~/components/PublicUserProfile/edit'
+import co2calculationChart from '~/components/MyClimateMasterActions/Resources/myCO2CalculationChart';
+
 export default {
     middleware: 'auth',
     components:{
         notification,
-        publicUserProfileEdit
+        publicUserProfileEdit,
+        co2calculationChart
     },
     data(){
         return{

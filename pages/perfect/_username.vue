@@ -110,7 +110,7 @@ export default {
             }
 
         } catch (e) {
-            alert("something wrong")
+            alert("Das öffentliche Profil konnte nicht, oder nicht vollständig geladen werden.")
         }
 
         if(this.profile_picture_base64 != null){
