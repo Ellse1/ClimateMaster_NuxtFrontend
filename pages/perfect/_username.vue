@@ -21,7 +21,7 @@
             </div>
             <!-- if ClimateMaster starter -->
             <div v-if="climatemaster_state == 'climatemaster_starter'">
-                <h1><span class="text-success">Climate</span>Master starter 2020</h1>
+                <h1><span class="text-success">Climate</span>Master Starter 2020</h1>
             </div>
 
             <!-- information general -->
