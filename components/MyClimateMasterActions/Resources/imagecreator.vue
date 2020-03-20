@@ -3,9 +3,10 @@
         <!-- To create a nice image to present progress -->
 
         <h4>Imagecreator</h4>
-        <div style="" class="row" v-if="picture_single_for_imagecreator != null">
+        <div id="id_div_image_creator_loading_animation"></div>
+        <div class="row w-100 mx-auto" v-if="picture_single_for_imagecreator != null">
             <!-- Picture for Image Creator -->
-            <div class="col-md-8 mb-2 border border-dark rounded h-100" style="padding:0px;">
+            <div class="col-md-8 mb-2 border border-dark rounded" style="padding:0px;">
                 <!-- Message if no picture -->
                 <div id="id_div_message_no_picture_for_imagecreator" v-if="picture_single_for_imagecreator == null">
                     <p class="mt-3">Lade ein Bild hoch und gestalte dieses, um andere Menschen von Umweltschutz und Klimaschutz zu überzeugen.</p>
@@ -13,18 +14,18 @@
                 <!-- Picture -->
                 <img class="img-fluid rounded" v-if="picture_single_for_imagecreator != null" :src="'data:image/jfif;base64,'+picture_single_for_imagecreator.picture_base64">
                 <!-- LOGO -->
-                <div style="position:absolute;top:0px;left:10px;width:80px;">
+                <div id="id_div_climatemaster_logo">
                     <img class="img-fluid" src="~/static/pictures/generalPictures/LogoTransparent.png" style="position:absolute;top:0px;left:0px;"/>
                 </div>
+
                 <!-- ClimateMaster Text -->
-                <!-- <div class="text-center w-100 ui-draggable-handle" style="position:absolute;bottom:30px;"> -->
-                
                 <div style="position:absolute;bottom:10px;background-color:rgba(247, 247, 247, 0.3)" class="w-100 mx-auto">
-                    <h2><span class="text-success">Climate</span>Master 2020</h2>
-                    <h6>Umweltfreundlich klimaneutral</h6>
+                    <h2 id="id_h2_climatemaster_heading"><span class="text-success">Climate</span>Master 2020</h2>
+                    <h6 id="id_h6_climateneutral">Umweltfreundlich klimaneutral</h6>
                 </div>
-                <!-- </div> -->
             </div>
+
+
             <!-- Area to edit picture -->
             <div class="col-md-4">
                 <button id="id_button_download_picture" class="btn btn-default border-dark" v-on:click="downloadPicture">Dieses Bild herunterladen</button>
@@ -93,7 +94,8 @@ export default {
         }
     },
     async mounted(){
-        //Get picture_for_imagecreator if available   
+        //Get picture_for_imagecreator if available  
+        $("#id_div_image_creator_loading_animation").addClass("loading-animation-green");
         try {
             const data = null;
             if(this.admin != true){
@@ -121,6 +123,9 @@ export default {
         } catch (e) {
             this.error = "Error. Konnte das Picture_for_imagecreator nicht laden. " + e.response.data.message;
         }
+
+        $("#id_div_image_creator_loading_animation").removeClass("loading-animation-green");
+
 
     },
     methods:{
@@ -296,3 +301,27 @@ export default {
     }
 }
 </script>
+<style scoped>
+
+#id_div_climatemaster_logo{
+    position:absolute;
+    top:0px;
+    left:10px;
+    width:80px;
+}
+
+
+
+@media only screen and (max-width: 600px) {
+#id_div_climatemaster_logo{
+    width:40px;
+}
+#id_h2_climatemaster_heading{
+    font-size: 20px;
+}
+#id_h6_climateneutral{
+    font-size: 14px;
+}
+
+}
+</style>

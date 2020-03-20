@@ -1,6 +1,6 @@
 <template>
     <div>
-        <imagecreator :admin="true" />
+        <imagecreator :admin="true" class="w-100"/>
     </div>
 </template>
 <script>

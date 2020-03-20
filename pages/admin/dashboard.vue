@@ -24,7 +24,7 @@
                     <showAllUsers v-if="openedDashboardComponent == 'showAllUsers'"/>
 
                     <!-- To download images from imagecreator -> download pictures of all users with "sharing_permitted" = true -->
-                    <imagecreatorSharingPermitted v-if="openedDashboardComponent == 'imagecreatorSharingPermitted'" />
+                    <imagecreatorSharingPermitted v-if="openedDashboardComponent == 'imagecreatorSharingPermitted'"/>
                 </div>
             </div>
 
