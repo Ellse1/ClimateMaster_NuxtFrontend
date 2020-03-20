@@ -35,7 +35,7 @@
                     <div class="col-2 text-center">
                         <font-awesome-icon icon="plug" class="" style="font-size:20px;"/>     
                     </div>
-                    <div class="col-2 text-center">
+                    <div class="col-2 text-center" v-if="show_compensation == true">
                         <font-awesome-icon icon="sort-amount-down" class="" style="font-size:20px;"/>     
                     </div>
                 </div>
