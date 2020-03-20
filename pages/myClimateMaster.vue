@@ -230,7 +230,6 @@ export default {
             
         }
 
-
     },
     methods:{
         openClimateMasterAction(indexNumber, stepname){

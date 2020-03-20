@@ -41,7 +41,7 @@
                     <a class="btn btn-success" target="_blanc" href="https://www.atmosfair.de/de/spenden/">Direktspende an Atmosfair</a>
 
                     <p>
-                        Schicke uns danach einfach den entsprechenden Beleg und deinen Benutzernamen ({{user.username}}) an elias@climate-master.com.
+                        Schicke uns danach einfach die entsprechende Spendenbescheinigung und deinen Benutzernamen ({{user.username}}) an elias@climate-master.com.
                         Wir schicken dir nach einer Überprüfung dann eine Bestätigung und schalten dich als <span class="text-success">Climate</span>Master 2020 frei.
                     </p>
                     

@@ -4,8 +4,8 @@
             <div class="col-md-8 text-center bg-light mx-auto border border-dark rounded" style="margin-top:100px;">
                 <h2>Herzlichen Glückwunsch</h2>
                 <h5>Wieder einen Schritt zur umweltfreundlichen Klimaneutralität geschafft!</h5>
-                <div style="position:relative;height:150px;">
-                    <div id="id_thumbs_up" style="position:absolute;margin-left:40%;">
+                <div style="position:relative;height:100px;">
+                    <div class="thumbs_up" style="position:absolute;margin-left:40%;">
                         <font-awesome-icon icon="thumbs-up" class="mt-1 mb-2 text-success"/>                         
                     </div>
                 </div>
@@ -27,7 +27,7 @@ export default {
 </script>
 <style scoped>
 
-#id_thumbs_up{
+.thumbs_up{
     font-size:80px;
     animation: scaleUpAndDown 2s ease-in-out infinite, spin 2s ease-in-out infinite
 }
