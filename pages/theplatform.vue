@@ -1,20 +1,27 @@
 <template>
-    <div class="container bg-light  rounded p-2">
-        <h2>Die <span class="text-success">Climate</span>Master Plattform</h2>
+    <div class="container bg-light p-3 rounded p-2 text-center mt-4" style="">
+        <!-- <h2>Die <span class="text-success">Climate</span>Master Plattform</h2> -->
         <p>
             Die ClimateMaster Plattform verknüpft deine individuelle CO2 Berechnung mit der Möglichkeit 
             zur sehr wirkungsvollen Reduktion und der anschließenden Kompensation der Resttreibhausgase. 
         </p>
         <!-- Download the pdf concepts  -->
         <div class="">
-            <a target="_blanc" href="https://www.climate-master.com:8000/api/file/conceptSummary" class="btn btn-default border">Konzept Zusammenfassung (PDF)</a>
-            <a target="_blanc" href="https://www.climate-master.com:8000/api/file/concept" class="btn btn-default border">Konzept Langfassung (PDF)</a>
+            <a target="_blanc" href="https://www.climate-master.com:8000/api/file/conceptSummary" class="btn btn-default border mt-2">Konzept Zusammenfassung (PDF)</a>
+            <a target="_blanc" href="https://www.climate-master.com:8000/api/file/concept" class="btn btn-default border mt-2">Konzept Langfassung (PDF)</a>
         </div>
 
 
 
-
-        <h4 class="mt-2">Berechnung und CO2 Reduktion:</h4>
+        <!-- Calculate and reduce -->
+        <div class="w-100 row mt-5">
+            <div class="col-1">
+                <font-awesome-icon icon="calculator" class="" style="font-size:50px;"/>     
+            </div>
+            <div class="col-10">
+                <h4 class="">Berechnung und CO2 Reduktion:</h4>
+            </div>
+        </div>
         <p>
             Mit dem CO2 Rechner des Umweltbundesamts kannst du deinen CO2  Ausstoß berechnen und auf 
             die ClimateMaster Plattform übertragen. Nach der Übertragung zeigen wir dir, mit welchen 
@@ -23,7 +30,15 @@
         </p>
 
 
-        <h4>Restkompensation:</h4>
+        <!-- compensate -->
+        <div class="w-100 row mt-5">
+            <div class="col-1">
+                <font-awesome-icon icon="sort-amount-down" class="" style="font-size:50px;"/>     
+            </div>
+            <div class="col-10">
+                <h4 class="">Restkompensation:</h4>
+            </div>
+        </div>
         <p>
             Anschließend kannst du deinen Restausstoß von Treibhausgasen kompensieren. Es wird eine bestimmte Menge 
             an Geld in Klimaschutzprojekte investiert, es wird genau berechnet, wie viel Geld investiert werden muss, 
@@ -33,7 +48,16 @@
              Deren Webseite und Projekte findest du  <a target="_blanc" href="https://www.atmosfair.de/de/klimaschutzprojekte/">hier</a>.
         </p>
 
-        <h4>Präsentation:</h4>
+
+        <!-- Presentation -->
+        <div class="w-100 row mt-5">
+            <div class="col-1">
+                <font-awesome-icon icon="user-circle" class="" style="font-size:50px;"/>     
+            </div>
+            <div class="col-10">
+                <h4 class="">Präsentation:</h4>
+            </div>
+        </div>
         <p>
             Die ClimateMaster Plattform ermöglicht es dir, dich, deine Berechnung und deine Klimaschutzfortschritte 
             zu präsentieren. Sei mutig und präsentiere dich als Klimaschützer bzw. ClimateMaster. Das motiviert 
@@ -45,7 +69,15 @@
         </p>
 
 
-        <h4>Beispielbilder der Platform</h4>
+        <!-- Example pictures -->
+        <div class="w-100 row mt-5">
+            <div class="col-1">
+                <font-awesome-icon icon="images" class="" style="font-size:50px;"/>     
+            </div>
+            <div class="col-10">
+                <h4 class="">Beispielbilder der Platform</h4>
+            </div>
+        </div>
         <div class="p-1">
             <img class="border border-dark img-fluid" src="~/static/pictures/forSpecialSites/theplatform/Climatemastersteps.png" alt="Bild konnte nicht gefunden werden." />
             <p>
@@ -65,3 +97,8 @@
 
     </div>
 </template>
+<script>
+export default {
+    layout: 'indexLayout'
+}
+</script>
