@@ -1,5 +1,5 @@
 <template>
-    <div style="max-width:100%;overflow:hidden;">
+    <div style="width:100%;" class="">
             <div class="" v-if="success">
                 <h4 class="text-center">Aktuelle CO2 Analyse</h4>
                 <div class="row w-100">
@@ -11,7 +11,7 @@
                         </nuxt-link>
                     </div>
                 </div>
-                <div class="row w-100">
+                <div id="id_div_descripton_sectors" class="row w-100">
                     <div class="col-2" style="word-wrap: break-word;">Öffentliche Emissionen</div>
                     <div class="col-2" style="word-wrap: break-word;">Konsum</div>
                     <div class="col-2" style="word-wrap: break-word;">Ernährung</div>
@@ -19,9 +19,29 @@
                     <div class="col-2" style="word-wrap: break-word;">Heizung und Strom</div>
                     <div class="col-2" style="word-wrap: break-word;" v-if="show_compensation == true">Kompensierung (Alles!)</div>
                 </div>
+                <div id="id_div_icons_sectors" class="row w-100 mt-2 mx-auto">
+                    <div class="col-2 text-center">
+                        <font-awesome-icon icon="users" class="" style="font-size:20px;"/>     
+                    </div>
+                    <div class="col-2 text-center">
+                        <font-awesome-icon icon="cart-arrow-down" class="" style="font-size:20px;"/>     
+                    </div>
+                    <div class="col-2 text-center">
+                        <font-awesome-icon icon="hamburger" class="" style="font-size:20px;"/>     
+                    </div>
+                    <div class="col-2 text-center">
+                        <font-awesome-icon icon="car" class="" style="font-size:20px;"/>     
+                    </div>
+                    <div class="col-2 text-center">
+                        <font-awesome-icon icon="plug" class="" style="font-size:20px;"/>     
+                    </div>
+                    <div class="col-2 text-center">
+                        <font-awesome-icon icon="sort-amount-down" class="" style="font-size:20px;"/>     
+                    </div>
+                </div>
 
                 <div class="text-center">
-                    <b>Gesamtemissionen: {{total_emissions}} Tonnen pro Jahr</b><br>
+                    <b>Gesamt : {{total_emissions}} Tonnen pro Jahr</b><br>
                     <b>Deutscher Durchschnitt: 11.6 Tonnen pro Jahr</b><br>
                     Klicke auf die Balken, um Handlungsvorschläge für den jeweiligen Bereich zu bekommen.
                 </div>
@@ -131,3 +151,14 @@ export default {
     }
 }
 </script>
+<style scoped>
+
+@media only screen and (max-width: 600px) {
+    #id_div_descripton_sectors{
+        display:none;
+    }
+    #id_div_icons_sectors{
+        display:flex;
+    }
+}
+</style>
