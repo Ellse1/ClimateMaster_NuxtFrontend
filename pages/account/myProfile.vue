@@ -28,7 +28,7 @@
                         
                     </div>
                 </label>
-                <input type="file" class="mt-2" ref="image" id="id_profilePicture" name="profilePicture" v-on:change="handleImageUpload" style="display:none;"/>
+                <input type="file" class="mt-2" ref="image" id="id_profilePicture" name="profilePicture" v-on:change="handleImageUpload" style="display:none;" accept="image/*"/>
             </div>
 
             <div class="row">
@@ -196,42 +196,52 @@ export default {
 
             this.profilePicture = this.$refs.image.files[0];
 
-            let formData = new FormData();
-            formData.append('profilePicture', this.profilePicture);
+            //check client site, if size is to big
+            var filesize = ((this.profilePicture.size/1024)/1024).toFixed(4); // MB
 
-            try {
-                const{data} = await this.$axios.post('user/addProfilePicture', 
-                formData, {
-                    headers:{
-                        'Content-Type' : 'multipart/form-data'
+            if(filesize <= 2){
+
+                let formData = new FormData();
+                formData.append('profilePicture', this.profilePicture);
+
+                try {
+                    const{data} = await this.$axios.post('user/addProfilePicture', 
+                    formData, {
+                        headers:{
+                            'Content-Type' : 'multipart/form-data'
+                        }
+                    })
+                    if(data.state == "error"){
+                        this.error = data.message;
+                        this.success = null;
                     }
-                })
-                if(data.state == "error"){
-                    this.error = data.message;
-                    this.success = null;
-                }
-                else if(data.state == "success"){
-                    this.error = null;
-                    this.success = data.message;
+                    else if(data.state == "success"){
+                        this.error = null;
+                        this.success = data.message;
 
-                    var rawResponse = data.image_base64;
-                    this.profile_picture_base64_for_public_profile = rawResponse;
-                    //Give picture to element
-                    $("#id_img_profilePicture").attr('src', 'data:image/jfif;base64,'+rawResponse);
+                        var rawResponse = data.image_base64;
+                        this.profile_picture_base64_for_public_profile = rawResponse;
+                        //Give picture to element
+                        $("#id_img_profilePicture").attr('src', 'data:image/jfif;base64,'+rawResponse);
+                        
+                        //Show right element
+                        $("#id_div_profilePicture").show();
+                        $("#id_img_profilePicture").show();
+                        $("#id_icon_profile_picture").hide();
+                    }
+                    else{
+                        this.success = null;
+                        this.error = "Das Bild konnte nicht gespeichert werden."
+                    }
                     
-                    //Show right element
-                    $("#id_div_profilePicture").show();
-                    $("#id_img_profilePicture").show();
-                    $("#id_icon_profile_picture").hide();
-                }
-                else{
+                } catch (e) {
                     this.success = null;
-                    this.error = "Das Bild konnte nicht gespeichert werden."
+                    this.error = "Das Bild konnte nicht gespeichert werden. Vermutlich stimmt die Größe oder das Format nicht. Versuche es mit einem anderen Bild.";
                 }
-                
-            } catch (e) {
-                this.success = null;
-                this.error = "Das Bild konnte nicht gespeichert werden. Versuchen Sie es später noch einmal.";
+            }
+            //If filesize to big:
+            else{
+                this.error = "Das Bild ist zu groß und kann deshalb nicht hochgeladen werden."
             }
 
             $("#id_div_loading").removeClass("loading-animation");
