@@ -75,7 +75,7 @@
                 <font-awesome-icon icon="images" class="" style="font-size:50px;"/>     
             </div>
             <div class="col-10">
-                <h4 class="">Beispielbilder der Platform</h4>
+                <h4 class="">Beispielbilder der Plattform</h4>
             </div>
         </div>
         <div class="p-1">

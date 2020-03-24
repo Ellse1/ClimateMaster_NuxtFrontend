@@ -49,8 +49,8 @@
 
                 
                 <div class="text-center">
-                    <a target="_blanc" href="https://www.climate-master.com:8000/api/file/conceptSummary" class="btn btn-default border">Konzept Zusammenfassung (PDF)</a>
-                    <a target="_blanc" href="https://www.climate-master.com:8000/api/file/concept" class="btn btn-default border">Konzept Langfassung (PDF)</a>
+                    <a target="_blanc" href="https://www.climate-master.com:8000/api/file/conceptSummary" class="btn btn-default border mt-2">Konzept Zusammenfassung (PDF)</a>
+                    <a target="_blanc" href="https://www.climate-master.com:8000/api/file/concept" class="btn btn-default border mt-2">Konzept Langfassung (PDF)</a>
 
                 </div>
                 <!-- <div class="col-6 text-center">
