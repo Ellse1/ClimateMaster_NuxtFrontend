@@ -5,7 +5,7 @@
                 <div class="text-center">In Tonnen CO2 Äquivalent</div>
                 <div class="text-center" id="id_div_loading_animation"></div>
                 <div class="row w-100 mx-auto" >
-                    <div class="col-2" v-for="(emission, key) in emissions" v-bind:key="key" style="position:relative;height:300px;">
+                    <div class="col-2 p-0" v-for="(emission, key) in emissions" v-bind:key="key" style="position:relative;height:300px;">
                         <b>{{emission}}</b>
                         <nuxt-link :to="{path:'/climadvices',query:{climatemasterarea: key}}" class="h-100 w-100">
                             <!-- Chart bar -->
