@@ -85,7 +85,7 @@
             </p>
         </div>
         <div class="p-1">
-            <img class="border border-dark img-fluid" src="~/static/pictures/forSpecialSites/theplatform/CO2Analysis.png" alt="Bild konnte nicht gefunden werden." />
+            <img class="border border-dark img-fluid" src="~/static/pictures/forSpecialSites/theplatform/CO2Analysis.jpg" alt="Bild konnte nicht gefunden werden." />
             <p>
                 Beispiel einer individuellen Treibhausgas Analyse. Dir wird diese Co2Chart nach deiner CO2 Berechnung 
                 an verschiedenen Stellen angezeigt.
