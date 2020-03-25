@@ -1,6 +1,6 @@
 <template>
     <div class="text-center">
-        <h2>Mein öffentliches Profil</h2>
+        <h2>Mein Profil veröffentlichen</h2>
         
         <div v-if="publicUserProfile != null">
             <span id="id_span_loading_animation">
@@ -18,42 +18,35 @@
 
             <!-- show only if real publicUserProfile is created in DB -> id != null -->
             <div v-if="publicUserProfile.id != null && publicUserProfile.public == true" class="pb-2">
+     
 
-                <!-- <a data-toggle="collapse" href="#collapseContent" role="button" aria-expanded="false" aria-controls="collapseContent">
-                    anzeigen
-                </a> -->
-
-                <!-- Profile picture -->
-
-
-                
-                <div class="mt-2 col-md-8 mx-auto">
-                    <label><b>Dein <span class="text-success">Climate</span>Master Statement</b></label>
-                    <textarea class="form-control" v-model="publicUserProfile.information_general" placeholder="Warum willst du ClimateMaster werden? Warum sind dir Umweltschutz und Klimaschutz wichtig? Für wen schützt du den Planeten?"></textarea>
+                <div class="row col-md-8 mx-auto">
+                    <div class="mt-2 col-md-6 mx-auto">
+                        <label><b>Dein <span class="text-success">Climate</span>Master Statement</b></label>
+                        <textarea class="form-control" v-model="publicUserProfile.information_general" placeholder="Warum willst du ClimateMaster werden? Warum sind dir Umweltschutz und Klimaschutz wichtig? Für wen schützt du den Planeten?"></textarea>
+                    </div>
+                    <div class="mt-2 col-md-6 mx-auto">
+                        <label><b>Kommentar Heizung und Strom</b></label>
+                        <textarea class="form-control" v-model="publicUserProfile.information_heating_electricity" placeholder="Heizt du mit Erneuerbaren Energien? Oder hast du einen Ökostromanbieter?"></textarea>
+                    </div>
+                    <div class="mt-2 col-md-6 mx-auto">
+                        <label><b>Kommentar Mobilität</b></label>
+                        <textarea class="form-control" v-model="publicUserProfile.information_mobility" placeholder="Welchen Fortschritt hast du bei Mobilität gemacht? Fliegst du besonders wenig? Oder kompensierst du deine Urlaubsreisen?"></textarea>
+                    </div>
+                    <div class="mt-2 col-md-6 mx-auto">
+                        <label><b>Kommentar Konsum</b></label>
+                        <textarea class="form-control" v-model="publicUserProfile.information_consumption" placeholder="Wie reduzierst du deinen CO2 Ausstoß bei Konsum? Achtest du auf spezielle Labels? Oder kaufst du häufig gebraucht oder besonders nachhaltig?"></textarea>
+                    </div>
+                    <div class="mt-2 col-md-6 mx-auto">
+                        <label><b>Kommentar Ernährung</b></label>
+                        <textarea class="form-control" v-model="publicUserProfile.information_nutrition" placeholder="Besonders wenig Fleisch? Bio oder sogar Demeter? Vegetarisch oder sogar Vegan unterwegs?"></textarea>
+                    </div>
+                    <div class="mt-2 col-md-6">
+                        <label><b>Kommentar Öffentliche Emissionen</b></label>
+                        <textarea class="form-control" v-model="publicUserProfile.information_public_emissions" placeholder="Diese Emissionen kannst du nur indirekt beeinflussen. Nimmst du an Fridays For Future Demonstationen teil? Teilst du deine Klimaschutz Fortschritte mit Freunden und bekannten?"></textarea>
+                    </div>
                 </div>
-
-                
-                <div class="mt-2 col-md-8 mx-auto">
-                    <label><b>Kommentar Heizung und Strom</b></label>
-                    <textarea class="form-control" v-model="publicUserProfile.information_heating_electricity" placeholder="Heizt du mit Erneuerbaren Energien? Oder hast du einen Ökostromanbieter?"></textarea>
-                </div>
-                <div class="mt-2 col-md-8 mx-auto">
-                    <label><b>Kommentar Mobilität</b></label>
-                    <textarea class="form-control" v-model="publicUserProfile.information_mobility" placeholder="Welchen Fortschritt hast du bei Mobilität gemacht? Fliegst du besonders wenig? Oder kompensierst du deine Urlaubsreisen?"></textarea>
-                </div>
-                <div class="mt-2 col-md-8 mx-auto">
-                    <label><b>Kommentar Konsum</b></label>
-                    <textarea class="form-control" v-model="publicUserProfile.information_consumption" placeholder="Wie reduzierst du deinen CO2 Ausstoß bei Konsum? Achtest du auf spezielle Labels? Oder kaufst du häufig gebraucht oder besonders nachhaltig?"></textarea>
-                </div>
-                <div class="mt-2 col-md-8 mx-auto">
-                    <label><b>Kommentar Ernährung</b></label>
-                    <textarea class="form-control" v-model="publicUserProfile.information_nutrition" placeholder="Besonders wenig Fleisch? Bio oder sogar Demeter? Vegetarisch oder sogar Vegan unterwegs?"></textarea>
-                </div>
-                <div class="mt-2 col-md-8 mx-auto">
-                    <label><b>Kommentar Öffentliche Emissionen</b></label>
-                    <textarea class="form-control" v-model="publicUserProfile.information_public_emissions" placeholder="Diese Emissionen kannst du nur indirekt beeinflussen. Nimmst du an Fridays For Future Demonstationen teil? Teilst du deine Klimaschutz Fortschritte mit Freunden und bekannten?"></textarea>
-                </div>
-                
+               
 
                 <button v-on:click="updatePublicProfile" id="id_button_savePublicProfile" class="btn btn-success col-md-4 mt-3">Änderungen am öffentlichen Profil speichern</button>
                 <nuxt-link :to="'/perfect/'+user.username" class="btn btn-success col-md-4 mt-3">Mein Profil ansehen</nuxt-link>

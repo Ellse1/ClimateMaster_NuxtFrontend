@@ -29,8 +29,19 @@
                     </div>
                 </label>
                 <input type="file" class="mt-2" ref="image" id="id_profilePicture" name="profilePicture" v-on:change="handleImageUpload" style="display:none;" accept="image/*"/>
+                
+                <!-- Notification for profile picture -->
+                <notification :message="error_profile_picture" v-if="error_profile_picture" class="text-danger mt-3" />
+                <notification :message="success_profile_picture" v-if="success_profile_picture" class="text-success mt-3" />
+
+            
             </div>
 
+        
+  
+
+
+            <!-- Privat Data (Street...) -->
             <div class="row">
                 <div class="col-md-6 mt-4">
                     <h4 class="text-center">Meine Persönlichen Daten</h4>
@@ -77,11 +88,6 @@
                                 </p>
                             </div>
                         </div>
-                        <!-- <div class="col-6 text-center mt-3">
-                            <a href="#" class="btn btn-default border dropdown-toggle" id="dropdownInstagram" data-toggle="instagram_name_description" aria-haspopup="true" aria-expanded="false" >?</a>
-                            <div id="instagram_name_description" aria-labelledby="dropdownInstagram" style="">
-                               </div>
-                        </div> -->
                     </div>
                 </div>
             </div>
@@ -117,6 +123,8 @@ export default {
     },
     data(){
         return{
+            error_profile_picture: null,
+            success_profile_picture:null,
             error:null,
             success: null,
             profile_picture_name: null,
@@ -212,12 +220,12 @@ export default {
                         }
                     })
                     if(data.state == "error"){
-                        this.error = data.message;
-                        this.success = null;
+                        this.error_profile_picture = data.message;
+                        this.success_profile_picture = null;
                     }
                     else if(data.state == "success"){
-                        this.error = null;
-                        this.success = data.message;
+                        this.error_profile_picture = null;
+                        this.success_profile_picture = data.message;
 
                         var rawResponse = data.image_base64;
                         this.profile_picture_base64_for_public_profile = rawResponse;
@@ -230,18 +238,18 @@ export default {
                         $("#id_icon_profile_picture").hide();
                     }
                     else{
-                        this.success = null;
-                        this.error = "Das Bild konnte nicht gespeichert werden."
+                        this.success_profile_picture = null;
+                        this.error_profile_picture = "Das Bild konnte nicht gespeichert werden."
                     }
                     
                 } catch (e) {
-                    this.success = null;
-                    this.error = "Das Bild konnte nicht gespeichert werden. Vermutlich stimmt die Größe oder das Format nicht. Versuche es mit einem anderen Bild.";
+                    this.success_profile_picture = null;
+                    this.error_profile_picture = "Das Bild konnte nicht gespeichert werden. Vermutlich stimmt die Größe oder das Format nicht. Versuche es mit einem anderen Bild.";
                 }
             }
             //If filesize to big:
             else{
-                this.error = "Das Bild ist zu groß und kann deshalb nicht hochgeladen werden."
+                this.error_profile_picture = "Das Bild ist zu groß und kann deshalb nicht hochgeladen werden."
             }
 
             $("#id_div_loading").removeClass("loading-animation");
