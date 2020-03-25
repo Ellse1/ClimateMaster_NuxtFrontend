@@ -1,42 +1,45 @@
 <template>
     <div style="width:100%;" class="">
-            <div class="" v-if="success">
+            <div class="">
                 <h4 class="text-center">Aktuelle CO2 Analyse</h4>
-                <div class="row w-100">
+                <div class="text-center">In Tonnen CO2 Äquivalent</div>
+                <div class="text-center" id="id_div_loading_animation"></div>
+                <div class="row w-100 mx-auto" >
                     <div class="col-2" v-for="(emission, key) in emissions" v-bind:key="key" style="position:relative;height:300px;">
-                        <b>{{emission}}</b> Tonnen
+                        <b>{{emission}}</b>
                         <nuxt-link :to="{path:'/climadvices',query:{climatemasterarea: key}}" class="h-100 w-100">
                             <!-- Chart bar -->
-                            <div :id="key" class="bg-primary card" style="position:absolute;bottom:0px;width:80%;"></div>
+                            <div :id="key" class="bg-primary card" style="position:absolute;left:10%;bottom:0px;width:80%;"></div>
                         </nuxt-link>
                     </div>
                 </div>
-                <div id="id_div_descripton_sectors" class="row w-100">
-                    <div class="col-2" style="word-wrap: break-word;">Öffentliche Emissionen</div>
-                    <div class="col-2" style="word-wrap: break-word;">Konsum</div>
-                    <div class="col-2" style="word-wrap: break-word;">Ernährung</div>
-                    <div class="col-2" style="word-wrap: break-word;">Mobilität</div>
-                    <div class="col-2" style="word-wrap: break-word;">Heizung und Strom</div>
-                    <div class="col-2" style="word-wrap: break-word;" v-if="show_compensation == true">Kompensierung (Alles!)</div>
+                <div id="id_div_descripton_sectors" class="row w-100 mx-auto">
+                    <div class="col-2 icon_co2calculation">Öffentliche Emissionen</div>
+                    <div class="col-2 icon_co2calculation">Konsum</div>
+                    <div class="col-2 icon_co2calculation">Ernährung</div>
+                    <div class="col-2 icon_co2calculation">Mobilität</div>
+                    <div class="col-2 icon_co2calculation">Heizung und Strom</div>
+                    <div class="col-2 icon_co2calculation" v-if="show_compensation == true">Kompensierung (Alles!)</div>
                 </div>
                 <div id="id_div_icons_sectors" class="row w-100 mt-2 mx-auto">
-                    <div class="col-2 text-center">
+                    
+                    <div class="col-2 p-0 text-center">
                         <font-awesome-icon icon="users" class="" style="font-size:20px;"/>     
                     </div>
-                    <div class="col-2 text-center">
-                        <font-awesome-icon icon="cart-arrow-down" class="" style="font-size:20px;"/>     
+                    <div class="col-2 p-0 text-center">
+                            <font-awesome-icon icon="cart-arrow-down" class="" style="font-size:20px;"/>     
                     </div>
-                    <div class="col-2 text-center">
-                        <font-awesome-icon icon="hamburger" class="" style="font-size:20px;"/>     
+                    <div class="col-2 p-0 text-center">
+                            <font-awesome-icon icon="hamburger" class="" style="font-size:20px;"/>     
                     </div>
-                    <div class="col-2 text-center">
-                        <font-awesome-icon icon="car" class="" style="font-size:20px;"/>     
+                    <div class="col-2 p-0 text-center">
+                            <font-awesome-icon icon="car" class="" style="font-size:20px;"/>     
                     </div>
-                    <div class="col-2 text-center">
-                        <font-awesome-icon icon="plug" class="" style="font-size:20px;"/>     
+                    <div class="col-2 p-0 text-center">
+                            <font-awesome-icon icon="plug" class="" style="font-size:20px;"/>     
                     </div>
-                    <div class="col-2 text-center" v-if="show_compensation == true">
-                        <font-awesome-icon icon="sort-amount-down" class="" style="font-size:20px;"/>     
+                    <div class="col-2 p-0 text-center" v-if="show_compensation == true">
+                            <font-awesome-icon icon="sort-amount-down" class="" style="font-size:20px;"/>     
                     </div>
                 </div>
 
@@ -66,6 +69,8 @@ export default {
         }
     },
     async mounted(){
+
+        $("#id_div_loading_animation").addClass('loading-animation-green');
 
         try {
             const data = null;
@@ -115,6 +120,7 @@ export default {
             this.error = "Es konnte keine Berechnung geholt werden." + e.response.data.message;
         }  
         
+        $("#id_div_loading_animation").removeClass('loading-animation-green');
     },
     beforeUpdate(){
         // If it should show the whole compensation too -> rerender here
