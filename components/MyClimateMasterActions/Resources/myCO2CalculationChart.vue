@@ -50,7 +50,12 @@
                     Klicke auf die Balken, um Handlungsvorschläge für den jeweiligen Bereich zu bekommen.
                 </div>
 
-            </div>        
+            </div> 
+            <div v-if="error">
+                <div class="text-center text-danger">
+                    Es konnte keine CO2 Berechnung gefunden werden.
+                </div>
+            </div>       
 
     </div>
 </template>
