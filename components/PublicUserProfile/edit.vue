@@ -49,7 +49,7 @@
                
 
                 <button v-on:click="updatePublicProfile" id="id_button_savePublicProfile" class="btn btn-success col-md-4 mt-3">Änderungen am öffentlichen Profil speichern</button>
-                <nuxt-link :to="'/perfect/'+user.username" class="btn btn-success col-md-4 mt-3">Mein Profil ansehen</nuxt-link>
+                <nuxt-link :to="'/now/'+user.username" class="btn btn-success col-md-4 mt-3">Mein Profil ansehen</nuxt-link>
                 
 
                 
