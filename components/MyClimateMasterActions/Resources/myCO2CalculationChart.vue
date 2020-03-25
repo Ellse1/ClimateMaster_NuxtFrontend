@@ -1,9 +1,10 @@
 <template>
-    <div style="width:100%;" class="">
-            <div class="">
-                <h4 class="text-center">Aktuelle CO2 Analyse</h4>
+    <div style="width:100%;">
+        <h4 class="text-center">Aktuelle CO2 Analyse</h4>
+            <div class="text-center" id="id_div_loading_animation"></div>
+            <div v-if="success">
+
                 <div class="text-center">In Tonnen CO2 Äquivalent</div>
-                <div class="text-center" id="id_div_loading_animation"></div>
                 <div class="row w-100 mx-auto" >
                     <div class="col-2 p-0" v-for="(emission, key) in emissions" v-bind:key="key" style="position:relative;height:300px;">
                         <b>{{emission}}</b>
@@ -49,7 +50,7 @@
                     Klicke auf die Balken, um Handlungsvorschläge für den jeweiligen Bereich zu bekommen.
                 </div>
 
-            </div>
+            </div>        
 
     </div>
 </template>
