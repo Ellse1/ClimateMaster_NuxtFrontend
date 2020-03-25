@@ -15,33 +15,36 @@
                     </div>
                 </div>
                 <div id="id_div_descripton_sectors" class="row w-100 mx-auto">
-                    <div class="col-2 icon_co2calculation">Öffentliche Emissionen</div>
+                    <div class="col-2 icon_co2calculation">Heizung und Strom</div>
+                    <div class="col-2 icon_co2calculation">Mobilität</div>
                     <div class="col-2 icon_co2calculation">Konsum</div>
                     <div class="col-2 icon_co2calculation">Ernährung</div>
-                    <div class="col-2 icon_co2calculation">Mobilität</div>
-                    <div class="col-2 icon_co2calculation">Heizung und Strom</div>
+                    <div class="col-2 icon_co2calculation">Öffentliche Emissionen</div>
                     <div class="col-2 icon_co2calculation" v-if="show_compensation == true">Kompensierung (Alles!)</div>
                 </div>
                 <div id="id_div_icons_sectors" class="row w-100 mt-2 mx-auto">
-                    
+                    <div class="col-2 p-0 text-center">
+                            <font-awesome-icon icon="plug" class="" style="font-size:20px;"/>     
+                    </div>                    
+                    <div class="col-2 p-0 text-center">
+                        <font-awesome-icon icon="car" class="" style="font-size:20px;"/>     
+                    </div>
+                    <div class="col-2 p-0 text-center">
+                        <font-awesome-icon icon="cart-arrow-down" class="" style="font-size:20px;"/>     
+                    </div>
+                    <div class="col-2 p-0 text-center">
+                        <font-awesome-icon icon="hamburger" class="" style="font-size:20px;"/>     
+                    </div>
                     <div class="col-2 p-0 text-center">
                         <font-awesome-icon icon="users" class="" style="font-size:20px;"/>     
                     </div>
-                    <div class="col-2 p-0 text-center">
-                            <font-awesome-icon icon="cart-arrow-down" class="" style="font-size:20px;"/>     
-                    </div>
-                    <div class="col-2 p-0 text-center">
-                            <font-awesome-icon icon="hamburger" class="" style="font-size:20px;"/>     
-                    </div>
-                    <div class="col-2 p-0 text-center">
-                            <font-awesome-icon icon="car" class="" style="font-size:20px;"/>     
-                    </div>
-                    <div class="col-2 p-0 text-center">
-                            <font-awesome-icon icon="plug" class="" style="font-size:20px;"/>     
-                    </div>
                     <div class="col-2 p-0 text-center" v-if="show_compensation == true">
-                            <font-awesome-icon icon="sort-amount-down" class="" style="font-size:20px;"/>     
+                        <font-awesome-icon icon="sort-amount-down" class="" style="font-size:20px;"/>     
                     </div>
+
+
+
+
                 </div>
 
                 <div class="text-center">
@@ -100,11 +103,11 @@ export default {
                 this.error = null;
 
                 var emissions_minimized = {};
-                emissions_minimized['public_emissions'] = this.data.data['public_emissions'];
+                emissions_minimized['heating_electricity'] = this.data.data['heating_electricity'];
+                emissions_minimized['mobility'] = this.data.data['mobility'];
                 emissions_minimized['consumption'] = this.data.data['consumption'];
                 emissions_minimized['nutrition'] = this.data.data['nutrition'];
-                emissions_minimized['mobility'] = this.data.data['mobility'];
-                emissions_minimized['heating_electricity'] = this.data.data['heating_electricity'];
+                emissions_minimized['public_emissions'] = this.data.data['public_emissions'];
 
                 //if the user has compensated the co2 emission -> show compensation bar too
                 if(this.data.isCompensated == true){

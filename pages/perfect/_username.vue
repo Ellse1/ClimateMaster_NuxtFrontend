@@ -5,7 +5,7 @@
             <div class="pt-2">
                 <!-- icon if no profile_picture -->
                 <font-awesome-icon v-if="profile_picture_base64 == null" icon="user-circle" id="id_icon_profile_picture" style="font-size: 200px;"/> 
-                <div id="id_div_loading" class="bg-success rounded mt-2 mb-2" style="width:50%;margin:auto;"></div>
+                <div id="id_div_loading" class="rounded mt-2 mb-2 col-md-2 mx-auto"></div>
                 <!-- image if profile picture available -->
                 <div  id="id_div_profilePicture" style="width:200px;height:200px;border-radius:50%;overflow:hidden;display:none;" class="border bg-dark mx-auto">
                     <img id="id_img_profilePicture" style="height:100%;">
@@ -37,26 +37,31 @@
 
 
             <!-- statements -->
-            <div class="mt-4">
-                <div v-if="public_user_profile != null">
-                    <div v-if="public_user_profile.information_heating_electricity != null">
-                        <b>Heizung und Strom</b><br>
+            <div class="mt-5">
+                <div v-if="public_user_profile != null" class="row">
+                    <div v-if="public_user_profile.information_heating_electricity != null" class="col-md-6 mt-4">
+                        <font-awesome-icon icon="plug" class="" style="font-size:20px;"/>     
+                        <h5>Heizung und Strom</h5>
                         {{public_user_profile.information_heating_electricity}}
                     </div>
-                    <div v-if="public_user_profile.information_mobility != null">
-                        <b>Mobilität</b><br>
+                    <div v-if="public_user_profile.information_mobility != null" class="col-md-6 mt-4">
+                        <font-awesome-icon icon="car" class="" style="font-size:20px;"/>     
+                        <h5>Mobilität</h5>
                         {{public_user_profile.information_mobility}}
                     </div>
-                    <div v-if="public_user_profile.information_consumption != null">
-                        <b>Konsum</b><br>
+                    <div v-if="public_user_profile.information_consumption != null" class="col-md-6 mt-4">
+                        <font-awesome-icon icon="cart-arrow-down" class="" style="font-size:20px;"/>     
+                        <h5>Konsum</h5>
                         {{public_user_profile.information_consumption}}
                     </div>
-                    <div v-if="public_user_profile.information_nutrition != null">
-                        <b>Ernährung</b><br>
+                    <div v-if="public_user_profile.information_nutrition != null" class="col-md-6 mt-4">
+                        <font-awesome-icon icon="hamburger" class="" style="font-size:20px;"/>     
+                        <h5>Ernährung</h5>
                         {{public_user_profile.information_nutrition}}
                     </div>
-                    <div v-if="public_user_profile.information_public_emissions != null">
-                        <b>Öffentliche Emissionen</b><br>
+                    <div v-if="public_user_profile.information_public_emissions != null" class="col-md-6 mt-4">
+                        <font-awesome-icon icon="users" class="" style="font-size:20px;"/>     
+                        <h5>Öffentliche Emissionen</h5>
                         {{public_user_profile.information_public_emissions}}
                     </div>
                 </div>
@@ -93,6 +98,8 @@ export default {
     },
     async mounted(){
 
+        $("#id_div_loading").addClass("loading-animation-green");
+
         try {
             const{data} = await this.$axios.post("user/getDataToShowPublicUserProfile", {
                 username: this.username
@@ -122,6 +129,9 @@ export default {
                 $("#id_img_profilePicture").show();
                 $("#id_icon_profilePicture").hide();
         }
+
+        $("#id_div_loading").removeClass("loading-animation-green");
+
     }
 }
 </script>
