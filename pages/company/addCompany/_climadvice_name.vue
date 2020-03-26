@@ -103,7 +103,7 @@ export default {
             formData.append('email', this.email);
 
             try {
-                const{data} = await this.$axios.post("company/store", 
+                const{data} = await this.$axios.post("company/storeCompany", 
                 formData,{
                     headers:{
                         "Content-Type" : "form-data/multipart"

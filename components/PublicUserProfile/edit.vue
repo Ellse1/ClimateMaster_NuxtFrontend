@@ -81,7 +81,7 @@ export default {
     async mounted(){
         //Get the public profile
         try {
-            const{data} = await this.$axios.post("publicUserProfile/getPublicUserProfile");
+            const{data} = await this.$axios.post("publicUserProfile/getPublicUserProfile_ByCurrentUser");
 
             //If current User has publicUserProfile: 
             if(data.state == "success"){
@@ -114,7 +114,7 @@ export default {
             $("#id_span_loading_animation").addClass("loading-animation-green");
 
             try {
-                const{data} = await this.$axios.post('publicUserProfile/changePublic', {
+                const{data} = await this.$axios.post('publicUserProfile/changePublic_ByCurrentUser', {
                     public: this.publicUserProfile.public
                 });
 
@@ -138,7 +138,7 @@ export default {
             $("#id_button_savePublicProfile").addClass("loading-animation");
 
             try {
-                const{data} = await this.$axios.post("publicUserProfile/update", {
+                const{data} = await this.$axios.post("publicUserProfile/updatePublicUserProfile_ByCurrentUser", {
                     information_general : this.publicUserProfile.information_general,
                     information_heating_electricity : this.publicUserProfile.information_heating_electricity,
                     information_mobility : this.publicUserProfile.information_mobility,

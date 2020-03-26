@@ -87,7 +87,7 @@ export default {
         async openWindowToMakeUserClimatemaster(index){
             $("#id_div_loading_animation").addClass('loading-animation-green');
             //Get latest calculation of this user
-            const{data} = await this.$axios.post('admin/getLastCalculationOfUser',{
+            const{data} = await this.$axios.post('admin/getLastCO2CalculationOfUser_ByUserID',{
                 user_id: this.allUsers[index].id
             });
 
@@ -110,7 +110,7 @@ export default {
         async makeUserClimatemaster(){
             $("#id_button_make_user_climatemaster").addClass('loading-animation');
             try {
-                const{data} = await this.$axios.post('admin/setUserClimatemaster', {
+                const{data} = await this.$axios.post('admin/setUserClimatemaster_ByUserID', {
                     user_id: this.userToMakeClimatemaster.id
                 });
 

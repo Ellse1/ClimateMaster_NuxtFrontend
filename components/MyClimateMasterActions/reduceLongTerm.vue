@@ -45,7 +45,7 @@ export default {
     async mounted(){
         //Check if User is climatemaster -> show compensation too
         try {
-            const{data} = await this.$axios.post("climatemaster_steps_completed/getCurrentClimatemaster_steps_completed");
+            const{data} = await this.$axios.post("climatemaster_steps_completed/getClimatemaster_steps_completed_ByCurrentUser");
 
             //If current user didn't do the first step -> has no climatemaster_steps_completed for this year
             if(data.state == "error"){

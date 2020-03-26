@@ -86,7 +86,7 @@ export default {
             $("#id_button_save").addClass("loading-animation");
 
             try {
-                const{data} = await this.$axios.post('co2calculation/store', {
+                const{data} = await this.$axios.post('co2calculation/storeCO2Calculation_ByCurrentUser', {
                     link_uba_co2calculation : this.link_uba_co2calculation
                 });
 
@@ -114,7 +114,7 @@ export default {
         async costumizeCalculationCompleted(){
             $("#id_button_completed").addClass("loading-animation");
             try {
-                const{data} = await this.$axios.post("climatemaster_steps_completed/customizeCalculationCompleted");
+                const{data} = await this.$axios.post("climatemaster_steps_completed/customizeCalculationCompleted_ByCurrentUser");
 
                 if(data.state == "error"){
                     this.error = data.message;

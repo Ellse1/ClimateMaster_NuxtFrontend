@@ -170,7 +170,7 @@ export default {
 
         //Get profile Picture if available   
         try {
-            const{data} = await this.$axios.post("user/getProfilePicture");
+            const{data} = await this.$axios.post("user/getProfilePicture_ByCurrentUser");
             
             if(data.state == 'error'){
                 this.error = data.message;
@@ -213,7 +213,7 @@ export default {
                 formData.append('profilePicture', this.profilePicture);
 
                 try {
-                    const{data} = await this.$axios.post('user/addProfilePicture', 
+                    const{data} = await this.$axios.post('user/addProfilePicture_ByCurrentUser', 
                     formData, {
                         headers:{
                             'Content-Type' : 'multipart/form-data'
@@ -277,7 +277,7 @@ export default {
             }
 
             try {
-                const{data} = await this.$axios.post("user/saveAddressAndInstagram",
+                const{data} = await this.$axios.post("user/saveAddressAndInstagram_ByCurrentUser",
                 formData,{
                     headers:{
                         "Content-Type" : "multipart/form-data"

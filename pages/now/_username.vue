@@ -101,7 +101,7 @@ export default {
         $("#id_div_loading").addClass("loading-animation-green");
 
         try {
-            const{data} = await this.$axios.post("user/getDataToShowPublicUserProfile", {
+            const{data} = await this.$axios.post("user/getDataToShowPublicUserProfile_ByUsername", {
                 username: this.username
             })
 

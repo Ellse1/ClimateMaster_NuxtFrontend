@@ -80,7 +80,7 @@ export default {
             $("#id_button_save").addClass("loading-animation");
 
             try {
-                const{data} = await this.$axios.post('co2calculation/store', {
+                const{data} = await this.$axios.post('co2calculation/storeCO2Calculation_ByCurrentUser', {
                     link_uba_co2calculation : this.link_uba_co2calculation
                 });
 

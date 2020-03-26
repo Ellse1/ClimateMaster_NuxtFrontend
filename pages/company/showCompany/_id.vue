@@ -117,7 +117,7 @@ export default {
         // GetCompany
         $('#id_div_loading_animation').addClass("loading-animation");
         try {
-            const{data} = await this.$axios.get('company/getCompany',{
+            const{data} = await this.$axios.get('company/getCompany_ByCompanyID',{
                 params:{
                     id: this.$route.params.id
                 }
@@ -152,7 +152,7 @@ export default {
         // Check if is companyAdmin
         if(this.loggedIn){
             try {
-                const{data} = await this.$axios.post('user/isCompanyAdmin',{
+                const{data} = await this.$axios.post('user/isCompanyAdmin_ByCurrentUser',{
                         company_id: company_id
                 });
 
@@ -187,7 +187,7 @@ export default {
             formData.append('email', this.email);
 
             try {
-                const{data} = await this.$axios.post("company/update", 
+                const{data} = await this.$axios.post("company/updateCompany_ByCompanyID", 
                 formData,{
                     headers:{
                         "Content-Type" : "form-data/multipart"
@@ -221,7 +221,7 @@ export default {
             formData.append('id', this.id); //Company ID
 
             try {
-                const{data} = await this.$axios.post('company/storeHeaderImage',
+                const{data} = await this.$axios.post('company/storeHeaderImage_ByCompanyID',
                 formData, {
                     headers:{
                         "Content-Type" : "multipart/Form-Data"
@@ -253,7 +253,7 @@ export default {
             formData.append('id', this.id); //Company ID
 
             try {
-                const{data} = await this.$axios.post('company/storeLogoImage',
+                const{data} = await this.$axios.post('company/storeLogoImage_ByCompanyID',
                 formData, {
                     headers:{
                         "Content-Type" : "multipart/Form-Data"

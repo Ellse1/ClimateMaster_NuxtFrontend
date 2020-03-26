@@ -58,7 +58,7 @@ export default {
         async reduceShortTermCompleted(){
             $("#id_button_save").addClass("loading-animation");
             try {
-                const{data} = await this.$axios.post("climatemaster_steps_completed/reduceShortTermCompleted");
+                const{data} = await this.$axios.post("climatemaster_steps_completed/reduceShortTermCompleted_ByCurrentUser");
 
                 if(data.state == "error"){
                     this.error = data.message;

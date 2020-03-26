@@ -42,7 +42,7 @@ export default {
     },
     async mounted(){
         try {
-            const{data} = await this.$axios.get('company/getCompanies');
+            const{data} = await this.$axios.get('company/getAllCompanies');
 
             if(data.state == "error"){
                 this.error = data.message
@@ -63,7 +63,7 @@ export default {
     methods:{
         async activateCompany(companyID, index){
             try {
-                const{data} = await this.$axios.post('admin/activateCompany', {
+                const{data} = await this.$axios.post('admin/activateCompany_ByCompanyID', {
                     company_id: companyID
                 });
 
@@ -85,7 +85,7 @@ export default {
         },
         async deactivateCompany(companyID, index){
             try {
-                const{data} = await this.$axios.post('admin/deactivateCompany', {
+                const{data} = await this.$axios.post('admin/deactivateCompany_ByCompanyID', {
                     company_id: companyID
                 });
 

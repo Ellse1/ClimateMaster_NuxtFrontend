@@ -97,7 +97,7 @@ export default {
     async mounted(){    
         // Get the slideshowimages from database
         try {
-            const{data} = await this.$axios.get('companyslideshowimage/getSlideshowimageByCompanyID', {
+            const{data} = await this.$axios.get('companyslideshowimage/getSlideshowimages_ByCompanyID', {
             params: {
                 company_id: this.company_id
             }});
@@ -166,7 +166,7 @@ export default {
             formData.append('slideshowimage', slideshowimage);
 
             try {
-                const{data} = await this.$axios.post('companyslideshowimage/store', 
+                const{data} = await this.$axios.post('companyslideshowimage/storeSlideshowimage', 
                 formData, {
                     headers:{
                         "Content-Type" : "multipart/form-data"
@@ -200,7 +200,7 @@ export default {
         async deleteSlideshowimage(slideshowimageID, index){
             var slideshowimages_temp = [];
             try {
-                const{data} = await this.$axios.post("companyslideshowimage/destroy",{
+                const{data} = await this.$axios.post("companyslideshowimage/destroySlideshowimage_BySlideshowimageID",{
                     id: slideshowimageID
                 });
                 if(data.state == "error"){

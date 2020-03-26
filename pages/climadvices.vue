@@ -55,7 +55,7 @@ export default {
 
         try {
 
-            const{data} = await this.$axios.get("climadvice/index");
+            const{data} = await this.$axios.get("climadvice/getAllClimadvices");
 
             if(data.state == "error"){
                 this.error = data.message;

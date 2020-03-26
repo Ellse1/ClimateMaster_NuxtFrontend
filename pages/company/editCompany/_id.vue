@@ -161,7 +161,7 @@ export default {
     async mounted(){
         $('#id_div_loading_animation').addClass("loading-animation");
         try {
-            const{data} = await this.$axios.get('company/getCompany',{
+            const{data} = await this.$axios.get('company/getCompany_ByCompanyID',{
                 params:{
                     id: this.$route.params.id
                 }
@@ -192,7 +192,7 @@ export default {
 
         // Get Admins of company
         try {
-            const{data} = await this.$axios.post("company/getAdminsOfCompany", {
+            const{data} = await this.$axios.post("company/getAdminsOfCompany_ByCompanyID", {
                 id: this.id
             });
             
@@ -233,7 +233,7 @@ export default {
             formData.append('email', this.email);
 
             try {
-                const{data} = await this.$axios.post("company/update", 
+                const{data} = await this.$axios.post("company/updateCompany_ByCompanyID", 
                 formData,{
                     headers:{
                         "Content-Type" : "form-data/multipart"
@@ -267,7 +267,7 @@ export default {
             formData.append('id', this.id); //Company ID
 
             try {
-                const{data} = await this.$axios.post('company/storeHeaderImage',
+                const{data} = await this.$axios.post('company/storeHeaderImage_ByCompanyID',
                 formData, {
                     headers:{
                         "Content-Type" : "multipart/Form-Data"
@@ -299,7 +299,7 @@ export default {
             formData.append('id', this.id); //Company ID
 
             try {
-                const{data} = await this.$axios.post('company/storeLogoImage',
+                const{data} = await this.$axios.post('company/storeLogoImage_ByCompanyID',
                 formData, {
                     headers:{
                         "Content-Type" : "multipart/Form-Data"
@@ -326,7 +326,7 @@ export default {
         async addAdminToCompany(){
             $("#id_button_addAdmin").addClass("loading-animation");
             try {
-                const{data} = await this.$axios.post("company/addAdmin", {
+                const{data} = await this.$axios.post("company/addAdmin_ByCompanyID", {
                     id: this.id,
                     email: this.email_to_add_admin_to_company
                 });
@@ -351,7 +351,7 @@ export default {
         },
         async removeAdminFromCompany(adminID, index){
             try {
-                const{data} = await this.$axios.post("company/removeAdmin", {
+                const{data} = await this.$axios.post("company/removeAdmin_ByCompanyID", {
                     id: this.id,
                     user_id: adminID
                 });

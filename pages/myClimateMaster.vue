@@ -202,7 +202,7 @@ export default {
     async mounted(){
         //Get the already completed climatemastersteps of this user
         try {
-            const{data} = await this.$axios.post("climatemaster_steps_completed/getCurrentClimatemaster_steps_completed");
+            const{data} = await this.$axios.post("climatemaster_steps_completed/getClimatemaster_steps_completed_ByCurrentUser");
             if(data.state == "error"){
                 
             }
@@ -218,7 +218,7 @@ export default {
 
         //Check if the user should see the gratulation for becoming climatemaster
         try {
-            const{data} = await this.$axios.post("user/checkShowGratulationBecomingClimateMaster");
+            const{data} = await this.$axios.post("user/checkShowGratulationBecomingClimateMaster_ByCurrentUser");
             if(data.state == "error"){
             }
             else if(data.state == "success"){
@@ -268,7 +268,7 @@ export default {
         async climatemaster_steps_completed_changed(){
             try {
                 //Get the already completed climatemastersteps of this user
-                const{data} = await this.$axios.post("climatemaster_steps_completed/getCurrentClimatemaster_steps_completed");
+                const{data} = await this.$axios.post("climatemaster_steps_completed/getClimatemaster_steps_completed_ByCurrentUser");
                 if(data.state == "error"){
                     
                 }

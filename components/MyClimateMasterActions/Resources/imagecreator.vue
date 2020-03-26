@@ -99,7 +99,7 @@ export default {
         try {
             const data = null;
             if(this.admin != true){
-                this.data = await this.$axios.$post("picture_for_imagecreator/getPicturesOfCurrentUser");
+                this.data = await this.$axios.$post("picture_for_imagecreator/getPicturesForImagecreator_ByCurrentUser");
             }
             else{
                 this.data = await this.$axios.$post("admin/getAllImagesForPublication");
@@ -142,7 +142,7 @@ export default {
                 formData.append('picture_for_imagecreator', picture_for_imagecreator);
 
                 try {
-                    const{data} = await this.$axios.post('picture_for_imagecreator/store', 
+                    const{data} = await this.$axios.post('picture_for_imagecreator/storePictureForImageCreator_ByCurrentUser', 
                     formData, {
                         headers:{
                             'Content-Type' : 'multipart/form-data'
@@ -193,7 +193,7 @@ export default {
             var id = this.pictures_for_imagecreator[index].id;
 
             try {
-                const{data} = await this.$axios.post('picture_for_imagecreator/destroy',{
+                const{data} = await this.$axios.post('picture_for_imagecreator/destroyPictureForImagecreator_ByPictureForImagecreatorID',{
                     id: id
                 })
 
@@ -225,12 +225,12 @@ export default {
                 const data = null;
 
                 if(this.admin != true){
-                    this.data = await this.$axios.$post("picture_for_imagecreator/download", {
+                    this.data = await this.$axios.$post("picture_for_imagecreator/download_ByPictureForImagecreatorID", {
                         id : this.picture_single_for_imagecreator.id
                     });
                 }
                 else{
-                    this.data = await this.$axios.$post("admin/downloadPictureFromImagecreator", {
+                    this.data = await this.$axios.$post("admin/downloadPictureFromImagecreator_ByPictureForImagecreatorID", {
                         picture_for_imagecreator_id : this.picture_single_for_imagecreator.id
                     });
                 }
@@ -285,7 +285,7 @@ export default {
         },
         async sharingPermittetChanged(){
             try {
-                const{data} = await this.$axios.post("picture_for_imagecreator/updateSharingPermitted",{
+                const{data} = await this.$axios.post("picture_for_imagecreator/updateSharingPermitted_ByPictureForImagecreatorID",{
                     id: this.picture_single_for_imagecreator.id,
                     sharing_permitted: this.picture_single_for_imagecreator.sharing_permitted
                 });

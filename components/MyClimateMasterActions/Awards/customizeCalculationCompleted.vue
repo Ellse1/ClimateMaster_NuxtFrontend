@@ -69,7 +69,7 @@ export default {
     },
     async mounted(){
         try {
-            const{data} = await this.$axios.post("co2calculation/getLatestCalculation");
+            const{data} = await this.$axios.post("co2calculation/getLatestCO2Calculation_ByCurrentUser");
 
             if(data.state == "error"){
                 this.error = data.message;

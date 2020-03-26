@@ -86,11 +86,11 @@ export default {
 
             //if username == null -> get data of current user
             if(this.username == null){
-                this.data = await this.$axios.$post("co2calculation/getLatestCalculation");
+                this.data = await this.$axios.$post("co2calculation/getLatestCO2Calculation_ByCurrentUser");
             }
             //if username is not null -> get data of this username
             else{
-                this.data = await this.$axios.$post("co2calculation/getLatestCalculationForPublicProfileByUsername", {
+                this.data = await this.$axios.$post("co2calculation/getLatestCO2CalculationForPublicProfileByUsername", {
                     username: this.username
                 });
             }
