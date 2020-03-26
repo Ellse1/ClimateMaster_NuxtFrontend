@@ -55,7 +55,7 @@
                 Neues Bild hochladen<br>
                 <small class="text-danger">png, jpg, Max:2MB</small>
             </label>
-            <input type="file" class="mt-2" ref="image" id="id_picture_for_imagecreator" v-on:change="handleImageUpload" style="display:none;"/>
+            <input type="file" class="mt-2" ref="image" id="id_picture_for_imagecreator" v-on:change="handleImageUpload" style="display:none;" accept="image/*"/>
         </div>
 
         <notification v-if="error" :message="error" class="text-danger mt-2" />
@@ -134,40 +134,49 @@ export default {
 
             var picture_for_imagecreator = this.$refs.image.files[0];
 
-            let formData = new FormData();
-            formData.append('picture_for_imagecreator', picture_for_imagecreator);
+            //Check if filesize is not too big
+            var filesize = ((picture_for_imagecreator.size/1024)/1024).toFixed(4); // MB
+            if(filesize <= 2){
 
-            try {
-                const{data} = await this.$axios.post('picture_for_imagecreator/store', 
-                formData, {
-                    headers:{
-                        'Content-Type' : 'multipart/form-data'
+                let formData = new FormData();
+                formData.append('picture_for_imagecreator', picture_for_imagecreator);
+
+                try {
+                    const{data} = await this.$axios.post('picture_for_imagecreator/store', 
+                    formData, {
+                        headers:{
+                            'Content-Type' : 'multipart/form-data'
+                        }
+                    })
+
+                    if(data.state == "error"){
+                        this.error = data.message;
+                        this.success = null;
                     }
-                })
+                    else{
+                        this.error = null;
+                        this.success = data.message;
+                        //Give picture to pictures list
+                        this.pictures_for_imagecreator.push(data.data);
+                        //set 0 = false and 1 = true
+                        data.data.sharing_permitted = !!+data.data.sharing_permitted
+                        this.picture_single_for_imagecreator = data.data;
 
-                if(data.state == "error"){
-                    this.error = data.message;
-                    this.success = null;
+                        this.error = null;
+                        this.success = data.message;
+
+                        //dont show message "no image"
+                        $("#id_div_message_no_picture_for_imagecreator").hide();
+                    }
+
+                } catch (e) {
+                    this.succes = null;
+                    this.error = "Tut uns leid, das Picture konnte leider nicht gespeichert werden: " + e.response.data.message;
                 }
-                else{
-                    this.error = null;
-                    this.success = data.message;
-                    //Give picture to pictures list
-                    this.pictures_for_imagecreator.push(data.data);
-                    //set 0 = false and 1 = true
-                    data.data.sharing_permitted = !!+data.data.sharing_permitted
-                    this.picture_single_for_imagecreator = data.data;
-
-                    this.error = null;
-                    this.success = data.message;
-
-                    //dont show message "no image"
-                    $("#id_div_message_no_picture_for_imagecreator").hide();
-                }
-
-            } catch (e) {
-                this.succes = null;
-                this.error = "Tut uns leid, das Picture konnte leider nicht gespeichert werden: " + e.response.data.message;
+            }
+            //If image is to big
+            else{
+                this.error = "Dieses Bild ist zu groß und kann deshalb nicht hochgeladen werden."
             }
 
             $("#id_label_upload_picture").removeClass("loading-animation-green");
