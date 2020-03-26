@@ -24,7 +24,7 @@
                                 <input class="form-control" v-model="lastname" required placeholder="Nachname" />
                             </div>                           
                             <div class="col-12 mt-3">
-                                <input class="form-control" v-model="username" required placeholder="Benutzername" />
+                                <input class="form-control" v-model="username" required placeholder="Benutzername" v-on:keypress="usernameCheckForWhiteSpace($event)"/>
                             </div>
                             <div class="col-12 mt-3">
                                 <input class="form-control" type="email" v-model="email" required placeholder="e-mail" />
@@ -134,6 +134,12 @@ export default {
                 alert("Error: " + e);
                 this.error = e.response.data.message;
                 $('#id_button_register').removeClass('loading-animation');                
+            }
+        },
+        usernameCheckForWhiteSpace(e){
+            var key = e.keyCode;
+            if (key === 32) {
+                e.preventDefault();
             }
         }
     }
