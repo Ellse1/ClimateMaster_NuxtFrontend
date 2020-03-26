@@ -8,7 +8,7 @@
             </span>
             <toggle-button :sync="true" v-model="publicUserProfile.public" @change="publicToggleChanged()" />
            
-            <p>Veröffentlicht wird dein Profilbild, sowie die hier aufgelisteten Statements, inklusive deiner Berechnung.</p>
+            <p>Veröffentlicht wird dein Profilbild, sowie die hier aufgelisteten Statements, inklusive deiner Berechnung.<br>Öffentliche Profile mit Profilbild und CO2 Berechnung werden bald auf der Startseite präsentiert.</p>
 
             <!-- Notification -->
             <notification v-if="error" :message="error" class="text-danger mt-2" />
