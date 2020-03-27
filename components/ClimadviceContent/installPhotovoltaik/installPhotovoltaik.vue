@@ -1,8 +1,25 @@
 <template>
-  <div>
-        <p>
-            Mit einer Photovoltaikanlage kannst du deinen eigenen Strom Produzieren und verbrauchen!
+  <div class="text-center">
+        <p class="m-3">
+            <!-- Mit einer Photovoltaikanlage kannst du deinen eigenen Strom Produzieren und verbrauchen!
             Hier findest du einige Beispiele und Firmen, die dich dabei unterstützen.
+         -->
+            Eine Photovoltaikanlage erzeugt durch die Umwandlung von Sonnenenergie in elektrische Energie 
+            umweltfreundlichen, klimaneutralen und vor allem sehr kostengünstigen Strom. Einmal installiert 
+            können Solarmodule 25 Jahre und länger zuverlässig für ihren Betreiber arbeiten. 
+            Durch innovative Vernetzung und intelligente Software kann dieser die aktuelle Stromerzeugung 
+            in Echtzeit überwachen. Kosteneinsparungen und Gewinne, die mit der Stromerzeugungsanlage entstehen, 
+            können transparent überwacht werden.
+        </p>
+            
+        <h5 class="ml-3">Unabhängig bis autark </h5>
+        <p class="mx-3">
+            Der Produzierte Strom kann selbst verbraucht werden, die Abhängigkeit von aktuell steigenden 
+            Strompreisen wird reduziert, große Beträge für Stromrechnungen werden eingespart. 
+            Mit einem passenden Stromspeicher kann die am Tag produzierte Energie auch Nachts verwendet werden. 
+            Folglich reduziert sich die Stromrechnung noch einmal drastisch. Zusätzlich können die Elemente 
+            für die Anlage so gewählt werden, dass die Anlage auch bei Netzausfällen weiterhin Strom zur 
+            Verfügung stellt.
         </p>
 
 
@@ -52,11 +69,11 @@
 
                     </div>
                     <a class="carousel-control-prev w-auto" href="#id_div_carousel_photovoltaikPictures" role="button" data-slide="prev">
-                        <span class="carousel-control-prev-icon bg-dark border border-dark rounded-circle" aria-hidden="true"></span>
+                        <span class="carousel-control-prev-icon bg-dark border border-dark rounded-circle" style="width:40px;height:40px;" aria-hidden="true"></span>
                         <span class="sr-only">Previous</span>
                     </a>
                     <a class="carousel-control-next w-auto" href="#id_div_carousel_photovoltaikPictures" role="button" data-slide="next">
-                        <span class="carousel-control-next-icon bg-dark border border-dark rounded-circle" aria-hidden="true"></span>
+                        <span class="carousel-control-next-icon bg-dark border border-dark rounded-circle" style="width:40px;height:40px;" aria-hidden="true"></span>
                         <span class="sr-only">Next</span>
                     </a>
                 </div>

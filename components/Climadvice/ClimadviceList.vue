@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-md-4" v-for="climadvice in climadvices" v-bind:key="climadvice.id" :id="climadvice.name" >
                 <div class="card mb-3">
-                    <div class="card-body">
+                    <div class="card-body text-center">
 
                         <!-- x to close -->
                         <span class="x_to_close_climadvice" :id="'id_x_to_close_' + climadvice.name" v-on:click="closeClimadvice(climadvice.name)" style="display:none;position:absolute;top:10px;right:10px; transform:rotate(20deg);"><h2>+</h2></span>

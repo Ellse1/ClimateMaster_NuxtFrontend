@@ -32,11 +32,11 @@
 
                     </div>
                     <a class="carousel-control-prev w-auto" v-bind:href="'#id_div_carousel_companies_' + climadvice_name" role="button" data-slide="prev">
-                        <span class="carousel-control-prev-icon bg-dark border border-dark rounded-circle" aria-hidden="true"></span>
+                        <span class="carousel-control-prev-icon bg-dark border border-dark rounded-circle" style="height:40px;width:40px;"  aria-hidden="true"></span>
                         <span class="sr-only">Previous</span>
                     </a>
                     <a class="carousel-control-next w-auto" v-bind:href="'#id_div_carousel_companies_' + climadvice_name" role="button" data-slide="next">
-                        <span class="carousel-control-next-icon bg-dark border border-dark rounded-circle" aria-hidden="true"></span>
+                        <span class="carousel-control-next-icon bg-dark border border-dark rounded-circle" style="height:40px;width:40px;"  aria-hidden="true"></span>
                         <span class="sr-only">Next</span>
                     </a>
                 </div>
