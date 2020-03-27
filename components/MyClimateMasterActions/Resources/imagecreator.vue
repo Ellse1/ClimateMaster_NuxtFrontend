@@ -326,10 +326,11 @@ export default {
     width:40px;
 }
 #id_h2_climatemaster_heading{
-    font-size: 20px;
+    font-size: 15px;
 }
 #id_h6_climateneutral{
-    font-size: 14px;
+    font-size: 6px;
+    font-weight: bold;
 }
 
 }
