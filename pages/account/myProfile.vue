@@ -16,7 +16,7 @@
                         <div id="id_div_loading" class="bg-success rounded mt-2 mb-2" style="width:50%;margin:auto;"></div>
                         <!-- image if profile picture available -->
                         <div  id="id_div_profilePicture" style="width:200px;height:200px;border-radius:50%;overflow:hidden;display:none;" class="border bg-dark">
-                            <img id="id_img_profilePicture" style="height:100%;">
+                            <img id="id_img_profilePicture" v-on:load="profilePicture_onload">
                         </div>
                         
                         <small id="id_message_typeAndSize_profilePicture" class="text-danger">
@@ -187,6 +187,7 @@ export default {
                 $("#id_img_profilePicture").show();
                 $("#id_icon_profile_picture").hide();
             }
+
             else{
                 this.error = "Das profilbild konnte nicht geholt werden."
             }
@@ -231,11 +232,14 @@ export default {
                         this.profile_picture_base64_for_public_profile = rawResponse;
                         //Give picture to element
                         $("#id_img_profilePicture").attr('src', 'data:image/jfif;base64,'+rawResponse);
+                        $("#id_img_profilePicture_display_none").attr('src', 'data:image/jfif;base64,'+rawResponse);
+
                         
                         //Show right element
                         $("#id_div_profilePicture").show();
                         $("#id_img_profilePicture").show();
                         $("#id_icon_profile_picture").hide();
+
                     }
                     else{
                         this.success_profile_picture = null;
@@ -301,6 +305,46 @@ export default {
             }
             
             $("#id_button_save").removeClass("loading-animation");
+        },
+
+        profilePicture_onload(){
+            
+            // Set the picture exactly to the middle
+            $("#id_img_profilePicture").height('auto');
+            $("#id_img_profilePicture").width('auto');
+            $("#id_img_profilePicture").css('margin-left', 0);
+            $("#id_img_profilePicture").css('margin-top', 0);
+
+            var img = document.querySelector("#id_img_profilePicture");
+            var image_width = img.clientWidth;
+            var image_height =  img.clientHeight;
+
+            //width > height
+            //center image -> height:100%;
+            if(image_width > image_height){
+                var cropDownFactor = 200/image_height;
+                $("#id_img_profilePicture").height('100%');
+                // $("#id_img_profilePicture").width(image_width);
+
+                var tooMuch = image_width-image_height;
+                var marginLeft = ((tooMuch / 2)*(-1))*cropDownFactor;
+                $("#id_img_profilePicture").css('margin-left', marginLeft);
+            }
+            //height > width
+            //center image -> widht: 100%
+            else if(image_height > image_width){
+                var cropDownFactor = 200/image_width;
+                $("#id_img_profilePicture").width('100%');
+                // $("#id_img_profilePicture").css('height', 'auto');
+                var tooMuch = image_height-image_width;
+                var marginTop = ((tooMuch / 2)*(-1))*cropDownFactor;
+                $("#id_img_profilePicture").css('margin-top', marginTop);
+            }
+            //height and width equals
+            else{
+                $("#id_img_profilePicture").width('100%');
+            }
+
         }
     }
 }
