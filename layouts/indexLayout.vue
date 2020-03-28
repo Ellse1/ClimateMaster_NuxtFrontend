@@ -13,8 +13,7 @@
         <div style="margin-top:100px;">
             <client-only>
                 <div class="text-center" v-if="loggedIn == true">
-                    <h3 v-if="user.last_login == null">Willkommen {{user.firstname}}, <br>Schön, dass du dabei bist!</h3>
-                    <h3 v-if="user.last_login != null">Hallo {{user.firstname}}</h3>
+                    <h3>Hallo {{user.firstname}}, <br>Schön, dass du dabei bist!</h3>
                 </div>
             </client-only>
             

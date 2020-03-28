@@ -27,8 +27,8 @@
                   </div>
               </div>
 
-              <!-- After login: last_login is already set to "now"!  So i take "last_logout". As long as the user didn't logout the first time, he will see this message -->
-              <div v-if="loggedIn == true && user.last_logout == null" class="rounded" style="background-color:rgba(247, 247, 247, 0.5);">
+              <!-- Message, where find what -->
+              <div v-if="loggedIn == true" class="rounded" style="background-color:rgba(247, 247, 247, 0.5);">
                   <span style="font-size:20px;">
                     Unter <b>Mein Profil</b> findest du alles über dein ClimateMaster Konto heraus.<br>
                     Mit unseren <b>Climadvice</b> wollen wir dir dabei helfen, klimafreundlich zu leben. <br>
