@@ -58,7 +58,7 @@
                     Um noch mehr Menschen von konsequenten Klimaschutz zu überzeugen, würden wir dich gerne als Paradebeispiel auf unseren
                     Social Media Kanälen präsentieren. Zum Beispiel wäre ein Bild oder sogar ein Video mit einer kurzen Beschreibung, wie 
                     du dich für konsequenten Klimaschutz einsetzt sehr wirkungsvoll. Hast du Lust andere Leute von Klimaschutz zu überzeugen? 
-                    Dann schicke uns eine E-Mail mit den entsprechendem Material an elias@climate-master.com.
+                    Dann schicke uns eine E-Mail mit dem entsprechendem Material an elias@climate-master.com.
                     <br>Liebe Grüße<br>
                     dein <b>ClimateMaster Team</b>
                 </p>
