@@ -1,5 +1,8 @@
 <template>
   <div class="text-center">
+
+        <h5>Etwa 1.020.000 Privathaushalte produzieren Strom mit Photovoltaik</h5>
+        <small>Quelle: Fraunhofer-Institut für Solare Energiesysteme ISE, Aktuelle Fakten zur Photovoltaik 2020, Seite 40</small>
         <p class="m-3">
             <!-- Mit einer Photovoltaikanlage kannst du deinen eigenen Strom Produzieren und verbrauchen!
             Hier findest du einige Beispiele und Firmen, die dich dabei unterstützen.
@@ -9,7 +12,7 @@
             können Solarmodule 25 Jahre und länger zuverlässig für ihren Betreiber arbeiten. 
             Durch innovative Vernetzung und intelligente Software kann dieser die aktuelle Stromerzeugung 
             in Echtzeit überwachen. Kosteneinsparungen und Gewinne, die mit der Stromerzeugungsanlage entstehen, 
-            können transparent überwacht werden.
+            können transparent geprüft werden.
         </p>
             
         <h5 class="ml-3">Unabhängig bis autark </h5>
@@ -20,6 +23,12 @@
             Folglich reduziert sich die Stromrechnung noch einmal drastisch. Zusätzlich können die Elemente 
             für die Anlage so gewählt werden, dass die Anlage auch bei Netzausfällen weiterhin Strom zur 
             Verfügung stellt.
+        </p>
+        <p>
+            Nach einer langen Lebenszeit, können die Module kostenlos an einer der dafür vorgesehenen 
+            Sammelstellen für das Recycling zurückgegeben werden. Sammelstellen sind unter anderem Wertstoffhöfe. 
+            Mehr zum Photovoltaik Recycling findet man auch bei 
+            <a target="_blanc" href="http://www.pvcycle.de/abfallmanagement/pv_und_produktionsabfall/">PV Cycle</a>.
         </p>
 
 
