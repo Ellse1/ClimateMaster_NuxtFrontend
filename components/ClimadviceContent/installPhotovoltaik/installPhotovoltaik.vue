@@ -1,7 +1,7 @@
 <template>
   <div class="text-center">
 
-        <h5>Etwa 1.020.000 Privathaushalte produzieren Strom mit Photovoltaik</h5>
+        <h5>Etwa 1.020.000 Privathaushalte produzieren Strom mit Photovoltaik.<br>In Deutschland!</h5>
         <small>Quelle: Fraunhofer-Institut für Solare Energiesysteme ISE, Aktuelle Fakten zur Photovoltaik 2020, Seite 40</small>
         <p class="m-3">
             <!-- Mit einer Photovoltaikanlage kannst du deinen eigenen Strom Produzieren und verbrauchen!

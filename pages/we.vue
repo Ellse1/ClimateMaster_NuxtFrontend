@@ -5,7 +5,7 @@
                 <h2>Unser Team</h2>
 
                 <div class="container" style="max-height:500px;overflow:hidden;">
-                    <img class="img-fluid" src="~/static/pictures/forSpecialSites/we/climatemaster_we_1.jpg" alt="Leider kein Bild gefunden">
+                    <img class="img-fluid" src="~/static/pictures/forSpecialSites/we/climatemaster_we_3.jpg" alt="Leider kein Bild gefunden">
                 </div>
                 <!-- <div class="row">
                     <div class="col-md-6 mt-3">
