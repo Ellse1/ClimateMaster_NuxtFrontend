@@ -13,7 +13,8 @@
                         <button class="w-100 btn btn-default" v-on:click="changeOpenedDashboardComponent('verifyCompanies')">Firmenanfragen</button>
                         <button class="w-100 btn btn-default" v-on:click="changeOpenedDashboardComponent('showAllUsers')">Benutzer</button>
                         <button class="w-100 btn btn-default" v-on:click="changeOpenedDashboardComponent('imagecreatorSharingPermitted')">Imagecreator</button>
-                    
+                        <button class="w-100 btn btn-default" v-on:click="changeOpenedDashboardComponent('showPageLogs')">Aufrufinformation</button>
+
                     </div>
                 </div>
                 <div class="col-md-9 mt-4">
@@ -25,6 +26,10 @@
 
                     <!-- To download images from imagecreator -> download pictures of all users with "sharing_permitted" = true -->
                     <imagecreatorSharingPermitted v-if="openedDashboardComponent == 'imagecreatorSharingPermitted'"/>
+                
+                    <showPageLogs v-if="openedDashboardComponent == 'showPageLogs'"/>
+
+                
                 </div>
             </div>
 
@@ -38,13 +43,15 @@
 import verifyCompanies from '~/components/AdminDashboard/verifyCompanies';
 import showAllUsers from '~/components/AdminDashboard/showAllUsers';
 import imagecreatorSharingPermitted from '~/components/AdminDashboard/imagecreatorSharingPermitted';
+import showPageLogs from '~/components/AdminDashboard/showPageLogs';
 
 export default {
     middleware: 'auth',
     components:{
         verifyCompanies,
         showAllUsers,
-        imagecreatorSharingPermitted
+        imagecreatorSharingPermitted,
+        showPageLogs
     },
     data(){
         return{

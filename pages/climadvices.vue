@@ -95,6 +95,14 @@ export default {
         }
 
         $("#id_button_showAll").removeClass("loading-animation");
+
+
+        //add Page log
+        try {
+          const{data} = this.$axios.post('pageLog/addPageLog', {
+              page: this.$route.fullPath
+          });
+      } catch (e) {}
     },
     methods:{
         showAllClimatedvices(){

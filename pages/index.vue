@@ -127,9 +127,17 @@
 </template>
 
  <script>
- import fontawesome from '@fortawesome/free-solid-svg-icons';
+import fontawesome from '@fortawesome/free-solid-svg-icons';
 export default {
   layout: 'indexLayout',
+  mounted(){
+    //add PageLog
+      try {
+          const{data} = this.$axios.post('pageLog/addPageLog', {
+              page: this.$route.fullPath
+          });
+      } catch (e) {}
+  }
 }
  </script>
 
