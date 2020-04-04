@@ -92,6 +92,9 @@
         </client-only>
 
 
+        <!-- Climatemaster Profile Integration -->
+        <publicUsersShow />
+
         <!-- Links to the social media platforms -->
         <div class="mx-auto mb-5 col-md-6 text-center mt-4 rounded border border-success p-2" style="background-color:rgba(247, 247, 247, 0.3)">
             <h4>Online</h4>
@@ -128,8 +131,12 @@
 
  <script>
 import fontawesome from '@fortawesome/free-solid-svg-icons';
+import publicUsersShow from '~/components/PublicUserProfile/publicUsersShow';
 export default {
   layout: 'indexLayout',
+  components:{
+    publicUsersShow
+  },
   mounted(){
     //add PageLog
       try {
