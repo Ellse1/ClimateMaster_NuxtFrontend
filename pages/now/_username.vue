@@ -101,19 +101,48 @@ export default {
         $("#id_div_loading").addClass("loading-animation-green");
 
         try {
-            const{data} = await this.$axios.post("user/getDataToShowPublicUserProfile_ByUsername", {
-                username: this.username
-            })
 
-            if(data.state == "error"){
-                this.error = data.message;
-                this.success = null;
+            //Check if in vuex store is this user already (If i loaded the index page first ->
+            //  the users with public Profile, with 1 calculation and Profile pictures are loaded already!
+
+            var publicUserProfiles_from_store =  this.$store.state.publicUserProfilesForList.list;
+            var correctPublicUserProfile_was_in_store = false;
+            //if there are profiles in store
+            if(publicUserProfiles_from_store.length > 0){
+                var profilesWithCorrectUsername = [];
+                //check every publicUserProfile from Store if it has this username
+                publicUserProfiles_from_store.forEach(profile => {
+                    if(profile.username == this.username){
+                        profilesWithCorrectUsername.push(profile);
+                    }
+                });
+                //if the one was inside
+                if(profilesWithCorrectUsername.length > 0){
+                    var correctPublicUserProfile = profilesWithCorrectUsername[0];
+                    //-> don't get data again from backend
+                    correctPublicUserProfile_was_in_store = true;
+                    //get the datas from vuex store
+                    this.public_user_profile = correctPublicUserProfile.public_user_profile; //get the data from vuex store
+                    this.profile_picture_base64 = correctPublicUserProfile.profile_picture_base64;
+                    this.climatemaster_state = correctPublicUserProfile.climatemaster_state;
+                }
             }
-            else if(data.state == "success"){
-                // this.success = data.message;
-                this.public_user_profile = data.public_user_profile;
-                this.profile_picture_base64 = data.profile_picture_base64;
-                this.climatemaster_state = data.climatemaster_state;
+
+            if(correctPublicUserProfile_was_in_store == false){
+                const{data} = await this.$axios.post("user/getDataToShowPublicUserProfile_ByUsername", {
+                    username: this.username
+                })
+
+                if(data.state == "error"){
+                    this.error = data.message;
+                    this.success = null;
+                }
+                else if(data.state == "success"){
+                    // this.success = data.message;
+                    this.public_user_profile = data.public_user_profile;
+                    this.profile_picture_base64 = data.profile_picture_base64;
+                    this.climatemaster_state = data.climatemaster_state;
+                }
             }
 
         } catch (e) {
