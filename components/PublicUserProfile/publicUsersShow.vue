@@ -41,6 +41,7 @@ export default {
         }
     },
     async mounted(){
+        
         try {
 
             //Check if in store are already the public user profiles
@@ -50,9 +51,34 @@ export default {
             if(public_user_profiles_from_store.length >= 1){
                 this.climatemaster_profiles = public_user_profiles_from_store;
             }
-            // if there are no profiles in store -> get them from backend
+            // if there are no profiles in store 
             else{
-                const{data} = await this.$axios.post("publicUserProfile/getAllWithCalculationAndProfilePicture");
+                
+                var data = null;
+
+                // -> get the compromised pictrues them from backend
+                data = await this.$axios.$post("publicUserProfile/getAllWithCalculationAndProfilePicture", {
+                    compromise: true
+                });
+
+                if(data.state == 'error'){
+                    this.error = data.message;
+                    this.success = null;
+                }
+                else if(data.state == 'success'){
+                    this.success = data.message;
+                    this.error = null;
+                    this.climatemaster_profiles = data.data;
+                }
+                else{
+                    this.error = "Es konnten keine öffentliche Profile geholt werden.";
+                }
+
+
+                // -> get the pictrues with good quality them from backend
+                data = await this.$axios.$post("publicUserProfile/getAllWithCalculationAndProfilePicture", {
+                    compromise: false
+                });
 
                 if(data.state == 'error'){
                     this.error = data.message;
@@ -63,13 +89,14 @@ export default {
                     this.error = null;
                     this.climatemaster_profiles = data.data;
 
-                    //set the publicUserProfiles in Store -> don't need to reload after comming to this page back
+                    //Load this into the vuex store
                     this.$store.commit('publicUserProfilesForList/set', this.climatemaster_profiles)
 
                 }
                 else{
                     this.error = "Es konnten keine öffentliche Profile geholt werden.";
                 }
+
             }
 
         } catch (e) {
