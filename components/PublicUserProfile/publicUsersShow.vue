@@ -13,7 +13,7 @@
                                 <nuxt-link :to="{name: 'now-username', params: { username:profile.username } }">
                                     <div class="">
                                         <div  :id="'id_div_profilePicture_' + profile.id" style="width:200px;height:200px;border-radius:50%;overflow:hidden;" class="border bg-dark mx-auto mt-2">
-                                            <img :id="'id_profile_picture_' + profile.id" :src="'data:image/jfif;base64,' + profile.profile_picture_base64">
+                                            <img :id="'id_profile_picture_' + profile.id" :src="'data:image/jfif;base64,' + profile.profile_picture_base64" v-on:load="setPictureToMiddle($event)">
                                         </div>
                                         <div class="text-center">
                                             <h5 class="text-dark mx-auto">{{profile.username}}</h5>
@@ -62,18 +62,11 @@ export default {
             this.error = e.response.data.message;
         }
 
-
-
-
-
         
     }, 
-    updated(){
-
-        //Set all the profile pictures into the middle of their components
-        this.climatemaster_profiles.forEach(profile => {
-
-            var profilePicture_id = "id_profile_picture_" + profile.id;
+    methods:{
+        setPictureToMiddle(event){
+            var profilePicture_id = event.target.id;
 
             // Set the picture exactly to the middle
             $("#" + profilePicture_id).height('auto');
@@ -110,9 +103,8 @@ export default {
             else{
                 $("#" + profilePicture_id).width('100%');
             }
-        });
 
-
+        }
     }
 }
 </script>
