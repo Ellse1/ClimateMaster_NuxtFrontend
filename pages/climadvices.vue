@@ -55,16 +55,12 @@ export default {
 
         try {
 
-            const{data} = await this.$axios.get("climadvice/getAllClimadvices");
+            //look if the climadvices are in store
+            var climadvices_from_store = this.$store.state.climadvices.list;
 
-            if(data.state == "error"){
-                this.error = data.message;
-                this.success = false;
-            }
-            if(data.state == "success"){
-                this.success = data.message;
-                this.error = null;
-                this.climadvices = data.data;
+            //If climadvices are already in
+            if(climadvices_from_store.length >= 1){
+                this.climadvices = climadvices_from_store;
                 this.climadvicesToShow = this.climadvices;
 
                 //If in route is a special climateMasterArea
@@ -82,8 +78,42 @@ export default {
                     });
                 }
             }
-            if(data.state == null){
-                this.error = "Es konnte kein 'state' geladen werden";
+
+            //If the climadvices are not already loaded in store -> get them from backend:
+            else{
+                const{data} = await this.$axios.get("climadvice/getAllClimadvices");
+
+                if(data.state == "error"){
+                    this.error = data.message;
+                    this.success = false;
+                }
+                if(data.state == "success"){
+                    this.success = data.message;
+                    this.error = null;
+                    this.climadvices = data.data;
+                    this.climadvicesToShow = this.climadvices;
+
+                    //If in route is a special climateMasterArea
+                    if(this.$route.query.climatemasterarea != undefined){
+                        //Show this button rounded green
+                        var id_button = "#id_button_" + this.$route.query.climatemasterarea;
+                        $(id_button).addClass("border-success");
+
+                        var allClimadvices = this.climadvices;
+                        this.climadvicesToShow = [];
+                        allClimadvices.forEach(climadvice => {
+                            if(climadvice.climateMasterArea == this.$route.query.climatemasterarea){
+                                this.climadvicesToShow.push(climadvice);
+                            }
+                        });
+                    }
+                    //Store the climadvices in Store
+                    this.$store.commit('climadvices/set', this.climadvices)
+
+                }
+                if(data.state == null){
+                    this.error = "Es konnte kein 'state' geladen werden";
+                }
             }
 
         } catch (e) {
@@ -94,6 +124,7 @@ export default {
             this.success = null;
         }
 
+
         $("#id_button_showAll").removeClass("loading-animation");
 
 
@@ -101,8 +132,8 @@ export default {
         try {
           const{data} = this.$axios.post('pageLog/addPageLog', {
               page: this.$route.fullPath
-          });
-      } catch (e) {}
+        });
+        } catch (e) {}
     },
     methods:{
         showAllClimatedvices(){

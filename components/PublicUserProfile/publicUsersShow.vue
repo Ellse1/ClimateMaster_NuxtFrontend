@@ -41,21 +41,35 @@ export default {
         }
     },
     async mounted(){
-        //Get the companies with current climadvice_name 
         try {
-            const{data} = await this.$axios.post("publicUserProfile/getAllWithCalculationAndProfilePicture");
 
-            if(data.state == 'error'){
-                this.error = data.message;
-                this.success = null;
+            //Check if in store are already the public user profiles
+            var public_user_profiles_from_store = this.$store.state.publicUserProfilesForList.list;
+
+            // If climadvices are already in
+            if(public_user_profiles_from_store.length >= 1){
+                this.climatemaster_profiles = public_user_profiles_from_store;
             }
-            else if(data.state == 'success'){
-                this.success = data.message;
-                this.error = null;
-                this.climatemaster_profiles = data.data;
-            }
+            // if there are no profiles in store -> get them from backend
             else{
-                this.error = "Es konnten keine öffentliche Profile geholt werden.";
+                const{data} = await this.$axios.post("publicUserProfile/getAllWithCalculationAndProfilePicture");
+
+                if(data.state == 'error'){
+                    this.error = data.message;
+                    this.success = null;
+                }
+                else if(data.state == 'success'){
+                    this.success = data.message;
+                    this.error = null;
+                    this.climatemaster_profiles = data.data;
+
+                    //set the publicUserProfiles in Store -> don't need to reload after comming to this page back
+                    this.$store.commit('publicUserProfilesForList/set', this.climatemaster_profiles)
+
+                }
+                else{
+                    this.error = "Es konnten keine öffentliche Profile geholt werden.";
+                }
             }
 
         } catch (e) {
