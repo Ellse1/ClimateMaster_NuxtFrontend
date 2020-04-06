@@ -58,7 +58,7 @@ export default {
 
                 // -> get the compromised pictrues them from backend
                 data = await this.$axios.$post("publicUserProfile/getAllWithCalculationAndProfilePicture", {
-                    compromise: true
+                    compress: true
                 });
 
                 if(data.state == 'error'){
@@ -77,7 +77,7 @@ export default {
 
                 // -> get the pictrues with good quality them from backend
                 data = await this.$axios.$post("publicUserProfile/getAllWithCalculationAndProfilePicture", {
-                    compromise: false
+                    compress: false
                 });
 
                 if(data.state == 'error'){
