@@ -21,7 +21,7 @@
                 </p>
 
 
-                <co2calculationChart />
+                <co2calculationChart :show_advices="true" />
 
 
                 <nuxt-link to="climadvices" class="btn btn-success mt-2 mb-2 px-4">Climadvices</nuxt-link>

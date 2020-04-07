@@ -161,6 +161,14 @@ export default {
 
         $("#id_div_loading").removeClass("loading-animation-green");
 
+
+        //add PageLog
+        try {
+            const{data} = this.$axios.post('pageLog/addPageLog', {
+                page: this.$route.fullPath,
+                parameter: this.username
+            });
+        } catch (e) {}
     },
 
     methods:{

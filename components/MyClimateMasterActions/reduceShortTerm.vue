@@ -20,7 +20,7 @@
                               
             </div>
 
-            <co2calculationChart />
+            <co2calculationChart :show_advices="true" />
 
             <div id="id_div_hideAfterStepCompleted">
 
@@ -35,7 +35,7 @@
 
             
             <button id="id_button_open_next_step" class="btn btn-success mb-2 mt-2 px-4" v-on:click="openNextStep" style="display:none">Weiter</button>
-
+            
 
         </div>
     </div>

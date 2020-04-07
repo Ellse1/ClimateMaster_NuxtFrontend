@@ -53,6 +53,11 @@
                     Klicke auf die Balken, um Handlungsvorschläge für den jeweiligen Bereich zu bekommen.
                 </div>
 
+
+                <!-- Show the redution advices -->
+                <co2reductionadvices  v-if="show_advices" />
+
+
             </div> 
             <div v-if="error">
                 <div class="text-center text-danger">
@@ -63,12 +68,16 @@
     </div>
 </template>
 <script>
-
+import co2reductionadvices from '~/components/CO2ReductionAdvices/co2reduction_advices';
 var VueScrollTo = require('vue-scrollto');
 
 export default {
-    props: ['username'], //if given -> get the calculation of this user -> for public profile
-    data(){
+    props: ['username', 'show_advices'],    //username: if given -> get the calculation of this user -> for public profile
+                                     //show_advices -> if true -> show the advices content
+    components:{
+        co2reductionadvices
+    },
+    data(){     
         return{
             error: null,
             success: null,
