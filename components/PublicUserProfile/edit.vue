@@ -160,27 +160,22 @@ export default {
                     this.success = data.message;
                     this.error = null;
                     this.publicUserProfile = data.data;
-                    //Save the new profile into the store
-                    $publicUserProfilesList = this.$store.state.publicUserProfilesForList.list;
-                    if($publicUserProfilesList != null){
+                    //Save the new public_user_profile into the store
+                    var publicUserProfilesForListFromStore = this.$store.state.publicUserProfilesForList.list;
+                    if(publicUserProfilesForListFromStore.length > 0){
                         //Check if this profile is in store
-                        $profilesWithCorrectUsernames = null
-                        $publicUserProfilesList.forEach(profile => {
-                            if(profile.username == this.publicUserProfile.username){
-                                $profilesWithCorrectUsernames.push(profile);
+                        var profilesWithCorrectIDs = [];
+                        publicUserProfilesForListFromStore.forEach(profile => {
+                            if(profile.public_user_profile.id == this.publicUserProfile.id){
+                                //remove it -> it has to load it new from server if needed
+                                profilesWithCorrectIDs.push(profile);
                             }
-                        });
-                        // If this user is was store
-                        if($profilesWithCorrectUsernames.length >= 1){
-                            $correctProfileToExchangeInStore = $profilesWithCorrectUsernames[0];
-                            //remove the old version
-                            this.$store.commit('publicUserProfilesForList/remove', $correctProfileToExchangeInStore)
-                            //save the new one
-                            this.$store.commit('publicUserProfilesForList/add', this.publicUserProfile)
-                        }
+                        }); 
+
+                        //remove the old profile -> if i need it, load it new from the server
+                        await this.$store.commit('publicUserProfilesForList/remove', profilesWithCorrectIDs[0]);
 
 
- 
                     }
                 }
 

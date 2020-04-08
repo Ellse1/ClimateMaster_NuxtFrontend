@@ -11,7 +11,7 @@ export const mutations = {
         publicUserProfileForList
       })
     },
-    remove (state, { publicUserProfileForList }) {
+    remove (state,  publicUserProfileForList ) {
       state.list.splice(state.list.indexOf(publicUserProfileForList), 1)
     }
   }
