@@ -159,6 +159,29 @@ export default {
                 else if(data.state == "success"){
                     this.success = data.message;
                     this.error = null;
+                    this.publicUserProfile = data.data;
+                    //Save the new profile into the store
+                    $publicUserProfilesList = this.$store.state.publicUserProfilesForList.list;
+                    if($publicUserProfilesList != null){
+                        //Check if this profile is in store
+                        $profilesWithCorrectUsernames = null
+                        $publicUserProfilesList.forEach(profile => {
+                            if(profile.username == this.publicUserProfile.username){
+                                $profilesWithCorrectUsernames.push(profile);
+                            }
+                        });
+                        // If this user is was store
+                        if($profilesWithCorrectUsernames.length >= 1){
+                            $correctProfileToExchangeInStore = $profilesWithCorrectUsernames[0];
+                            //remove the old version
+                            this.$store.commit('publicUserProfilesForList/remove', $correctProfileToExchangeInStore)
+                            //save the new one
+                            this.$store.commit('publicUserProfilesForList/add', this.publicUserProfile)
+                        }
+
+
+ 
+                    }
                 }
 
             } catch (e) {
