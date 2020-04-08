@@ -21,7 +21,7 @@
      
 
                 <div class="row col-md-8 mx-auto">
-                    <div class="mt-2 col-md-6 mx-auto">
+                    <div class="mt-2 col-md-12 mx-auto">
                         <label><b>Dein <span class="text-success">Climate</span>Master Statement</b></label>
                         <textarea class="form-control" rows="4" v-model="publicUserProfile.information_general" placeholder="Warum willst du ClimateMaster werden? Warum sind dir Umweltschutz und Klimaschutz wichtig? Für wen schützt du den Planeten?"></textarea>
                     </div>
@@ -44,6 +44,10 @@
                     <div class="mt-2 col-md-6">
                         <label><b>Kommentar Öffentliche Emissionen</b></label>
                         <textarea class="form-control" rows="4" v-model="publicUserProfile.information_public_emissions" placeholder="Diese Emissionen kannst du nur indirekt beeinflussen. Nimmst du an Fridays For Future Demonstationen teil? Teilst du deine Klimaschutz Fortschritte mit Freunden und bekannten?"></textarea>
+                    </div>
+                    <div class="mt-2 col-md-6">
+                        <label><b>Kommentar CO2 Kompensation</b></label>
+                        <textarea class="form-control" rows="4" v-model="publicUserProfile.information_compensation" placeholder="Kompensierst du CO2 Emissionen? Welches Ziel verfolgst du damit? Was hältst du davon?"></textarea>
                     </div>
                 </div>
                
@@ -144,7 +148,8 @@ export default {
                     information_mobility : this.publicUserProfile.information_mobility,
                     information_nutrition : this.publicUserProfile.information_nutrition,
                     information_consumption : this.publicUserProfile.information_consumption,
-                    information_public_emissions : this.publicUserProfile.information_public_emissions
+                    information_public_emissions : this.publicUserProfile.information_public_emissions,
+                    information_compensation : this.publicUserProfile.information_compensation
                 });
 
 

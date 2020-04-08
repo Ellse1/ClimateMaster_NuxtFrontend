@@ -64,6 +64,11 @@
                         <h5>Öffentliche Emissionen</h5>
                         {{public_user_profile.information_public_emissions}}
                     </div>
+                    <div v-if="public_user_profile.information_compensation != null" class="col-md-6 mt-4">
+                        <font-awesome-icon icon="sort-amount-down" class="" style="font-size:20px;"/>     
+                        <h5>CO2 Kompensation</h5>
+                        {{public_user_profile.information_compensation}}
+                    </div>
                 </div>
             </div>
 
