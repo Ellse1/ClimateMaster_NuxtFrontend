@@ -14,6 +14,7 @@
                         </nuxt-link>
                     </div>
                 </div>
+                <!-- Comment -->
                 <div id="id_div_descripton_sectors" class="row w-100 mx-auto">
                     <div class="col-2 icon_co2calculation">Heizung und Strom</div>
                     <div class="col-2 icon_co2calculation">Mobilität</div>
