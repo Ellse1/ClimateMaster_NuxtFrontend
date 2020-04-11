@@ -5,12 +5,12 @@
             <div v-if="success">
 
                 <div class="text-center">In Tonnen CO2 Äquivalent</div>
-                <div class="row w-100 mx-auto" >
-                    <div class="col-2 p-0" v-for="(emission, key) in emissions" v-bind:key="key" style="position:relative;height:300px;">
-                        <b>{{emission}}</b>
-                        <nuxt-link :to="{path:'/climadvices',query:{climatemasterarea: key}}" class="h-100 w-100">
+                <div class="row w-100 mx-auto" id="id_div_co2calculationchart">
+                    <div class="col-2 p-0 text-center" v-for="emission in positiv_emissions" v-bind:key="emission.key" style="position:relative;height:300px;">
+                        <b>{{emission.value}}</b>
+                        <nuxt-link :to="{path:'/climadvices',query:{climatemasterarea: emission.key}}" class="h-100 w-100">
                             <!-- Chart bar -->
-                            <div :id="key" class="bg-primary card" style="position:absolute;left:10%;bottom:0px;width:80%;"></div>
+                            <div :id="emission.key" class="bg-success card" style="position:absolute;left:10%;bottom:0px;width:80%;"></div>
                         </nuxt-link>
                     </div>
                 </div>
@@ -83,8 +83,17 @@ export default {
             error: null,
             success: null,
             emissions: {},
+            positiv_emissions: [],
             total_emissions: 0,
-            show_compensation: false
+            show_compensation: false,
+            co2emissions_german_average : [
+                {key: 'heating_electricity', value: 2.40},
+                {key: 'mobility', value : 2.18},
+                {key: 'consumption', value : 4.56},
+                {key: 'nutrition', value : 1.74},
+                {key: 'public_emissions', value : 0.73},
+                {key: 'compensation', value : 0.00}
+            ]
         }
     },
     async mounted(){
@@ -111,6 +120,25 @@ export default {
             else if(this.data.state == "success"){
                 this.success = this.data.message;
                 this.error = null;
+
+                var valueFromDB = null;
+                this.co2emissions_german_average.forEach(emission => {
+                    // if one value which i need is null -> set it to 0.00, then i can calculate with it
+                    if(this.data.data[emission.key] == null){
+                        valueFromDB = 0.00
+                    }else{
+                        valueFromDB = this.data.data[emission.key]
+                    }
+                    //German Average - value = amount of how much the person saved in comparison to the german average 
+                    this.positiv_emissions.push({key: emission.key, value: (emission.value - this.data.data[emission.key]).toFixed(2)});
+                });
+
+                //make value of 'compensation' * (-1) -> if i compensated something -> the bar should go up!
+                this.positiv_emissions[5].value = this.positiv_emissions[5].value * (-1);
+
+                this.positiv_emissions.forEach(emission => {
+                    alert(emission.key + " : " + emission.value);
+                });
 
                 var emissions_minimized = {};
                 emissions_minimized['heating_electricity'] = this.data.data['heating_electricity'];
@@ -162,6 +190,9 @@ export default {
         }
         //The height of the div is 300px -> take 250 of that
         var faktor = 250/biggestEmission; 
+
+        //set the height of the div, where the bars are in
+        // var heightOfChart = biggestEmission * 20;   // 10 tonns = 100 px
 
 
         $("#public_emissions").height(this.emissions['public_emissions'] * faktor);
