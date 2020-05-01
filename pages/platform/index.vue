@@ -1,0 +1,70 @@
+<template>
+    <div class="container">
+        <!-- Links to the Plattform descriptions -->
+        
+        <div class="row text-center p-4">
+            <div class="col-md-6 mt-3">
+                <div class="container">
+                    <nuxt-link to="/platform/aim">
+                        <div class="card">
+                            <div style="height:100px;">
+                                <h4 class="text-dark mt-4">Das Ziel der Plattform</h4>
+                            </div>
+                            <div class="card-body">
+                                <img style="mx-auto;height:200px;" class="img-fluid" src="~/static/pictures/forSpecialSites/theplatform/aimOfThePlatform/aim.png"/>
+                            </div>
+                        </div>
+                    </nuxt-link>
+                </div>
+            </div>
+            <div class="col-md-6 mt-3">
+                <div class="container">
+                    <nuxt-link to="/platform/handprint">
+                        <div class="card">
+                            <div style="height:100px;">
+                                <h4 class="text-dark mt-4">Der <span class="text-success">Climate</span>Master Handabdruck: <br>mehr groß = mehr gut</h4>
+                            </div>
+                            <div class="card-body">
+                                <img style="mx-auto;height:200px;" class="img-fluid" src="~/static/pictures/forSpecialSites/theplatform/handprint/handprintCalculationOnlyOne.png"/>
+                            </div>
+                        </div>
+                    </nuxt-link>
+                </div>
+            </div>
+            <div class="col-md-6 mt-3">
+                <div class="container">
+                    <nuxt-link to="/platform/fairness">
+                        <div class="card">
+                            <div style="height:100px;">
+                                <h4 class="text-dark mt-4">Warum ist <span class="text-success">Climate</span>Master fair?</h4>
+                            </div>
+                            <div class="card-body">
+                                <img style="mx-auto;height:200px;" class="img-fluid" src="~/static/pictures/forSpecialSites/theplatform/fair/fair.png"/>
+                            </div>
+                        </div>
+                    </nuxt-link>
+                </div>
+            </div>
+            <div class="col-md-6 mt-3">
+                <div class="container">
+                    <nuxt-link to="/platform/donations-to-climate-protection">
+                        <div class="card">
+                            <div style="height:100px;">
+                                <h4 class="text-dark mt-4">Was hat eine Spende für Klimaschutz mit Ablasshandel zu tun?</h4>
+                            </div>
+                            <div class="card-body">
+                                <img style="mx-auto;height:200px;" class="img-fluid" src="~/static/pictures/forSpecialSites/theplatform/donation/donation.png"/>
+                            </div>
+                        </div>
+                    </nuxt-link>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</template>
+<script>
+export default {
+    layout: 'indexLayout'
+}
+</script>

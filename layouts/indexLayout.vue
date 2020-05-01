@@ -54,9 +54,4 @@ export default {
 }
 </script>
 <style>
-@media only screen and (max-width: 600px) {
-
-
-
-}
 </style>
