@@ -1,5 +1,5 @@
 <template>
-    <div style="width:100%;">
+    <div style="max-width:100%;overflow:hidden;">
         <!-- The chart with the green bars. The ClimateMaster Handprint chart -->
         <h4 class="text-center">Aktuelle CO2 Analyse</h4>
             <div class="text-center" id="id_div_loading_animation"></div>
@@ -54,10 +54,10 @@
                 </div>
 
                 <!-- Conclusion -->
-                <div class="text-center">
-                    <b>Gesamt : {{total_emissions}} Tonnen pro Jahr</b><br>
-                    <b>Deutscher Durchschnitt: 11.6 Tonnen pro Jahr</b><br>
-                    Klicke auf die Balken, um Handlungsvorschläge für den jeweiligen Bereich zu bekommen.
+                <div class="text-center mt-2">
+                    <b>Die Größe der Hand beschreibt den positiven <span class="text-success">Climate</span>Master Handabruck</b> <br>
+                    <b v-if="total_handprint">{{total_handprint}}</b> <br>
+                    <font-awesome-icon id="id_hand_ClimateMaster_Handprint" icon="hand-paper" class="text-success mt-2" style="font-size:0px;"/>     
                 </div>
 
 
@@ -80,7 +80,7 @@ var VueScrollTo = require('vue-scrollto');
 
 export default {
     props: ['username', 'show_advices'],    //username: if given -> get the calculation of this user -> for public profile
-                                     //show_advices -> if true -> show the advices content
+                                     //show_advices -> if true -> show the advices content -> energy, mobility ... content
     components:{
         co2reductionadvices
     },
@@ -88,10 +88,8 @@ export default {
         return{
             error: null,
             success: null,
-            emissions: {},
+            total_handprint: null,
             positiv_emissions: [],
-            total_emissions: 0,
-            show_compensation: false,
             co2emissions_german_average : [
                 {key: 'heating_electricity', value: 2.40},
                 {key: 'mobility', value : 2.18},
@@ -140,6 +138,9 @@ export default {
                     this.positiv_emissions.push({key: emission.key, value: (emission.value - this.data.data[emission.key]).toFixed(2)});
                 });
 
+                //make it negativ -> than it is deducted on the right places
+                this.positiv_emissions[5].value = this.positiv_emissions[5].value * (-1);
+
                 //Returns this co2calculation to parent -> if parent needs it, not necessary to get again
                 this.$emit('saveCO2Calculation', this.data.data);
             }
@@ -167,9 +168,13 @@ export default {
         var faktor = 50;
 
         $("#id_div_co2calculationchart").height(totalHeight * faktor);
+        
+        //value to calculate the whole handprint
+        var handprint = 0.00;
 
         //Set the correct point and height of the bars -> draw it
-        this.positiv_emissions.forEach(function(item, index, array){
+        this.positiv_emissions.forEach(function(item, index){
+            handprint = handprint + parseFloat(item.value);
             //positive values
             if(item.value >= 0){
                 $("#" + item.key).css({
@@ -188,6 +193,18 @@ export default {
                 $("#" + item.key).height(item.value * (-1) * faktor);
             }
         });
+
+        //set handprint to 2 digits
+        this.total_handprint = parseFloat(handprint.toFixed(2));
+
+        var faktorForHandprint = 8;
+        var handprintSize = parseFloat((handprint * faktor).toFixed(2));
+        //set site of the Hand for the Handprint
+        if(handprintSize > 0){
+            $("#id_hand_ClimateMaster_Handprint").css({
+                fontSize: handprintSize
+            });
+        }
     }
 }
 </script>
