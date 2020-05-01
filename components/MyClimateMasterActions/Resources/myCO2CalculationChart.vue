@@ -1,16 +1,24 @@
 <template>
     <div style="width:100%;">
+        <!-- The chart with the green bars. The ClimateMaster Handprint chart -->
         <h4 class="text-center">Aktuelle CO2 Analyse</h4>
             <div class="text-center" id="id_div_loading_animation"></div>
             <div v-if="success">
 
                 <div class="text-center">In Tonnen CO2 Äquivalent</div>
-                <div class="row w-100 mx-auto" id="id_div_co2calculationchart">
-                    <div class="col-2 p-0 text-center" v-for="emission in positiv_emissions" v-bind:key="emission.key" style="position:relative;height:300px;">
+               
+                <!-- Write down the single values  -->
+                <div class="row w-100 mx-auto">
+                    <div class="col-2 p-0 text-center" v-for="emission in positiv_emissions" v-bind:key="emission.key" style="position:relative;">
                         <b>{{emission.value}}</b>
+                    </div>
+                </div>
+
+                <div class="row w-100 mx-auto" id="id_div_co2calculationchart">
+                    <div class="col-2 p-0 text-center" v-for="emission in positiv_emissions" v-bind:key="emission.key" style="position:relative;">
                         <nuxt-link :to="{path:'/climadvices',query:{climatemasterarea: emission.key}}" class="h-100 w-100">
                             <!-- Chart bar -->
-                            <div :id="emission.key" class="bg-success card" style="position:absolute;left:10%;bottom:0px;width:80%;"></div>
+                            <div :id="emission.key" class="bg-success card" style="position:absolute;left:10%;width:80%;"></div>
                         </nuxt-link>
                     </div>
                 </div>
@@ -21,8 +29,9 @@
                     <div class="col-2 icon_co2calculation">Konsum</div>
                     <div class="col-2 icon_co2calculation">Ernährung</div>
                     <div class="col-2 icon_co2calculation">Öffentliche Emissionen</div>
-                    <div class="col-2 icon_co2calculation" v-if="show_compensation == true">Kompensierung (Alles!)</div>
+                    <div class="col-2 icon_co2calculation">Kompensation</div>
                 </div>
+                <!-- Icons -->
                 <div id="id_div_icons_sectors" class="row w-100 mt-2 mx-auto">
                     <div class="col-2 p-0 text-center">
                             <font-awesome-icon icon="plug" class="" style="font-size:20px;"/>     
@@ -39,15 +48,12 @@
                     <div class="col-2 p-0 text-center">
                         <font-awesome-icon icon="users" class="" style="font-size:20px;"/>     
                     </div>
-                    <div class="col-2 p-0 text-center" v-if="show_compensation == true">
+                    <div class="col-2 p-0 text-center">
                         <font-awesome-icon icon="sort-amount-down" class="" style="font-size:20px;"/>     
                     </div>
-
-
-
-
                 </div>
 
+                <!-- Conclusion -->
                 <div class="text-center">
                     <b>Gesamt : {{total_emissions}} Tonnen pro Jahr</b><br>
                     <b>Deutscher Durchschnitt: 11.6 Tonnen pro Jahr</b><br>
@@ -108,6 +114,7 @@ export default {
                 this.data = await this.$axios.$post("co2calculation/getLatestCO2Calculation_ByCurrentUser");
             }
             //if username is not null -> get data of this username
+            //-> for showing a publicUserProfile
             else{
                 this.data = await this.$axios.$post("co2calculation/getLatestCO2CalculationForPublicProfileByUsername", {
                     username: this.username
@@ -133,30 +140,6 @@ export default {
                     this.positiv_emissions.push({key: emission.key, value: (emission.value - this.data.data[emission.key]).toFixed(2)});
                 });
 
-                //make value of 'compensation' * (-1) -> if i compensated something -> the bar should go up!
-                this.positiv_emissions[5].value = this.positiv_emissions[5].value * (-1);
-
-                this.positiv_emissions.forEach(emission => {
-                    alert(emission.key + " : " + emission.value);
-                });
-
-                var emissions_minimized = {};
-                emissions_minimized['heating_electricity'] = this.data.data['heating_electricity'];
-                emissions_minimized['mobility'] = this.data.data['mobility'];
-                emissions_minimized['consumption'] = this.data.data['consumption'];
-                emissions_minimized['nutrition'] = this.data.data['nutrition'];
-                emissions_minimized['public_emissions'] = this.data.data['public_emissions'];
-
-                //if the user has compensated the co2 emission -> show compensation bar too
-                if(this.data.isCompensated == true){
-                    emissions_minimized['total_emissions'] = this.data.data['total_emissions'];
-                    this.show_compensation = true;
-                }
-
-                this.emissions = emissions_minimized;
-
-                this.total_emissions = this.data.data['total_emissions'];
-
                 //Returns this co2calculation to parent -> if parent needs it, not necessary to get again
                 this.$emit('saveCO2Calculation', this.data.data);
             }
@@ -169,41 +152,42 @@ export default {
         
         $("#id_div_loading_animation").removeClass('loading-animation-green');
     },
-    beforeUpdate(){
-        // If it should show the whole compensation too -> rerender here
-        if(this.show_compensation == true){
-            this.emissions['total_emissions'] = this.total_emissions;
-        }
-    }, 
     updated(){
-        // For calculation the factor to draw the diagram
-        var biggestEmission = 0.00;
-        if(parseFloat(this.emissions['public_emissions']) > biggestEmission){biggestEmission=parseFloat(this.emissions['public_emissions']);}
-        if(parseFloat(this.emissions['consumption']) > biggestEmission){biggestEmission=parseFloat(this.emissions['consumption']);}
-        if(parseFloat(this.emissions['nutrition']) > biggestEmission){biggestEmission=parseFloat(this.emissions['nutrition']);}
-        if(parseFloat(this.emissions['mobility']) > biggestEmission){biggestEmission=parseFloat(this.emissions['mobility']);}
-        if(parseFloat(this.emissions['heating_electricity']) > biggestEmission){biggestEmission=parseFloat(this.emissions['heating_electricity']);}
-       
-        // If it should show the whole compensation too
-        if(this.show_compensation == true){
-            if(parseFloat(this.emissions['total_emissions']) > biggestEmission){biggestEmission=parseFloat(this.emissions['total_emissions']);}
-        }
-        //The height of the div is 300px -> take 250 of that
-        var faktor = 250/biggestEmission; 
+        // Find the biggest positiv value and the biggest negative value -> make the div enough high
+        var topValue = 0.00;
+        var smalestValue = 0.00;
+        this.positiv_emissions.forEach(function(item, index, array){
+            if(parseFloat(array[index].value) > topValue){topValue=parseFloat(array[index].value);}
+            if(parseFloat(array[index].value) < smalestValue){smalestValue=parseFloat(array[index].value);}
+        });
 
-        //set the height of the div, where the bars are in
-        // var heightOfChart = biggestEmission * 20;   // 10 tonns = 100 px
+        var totalHeight = parseFloat((topValue + (smalestValue * (-1))).toFixed(2)); //smalest value is 0.00 or negative
 
+        //faktor, so that it is nice in the view
+        var faktor = 50;
 
-        $("#public_emissions").height(this.emissions['public_emissions'] * faktor);
-        $("#consumption").height(this.emissions['consumption'] * faktor);
-        $("#nutrition").height(this.emissions['nutrition'] * faktor);
-        $("#mobility").height(this.emissions['mobility'] * faktor);
-        $("#heating_electricity").height(this.emissions['heating_electricity'] * faktor);
-        if(this.show_compensation == true){
-            $("#total_emissions").height(this.emissions['total_emissions'] * faktor);
-            $("#total_emissions").addClass("bg-success");
-        }
+        $("#id_div_co2calculationchart").height(totalHeight * faktor);
+
+        //Set the correct point and height of the bars -> draw it
+        this.positiv_emissions.forEach(function(item, index, array){
+            //positive values
+            if(item.value >= 0){
+                $("#" + item.key).css({
+                    position: "absolute",
+                    bottom: smalestValue * (-1) *faktor
+                });
+                $("#" + item.key).height(item.value * faktor);
+            }
+            //negative values
+            if(item.value < 0){
+                $("#" + item.key).attr('bottom', (smalestValue - (item.value * (-1))) * faktor);
+                $("#" + item.key).css({
+                    position: "absolute",
+                    bottom: (smalestValue - item.value) * (-1)  * faktor
+                });
+                $("#" + item.key).height(item.value * (-1) * faktor);
+            }
+        });
     }
 }
 </script>
