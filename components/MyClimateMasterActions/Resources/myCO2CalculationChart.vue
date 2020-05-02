@@ -197,8 +197,8 @@ export default {
         //set handprint to 2 digits
         this.total_handprint = parseFloat(handprint.toFixed(2));
 
-        var faktorForHandprint = 8;
-        var handprintSize = parseFloat((handprint * faktor).toFixed(2));
+        var faktorForHandprint = 35;
+        var handprintSize = parseFloat((handprint * faktorForHandprint).toFixed(2));
         //set site of the Hand for the Handprint
         if(handprintSize > 0){
             $("#id_hand_ClimateMaster_Handprint").css({
