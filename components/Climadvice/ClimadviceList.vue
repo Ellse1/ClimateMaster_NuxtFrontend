@@ -61,6 +61,7 @@ import usePublicTransport from '~/components/ClimadviceContent/usePublicTranspor
 import dontFly from '~/components/ClimadviceContent/dontFly/dontFly';
 import buyRegionalSeasonal from '~/components/ClimadviceContent/buyRegionalSeasonal/buyRegionalSeasonal';
 import climateFriendlyInvestment from '~/components/ClimadviceContent/climateFriendlyInvestment/climateFriendlyInvestment';
+import saveEnergy from '~/components/ClimadviceContent/saveEnergy/saveEnergy';
 
 
 import Vue from 'vue';
@@ -82,7 +83,8 @@ export default {
         usePublicTransport,
         dontFly,
         buyRegionalSeasonal,
-        climateFriendlyInvestment
+        climateFriendlyInvestment,
+        saveEnergy
     },
     data(){
         return{
