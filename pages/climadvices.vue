@@ -13,7 +13,7 @@
                 <button class="btn btn-lg btn-success" style="width:90%;min-height:70px;border-radius:20px;" v-on:click="showOnlyEasyClimadvices">Eher leicht</button>
             </div>
                 <div class="col-md-2 col-sm-12 text-center mt-2">
-                <button id="id_button_showAll" class="btn btn-lg btn-success" style="width:80%;min-height:70px;border-radius:20px;" v-on:click="showAllClimatedvices">Alle</button>
+                <button id="id_button_showAll" class="btn btn-lg btn-success" style="width:80%;min-height:70px;border-radius:20px;" v-on:click="showAllClimadvices">Alle</button>
             </div>
             <div class="col-md-5 col-sm-12 text-center mt-2">
                 <button class="btn btn-lg btn-success" style="width:90%;min-height:70px;border-radius:20px;" v-on:click="showOnlyLongTermClimadvices">Eher langfristig</button>
@@ -28,7 +28,7 @@
             </div>
 
 
-            <climadviceList  :climadvices="climadvicesToShow" />
+            <climadviceList  :climadvices="climadvicesToShow"  @showOnlyOneClimadvice="showOnlyOneClimadvice" @closeOneClimadvice="closeOneClimadvice"/>
             
         </div>
     </div>
@@ -62,21 +62,6 @@ export default {
             if(climadvices_from_store.length >= 1){
                 this.climadvices = climadvices_from_store;
                 this.climadvicesToShow = this.climadvices;
-
-                //If in route is a special climateMasterArea
-                if(this.$route.query.climatemasterarea != undefined){
-                    //Show this button rounded green
-                    var id_button = "#id_button_" + this.$route.query.climatemasterarea;
-                    $(id_button).addClass("border-success");
-
-                    var allClimadvices = this.climadvices;
-                    this.climadvicesToShow = [];
-                    allClimadvices.forEach(climadvice => {
-                        if(climadvice.climateMasterArea == this.$route.query.climatemasterarea){
-                            this.climadvicesToShow.push(climadvice);
-                        }
-                    });
-                }
             }
 
             //If the climadvices are not already loaded in store -> get them from backend:
@@ -93,20 +78,6 @@ export default {
                     this.climadvices = data.data;
                     this.climadvicesToShow = this.climadvices;
 
-                    //If in route is a special climateMasterArea
-                    if(this.$route.query.climatemasterarea != undefined){
-                        //Show this button rounded green
-                        var id_button = "#id_button_" + this.$route.query.climatemasterarea;
-                        $(id_button).addClass("border-success");
-
-                        var allClimadvices = this.climadvices;
-                        this.climadvicesToShow = [];
-                        allClimadvices.forEach(climadvice => {
-                            if(climadvice.climateMasterArea == this.$route.query.climatemasterarea){
-                                this.climadvicesToShow.push(climadvice);
-                            }
-                        });
-                    }
                     //Store the climadvices in Store
                     this.$store.commit('climadvices/set', this.climadvices)
 
@@ -115,6 +86,21 @@ export default {
                     this.error = "Es konnte kein 'state' geladen werden";
                 }
             }
+
+
+            //If in route is a special climateMasterArea
+            if(this.$route.query.climatemasterarea != undefined && this.$route.query.climadvice == undefined){
+                var climatemasterareaFromRoute = this.$route.query.climatemasterarea;
+                this.showonlyOfClimateMasterArea(climatemasterareaFromRoute);
+            }
+
+            //If in route is a special climateMasterArea
+            if(this.$route.query.climadvice != undefined){
+                var climadviceFromRoute = this.$route.query.climadvice;
+                this.showOnlyOneClimadviceWithoutPuhs(climadviceFromRoute);
+            }
+
+
 
         } catch (e) {
             this.error = "Es konnten keine Climadvices geladen werden.";
@@ -136,13 +122,14 @@ export default {
         } catch (e) {}
     },
     methods:{
-        showAllClimatedvices(){
+        showAllClimadvices(){
             //Show now climatemasterarea button rounded green -> no one is activ
             $(".buttonClimateMasterArea").removeClass("border-success");
             this.$router.push({path: "/climadvices", query:{}})
             this.climadvicesToShow = this.climadvices;
-       },
-       showOnlyEasyClimadvices(){
+        
+        },
+        showOnlyEasyClimadvices(){
             //Show now climatemasterarea button rounded green -> no one is activ
             $(".buttonClimateMasterArea").removeClass("border-success");
             var allClimadvices = this.climadvices;
@@ -152,8 +139,8 @@ export default {
                     this.climadvicesToShow.push(climadvice);
                 }
             });
-       },
-       showOnlyLongTermClimadvices(){
+        },
+        showOnlyLongTermClimadvices(){
             //Show now climatemasterarea button rounded green -> no one is activ
             $(".buttonClimateMasterArea").removeClass("border-success");
             var allClimadvices = this.climadvices;
@@ -163,8 +150,8 @@ export default {
                     this.climadvicesToShow.push(climadvice);
                 }
             });
-       },
-       showonlyOfClimateMasterArea(climatemasterarea){
+        },
+        showonlyOfClimateMasterArea(climatemasterarea){
            $(".buttonClimateMasterArea").removeClass("border-success");
             //Show this button rounded green
             var id_button = "#id_button_" + climatemasterarea;
@@ -179,7 +166,49 @@ export default {
                     this.climadvicesToShow.push(climadvice);
                 }
             }); 
-       }
+        },
+        showOnlyOneClimadvice(climadviceNameID){
+            
+            var allClimadvices = this.climadvices;
+            //if there was a area selected before
+            if(this.$route.query.climatemasterarea != undefined){
+                var climatemasterareaFromRoute = this.$route.query.climatemasterarea;
+                this.$router.push({path: "/climadvices", query: { climatemasterarea: climatemasterareaFromRoute, climadvice: climadviceNameID}});
+            }
+            else{
+                //push router
+                this.$router.push({path: "/climadvices", query:{climadvice: climadviceNameID}});
+            }
+
+            //hide all other climadvices
+            this.climadvicesToShow = [];
+            allClimadvices.forEach(climadvice => {
+                if(climadvice.name == climadviceNameID){
+                    this.climadvicesToShow.push(climadvice);
+                }
+            })
+        },
+        showOnlyOneClimadviceWithoutPuhs(climadviceNameID){
+            var allClimadvices = this.climadvices;
+            //hide all other climadvices
+            this.climadvicesToShow = [];
+            allClimadvices.forEach(climadvice => {
+                if(climadvice.name == climadviceNameID){
+                    this.climadvicesToShow.push(climadvice);
+                }
+            })
+        },
+        closeOneClimadvice(){
+            //if i close one climadvice but before, there was a area selected
+            if(this.$route.query.climatemasterarea != undefined){
+                var climatemasterareaFromRoute = this.$route.query.climatemasterarea;
+                // this.$router.push({path: "/climadvices", query: {climatemasterarea: climatemasterareaFromRoute}})
+                this.showonlyOfClimateMasterArea(climatemasterareaFromRoute);
+            }else{
+                this.$router.push({path: "/climadvices", query:{}})
+                this.climadvicesToShow = this.climadvices;
+            }
+        }
     }
 
 }

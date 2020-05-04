@@ -10,13 +10,16 @@
 
                         <!-- v-on:clicked here on title and shortDescription because i cannot put it on the whole element!
                         whole element: if i click for example the 'x' to close, this "climadviceClikcked" is also triggerd -->
-                        <h5 v-on:click="climadviceClicked(climadvice.name)">{{climadvice.title}}</h5>
-                        <p class="card-text" v-on:click="climadviceClicked(climadvice.name)">
-                            {{climadvice.shortDescription}}
-                        </p>
-                        <div class="text-center">
-                            <font-awesome-icon :icon=climadvice.iconName class="text-success" style="font-size: 100px"/> 
+                        <div v-on:click="climadviceClicked(climadvice.name)">
+                            <h5>{{climadvice.title}}</h5>
+                            <p class="card-text">
+                                {{climadvice.shortDescription}}
+                            </p>
+                            <div class="text-center">
+                                <font-awesome-icon :icon=climadvice.iconName class="text-success" style="font-size: 100px"/> 
+                            </div>
                         </div>
+
 
                         <!-- Individual ClimadviceComponent -->
                         <component v-bind:is="climadvice.name"  v-if="openedClimadviceNameIDForIndividualComponent == climadvice.name" />
@@ -66,7 +69,6 @@ import saveEnergy from '~/components/ClimadviceContent/saveEnergy/saveEnergy';
 
 import Vue from 'vue';
 var VueScrollTo = require('vue-scrollto');
-var openedClimadviceID = null;
 export default {
     props:['climadvices'],
     components:{
@@ -92,32 +94,38 @@ export default {
             openedClimadviceNameIDForIndividualComponent : '',
         };
     },
+    // updated(){
+    //     //if one climadvice should be opened -> open it
+    //     if(this.$route.query.climadvice != undefined){
+    //         var climadviceFromRoute = this.$route.query.climadvice;
+            
+    //         $("#" + climadviceFromRoute).removeClass("col-md-4").addClass("col-md-12");
+    //         this.openedClimadviceNameIDForIndividualComponent = climadviceFromRoute;
+
+    //         $("#id_x_to_close_" + climadviceFromRoute).css("display", "block");
+
+    //         alert('i open the thing');
+
+    //     }
+    // },
     methods:{
         climadviceAdded(climadvice){
             this.climadvices.push(climadvice);
         },
         //one Climadvice card was clicked
         climadviceClicked(climadviceNameID){
-            //If other is opened -> close and dont show 'x' to close
-            if(openedClimadviceID != null && openedClimadviceID != climadviceNameID){
-                $("#" + openedClimadviceID).removeClass("col-md-12").addClass("col-md-4");
-                $("#id_x_to_close_" + openedClimadviceID).css("display", "none");
-            }
-            //open the climadvice which was clicked
+            this.$emit("showOnlyOneClimadvice", climadviceNameID)
             $("#" + climadviceNameID).removeClass("col-md-4").addClass("col-md-12");
-            openedClimadviceID = climadviceNameID;
             this.openedClimadviceNameIDForIndividualComponent = climadviceNameID;
             var scrollTo = VueScrollTo.scrollTo("#" + climadviceNameID);
             $("#id_x_to_close_" + climadviceNameID).css("display", "block");
         },
         closeClimadvice(climadviceNameID){
-            //if this climadvice is allready opened -> close
-            if(openedClimadviceID != null && openedClimadviceID == climadviceNameID){
-                $("#" + climadviceNameID).removeClass("col-md-12").addClass("col-md-4");
-                $("#id_x_to_close_" + climadviceNameID).css("display", "none");
-                openedClimadviceID = null;
-                this.openedClimadviceNameIDForIndividualComponent = '';
-            }
+            $("#" + climadviceNameID).removeClass("col-md-12").addClass("col-md-4");
+            $("#id_x_to_close_" + climadviceNameID).css("display", "none");
+            this.openedClimadviceNameIDForIndividualComponent = '';
+
+            this.$emit("closeOneClimadvice")
         },
         editClimadvice(climadvice){
             this.climadviceForEdit = climadvice;
