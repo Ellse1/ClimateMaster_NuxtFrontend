@@ -45,7 +45,7 @@
             <div class="w-100" :id="climadvices[0].name">
                 <div class="card">
                     <div class="card-body text-center">
-                        <span class="x_to_close_climadvice" :id="'id_x_to_close_' + climadvices[0].name" v-on:click="closeClimadvice(climadvices[0].name)" style="position:absolute;top:10px;right:10px; transform:rotate(20deg);"><h2>+</h2></span>
+                        <!-- <span class="x_to_close_climadvice" :id="'id_x_to_close_' + climadvices[0].name" v-on:click="closeClimadvice(climadvices[0].name)" style="position:absolute;top:10px;right:10px; transform:rotate(20deg);"><h2>+</h2></span> -->
                         <div>
                             <h5>{{climadvices[0].title}}</h5>
                             <p class="card-text">
@@ -123,9 +123,6 @@ export default {
         //one Climadvice card was clicked
         climadviceClicked(climadviceNameID){
             this.$emit("showOnlyOneClimadvice", climadviceNameID);
-        },
-        closeClimadvice(climadviceNameID){
-            this.$emit("closeClimadvice")
         },
         editClimadvice(climadvice){
             this.climadviceForEdit = climadvice;

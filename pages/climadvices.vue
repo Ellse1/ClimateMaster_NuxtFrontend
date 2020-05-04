@@ -40,6 +40,30 @@ export default {
             success: null
         }
     },
+    watch:{
+        $route(to, from){
+            //if i click "back" or "climadvices" -> load all
+
+            if(to.query.climadvice != undefined){
+                this.showOnlyOneClimadvice(to.query.climadvice);
+            }
+            // else if(to.query.climatemasterarea != undefined && from.query.climatemasterarea != undefined){
+            //     this.showonlyOfClimateMasterArea(to.query.climatemasterarea);
+            // }
+            else if(to.query.climatemasterarea != undefined && from.query.climatemasterarea != undefined && from.query.climadvice != undefined && to.query.climadvice == undefined){
+                this.showonlyOfClimateMasterArea(to.query.climatemasterarea);
+            }
+            else if(to.query.climatemasterarea == undefined && to.query.climadvice == undefined){
+                $(".buttonClimateMasterArea").removeClass("border-success");
+                this.activatedClimatemasterArea = null;
+                this.closeClimadvice();
+            }
+
+            // if(to.fullPath == '/climadvices'){
+            //     this.closeClimadvice();
+            // }
+        }
+    },
     async mounted(){
         $("#id_button_showAll").addClass("loading-animation");
 
