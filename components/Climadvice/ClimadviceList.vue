@@ -1,13 +1,10 @@
 <template>
     <div>
-        <div class="row">
+        <div class="row" v-if="climadvices != null && climadvices.length > 1">
             <div class="col-md-4" v-for="climadvice in climadvices" v-bind:key="climadvice.id" :id="climadvice.name" >
                 <div class="card mb-3">
                     <div class="card-body text-center">
-
-                        <!-- x to close -->
-                        <span class="x_to_close_climadvice" :id="'id_x_to_close_' + climadvice.name" v-on:click="closeClimadvice(climadvice.name)" style="display:none;position:absolute;top:10px;right:10px; transform:rotate(20deg);"><h2>+</h2></span>
-
+                        
                         <!-- v-on:clicked here on title and shortDescription because i cannot put it on the whole element!
                         whole element: if i click for example the 'x' to close, this "climadviceClikcked" is also triggerd -->
                         <div v-on:click="climadviceClicked(climadvice.name)">
@@ -42,6 +39,31 @@
             <climadviceAdd id="id_climadviceAdd" v-if="user.role === 'admin'" @climadviceAdded="climadviceAdded"/>
             </client-only>
         </div>
+
+        <!-- If it is only one climadvice -> show only the one -> it exists only one climadvice [0]  -->
+        <div v-if="climadvices != null && climadvices.length == 1">
+            <div class="col-md-12" :id="climadvices[0].name">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <span class="x_to_close_climadvice" :id="'id_x_to_close_' + climadvices[0].name" v-on:click="closeClimadvice(climadvices[0].name)" style="position:absolute;top:10px;right:10px; transform:rotate(20deg);"><h2>+</h2></span>
+                        <div>
+                            <h5>{{climadvices[0].title}}</h5>
+                            <p class="card-text">
+                                {{climadvices[0].shortDescription}}
+                            </p>
+                            <div class="text-center">
+                                <font-awesome-icon :icon=climadvices[0].iconName class="text-success" style="font-size: 100px"/> 
+                            </div>
+                        </div>
+
+                        <component v-bind:is="climadvices[0].name"/>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
 
         <climadviceEdit style="display:none;" id="id_climadviceEdit" @climadviceEdited="climadviceEdited" :climadviceForEdit="climadviceForEdit"/>
         <climadviceDelete style="display:none;" id="id_climadviceDelete" @climadviceDeleted="climadviceDeleted" :climadviceForDelete="climadviceForEdit" />
@@ -94,38 +116,16 @@ export default {
             openedClimadviceNameIDForIndividualComponent : '',
         };
     },
-    // updated(){
-    //     //if one climadvice should be opened -> open it
-    //     if(this.$route.query.climadvice != undefined){
-    //         var climadviceFromRoute = this.$route.query.climadvice;
-            
-    //         $("#" + climadviceFromRoute).removeClass("col-md-4").addClass("col-md-12");
-    //         this.openedClimadviceNameIDForIndividualComponent = climadviceFromRoute;
-
-    //         $("#id_x_to_close_" + climadviceFromRoute).css("display", "block");
-
-    //         alert('i open the thing');
-
-    //     }
-    // },
     methods:{
         climadviceAdded(climadvice){
             this.climadvices.push(climadvice);
         },
         //one Climadvice card was clicked
         climadviceClicked(climadviceNameID){
-            this.$emit("showOnlyOneClimadvice", climadviceNameID)
-            $("#" + climadviceNameID).removeClass("col-md-4").addClass("col-md-12");
-            this.openedClimadviceNameIDForIndividualComponent = climadviceNameID;
-            var scrollTo = VueScrollTo.scrollTo("#" + climadviceNameID);
-            $("#id_x_to_close_" + climadviceNameID).css("display", "block");
+            this.$emit("showOnlyOneClimadvice", climadviceNameID);
         },
         closeClimadvice(climadviceNameID){
-            $("#" + climadviceNameID).removeClass("col-md-12").addClass("col-md-4");
-            $("#id_x_to_close_" + climadviceNameID).css("display", "none");
-            this.openedClimadviceNameIDForIndividualComponent = '';
-
-            this.$emit("closeOneClimadvice")
+            this.$emit("closeClimadvice")
         },
         editClimadvice(climadvice){
             this.climadviceForEdit = climadvice;
