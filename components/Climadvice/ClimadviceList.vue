@@ -4,7 +4,7 @@
             <div class="col-md-4" v-for="climadvice in climadvices" v-bind:key="climadvice.id" :id="climadvice.name" >
                 <div class="card mb-3">
                     <div class="card-body text-center">
-                        
+
                         <!-- v-on:clicked here on title and shortDescription because i cannot put it on the whole element!
                         whole element: if i click for example the 'x' to close, this "climadviceClikcked" is also triggerd -->
                         <div v-on:click="climadviceClicked(climadvice.name)">
@@ -42,7 +42,7 @@
 
         <!-- If it is only one climadvice -> show only the one -> it exists only one climadvice [0]  -->
         <div v-if="climadvices != null && climadvices.length == 1">
-            <div class="col-md-12" :id="climadvices[0].name">
+            <div class="w-100" :id="climadvices[0].name">
                 <div class="card">
                     <div class="card-body text-center">
                         <span class="x_to_close_climadvice" :id="'id_x_to_close_' + climadvices[0].name" v-on:click="closeClimadvice(climadvices[0].name)" style="position:absolute;top:10px;right:10px; transform:rotate(20deg);"><h2>+</h2></span>
