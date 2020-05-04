@@ -11,7 +11,7 @@
                 Im Vordergrund sollen die 
                 konkreten Handlungen für persönlichen Klimaschutz und deren Umsetzung stehen. 
                 Die Kompensation ist nur eine zusätzliche Möglichkeit, welcher andere Maßnahmen 
-                zur Vergrößerung des ökologischen Handabdrucks vorausgehen sollten. Trotzdem hat die 
+                zur Vergrößerung des <span class="text-success">Climate</span>Master Handabdrucks vorausgehen sollten. Trotzdem hat die 
                 Restkompensation der persönlichen Treibhausgase einige positive Effekte, welche wir an dieser Stelle aufzählen möchten:
             </p>
                 <ol>
