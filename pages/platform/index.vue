@@ -4,56 +4,56 @@
         
         <div class="row text-center p-4">
             <div class="col-md-6 mt-3">
-                <div class="container">
-                    <nuxt-link to="/platform/aim">
-                        <div class="card">
-                            <div style="height:100px;">
+                <div class="container h-100">
+                    <nuxt-link to="/platform/aim" class="h-100">
+                        <div class="card h-100">
+                            <div style="">
                                 <h4 class="text-dark mt-4">Das Ziel der Plattform</h4>
                             </div>
                             <div class="card-body">
-                                <img style="mx-auto;height:200px;" class="img-fluid" src="~/static/pictures/forSpecialSites/theplatform/aimOfThePlatform/aim.png"/>
+                                <img style="mx-auto;max-height:200px;" class="img-fluid" src="~/static/pictures/forSpecialSites/theplatform/aimOfThePlatform/aim.png"/>
                             </div>
                         </div>
                     </nuxt-link>
                 </div>
             </div>
             <div class="col-md-6 mt-3">
-                <div class="container">
-                    <nuxt-link to="/platform/handprint">
-                        <div class="card">
-                            <div style="height:100px;">
+                <div class="container h-100">
+                    <nuxt-link to="/platform/handprint" class="h-100">
+                        <div class="card h-100">
+                            <div style="">
                                 <h4 class="text-dark mt-4">Der <span class="text-success">Climate</span>Master Handabdruck: <br>mehr groß = mehr gut</h4>
                             </div>
                             <div class="card-body">
-                                <img style="mx-auto;height:200px;" class="img-fluid" src="~/static/pictures/forSpecialSites/theplatform/handprint/handprintCalculationOnlyOne.png"/>
+                                <img style="mx-auto;max-height:200px;" class="img-fluid" src="~/static/pictures/forSpecialSites/theplatform/handprint/handprintCalculationOnlyOne.png"/>
                             </div>
                         </div>
                     </nuxt-link>
                 </div>
             </div>
             <div class="col-md-6 mt-3">
-                <div class="container">
-                    <nuxt-link to="/platform/fairness">
-                        <div class="card">
-                            <div style="height:100px;">
+                <div class="container h-100">
+                    <nuxt-link to="/platform/fairness" class="h-100">
+                        <div class="card h-100">
+                            <div style="">
                                 <h4 class="text-dark mt-4">Warum ist <span class="text-success">Climate</span>Master fair?</h4>
                             </div>
                             <div class="card-body">
-                                <img style="mx-auto;height:200px;" class="img-fluid" src="~/static/pictures/forSpecialSites/theplatform/fair/fair.png"/>
+                                <img style="mx-auto;max-height:200px;" class="img-fluid" src="~/static/pictures/forSpecialSites/theplatform/fair/fair.png"/>
                             </div>
                         </div>
                     </nuxt-link>
                 </div>
             </div>
             <div class="col-md-6 mt-3">
-                <div class="container">
-                    <nuxt-link to="/platform/donations-to-climate-protection">
-                        <div class="card">
-                            <div style="height:100px;">
+                <div class="container h-100">
+                    <nuxt-link to="/platform/donations-to-climate-protection" class="h-100">
+                        <div class="card h-100">
+                            <div style="">
                                 <h4 class="text-dark mt-4">Was hat eine Spende für Klimaschutz mit Ablasshandel zu tun?</h4>
                             </div>
                             <div class="card-body">
-                                <img style="mx-auto;height:200px;" class="img-fluid" src="~/static/pictures/forSpecialSites/theplatform/donation/donation.png"/>
+                                <img style="mx-auto;max-height:160px;" class="img-fluid" src="~/static/pictures/forSpecialSites/theplatform/donation/donation-2.png"/>
                             </div>
                         </div>
                     </nuxt-link>
