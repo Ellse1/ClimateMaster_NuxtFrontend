@@ -57,7 +57,7 @@
             <div class="col-md-9 mx-auto row" v-else>
                 <div v-for="(slideshowimage, index) in companySlideshowimages" v-bind:key="slideshowimage.id" class="col-md-4 mx-auto">
                     <div class="card" style="height:200px;overflow:hidden;">
-                        <img class="card-img" :src="`https://www.climate-master.com:8000/images/companyImages/slideshowimages/${slideshowimage.image_name}`">
+                        <img class="card-img" :src="`https://www.climate-master.com/images/companyImages/slideshowimages/${slideshowimage.image_name}`">
                         <div class="card-img-overlay text-center">
                             <div class="rounded" style="background-color:rgba(247, 247, 247, 0.3)">
                                 <h5 class="card-title" style="margin-top:140px;">{{slideshowimage.caption}}</h5>
