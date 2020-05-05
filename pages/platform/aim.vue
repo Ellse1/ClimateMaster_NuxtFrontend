@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <div class="container mt-3 col-md-10 bg-light  rounded p-3">
-            <h4>Das Ziel der <span class="text-success">Climate</span>ClimateMaster Plattform</h4>
+            <h4>Das Ziel der <span class="text-success">Climate</span>Master Plattform</h4>
             <p>
                 Das Ziel der <span class="text-success">Climate</span>Master Plattform ist die Reduktion des Ausstoßes von Treibhausgasen in Deutschland. 
                 Dabei dürfen demokratische Werte nicht verletzt werden und individuelle Entscheidungsfreiheit muss erhalten bleiben. 
