@@ -4,7 +4,7 @@
             <h4>Das Ziel der <span class="text-success">Climate</span>ClimateMaster Plattform</h4>
             <p>
                 Das Ziel der <span class="text-success">Climate</span>Master Plattform ist die Reduktion des Ausstoßes von Treibhausgasen in Deutschland. 
-                Dabei dürfen demokratische Werte nicht verletzt werden, individuelle Entscheidungsfreiheit muss erhalten bleiben. 
+                Dabei dürfen demokratische Werte nicht verletzt werden und individuelle Entscheidungsfreiheit muss erhalten bleiben. 
                 Jede Privatperson kann seine individuellen Emissionen minimieren und damit einen großen Beitrag zum Klimaschutz 
                 leisten. Im zeitlichen Verlauf sollen also die individuell verursachten Emissionen sinken, während die jährlich 
                 vermiedenen Emissionen ansteigen (siehe Abbildung).  

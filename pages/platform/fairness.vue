@@ -8,7 +8,7 @@
                 und muss nicht veröffentlicht werden. Allerdings gibt 
                 es die Möglichkeit seinen Handabdruck öffentlich zu präsentieren und damit seine eigenen 
                 Klimaschutzmaßnahmen zu vertreten und Mitmenschen zu ähnlichen klimaschützenden Handlungen 
-                zu motivieren. Mit dieser Möglichkeit kann jeder auf sein öffentliches Profil verweisen und 
+                zu motivieren. Mit dieser Möglichkeit kann jede und jeder auf sein öffentliches Profil verweisen und 
                 zeigen, dass und wie er oder sie sich schon für Klimaschutz einsetzt.
             </p>
             <p> 

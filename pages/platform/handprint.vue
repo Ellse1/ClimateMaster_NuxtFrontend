@@ -25,10 +25,10 @@
                 Wird weniger Treibhausgas vermieden als beim deutschen Durchschnittsbürger, wird der Handabdruck negativ. 
                 Aufgeteilt auf die Sektoren Energie, Mobilität, Ernährung, Konsum und öffentliche Emission kann der 
                 individuell verursachte Ausstoß von Treibhausgasen berechnet und verglichen werden. Zusätzlich 
-                zu klimaschützenden Maßnahmen, können auch spenden in Klimaschutzprojekte, bei welchen genau 
+                zu klimaschützenden Maßnahmen, können auch Spenden in Klimaschutzprojekte, bei welchen genau 
                 berechnet wird, wie viel Treibhausgas vermieden wird, den individuellen  <span class="text-success">Climate</span>Master Handabdruck vergrößern. 
                 Warum die <span class="text-success">Climate</span>Master Plattform gesellschaftlich fair ist, haben wir unter <nuxt-link to="/platform/fairness">fairness</nuxt-link> zusammen gefasst. Was das 
-                zusätzliche kaufen einer Vergrößerung des <span class="text-success">Climate</span>Master Handabdrucks mit Ablasshandel zu tun hat, 
+                zusätzliche Kaufen einer Vergrößerung des <span class="text-success">Climate</span>Master Handabdrucks mit Ablasshandel zu tun hat, 
                 erklären wir unter <nuxt-link to="/platform/donations-to-climate-protection">donations-to-climate-protection</nuxt-link>.
             </p>
         </div>

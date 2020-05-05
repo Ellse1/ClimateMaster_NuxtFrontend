@@ -37,7 +37,7 @@
                 </ol>
                 <p>
                     Spenden werden nur anerkannt, wenn sie an die mehrfach ausgezeichnete, gemeinnützige Amfosfair 
-                    GgmbH gespendet wurden. Die Projekte, die damit finanziert werden, sind unter folgendem Link 
+                    gGmbH gespendet wurden. Die Projekte, die damit finanziert werden, sind unter folgendem Link 
                     beschrieben:<br> <a target="_blanc" href="https://www.atmosfair.de/de/klimaschutzprojekte/">www.atmosfair.de/de/klimaschutzprojekte</a>.
                 </p>
         </div>
