@@ -11,7 +11,7 @@
             Elektroauto gesamtpaket noch sauberer machen.
         </p>
         <p>
-            * 2019 wurde in Deutschland 46% des produzierten Stroms mit erneuerbaren Energien hergestellt.
+            * 2019 wurde in Deutschland 46% des Stroms erneuerbar produziert.
             <br>
             <small>Quelle: strom-report.de/strom/</small>
         </p>
