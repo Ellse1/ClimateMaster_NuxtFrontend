@@ -19,8 +19,8 @@
             </p>
 
             <div class="text-center">
-                <a target="_blanc" href="https://www.climate-master.com:8000/api/file/conceptSummary" class="btn btn-default border mt-2">Konzept Zusammenfassung (PDF)</a>
-                <a target="_blanc" href="https://www.climate-master.com:8000/api/file/concept" class="btn btn-default border mt-2">Konzept Langfassung (PDF)</a>
+                <!-- <a target="_blanc" href="https://www.climate-master.com:8000/api/file/conceptSummary" class="btn btn-default border mt-2">Konzept Zusammenfassung (PDF)</a> -->
+                <a target="_blanc" href="https://www.climate-master.com/api/file/concept" class="btn btn-default border mt-2">Konzept (PDF)</a>
             </div>
 
 
