@@ -65,10 +65,10 @@ export default {
 }
 
 /* For Cards */
-.card{
+.cursor-pointer{
     cursor: pointer;
 }
-.card:hover{
+.cursor-pointer:hover{
     box-shadow: 0 0 10px gray;
 }
 

@@ -2,7 +2,7 @@
     <div>
         <div class="row" v-if="climadvices != null && climadvices.length > 1">
             <div class="col-md-4" v-for="climadvice in climadvices" v-bind:key="climadvice.id" :id="climadvice.name" >
-                <div class="card mb-3">
+                <div class="card mb-3 cursor-pointer">
                     <div class="card-body text-center">
 
                         <!-- v-on:clicked here on title and shortDescription because i cannot put it on the whole element!

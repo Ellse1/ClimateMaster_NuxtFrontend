@@ -15,7 +15,7 @@
 
         <div class="row">
             <div class="col-md-4 mt-2" style="height:300px;">
-                <div class="card h-100" v-on:click="openClimateMasterAction(0, 'calculate')">
+                <div class="card h-100 cursor-pointer" v-on:click="openClimateMasterAction(0, 'calculate')">
                     <div class="number-class mx-auto my-auto text-center">
                         1
                     </div>
@@ -29,7 +29,7 @@
             <div class="col-md-1 col-sm-6 if-device-large" style="height:150px;border-bottom: 10px dashed green;"></div>
             <div class="if-device-small" id="id_div_center_left" style="width:80%;height:150px;border-right: 10px dashed green;"></div>
             <div class="col-md-3 mt-2" style="height:300px;">
-                <div class="card h-100" v-on:click="openClimateMasterAction(1, 'reduce_short_term')">
+                <div class="card h-100 cursor-pointer" v-on:click="openClimateMasterAction(1, 'reduce_short_term')">
                     <div class="number-class mx-auto my-auto text-center">
                         2
                     </div>
@@ -43,7 +43,7 @@
             <div class="col-md-1 if-device-large" style="height:150px;border-bottom: 10px dashed green;"></div>
             <div class="if-device-small" id="id_div_center_left" style="width:20%;height:150px;border-right: 10px dashed green;"></div>
             <div class="col-md-3 mt-2" style="height:300px;">
-                <div class="card h-100" v-on:click="openClimateMasterAction(2, 'customize_calculation')">
+                <div class="card h-100 cursor-pointer" v-on:click="openClimateMasterAction(2, 'customize_calculation')">
                     <div class="number-class mx-auto my-auto text-center">
                         3
                     </div>
@@ -65,7 +65,7 @@
         </div>
         <div class="row">
             <div class="col-md-4 mt-2 if-device-large" style="height:300px;">
-                <div class="card h-100" v-on:click="openClimateMasterAction(5, 'reduce_long_term')">
+                <div class="card h-100 cursor-pointer" v-on:click="openClimateMasterAction(5, 'reduce_long_term')">
                     <div class="number-class mx-auto my-auto text-center">
                         6
                     </div>
@@ -77,7 +77,7 @@
                 </div>
             </div>
             <div class="if-device-small col-12" style="height:300px;">
-                <div class="card  h-100" v-on:click="openClimateMasterAction(3, 'become_climatemaster')">
+                <div class="card  h-100 cursor-pointer" v-on:click="openClimateMasterAction(3, 'become_climatemaster')">
                     <div class="number-class mx-auto my-auto text-center">
                         4
                     </div>
@@ -91,7 +91,7 @@
             <div class="col-md-1 if-device-large" id="id_div_center_left" style="height:150px;border-bottom: 10px dashed green;"></div>
             <div class="if-device-small" id="id_div_center_left" style="width:50%;height:150px;border-right: 10px dashed green;"></div>
             <div class="col-md-3 mt-2" id="id_div_center" style="height:300px;">
-                <div class="card  h-100" v-on:click="openClimateMasterAction(4, 'present_progress')">
+                <div class="card  h-100 cursor-pointer" v-on:click="openClimateMasterAction(4, 'present_progress')">
                     <div class="number-class mx-auto my-auto text-center">
                         5
                     </div>
@@ -105,7 +105,7 @@
             <div class="col-md-1 if-device-large" id="id_div_center_right" style="height:150px;border-bottom: 10px dashed green;"></div>
             <div class="if-device-small" id="id_div_center_left" style="width:50%;height:150px;border-right: 10px dashed green;"></div>
             <div class="col-md-3 mt-2 if-device-large" id="id_div_toSwap2" style="height:300px;">
-                <div class="card h-100" v-on:click="openClimateMasterAction(3, 'become_climatemaster')">
+                <div class="card h-100 cursor-pointer" v-on:click="openClimateMasterAction(3, 'become_climatemaster')">
                     <div class="number-class mx-auto my-auto text-center">
                         4
                     </div>
@@ -117,7 +117,7 @@
                 </div>
             </div> 
             <div class="if-device-small col-12" style="height:300px;">
-                <div class="card  h-100" v-on:click="openClimateMasterAction(5, 'reduce_long_term')">
+                <div class="card  h-100 cursor-pointer" v-on:click="openClimateMasterAction(5, 'reduce_long_term')">
                     <div class="number-class mx-auto my-auto text-center">
                         6
                     </div>

@@ -6,7 +6,7 @@
             <div class="col-md-6 mt-3">
                 <div class="container h-100">
                     <nuxt-link to="/platform/aim" class="h-100">
-                        <div class="card h-100">
+                        <div class="card h-100 cursor-pointer">
                             <div style="">
                                 <h4 class="text-dark mt-4">Das Ziel der Plattform</h4>
                             </div>
@@ -20,7 +20,7 @@
             <div class="col-md-6 mt-3">
                 <div class="container h-100">
                     <nuxt-link to="/platform/handprint" class="h-100">
-                        <div class="card h-100">
+                        <div class="card h-100 cursor-pointer">
                             <div style="">
                                 <h4 class="text-dark mt-4">Der <span class="text-success">Climate</span>Master Handabdruck: <br>mehr groß = mehr gut</h4>
                             </div>
@@ -34,7 +34,7 @@
             <div class="col-md-6 mt-3">
                 <div class="container h-100">
                     <nuxt-link to="/platform/fairness" class="h-100">
-                        <div class="card h-100">
+                        <div class="card h-100 cursor-pointer">
                             <div style="">
                                 <h4 class="text-dark mt-4">Warum ist <span class="text-success">Climate</span>Master fair?</h4>
                             </div>
@@ -48,7 +48,7 @@
             <div class="col-md-6 mt-3">
                 <div class="container h-100">
                     <nuxt-link to="/platform/donations-to-climate-protection" class="h-100">
-                        <div class="card h-100">
+                        <div class="card h-100 cursor-pointer">
                             <div style="">
                                 <h4 class="text-dark mt-4">Was hat eine Spende für Klimaschutz mit Ablasshandel zu tun?</h4>
                             </div>
