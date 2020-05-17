@@ -6,7 +6,7 @@
             <p><strong>Allgemeiner Hinweis und Pflichtinformationen</strong></p>
             <p><strong>Benennung der verantwortlichen Stelle</strong></p>
             <p>Die verantwortliche Stelle für die Datenverarbeitung auf dieser Website ist:</p>
-            <p><span id="s3-t-firma"></span><br><span id="s3-t-ansprechpartner">Elias Singer</span><br><span id="s3-t-strasse">Schulstraße 34</span><br><span id="s3-t-plz">78337</span> <span id="s3-t-ort">Öhningen</span><br>elias@climate-master.com</p><p></p>
+            <p><span id="s3-t-firma"></span><br><span id="s3-t-ansprechpartner">Elias Singer</span><br><span id="s3-t-strasse">Schulstraße 34</span><br><span id="s3-t-plz">78337</span> <span id="s3-t-ort">Öhningen</span><br>elias.singer@climate-master.com</p><p></p>
             <p>Die verantwortliche Stelle entscheidet allein oder gemeinsam mit anderen über die Zwecke und Mittel der Verarbeitung von personenbezogenen Daten (z.B. Namen, Kontaktdaten o. Ä.).</p>
 
             <p><strong>Widerruf Ihrer Einwilligung zur Datenverarbeitung</strong></p>

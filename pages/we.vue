@@ -59,12 +59,12 @@
                     <p>Elias Singer</p>
                     <p>Schulstraße 34</p>
                     <p>78337 Öhningen - Schienen</p>
-                    <p>elias@climate-master.com</p>
+                    <p>elias.singer@climate-master.com</p>
                     <p>0049 17643326722</p>
                 </div>
                 <div class="col-md-6">
                     Vielen Dank für Ihren Besuch auf unserer Webseite. Wir freuen uns sehr über Anregungen, Fragen oder Hinweise. 
-                    Wenden Sie sich mit Ihrem Anliegen gerne an elias@climate-master.com.<br><b>Vielen Dank für Ihre Unterstützung!</b>
+                    Wenden Sie sich mit Ihrem Anliegen gerne an elias.singer@climate-master.com.<br><b>Vielen Dank für Ihre Unterstützung!</b>
                 </div>
             </div>
 

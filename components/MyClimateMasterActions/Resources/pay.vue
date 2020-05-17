@@ -21,12 +21,12 @@
                         </p>
                         <p>
                             Spende den entsprechenden Betrag für deine individuelle CO2 Kompensation und schicke
-                            uns einfach den entsprechenden Beleg und deinen Benutzernamen an elias@climate-master.com.
+                            uns einfach den entsprechenden Beleg und deinen Benutzernamen an elias.singer@climate-master.com.
                             Wir schicken dir dann eine Bestätigung und schalten dich als ClimateMaster 2020 frei.
                             <ul class="mt-3">
                                 <li><a class="btn btn-success" target="_blanc" href="https://www.atmosfair.de/de/spenden/">Hier spenden</a></li>
                                 <li>Betrag: <b>{{total_price}}€</b></li>
-                                <li>Danach email an: elias@climate-master.com mit folgendem Inhalt:</li>
+                                <li>Danach email an: elias.singer@climate-master.com mit folgendem Inhalt:</li>
                                 <ul>
                                     <li>Deinem Benutzernamen: {{user.username}}</li>
                                     <li>Beleg von Atmosfair</li>

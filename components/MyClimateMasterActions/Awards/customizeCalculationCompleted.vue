@@ -44,7 +44,7 @@
                     </nuxt-link>
                 </div>
                 <br>
-                <p>Kontaktiere uns für Fragen einfach über elias@climate-master.com</p>                
+                <p>Kontaktiere uns für Fragen einfach über elias.singer@climate-master.com</p>                
                 
                 <div class="mt-3">
                     <button class="btn btn-success mt-2 mb-3 px-5" v-on:click="hideCongratulation">weiter</button>

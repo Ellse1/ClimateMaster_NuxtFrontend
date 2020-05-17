@@ -30,7 +30,7 @@
 
                 </p>
                 <br>
-                <p>Kontaktiere uns einfach für Fragen über elias@climate-master.com</p>
+                <p>Kontaktiere uns einfach für Fragen über elias.singer@climate-master.com</p>
                 <button class="btn btn-success mt-2 mb-3 px-5" v-on:click="nextCongratulation('id_div_congratulation_4_2', 'id_div_congratulation_4_3')">weiter</button>
             </div>
 
@@ -58,7 +58,7 @@
                     Um noch mehr Menschen von konsequenten Klimaschutz zu überzeugen, würden wir dich gerne als Paradebeispiel auf unseren
                     Social Media Kanälen präsentieren. Zum Beispiel wäre ein Bild oder sogar ein Video mit einer kurzen Beschreibung, wie 
                     du dich für konsequenten Klimaschutz einsetzt sehr wirkungsvoll. Hast du Lust andere Leute von Klimaschutz zu überzeugen? 
-                    Dann schicke uns eine E-Mail mit dem entsprechendem Material an elias@climate-master.com.
+                    Dann schicke uns eine E-Mail mit dem entsprechendem Material an elias.singer@climate-master.com.
                     <br>Liebe Grüße<br>
                     dein <b>ClimateMaster Team</b>
                 </p>
