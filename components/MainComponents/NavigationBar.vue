@@ -63,8 +63,16 @@
 <script>
 export default {
     watch: {
-        '$route' () {
-            $('.navbar-toggler').click();
+        '$route' () {  
+            var navbarOpenedOnMobile = $("#navbarCollapse").is(":visible");
+            //if the route changed and the navbar collapse is opened -> close it
+            if(navbarOpenedOnMobile){
+                $('.navbar-toggler').click();
+            }
+            // $(".navbar-toggler").collapse('hide');
+            // var isExpanded = $('navbarCollapse').attr('aria-expanded') === true;
+            // alert(isExpanded);
+            // $('.navbar-toggler').click();
         }
     },
     mounted(){
