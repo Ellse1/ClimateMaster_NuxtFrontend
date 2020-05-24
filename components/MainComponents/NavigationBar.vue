@@ -44,7 +44,7 @@
                                </div>
                             </div>
                             <!-- if logged in -->
-                            <div class="dropdown-menu bg-light" v-if="loggedIn === true" aria-labelledby="dropdown04">
+                            <div class="dropdown-menu dropdown-menu-right bg-light" v-if="loggedIn === true" aria-labelledby="dropdown04">
                                 <nuxt-link to="/account/myProfile" class="dropdown-item">Mein Profil</nuxt-link>
                                 <nuxt-link to="/myClimateMaster" class="dropdown-item" >Mein Klimaschutz</nuxt-link>
                                 <!-- If admin -->
