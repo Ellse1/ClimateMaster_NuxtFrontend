@@ -62,6 +62,11 @@
 </template>
 <script>
 export default {
+    watch: {
+        '$route' () {
+            $('.navbar-toggler').click();
+        }
+    },
     mounted(){
         /* When the user scrolls down, hide the navbar. When the user scrolls up, show the navbar */
         var prevScrollpos = window.pageYOffset;
