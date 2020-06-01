@@ -122,7 +122,15 @@ export default {
         },
         //one Climadvice card was clicked
         climadviceClicked(climadviceNameID){
-            this.$emit("showOnlyOneClimadvice", climadviceNameID);
+            if(this.$route.query.climatemasterarea != undefined){
+                var climatemasterareaFromRoute = this.$route.query.climatemasterarea;
+                this.$router.push({path: "/climadvices", query:{climatemasterarea: climatemasterareaFromRoute, climadvice: climadviceNameID}});
+            }else{
+                this.$router.push({path: "/climadvices", query:{climadvice: climadviceNameID}});
+            }
+
+
+            // this.$emit("showOnlyOneClimadvice", climadviceNameID);
         },
         editClimadvice(climadvice){
             this.climadviceForEdit = climadvice;

@@ -87,6 +87,7 @@
 import notification from '~/components/MainComponents/Notification';
 import co2calculationChart from '~/components/MyClimateMasterActions/Resources/myCO2CalculationChart';
 export default {
+    scrollToTop: true,
     components:{
         notification,
         co2calculationChart

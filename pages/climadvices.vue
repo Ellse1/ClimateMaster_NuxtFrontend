@@ -25,7 +25,7 @@
 <script>
 import climadviceList from '~/components/Climadvice/ClimadviceList';
 import notification from '~/components/MainComponents/Notification';
-var VueScrooTo = require('vue-scrollto')
+var scrollTo = require('vue-scrollto')
 export default {
     components:{
          climadviceList,
@@ -165,7 +165,7 @@ export default {
             }
 
         },
-        showOnlyOneClimadvice(climadviceNameID){
+        showOnlyOneClimadvice(climadviceNameID){            
             var allClimadvices = this.climadvices;
 
             // if i click on the same climatemasterarea as before -> don't show all climadvices 
@@ -180,12 +180,18 @@ export default {
             })
             //push the router
             //if there was already the climatemasterarea set -> leafe it there!
-            if(this.$route.query.climatemasterarea != undefined){
-                var climatemasterareaFromRoute = this.$route.query.climatemasterarea;
-                this.$router.push({path: "/climadvices", query:{climatemasterarea: climatemasterareaFromRoute, climadvice: climadviceNameID}});
-            }else{
-                this.$router.push({path: "/climadvices", query:{climadvice: climadviceNameID}});
-            }
+            // if(this.$route.query.climatemasterarea != undefined){
+            //     var climatemasterareaFromRoute = this.$route.query.climatemasterarea;
+            //     this.$router.push({path: "/climadvices", query:{climatemasterarea: climatemasterareaFromRoute, climadvice: climadviceNameID}});
+            // }else{
+            //     this.$router.push({path: "/climadvices", query:{climadvice: climadviceNameID}});
+            // }
+
+            // alert('in');
+            //Scroll to top of page
+            window.scrollTo(0, 0);
+            // var climadivceToScrollTo = $("#climadviceNameID");
+            // var scrollNow = scrollTo.scrollTo(climadivceToScrollTo);
         },
         closeClimadvice(){
             //check if there is a climatemasterarea
