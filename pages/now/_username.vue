@@ -102,7 +102,6 @@ export default {
         };
     },
     async mounted(){
-        window.scrollTo(0, 0);
         $("#id_div_loading").addClass("loading-animation-green");
 
         try {
@@ -215,6 +214,8 @@ export default {
                 $("#id_img_profilePicture").width('100%');
             }
 
+            //Scroll to top of the page
+            window.scrollTo(0, 0);
         }
     }
 }
