@@ -87,7 +87,6 @@
 import notification from '~/components/MainComponents/Notification';
 import co2calculationChart from '~/components/MyClimateMasterActions/Resources/myCO2CalculationChart';
 export default {
-    scrollToTop: true,
     components:{
         notification,
         co2calculationChart
@@ -103,7 +102,7 @@ export default {
         };
     },
     async mounted(){
-
+        window.scrollTo(0, 0);
         $("#id_div_loading").addClass("loading-animation-green");
 
         try {
