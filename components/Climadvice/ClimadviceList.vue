@@ -23,8 +23,22 @@
 
                         <!-- Render the climadviceChecks -->
                         <div v-for="climadviceCheck in climadviceChecks" v-bind:key="climadviceCheck.id">
-                            <div v-if="climadviceCheck.climadvice_id == climadvice.id">
-                                {{climadviceCheck.action}}
+                            <div v-if="climadviceCheck.climadvice_id == climadvice.id" class="bg-light border rounded mt-2">
+                                <button class="w-100 btn btn-default border-0" type="button" data-toggle="collapse" :data-target="'#collapseClimadviceCheck_' + climadviceCheck.id" :id="'id_button_climadviceCheck_showCollapse_' + climadviceCheck.id" aria-expanded="false">
+                                    {{climadviceCheck.action}}<br>
+                                    <font-awesome-icon :id="'id_climadvicesCheck_checkCircle_' + climadviceCheck.id" icon="check-circle"  style="font-size:20px;display:none;"/>     
+                                </button>
+                                <div class="collapse mt-2 px-2" :id="'collapseClimadviceCheck_' + climadviceCheck.id">
+                                    <small>optional</small>
+                                    <label>{{climadviceCheck.question}}</label>
+                                    <input class="form-control text-center" :id="'id_climadviceCheck_input_answer_' + climadviceCheck.id" :placeholder="climadviceCheck.answer_proposal" v-on:input="climadviceCheckAnswerChanged(climadviceCheck.id)" />
+                                    <button class="btn btn-default border-dark mt-1 mb-1" :id="'id_climadviceCheck_button_send_' + climadviceCheck.id" v-on:click="climadviceCheckSubmitted(climadviceCheck.id)">{{climadviceCheck.action}}</button>
+                                </div>
+                                <!-- Notification to login, if the user is not logged in -->
+                                <div :id="'id_div_notification_to_login_' + climadviceCheck.id" style="display:none;">
+                                    <nuxt-link to="/account/login">Melde dich an, </nuxt-link> damit dein Fortschritt nicht verloren geht.
+                                </div>
+
                             </div>
                         </div>
 
@@ -168,6 +182,77 @@ export default {
         climadviceDeleted(climadvice){
             // this.climadviceForEdit = climadvice;
             this.climadvices.splice(this.climadvices.map(function(e){return e.id}).indexOf(climadvice.id), 1);
+        },
+
+        //Render the button new, if the user typed in a answer
+        climadviceCheckAnswerChanged(climadviceCheckID){
+            var answer = $("#id_climadviceCheck_input_answer_" + climadviceCheckID).val();
+            //if there is no answer -> show only the action on the button
+            if(answer.length == 0){
+                $("#id_climadviceCheck_button_send_2").html(this.climadviceChecks.find(x => x.id === climadviceCheckID).action);
+            }
+            //if there is a answer, show the action and the individual answer on the send button
+            else{
+                $("#id_climadviceCheck_button_send_2").html(this.climadviceChecks.find(x => x.id === climadviceCheckID).button_send_text + " " + answer);
+            }
+        },
+        async climadviceCheckSubmitted(climadviceCheckID){
+           
+           $("#id_climadviceCheck_button_send_" + climadviceCheckID).addClass("loading-animation-green");
+
+            var answer = $("#id_climadviceCheck_input_answer_" + climadviceCheckID).val();
+            var answerToSend = null;
+
+            //only if an answer longer than 2 letters is provided -> send request to backend
+            if(answer.length >= 3){
+                answerToSend = answer;
+            }
+
+            if(answerToSend != null || this.loggedIn != false)
+
+                try {
+                    //get the climadvice_id
+                    var climadviceCheck = this.climadviceChecks.find(x => x.id == climadviceCheckID);
+                    var climadvice_id = climadviceCheck.climadvice_id;
+
+                    const{data} = await this.$axios.post("climadviceUserCheck/store", {
+                        climadvice_check_id : climadviceCheckID,
+                        climadvice_id: climadvice_id,
+                        question_answer: answerToSend
+                    });
+
+                    if(data.state == "error"){
+
+                    }
+                    if(data.state == "success"){
+
+                    }
+                    else{
+
+                    }
+
+                } catch (error) {
+                    
+                }
+            
+            
+            //if not logged in -> show message to login
+            if(this.loggedIn == false){
+                $("#id_div_notification_to_login_" + climadviceCheckID).show();
+            }
+
+            //make both buttons green and show check circle
+            $("#id_button_climadviceCheck_showCollapse_" + climadviceCheckID).addClass('btn-success');
+            $("#id_climadviceCheck_button_send_" + climadviceCheckID).addClass('btn-success');
+            $("#id_climadvicesCheck_checkCircle_" + climadviceCheckID).show();
+
+            //collapse content
+            $("#id_button_climadviceCheck_showCollapse_" + climadviceCheckID).click();
+        
+        
+
+
+            $("#id_climadviceCheck_button_send_" + climadviceCheckID).removeClass("loading-animation-green");
         }
     }
 }
