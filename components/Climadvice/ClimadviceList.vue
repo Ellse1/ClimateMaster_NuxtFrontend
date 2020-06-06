@@ -19,8 +19,14 @@
 
 
                         <!-- Individual ClimadviceComponent -->
-                        <component v-bind:is="climadvice.name"  v-if="openedClimadviceNameIDForIndividualComponent == climadvice.name" />
+                        <!-- <component v-bind:is="climadvice.name"  v-if="openedClimadviceNameIDForIndividualComponent == climadvice.name" /> -->
 
+                        <!-- Render the climadviceChecks -->
+                        <div v-for="climadviceCheck in climadviceChecks" v-bind:key="climadviceCheck.id">
+                            <div v-if="climadviceCheck.climadvice_id == climadvice.id">
+                                {{climadviceCheck.action}}
+                            </div>
+                        </div>
 
                     </div>
 
@@ -35,8 +41,8 @@
             </div>
 
             <client-only>
-            <!--If admin ->  To add a climadvice -->
-            <climadviceAdd id="id_climadviceAdd" v-if="user.role === 'admin'" @climadviceAdded="climadviceAdded"/>
+                <!--If admin ->  To add a climadvice -->
+                <climadviceAdd id="id_climadviceAdd" v-if="user.role === 'admin'" @climadviceAdded="climadviceAdded"/>
             </client-only>
         </div>
 
@@ -57,7 +63,6 @@
                         </div>
 
                         <component v-bind:is="climadvices[0].name"/>
-
 
                     </div>
                 </div>
@@ -114,7 +119,23 @@ export default {
         return{
             climadviceForEdit: {id: '', name : '', title: '', shortDescription: ''},
             openedClimadviceNameIDForIndividualComponent : '',
+            climadviceChecks: null
         };
+    },
+    async mounted(){
+        //get the climadviceChecks
+        try {
+            const{data} = await this.$axios.post("climadviceCheck/getAllClimadviceChecks");
+            if(data.state == "error"){
+
+            }
+            else if(data.state == "success"){
+                this.climadviceChecks = data.data;
+            }
+
+        } catch (error) {
+            
+        }
     },
     methods:{
         climadviceAdded(climadvice){

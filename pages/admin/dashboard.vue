@@ -14,7 +14,8 @@
                         <button class="w-100 btn btn-default" v-on:click="changeOpenedDashboardComponent('showAllUsers')">Benutzer</button>
                         <button class="w-100 btn btn-default" v-on:click="changeOpenedDashboardComponent('imagecreatorSharingPermitted')">Imagecreator</button>
                         <button class="w-100 btn btn-default" v-on:click="changeOpenedDashboardComponent('showPageLogs')">Aufrufinformation</button>
-
+                        <button class="w-100 btn btn-default" v-on:click="changeOpenedDashboardComponent('climadviceChecks')">ClimadviceChecks</button>
+ 
                     </div>
                 </div>
                 <div class="col-md-9 mt-4">
@@ -29,7 +30,8 @@
                 
                     <showPageLogs v-if="openedDashboardComponent == 'showPageLogs'"/>
 
-                
+                    <!-- To add / edit / delete climadviceChecks -->
+                    <climadviceChecks v-if="openedDashboardComponent == 'climadviceChecks'" />
                 </div>
             </div>
 
@@ -44,6 +46,7 @@ import verifyCompanies from '~/components/AdminDashboard/verifyCompanies';
 import showAllUsers from '~/components/AdminDashboard/showAllUsers';
 import imagecreatorSharingPermitted from '~/components/AdminDashboard/imagecreatorSharingPermitted';
 import showPageLogs from '~/components/AdminDashboard/showPageLogs';
+import climadviceChecks from '~/components/AdminDashboard/climadviceChecks';
 
 export default {
     middleware: 'auth',
@@ -51,7 +54,8 @@ export default {
         verifyCompanies,
         showAllUsers,
         imagecreatorSharingPermitted,
-        showPageLogs
+        showPageLogs,
+        climadviceChecks
     },
     data(){
         return{
