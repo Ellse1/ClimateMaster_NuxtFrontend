@@ -133,7 +133,8 @@ export default {
         return{
             climadviceForEdit: {id: '', name : '', title: '', shortDescription: ''},
             openedClimadviceNameIDForIndividualComponent : '',
-            climadviceChecks: null
+            climadviceChecks: null,
+            climadviceUserChecks: null
         };
     },
     async mounted(){
@@ -141,14 +142,46 @@ export default {
         try {
             const{data} = await this.$axios.post("climadviceCheck/getAllClimadviceChecks");
             if(data.state == "error"){
-
             }
             else if(data.state == "success"){
                 this.climadviceChecks = data.data;
             }
-
         } catch (error) {
+        }
+
+        //get the climadviceUserChecks of the current User
+        if(this.loggedIn == true){
+            try {
+                const{data} = await this.$axios.post("climadviceUserCheck/getClimadviceUserChecks_ByCurrentUser");
+                if(data.state == "error"){}
+                else if(data.state == "success"){
+                    this.climadviceUserChecks = data.data;
+
+                    this.climadviceUserChecks.forEach((climadviceUserCheck) => {
+                        //The ClimadviceChecks this user has done -> show buttons green and show check circle
+                        $("#id_button_climadviceCheck_showCollapse_" + climadviceUserCheck.climadvice_check_id).addClass("btn-success")
+                        $("#id_climadvicesCheck_checkCircle_" + climadviceUserCheck.climadvice_check_id).show(); 
+                        $("#id_climadviceCheck_button_send_" + climadviceUserCheck.climadvice_check_id).addClass("btn-success")
+                    
+                        //fill the input field with the provided answer
+                        $("#id_climadviceCheck_input_answer_" + climadviceUserCheck.climadvice_check_id).val(climadviceUserCheck.question_answer);
+                    })
+                }
+                else{}
             
+            } catch (error) {
+                
+            }
+        }
+    },
+    updated(){
+        if(this.climadviceUserChecks != null){
+            this.climadviceUserChecks.forEach((climadviceUserCheck) => {
+                //The ClimadviceChecks this user has done -> show buttons green and show check circle
+                $("#id_button_climadviceCheck_showCollapse_" + climadviceUserCheck.climadvice_check_id).addClass("btn-success")
+                $("#id_climadvicesCheck_checkCircle_" + climadviceUserCheck.climadvice_check_id).show(); 
+                $("#id_climadviceCheck_button_send_" + climadviceUserCheck.climadvice_check_id).addClass("btn-success")
+            })    
         }
     },
     methods:{
@@ -189,11 +222,11 @@ export default {
             var answer = $("#id_climadviceCheck_input_answer_" + climadviceCheckID).val();
             //if there is no answer -> show only the action on the button
             if(answer.length == 0){
-                $("#id_climadviceCheck_button_send_2").html(this.climadviceChecks.find(x => x.id === climadviceCheckID).action);
+                $("#id_climadviceCheck_button_send_" + climadviceCheckID).html(this.climadviceChecks.find(x => x.id === climadviceCheckID).action);
             }
             //if there is a answer, show the action and the individual answer on the send button
             else{
-                $("#id_climadviceCheck_button_send_2").html(this.climadviceChecks.find(x => x.id === climadviceCheckID).button_send_text + " " + answer);
+                $("#id_climadviceCheck_button_send_" + climadviceCheckID).html(this.climadviceChecks.find(x => x.id === climadviceCheckID).button_send_text + " " + answer);
             }
         },
         async climadviceCheckSubmitted(climadviceCheckID){
