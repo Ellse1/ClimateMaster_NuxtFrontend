@@ -75,7 +75,8 @@
                                 <font-awesome-icon :icon=climadvices[0].iconName class="text-success" style="font-size: 100px"/> 
                             </div>
                         </div>
-
+                        
+                        <!-- Individual ClimadviceComponent -->
                         <component v-bind:is="climadvices[0].name"/>
 
                     </div>

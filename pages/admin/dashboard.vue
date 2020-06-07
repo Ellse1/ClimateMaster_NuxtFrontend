@@ -4,7 +4,7 @@
             <h1>Hallo {{user.firstname}}</h1>
             <h4>Sie befinden sich im Admin Dashboard</h4>
             <div class="text-center">
-                <hr class="col-md-6">
+                <hr class="col-6 mx-auto">
             </div>
 
             <div class="row">
@@ -15,9 +15,12 @@
                         <button class="w-100 btn btn-default" v-on:click="changeOpenedDashboardComponent('imagecreatorSharingPermitted')">Imagecreator</button>
                         <button class="w-100 btn btn-default" v-on:click="changeOpenedDashboardComponent('showPageLogs')">Aufrufinformation</button>
                         <button class="w-100 btn btn-default" v-on:click="changeOpenedDashboardComponent('climadviceChecks')">ClimadviceChecks</button>
- 
                     </div>
                 </div>
+
+                <hr id="id_line_mobile" class="col-5 mx-auto">
+
+
                 <div class="col-md-9 mt-4">
                     <!-- To Verify companies -->
                     <verifyCompanies v-if="openedDashboardComponent == 'verifyCompanies'" />
@@ -74,3 +77,13 @@ export default {
     }
 }
 </script>
+<style scoped>
+#id_line_mobile{
+    display:none;
+}
+@media only screen and (max-width: 600px) {
+    #id_line_mobile{
+        display: block;
+    }
+}
+</style>

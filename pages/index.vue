@@ -60,7 +60,7 @@
                       <div class="border border-success rounded pt-4 pb-4" style="background-color:rgba(247, 247, 247, 0.3)">
                           <h4>Klimaneutral werden</h4>
                           <p>Dein Fortschritt verbessert die Zukunft folgender Generationen.</p>
-                          <nuxt-link to="/myClimateMaster" class="btn btn-success mb-3" style="width:80%;border-radius:20px;">Mein Klimaschutz</nuxt-link> 
+                          <nuxt-link to="/account/myClimateMaster" class="btn btn-success mb-3" style="width:80%;border-radius:20px;">Klimaneutral werden</nuxt-link> 
                       </div>
                   </div>
 

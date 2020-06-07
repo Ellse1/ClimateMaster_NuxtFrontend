@@ -5,7 +5,7 @@
             <div class="text-center" id="id_div_loading_animation"></div>
             <div v-if="success">
 
-                <div class="text-center">In Tonnen CO2 Äquivalent</div>
+                <div class="text-center">In vermiedenen Tonnen CO2 Äquivalent</div>
                
                 <!-- Write down the single values  -->
                 <div class="row w-100 mx-auto">
@@ -55,7 +55,13 @@
 
                 <!-- Conclusion -->
                 <div class="text-center mt-2">
-                    <b>Die Größe der Hand beschreibt den positiven <span class="text-success">Climate</span>Master Handabruck</b> <br>
+                    <b>Die Größe der Hand beschreibt den positiven 
+                    <nuxt-link class="text-dark" to="/platform/handprint">
+                        <span class="text-success">Climate</span>Master Handabruck.<br>
+                        Mehr groß = mehr gut!
+                    </nuxt-link>
+                    </b>
+                    <br>
                     <b v-if="total_handprint">{{total_handprint}}</b> <br>
                     <font-awesome-icon id="id_hand_ClimateMaster_Handprint" icon="hand-paper" class="text-success mt-2" style="font-size:0px;"/>     
                 </div>

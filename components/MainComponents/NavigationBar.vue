@@ -32,6 +32,12 @@
                         <client-only>
                         <div class="nav-item dropdown ml-md-5">
                             <a class="nav-link dropdown-toggle text-dark" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span v-if="loggedIn == true" style="vertical-align:top;">
+                                   Hallo {{user.firstname}}!
+                                </span>
+                                <span v-if="loggedIn == false" style="vertical-align:top;">
+                                   Einloggen
+                                </span>
                                 <font-awesome-icon icon="user-circle"  style="font-size:30px;"/>     
                             </a>
                             <!-- if not logged in -->
@@ -45,8 +51,9 @@
                             </div>
                             <!-- if logged in -->
                             <div class="dropdown-menu dropdown-menu-right bg-light" v-if="loggedIn === true" aria-labelledby="dropdown04">
-                                <nuxt-link to="/account/myProfile" class="dropdown-item">Mein Profil</nuxt-link>
-                                <nuxt-link to="/myClimateMaster" class="dropdown-item" >Mein Klimaschutz</nuxt-link>
+                                <nuxt-link to="/account/myProfile?page=factsheet" class="dropdown-item">Mein Profil</nuxt-link>
+                                <nuxt-link to="/account/myClimateMaster" class="dropdown-item" >ClimateMaster werden</nuxt-link>
+                                <nuxt-link to="/account/myProfile?page=co2handprint" class="dropdown-item" >CO2 Handabruck vergrößern</nuxt-link>
                                 <!-- If admin -->
                                 <nuxt-link v-if="user.role === 'admin'" to="/admin/dashboard" class="dropdown-item">Admin Dashboard</nuxt-link>
                                 <div class="text-center">
