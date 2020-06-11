@@ -86,27 +86,27 @@ export default {
         /* When the user scrolls down, hide the navbar. When the user scrolls up, show the navbar */
         var prevScrollpos = window.pageYOffset;
         window.onscroll = function() {
-        var currentScrollPos = window.pageYOffset;
-        //if scrolled up -> show navbar
-        if (prevScrollpos > currentScrollPos) {
-            document.getElementById("navbar").style.top = "0";
-            //get the witdh
-            var screenWidth = (window.innerWidth > 0) ? window.innerWidth : screen.width;
-            if(screenWidth >= 600){
-                if(currentScrollPos < 170){
-                    //show navbar transparent
-                    $("#navbar").removeClass("bg-light").addClass("bg-transparent")
-                }else{
-                    //show navbar light
-                    $("#navbar").removeClass("bg-transparent").addClass("bg-light")
+            var currentScrollPos = window.pageYOffset;
+            //if scrolled up -> show navbar
+            if (prevScrollpos >= currentScrollPos) {
+                document.getElementById("navbar").style.top = "0";
+                //get the witdh
+                var screenWidth = (window.innerWidth > 0) ? window.innerWidth : screen.width;
+                if(screenWidth >= 600){
+                    if(currentScrollPos < 170){
+                        //show navbar transparent
+                        $("#navbar").removeClass("bg-light").addClass("bg-transparent")
+                    }else{
+                        //show navbar light
+                        $("#navbar").removeClass("bg-transparent").addClass("bg-light")
+                    }
                 }
+            } 
+            //if scrolled down -> hide navbar
+            else {
+                document.getElementById("navbar").style.top = "-80px";
             }
-        } 
-        //if scrolled down -> hide navbar
-        else {
-            document.getElementById("navbar").style.top = "-80px";
-        }
-        prevScrollpos = currentScrollPos;
+            prevScrollpos = currentScrollPos;
         }
     },
     methods: {

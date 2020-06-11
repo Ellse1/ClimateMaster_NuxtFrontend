@@ -89,7 +89,8 @@ export default {
       }
     },
     redirect:{
-      login: '/account/login'
+      login: '/account/login',
+      home: '/account/myProfile'
     }
   },
   /*
