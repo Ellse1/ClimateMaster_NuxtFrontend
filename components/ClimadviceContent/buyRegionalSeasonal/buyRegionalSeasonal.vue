@@ -6,7 +6,7 @@
 
         <div class="text-center col-md-4 mx-auto mt-2">
             <select v-on:change="vegetablesMonthChanged()" class="form-control" id="id_select_vegetableMonth">
-                <option v-for="month in vegetableMonths" v-bind:key="month" :value="month.id">
+                <option v-for="month in vegetableMonths" v-bind:key="month" :value="month.id" :selected="month.id == 5">
                     {{month.key}}
                 </option>
             </select>
@@ -46,7 +46,7 @@
             </div>
         </div>
 
-        Den entsprechenden Saisonkalender für Gemüse, Obst und Salate und ein entsprechendes Klimakochbuch gibt es unter 
+        Den entsprechenden Saisonkalender für Gemüse, Obst und Salate und ein entsprechendes Klimakochbuch gibt es unter <br>
         <a href="https://www.regional-saisonal.de/saisonkalender">www.regional-saisonal.de/saisonkalender</a>.
 
     </div>
@@ -57,7 +57,7 @@ export default {
         return{
             selectedMonth : 0,
             vegetableMonths: [
-                {id: 0, key: "Januar", value: ["Champignons", "Grünkohl", "Lauch / Porree", "Pastinaken", "Rosenkohl", "Schwarzwurzeln", "Tipinambur", "Wirsingkohl"]},
+                {id: 0, key: "Januar", value: ["Champignons", "Grünkohl", "Lauch / Porree", "Pastinaken", "Rosenkohl", "Schwarzwurzeln", "Topinambur", "Wirsingkohl"]},
                 {id: 1, key: "Februar", value: ["Champignons", "Grünkohl", "Lauch / Porree", "Pastinaken", "Rosenkohl", "Schwarzwurzeln", "Topinambur", "Wirsingkohl"]},
                 {id: 2, key: "März", value: ["Champignons", "Lauch / Porree", "Pastinaken", "Rosenkohl", "Spinat", "Topinambur", ]},
                 {id: 3, key: "April", value: ["Champignons", "Lauch / Porree", "Spargel", "Spinat"]},
@@ -99,6 +99,12 @@ export default {
                 {id: 11, key: "Dezember", value: ["Chicoree", "Endiviensalat", "Feldsalat", "Portulak"]},
             ]
         }
+    },
+    mounted(){
+        //Set select list to current month
+        var d = new Date();
+        var month = d.getMonth();
+        this.selectedMonth = month;
     },
     methods:{
         vegetablesMonthChanged(){
