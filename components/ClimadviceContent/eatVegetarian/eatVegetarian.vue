@@ -1,13 +1,13 @@
 <template>
     <div>
         <p>
-            Das Themenfeld Ernährung ist eine super Chance um deinen Klimaschutz-Handabdruck 
-            schnell und effizient zu vergrößern (lese hier nach, warum ein großer Handabdruck 
-            (Gegenteil zu Fußabdruck) gut ist). Schon eine kleine Veränderung in deinem Fleischkonsum 
+            Das Themenfeld Ernährung ist eine super Chance um deinen 
+            <nuxt-link to="/platform/handprint" class="text-dark"><u><span class="text-success">Climate</span>Master Handabdruck</u></nuxt-link> 
+            (gegenteil von Fußabdruck) schnell und effizient zu vergrößern. Schon eine kleine Veränderung in deinem Fleischkonsum 
             Verhalten hat eine große Auswirkung auf deinen Handabdruck doch auch Saisonal und Regional 
             einkaufen vergrößert diesen erheblich.
             Und weil das nicht immer so leicht ist, findest du hier praktische Tipps und leckere 
-            Klimafreundliche Rezepte.
+            klimafreundliche Rezepte.
         </p>
 
 

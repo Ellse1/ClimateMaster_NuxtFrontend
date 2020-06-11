@@ -1,10 +1,12 @@
 <template>
     <div>
         <p class="col-md-10 mt-2 mx-auto">
-            Mit deinem Konsumverhalten hast du große Möglichkeiten deinen <span class="text-success">Climate</span>Master Handabdruck zu vergrößern.
+            Mit deinem Konsumverhalten hast du große Möglichkeiten deinen 
+            <nuxt-link to="/platform/handprint" class="text-dark"><u><span class="text-success">Climate</span>Master Handabdruck</u></nuxt-link> 
+            zu vergrößern.
             Wie schaffen wir es einen Konsum anzustreben, der Umwelt- und Klimaverträglich ist und zukünftigen Generationen keinen Nachteil verschafft?
             Was brauchen wir wirklich? Wo kommen unsere Produkte her? Wie nachhaltig sind sie? 
-            Eine Sammlung zum Durchstöbern, Inspirieren lassen und Handeln rund um nachhaltigen Konsum.
+            Hier einige Handlungsanregungen für nachhaltigeren Konsum.
         </p>
 
 

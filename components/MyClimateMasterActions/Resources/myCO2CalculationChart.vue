@@ -1,7 +1,7 @@
 <template>
     <div style="max-width:100%;overflow:hidden;">
         <!-- The chart with the green bars. The ClimateMaster Handprint chart -->
-        <h4 class="text-center">Aktuelle Handabdruck Analyse</h4>
+        <h4 class="text-center">Aktuelle <nuxt-link to="/platform/handprint" class="text-dark"><u>Handabdruck</u></nuxt-link>  Analyse</h4>
             <div class="text-center" id="id_div_loading_animation"></div>
             <div v-if="success">
 

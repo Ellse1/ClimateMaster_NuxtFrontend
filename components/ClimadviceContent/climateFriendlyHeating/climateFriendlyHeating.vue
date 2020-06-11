@@ -34,7 +34,7 @@
                     <div class="col-10 mx-auto">
                         <img class="img-fluid" src="https://cdn.pixabay.com/photo/2016/10/30/21/51/village-1784455_1280.jpg" />
                         <p>
-                            In Bioenergiedörfern bekommt man klimafreundliche <b>Fernwärme</b>.
+                            In Bioenergiedörfern bekommt man klimafreundliche <b>Fernwärme bzw. Nahwärme</b>.
                             Dann muss man sich nicht mehr um die eigene, klimafreundliche Wärmeversorgung kümmern.
                         </p>
                     </div>
