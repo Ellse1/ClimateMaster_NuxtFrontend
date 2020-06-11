@@ -141,7 +141,7 @@ export default {
     async mounted(){
         //get the climadviceChecks
         try {
-            const{data} = await this.$axios.post("climadviceCheck/getAllClimadviceChecks");
+            const{data} = await this.$axios.post("climadviceCheck/getVisibleClimadviceChecks");
             if(data.state == "error"){
             }
             else if(data.state == "success"){

@@ -33,12 +33,19 @@
                 </div>
             </div>
 
+            <div class="row">    
 
-                <div class="col-md-6 mx-auto">
-                    <!-- button send text -->
+                <!-- button send text -->
+                <div class="col-md-6">
                     <label for="" >Text auf Button zum Abschicken</label>
                     <input v-model="newClimadviceCheckToSave.button_send_text" class="form-control" placeholder="Wir kaufen Ökostrom bei" required />
                 </div>
+                <!-- Icon name -->
+                <div class="col-md-6">
+                    <label for="">Icon Name</label>
+                    <input v-model="newClimadviceCheckToSave.icon_name" class="form-control" placeholder="Icon Name" required />
+                </div>                    
+            </div>
 
             <button type="submit" id="id_button_save_climadviceCheck" class="btn btn-success mt-2">Speichern</button>
 
@@ -49,7 +56,7 @@
         <div v-if="climadviceChecks != null && climadviceChecks.length > 0" class="mt-3">
             <h4>ClimadviceChecks bearbeiten</h4>
             <div class="row">
-                <div class="col">
+                <div class="col-1">
                     <b>ClimadviceID</b>
                 </div>
                 <div class="col">
@@ -59,15 +66,18 @@
                     <b>Frage</b>
                 </div>
                 <div class="col">
+                    <b>Antwort</b>
+                </div>
+                <div class="col">
                     <b>Button Send Text</b>
                 </div>
                 <div class="col">
-                    <b>Bearbeiten</b>
+                    <b>In Climadvices anzeigen / verstecken</b>
                 </div>
             </div>
             <div v-for="climadviceCheck in climadviceChecks" v-bind:key="climadviceCheck.id">
                 <div class="row mt-1">
-                    <div class="col">
+                    <div class="col-1">
                         {{climadviceCheck.climadvice_id}}
                     </div>
                     <div class="col">
@@ -77,10 +87,18 @@
                         {{climadviceCheck.question}}
                     </div>
                     <div class="col">
-                        {{climadviceCheck.button_send_text}}
+                        {{climadviceCheck.answer_proposal}}
                     </div>
                     <div class="col">
-                        <button class="btn btn-danger" :id="'id_button_delete_' + climadviceCheck.id" v-on:click="deleteClimadviceCheck(climadviceCheck.id)">Löschen</button>
+                        {{climadviceCheck.button_send_text}}
+                    </div>
+                    <!-- button to hide -->
+                    <div class="col" v-if="climadviceCheck.visible == true">
+                        <button class="btn btn-danger" :id="'id_button_change_' + climadviceCheck.id" v-on:click="changeClimadviceCheckVisibility(climadviceCheck.id, false)">Verstecken</button>
+                    </div>
+                    <!-- button to show -->
+                    <div class="col" v-if="climadviceCheck.visible == false">
+                        <button class="btn btn-success" :id="'id_button_change_' + climadviceCheck.id" v-on:click="changeClimadviceCheckVisibility(climadviceCheck.id, true)">Anzeigen</button>
                     </div>
                 </div>
             </div>
@@ -114,7 +132,8 @@ export default {
                 action: null,
                 question: null,
                 answer_proposal: null,
-                button_send_text: null
+                icon_name: null,
+                button_send_text: null,
             }
         }
     },
@@ -169,7 +188,8 @@ export default {
                     action: this.newClimadviceCheckToSave.action,
                     question: this.newClimadviceCheckToSave.question,
                     answer_proposal: this.newClimadviceCheckToSave.answer_proposal,
-                    button_send_text: this.newClimadviceCheckToSave.button_send_text
+                    button_send_text: this.newClimadviceCheckToSave.button_send_text,
+                    icon_name: this.newClimadviceCheckToSave.icon_name
                 });
 
                 if(data.state == "error"){
@@ -191,13 +211,14 @@ export default {
 
             $("#id_button_save_climadviceCheck").removeClass("loading-animation")
         },
-        async deleteClimadviceCheck(climadviceCheckID){
+        async changeClimadviceCheckVisibility(climadviceCheckID, visibility){
 
-            $("#id_button_delete_" + climadviceCheckID).addClass('loading-animation');
+            $("#id_button_change_" + climadviceCheckID).addClass('loading-animation');
 
             try {
-                const{data} = await this.$axios.post("admin/deleteClimadviceCheck_ByClimadviceCheckID", {
-                    climadviceCheckID: climadviceCheckID
+                const{data} = await this.$axios.post("admin/changeClimadviceCheckVisibility_ByClimadviceCheckID", {
+                    climadviceCheckID: climadviceCheckID,
+                    visible: visibility
                 });
 
                 if(data.state == "error"){
@@ -207,20 +228,24 @@ export default {
                 else if(data.state == "success"){
                     this.success = data.message;
                     this.error = null;
-
-                    var climadvcieCheckToDelete = this.climadviceChecks.find(x => x.id == climadviceCheckID);
-                    this.climadviceChecks.splice(this.climadviceChecks.indexOf(climadvcieCheckToDelete), 1);
+                    var changedClimadviceCheck = data.data;
+                    //delete old climadviceCheck
+                    var climadvcieCheckToChange = this.climadviceChecks.find(x => x.id == climadviceCheckID).visible = changedClimadviceCheck.visible;
+                    //climadvcieCheckToChange.visible = changedClimadviceCheck.visibile;
+                    // this.climadviceChecks.splice(this.climadviceChecks.indexOf(climadvcieCheckToChange), 1);
+                    // //add new climadviceCheck
+                    // this.climadviceChecks.push(changedClimadviceCheck);
                 }
                 else{
-                    this.error = "Der ClimadviceCheck konnte leider nicht gelöscht werden."
+                    this.error = "Die Sichtbarkeit des ClimadviceCheck konnte leider nicht verändert werden."
                 }
 
             } catch (error) {
-                this.error = "Der ClimadviceCheck konnte leider nicht gelöscht werden. Versuchen Sie es später noch einmal." 
+                this.error = "Die Sichtbarkeit des ClimadviceCheck konnte leider nicht verändert werden. Versuchen Sie es später noch einmal." 
             }
 
 
-            $("#id_button_delete_" + climadviceCheckID).removeClass('loading-animation');
+            $("#id_button_change_" + climadviceCheckID).removeClass('loading-animation');
 
         }
     }
