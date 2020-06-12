@@ -37,8 +37,8 @@
   
 
 
-            <!-- Privat Data (Street...) -->
             <div class="row">
+                <!-- General information -->
                 <div class="col-md-6 mt-4">
                     <h4 class="text-center">Meine Persönlichen Daten</h4>
                     <div class="row">
@@ -56,7 +56,7 @@
                         </div>
                     </div>
                 </div>
-
+                <!-- Privat Data (Street...) -->
                 <div class="col-md-6 mt-4">
                     <h4 class="text-center">Mein zu Hause</h4>
                     <div class="row">
@@ -72,24 +72,49 @@
                         <div class="col-8 text-center mt-3">
                             <input class="form-control text-center" v-model="residence" placeholder="Wohnort" />
                         </div>
+                        
+                    </div>
+                </div>
+
+                <!-- Social Media Information -->
+                <div class="col-md-6 text-center mt-3 mx-auto">
+                    <h4>Social Media</h4>
+                    <div class="row">
+                        <!-- Instagram name -->
                         <div class="col-9 text-center mt-3">
                             <input class="form-control text-center" v-model="instagram_name" placeholder="Instagram Name" />
                         </div>
-                        <div class="col-3 dropdown mt-3" >
-                            <a class="btn btn-default w-100 border" href="#" id="dropdownInstagram" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">?</a>
-                            <div class="dropdown-menu p-2" aria-labelledby="dropdownInstagram">
+                        <div class="col-3 btn-group dropleft mt-3" >
+                            <button class="btn btn-default border dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">?</button>
+                            <div class="dropdown-menu p-2">
                                 <p> 
                                     Wenn du auf deinem Instagram Account ein ClimateMaster Bild hochlädst, folgen wir dir mit 
-                                    unserem Offiziellen Account (climatemasterandfriends). Damit können sich ClimateMaster noch besser vernetzen.
+                                    unserem offiziellen Account (climatemasterandfriends). Damit können sich ClimateMaster noch besser vernetzen.
                                 </p>
                             </div>
                         </div>
+                        <!-- Facebook name -->
+                        <div class="col-9 text-center mt-3">
+                            <input class="form-control text-center" v-model="facebook_name" placeholder="Facebook Name" />
+                        </div>
+                        <div class="col-3 btn-group dropleft mt-3" >
+                            <button class="btn btn-default border dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">?</button>
+                            <div class="dropdown-menu p-2">
+                                <p> 
+                                    Wir können auf Facebook deinen persönlichen Fortschritt für Klimaschutz präsentieren und dich dann auf den 
+                                    entsprechenden Posts direkt markieren.
+                                </p>
+                            </div>
+                        </div>
+                        <!-- <div class="col-12 text-center mt-3">
+                            <input class="form-control text-center" v-model="whatsapp_number" placeholder="Whatsapp Number" />
+                        </div> -->
                     </div>
                 </div>
             </div>
 
             <div class="col-md-12 mt-4 text-center" >
-                <button id="id_button_save" class="btn btn-success mb-4 " style="width:90%" v-on:click="saveAddressAndInstagram">Änderungen speichern</button>
+                <button id="id_button_save" class="btn btn-success mb-4 " style="width:90%" v-on:click="saveAddressAndSocialMediaInformation">Änderungen speichern</button>
             
                 <notification :message="error" v-if="error" class="text-danger mt-3" />
                 <notification :message="success" v-if="success" class="text-success mt-3" />
@@ -120,6 +145,8 @@ export default {
             postcode: null,
             residence: null,
             instagram_name: null,
+            facebook_name: null,
+            whatsapp_number: null,
             profile_picture_base64_for_public_profile: null,
         };
     },
@@ -243,7 +270,7 @@ export default {
 
         },
 
-        async saveAddressAndInstagram(){
+        async saveAddressAndSocialMediaInformation(){
             $("#id_button_save").addClass("loading-animation");
 
             let formData = new FormData();
@@ -262,9 +289,15 @@ export default {
             if(this.instagram_name != null){
                 formData.append('instagram_name', this.instagram_name);            
             }
+            if(this.facebook_name != null){
+                formData.append('facebook_name', this.facebook_name);            
+            }            
+            if(this.whatsapp_number != null){
+                formData.append('whatsapp_number', this.whatsapp_number);            
+            }
 
             try {
-                const{data} = await this.$axios.post("user/saveAddressAndInstagram_ByCurrentUser",
+                const{data} = await this.$axios.post("user/saveAddressAndSocialMediaInformation_ByCurrentUser",
                 formData,{
                     headers:{
                         "Content-Type" : "multipart/form-data"
@@ -288,6 +321,10 @@ export default {
             }
             
             $("#id_button_save").removeClass("loading-animation");
+        },
+
+        async saveSocialMediaInformation(){
+
         },
 
         profilePicture_onload(){
