@@ -47,7 +47,7 @@
         </div>
 
         Den entsprechenden Saisonkalender für Gemüse, Obst und Salate und ein entsprechendes Klimakochbuch gibt es unter <br>
-        <a href="https://www.regional-saisonal.de/saisonkalender">www.regional-saisonal.de/saisonkalender</a>.
+        <a target="_blanc" href="https://www.regional-saisonal.de/saisonkalender">www.regional-saisonal.de/saisonkalender</a>.
 
     </div>
 </template>

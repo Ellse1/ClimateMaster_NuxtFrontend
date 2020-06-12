@@ -11,7 +11,7 @@
                   <div class="rounded p-3" style="background-color:rgba(247, 247, 247, 0.5)">
                       <h2>Werde <span class="text-success">Climate</span>Master 2020</h2>
                   </div>
-                  <div class="row">
+                  <!-- <div class="row">
                     <div class="col">
                       <h4>Berechnen</h4>
                     </div>
@@ -24,7 +24,7 @@
                     <div class="col">
                       <h4>Präsentieren</h4>
                     </div>
-                  </div>
+                  </div> -->
               </div>
 
               <!-- Message, where find what -->

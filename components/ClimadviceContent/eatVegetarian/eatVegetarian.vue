@@ -4,8 +4,9 @@
             Das Themenfeld Ernährung ist eine super Chance um deinen 
             <nuxt-link to="/platform/handprint" class="text-dark"><u><span class="text-success">Climate</span>Master Handabdruck</u></nuxt-link> 
             (gegenteil von Fußabdruck) schnell und effizient zu vergrößern. Schon eine kleine Veränderung in deinem Fleischkonsum 
-            Verhalten hat eine große Auswirkung auf deinen Handabdruck doch auch Saisonal und Regional 
-            einkaufen vergrößert diesen erheblich.
+            Verhalten hat eine große Auswirkung auf deinen Handabdruck doch auch 
+            <nuxt-link to="/climadvices?climadvice=buyRegionalSeasonal">saisonales und regionales Einkaufen </nuxt-link>
+            vergrößert diesen erheblich.
             Und weil das nicht immer so leicht ist, findest du hier praktische Tipps und leckere 
             klimafreundliche Rezepte.
         </p>
@@ -45,7 +46,7 @@
             <!-- sub headings recipes-->
             <div class="row mt-2 mb-2">
                 <div class="col">
-                    <button id="id_button_recipes_pastaBake" class="btn btn-default border border-success text-success mt-2" v-on:click="open_recipe_content(0)">
+                    <button id="id_button_recipes_pastaBake" class="btn btn-default border border-dark mt-2" v-on:click="open_recipe_content(0)">
                         Nudelauflauf   
                     </button>
                 </div>
@@ -68,7 +69,7 @@
 
 
             <!-- Content: PastaBake -->
-            <div id="id_div_content_recipes_pastaBake">
+            <div id="id_div_content_recipes_pastaBake" style="display:none;">
                 <b>Nudelauflauf</b>
                 <div>
                     Kochzeit ca. 40 Min<br>
