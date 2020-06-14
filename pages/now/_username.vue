@@ -1,16 +1,16 @@
 <template>
     <div class="container">
         <div class="container bg-light text-center pb-3">
-            
+
             <div class="pt-2">
                 <!-- icon if no profile_picture -->
-                <font-awesome-icon v-if="profile_picture_base64 == null" icon="user-circle" id="id_icon_profile_picture" style="font-size: 200px;"/> 
+                <font-awesome-icon v-if="profile_picture_base64 == null" icon="user-circle" id="id_icon_profile_picture" style="font-size: 200px;"/>
                 <div id="id_div_loading" class="rounded mt-2 mb-2 col-md-2 mx-auto"></div>
                 <!-- image if profile picture available -->
                 <div  id="id_div_profilePicture" style="width:200px;height:200px;border-radius:50%;overflow:hidden;display:none;" class="border bg-dark mx-auto">
                     <img id="id_img_profilePicture" v-on:load="profilePicture_onload">
                 </div>
-                    
+
             </div>
 
             <h4 class="mt-2">{{username}}</h4>
@@ -40,38 +40,82 @@
             <div class="mt-5">
                 <div v-if="public_user_profile != null" class="row">
                     <div v-if="public_user_profile.information_heating_electricity != null" class="col-md-6 mt-4">
-                        <font-awesome-icon icon="plug" class="" style="font-size:20px;"/>     
+                        <font-awesome-icon icon="plug" class="" style="font-size:20px;"/>
                         <h5>Heizung und Strom</h5>
                         {{public_user_profile.information_heating_electricity}}
                     </div>
                     <div v-if="public_user_profile.information_mobility != null" class="col-md-6 mt-4">
-                        <font-awesome-icon icon="car" class="" style="font-size:20px;"/>     
+                        <font-awesome-icon icon="car" class="" style="font-size:20px;"/>
                         <h5>Mobilität</h5>
                         {{public_user_profile.information_mobility}}
                     </div>
                     <div v-if="public_user_profile.information_consumption != null" class="col-md-6 mt-4">
-                        <font-awesome-icon icon="cart-arrow-down" class="" style="font-size:20px;"/>     
+                        <font-awesome-icon icon="cart-arrow-down" class="" style="font-size:20px;"/>
                         <h5>Konsum</h5>
                         {{public_user_profile.information_consumption}}
                     </div>
                     <div v-if="public_user_profile.information_nutrition != null" class="col-md-6 mt-4">
-                        <font-awesome-icon icon="hamburger" class="" style="font-size:20px;"/>     
+                        <font-awesome-icon icon="hamburger" class="" style="font-size:20px;"/>
                         <h5>Ernährung</h5>
                         {{public_user_profile.information_nutrition}}
                     </div>
                     <div v-if="public_user_profile.information_public_emissions != null" class="col-md-6 mt-4">
-                        <font-awesome-icon icon="users" class="" style="font-size:20px;"/>     
+                        <font-awesome-icon icon="users" class="" style="font-size:20px;"/>
                         <h5>Öffentliche Emissionen</h5>
                         {{public_user_profile.information_public_emissions}}
                     </div>
                     <div v-if="public_user_profile.information_compensation != null" class="col-md-6 mt-4">
-                        <font-awesome-icon icon="sort-amount-down" class="" style="font-size:20px;"/>     
+                        <font-awesome-icon icon="sort-amount-down" class="" style="font-size:20px;"/>
                         <h5>CO2 Kompensation</h5>
                         {{public_user_profile.information_compensation}}
                     </div>
                 </div>
             </div>
 
+
+            <div class="row">
+
+                <!-- ClimadviceUserChecks -->
+                <div v-for="climadvice in climadvices_with_climadviceUserChecks" v-bind:key="climadvice.id" class="col-md-4 mx-auto">
+                    <div class="card mb-3">
+                        <div class="card-body text-center">
+
+                            <h5>{{climadvice.title}}</h5>
+                            <p class="card-text">
+                                {{climadvice.shortDescription}}
+                            </p>
+                            <div class="text-center">
+                                <font-awesome-icon :icon=climadvice.iconName class="text-success" style="font-size: 100px"/>
+                            </div>
+
+                            <div v-for="climadvice_check in climadvice.climadvice_checks" v-bind:key="climadvice_check.id">
+                                <div v-for="(climadvice_user_check, index) in climadvice_check.climadvice_user_checks" v-bind:key="climadvice_user_check.id">
+                                    <!-- only show the last climadviceUserCheck -->
+                                    <div v-if="index == (climadvice_check.climadvice_user_checks.length - 1)" class="m-2 p-2 bg-success rounded border text-white">
+                                        {{climadvice_user_check.action_text}}
+                                        <font-awesome-icon icon="check-circle" style="font-size:20px;"/>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                            <!-- <div v-for="(climadviceUserCheck, index) in climadvice.climadvice_user_checks" v-bind:key="climadviceUserCheck.id" > -->
+                                
+                                <!--show only if there is no climadviceUserCheck for the same climadviceCheck after this one-->
+                            <!-- {{climadvice.climadvice_user_checks.find(userCheck => userCheck.climadivce_check_id == 2) == undefined}} -->
+                                <!-- <div v-if="climadvice.climadvice_user_checks.find(userCheck => userCheck.climadivce_check_id === climadviceUserCheck.climadvice_check_id) == undefined" class=" text-white">
+                                    {{climadviceUserCheck.action_text}}
+                                </div> -->
+                            <!-- </div> -->
+
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
 
 
 
@@ -99,7 +143,8 @@ export default {
             public_user_profile: null,
             climatemaster_state: null,
             profile_picture_base64: null,
-            username: this.$route.params.username
+            username: this.$route.params.username,
+            climadvices_with_climadviceUserChecks : null
         };
     },
     async mounted(){
@@ -164,12 +209,34 @@ export default {
                 $("#id_icon_profilePicture").hide();
         }
 
+
+
+        // Get the climadviceUserChecks of this user
+        try {
+            const{data} = await this.$axios.post("climadvice/getClimadvices_with_ClimadviceUserChecks_ForPublicProfile_ByUsername", {
+                username: this.username
+            });
+
+            if(data.state == "error"){}
+            else if(data.state == "success"){
+                this.climadvices_with_climadviceUserChecks = data.data;
+            }
+            else{}
+        } catch (error) {
+
+        }
+
+
+
+
+
+
         $("#id_div_loading").removeClass("loading-animation-green");
 
 
         //add PageLog
         try {
-            const{data} = this.$axios.post('pageLog/addPageLog', {
+            const{data} = await this.$axios.post('pageLog/addPageLog', {
                 page: this.$route.fullPath,
                 parameter: this.username
             });
@@ -177,7 +244,7 @@ export default {
     },
 
     methods:{
-    
+
         profilePicture_onload(){
             // Set the picture exactly to the middle
             $("#id_img_profilePicture").height('auto');

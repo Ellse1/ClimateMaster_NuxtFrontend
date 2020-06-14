@@ -27,6 +27,7 @@
                                 <button class="w-100 btn btn-default border-0" type="button" data-toggle="collapse" :data-target="'#collapseClimadviceCheck_' + climadviceCheck.id" :id="'id_button_climadviceCheck_showCollapse_' + climadviceCheck.id" aria-expanded="false">
                                     {{climadviceCheck.action}}<br>
                                     <font-awesome-icon :id="'id_climadvicesCheck_checkCircle_' + climadviceCheck.id" icon="check-circle"  style="font-size:20px;display:none;"/>     
+                                    <span class="class_span_climadviceCheck_loading_animation"></span>
                                 </button>
                                 <div class="collapse mt-2 px-2" :id="'collapseClimadviceCheck_' + climadviceCheck.id">
                                     <small>optional</small>
@@ -38,8 +39,9 @@
                                 <div :id="'id_div_notification_to_login_' + climadviceCheck.id" style="display:none;">
                                     <nuxt-link to="/account/login">Melde dich an, </nuxt-link> damit dein Fortschritt nicht verloren geht.
                                 </div>
-
+                                
                             </div>
+                            
                         </div>
 
                     </div>
@@ -157,7 +159,8 @@ export default {
                 if(data.state == "error"){}
                 else if(data.state == "success"){
                     this.climadviceUserChecks = data.data;
-
+            
+                    $(".class_span_climadviceCheck_loading_animation").removeClass('loading-animation-green');
                     this.climadviceUserChecks.forEach((climadviceUserCheck) => {
                         //The ClimadviceChecks this user has done -> show buttons green and show check circle
                         $("#id_button_climadviceCheck_showCollapse_" + climadviceUserCheck.climadvice_check_id).addClass("btn-success")
@@ -177,12 +180,18 @@ export default {
     },
     updated(){
         if(this.climadviceUserChecks != null){
+            $(".class_span_climadviceCheck_loading_animation").removeClass('loading-animation-green');
             this.climadviceUserChecks.forEach((climadviceUserCheck) => {
                 //The ClimadviceChecks this user has done -> show buttons green and show check circle
                 $("#id_button_climadviceCheck_showCollapse_" + climadviceUserCheck.climadvice_check_id).addClass("btn-success")
                 $("#id_climadvicesCheck_checkCircle_" + climadviceUserCheck.climadvice_check_id).show(); 
                 $("#id_climadviceCheck_button_send_" + climadviceUserCheck.climadvice_check_id).addClass("btn-success")
-            })    
+            })   
+        }else{
+            //if logged in -> load the climadviceUserChecks -> show loading animation
+            if(this.loggedIn){
+                $(".class_span_climadviceCheck_loading_animation").addClass('loading-animation-green');
+            }
         }
     },
     methods:{
