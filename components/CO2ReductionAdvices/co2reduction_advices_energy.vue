@@ -134,7 +134,8 @@
                         <img class="img-fluid" src="https://cdn.pixabay.com/photo/2014/07/14/11/59/heat-pumps-393059_1280.jpg" />
                         <p>
                             Eine <b>Elektrowärmepumpe</b> wandelt elektrische Energie sehr effizient in Wärmeenergie um. 
-                            Aus Klimaschutzgründen bietet sich hierzu natürlich ein Ökostromanbieter an.
+                            Aus Klimaschutzgründen bietet sich hierzu natürlich ein 
+                            <nuxt-link to="/climadvices?climadvice=buyGreenElectricity">Ökostromanbieter</nuxt-link>  an.
                         </p>
                     </div>
                 </div>
