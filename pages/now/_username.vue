@@ -73,8 +73,7 @@
             </div>
 
 
-            <div class="row">
-
+            <div class="row" v-if="climadvices_with_climadviceUserChecks != null">
                 <!-- ClimadviceUserChecks -->
                 <div v-for="climadvice in climadvices_with_climadviceUserChecks" v-bind:key="climadvice.id" class="col-md-4 mx-auto">
                     <div class="card mb-3">
@@ -97,17 +96,6 @@
                                     </div>
                                 </div>
                             </div>
-
-
-
-                            <!-- <div v-for="(climadviceUserCheck, index) in climadvice.climadvice_user_checks" v-bind:key="climadviceUserCheck.id" > -->
-                                
-                                <!--show only if there is no climadviceUserCheck for the same climadviceCheck after this one-->
-                            <!-- {{climadvice.climadvice_user_checks.find(userCheck => userCheck.climadivce_check_id == 2) == undefined}} -->
-                                <!-- <div v-if="climadvice.climadvice_user_checks.find(userCheck => userCheck.climadivce_check_id === climadviceUserCheck.climadvice_check_id) == undefined" class=" text-white">
-                                    {{climadviceUserCheck.action_text}}
-                                </div> -->
-                            <!-- </div> -->
 
                         </div>
                     </div>

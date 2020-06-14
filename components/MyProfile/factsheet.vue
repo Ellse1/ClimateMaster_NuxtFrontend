@@ -40,7 +40,7 @@
             <div class="row">
                 <!-- General information -->
                 <div class="col-md-6 mt-4">
-                    <h4 class="text-center">Meine Persönlichen Daten</h4>
+                    <h4 class="text-center">Meine Kontodaten</h4>
                     <div class="row">
                         <div class="col-6">
                             <input class="form-control text-center" v-model="firstname" disabled/>
