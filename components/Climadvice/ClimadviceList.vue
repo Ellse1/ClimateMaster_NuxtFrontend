@@ -31,7 +31,7 @@
                                 </button>
                                 <div class="collapse mt-2 px-2" :id="'collapseClimadviceCheck_' + climadviceCheck.id">
                                     <div v-if="climadviceCheck.question != null">
-                                        <small>optional</small>
+                                        <small>optional</small><br>
                                         <label>{{climadviceCheck.question}}</label>
                                         <input class="form-control text-center" :id="'id_climadviceCheck_input_answer_' + climadviceCheck.id" :placeholder="climadviceCheck.answer_proposal" v-on:input="climadviceCheckAnswerChanged(climadviceCheck.id)" />
                                     </div>
