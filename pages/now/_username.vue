@@ -73,7 +73,7 @@
             </div>
 
 
-            <div class="row" v-if="climadvices_with_climadviceUserChecks != null">
+            <div class="row mt-5" v-if="climadvices_with_climadviceUserChecks != null">
                 <!-- ClimadviceUserChecks -->
                 <div v-for="climadvice in climadvices_with_climadviceUserChecks" v-bind:key="climadvice.id" class="col-md-4 mx-auto">
                     <div class="card mb-3">
