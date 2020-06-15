@@ -311,6 +311,11 @@ export default {
             //if not logged in -> show message to login
             if(this.loggedIn == false){
                 $("#id_div_notification_to_login_" + climadviceCheckID).show();
+            }else{
+                //show link to make the profile public
+                if(this.publicUserProfile.public_climadvice_checks == false){
+                    $("#id_link_publish_climadviceChecks_" + climadviceCheckID).show();
+                }     
             }
 
             //make both buttons green and show check circle
@@ -318,6 +323,7 @@ export default {
             $("#id_climadviceCheck_button_send_" + climadviceCheckID).addClass('btn-success');
             $("#id_climadvicesCheck_checkCircle_" + climadviceCheckID).show();
 
+  
             //collapse content
             $("#id_button_climadviceCheck_showCollapse_" + climadviceCheckID).click();
         
