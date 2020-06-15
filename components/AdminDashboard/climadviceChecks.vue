@@ -24,12 +24,12 @@
                 <!-- question text -->
                 <div class="col-md-6">
                     <label for="" >Frage</label>
-                    <input v-model="newClimadviceCheckToSave.question" class="form-control" placeholder="Wo kauft Ihr Ökostrom?" required />
+                    <input v-model="newClimadviceCheckToSave.question" class="form-control" placeholder="Wo kauft Ihr Ökostrom?"  />
                 </div>
                 <!-- question answer proposal text -->
                 <div class="col-md-6">
                     <label for="" >Antwort Vorschlag</label>
-                    <input v-model="newClimadviceCheckToSave.answer_proposal" class="form-control" placeholder="Greenpeace Energy" required />
+                    <input v-model="newClimadviceCheckToSave.answer_proposal" class="form-control" placeholder="Greenpeace Energy"  />
                 </div>
             </div>
 
@@ -43,7 +43,7 @@
                 <!-- Icon name -->
                 <div class="col-md-6">
                     <label for="">Icon Name</label>
-                    <input v-model="newClimadviceCheckToSave.icon_name" class="form-control" placeholder="Icon Name" required />
+                    <input v-model="newClimadviceCheckToSave.icon_name" class="form-control" placeholder="Icon Name" />
                 </div>                    
             </div>
 

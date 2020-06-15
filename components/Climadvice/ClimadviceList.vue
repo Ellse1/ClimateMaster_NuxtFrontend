@@ -30,9 +30,11 @@
                                     <span class="class_span_climadviceCheck_loading_animation"></span>
                                 </button>
                                 <div class="collapse mt-2 px-2" :id="'collapseClimadviceCheck_' + climadviceCheck.id">
-                                    <small>optional</small>
-                                    <label>{{climadviceCheck.question}}</label>
-                                    <input class="form-control text-center" :id="'id_climadviceCheck_input_answer_' + climadviceCheck.id" :placeholder="climadviceCheck.answer_proposal" v-on:input="climadviceCheckAnswerChanged(climadviceCheck.id)" />
+                                    <div v-if="climadviceCheck.question != null">
+                                        <small>optional</small>
+                                        <label>{{climadviceCheck.question}}</label>
+                                        <input class="form-control text-center" :id="'id_climadviceCheck_input_answer_' + climadviceCheck.id" :placeholder="climadviceCheck.answer_proposal" v-on:input="climadviceCheckAnswerChanged(climadviceCheck.id)" />
+                                    </div>
                                     <button class="btn btn-default border-dark mt-1 mb-1" :id="'id_climadviceCheck_button_send_' + climadviceCheck.id" v-on:click="climadviceCheckSubmitted(climadviceCheck.id)">{{climadviceCheck.action}}</button>
                                 </div>
                                 <!-- Notification to login, if the user is not logged in -->
@@ -247,8 +249,10 @@ export default {
             var answerToSend = null;
 
             //only if an answer longer than 2 letters is provided -> send request to backend
-            if(answer.length >= 3){
-                answerToSend = answer;
+            if(answer != null){
+                if(answer.length >= 3){
+                    answerToSend = answer;
+                }
             }
 
             if(answerToSend != null || this.loggedIn != false)
