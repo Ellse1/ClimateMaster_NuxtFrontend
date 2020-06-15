@@ -266,7 +266,7 @@ export default {
             }
             //If filesize to big:
             else{
-                this.error_profile_picture = "Das Bild ist zu groß (" + filesize + " MB)  und kann deshalb nicht hochgeladen werden. Maximal 6 MB sind erlaubt."
+                this.error_profile_picture = "Das Bild ist zu groß (" + filesize + " MB)  und kann deshalb nicht hochgeladen werden. Maximal 8 MB sind erlaubt."
             }
 
             $("#id_div_loading").removeClass("loading-animation");
