@@ -43,7 +43,7 @@ export default {
             let formData = new FormData();
             formData.append('id', this.climadviceForDelete.id)
             try {
-                const {data} = await this.$axios.post('climadvice/destroyClimadvice_ByClimadviceID',
+                const {data} = await this.$axios.post('admin/destroyClimadvice_ByClimadviceID',
                 formData,
                 {
                     headers:{

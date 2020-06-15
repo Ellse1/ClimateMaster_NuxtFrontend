@@ -79,7 +79,7 @@ export default {
             formData.append('climateMasterArea', $("#id_input_climateMasterArea").val());
 
             try{
-                const {data} = await this.$axios.post('climadvice/updateClimadvice_ByClimadviceID',
+                const {data} = await this.$axios.post('admin/updateClimadvice_ByClimadviceID',
                 formData,
                 {
                     headers:{

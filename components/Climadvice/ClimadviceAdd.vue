@@ -99,7 +99,7 @@ export default {
             formData.append('climateMasterArea', this.climateMasterArea);
 
             try{
-                const{data} = await this.$axios.post('climadvice/storeClimadvice',
+                const{data} = await this.$axios.post('admin/storeClimadvice',
                 formData,
                 {
                     headers: {

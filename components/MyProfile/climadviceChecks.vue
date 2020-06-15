@@ -76,7 +76,7 @@ export default {
         $("#id_span_loading").addClass('loading-animation-green');
 
         try {
-            const{data} = await this.$axios.post("climadvice/getClimadvices_with_ClimadviceUserChecks_ForPublicProfile_ByUsername", {
+            const{data} = await this.$axios.post("climadvice/getClimadvices_with_ClimadviceUserChecks_ByCurrentUser", {
                 username: this.user.username
             });
 
