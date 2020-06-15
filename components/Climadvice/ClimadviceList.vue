@@ -29,6 +29,10 @@
                                     <font-awesome-icon :id="'id_climadvicesCheck_checkCircle_' + climadviceCheck.id" icon="check-circle"  style="font-size:20px;display:none;"/>     
                                     <span class="class_span_climadviceCheck_loading_animation"></span>
                                 </button>
+                                <!-- show message to make climadviceChecks public -->
+                                <div class="text-center">
+                                    <nuxt-link to="/account/myProfile?page=publish" :id="'id_link_publish_climadviceChecks_' + climadviceCheck.id" style="display:none;">Erreichte ClimadviceChecks anzeigen</nuxt-link>
+                                </div>
                                 <div class="collapse mt-2 px-2" :id="'collapseClimadviceCheck_' + climadviceCheck.id">
                                     <div v-if="climadviceCheck.question != null">
                                         <small>optional</small><br>
@@ -139,7 +143,8 @@ export default {
             climadviceForEdit: {id: '', name : '', title: '', shortDescription: ''},
             openedClimadviceNameIDForIndividualComponent : '',
             climadviceChecks: null,
-            climadviceUserChecks: null
+            climadviceUserChecks: null,
+            publicUserProfile: null
         };
     },
     async mounted(){
@@ -168,13 +173,33 @@ export default {
                         $("#id_button_climadviceCheck_showCollapse_" + climadviceUserCheck.climadvice_check_id).addClass("btn-success")
                         $("#id_climadvicesCheck_checkCircle_" + climadviceUserCheck.climadvice_check_id).show(); 
                         $("#id_climadviceCheck_button_send_" + climadviceUserCheck.climadvice_check_id).addClass("btn-success")
-                    
+
                         //fill the input field with the provided answer
                         $("#id_climadviceCheck_input_answer_" + climadviceUserCheck.climadvice_check_id).val(climadviceUserCheck.question_answer);
+
                     })
                 }
                 else{}
             
+            } catch (error) {}
+
+
+            //get the publicUserProfile -> show message to publish the climadviceChecks
+            try {
+                const{data} = await this.$axios.post("publicUserProfile/getPublicUserProfile_ByCurrentUser");
+                if(data.state == "error"){}
+                else if(data.state == "success"){
+                    this.publicUserProfile = data.data;   
+                    
+                    //show link to make the profile public
+                    if(this.publicUserProfile.public_climadvice_checks == false){
+                        this.climadviceUserChecks.forEach((climadviceUserCheck) => {
+                                $("#id_link_publish_climadviceChecks_" + climadviceUserCheck.climadvice_check_id).show();
+                            
+                        })     
+                    }           
+                }
+                else{}
             } catch (error) {
                 
             }

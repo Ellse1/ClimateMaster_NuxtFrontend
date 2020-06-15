@@ -73,12 +73,18 @@ export default {
                     if(this.publicUserProfile.public_pictures == true){
                         $("#id_button_publishPictures").addClass("btn-success")
                     }
+
+                    //if one thing is public -> disable button to make all private
+                    if(this.publicUserProfile.public_climadvice_checks == true || this.publicUserProfile.public_social_media_names == true || this.publicUserProfile.public_pictures == true){
+                        $("#id_button_publishProfile").prop('disabled', true); 
+                    }else{
+                        $("#id_button_publishProfile").prop('disabled', false); 
+                    }
+
+
                 }
                 else{
-                    //disable other buttons if 'public' is disabled
-                    $("#id_button_publishClimadviceChecks").prop('disabled', true);                    
-                    $("#id_button_publishSocialMediaNames").prop('disabled', true);                    
-                    $("#id_button_publishPictures").prop('disabled', true);                    
+                 
                 }   
             }
             else{
@@ -96,6 +102,11 @@ export default {
             //changes the value of 'public'. In Laravel it check if there is already a publicUserProfile-> if no -> creates one and returns this
             $("#id_button_publishProfile").addClass("loading-animation-green");
 
+            //if one value is public -> make whole profile public
+            if(this.publicUserProfile.public_climadvice_checks == true || this.publicUserProfile.public_social_media_names == true || this.publicUserProfile.public_pictures == true ){
+                this.publicUserProfile.public = true;
+            }
+            
             try {
                 const{data} = await this.$axios.post('publicUserProfile/changePublic_ByCurrentUser', {
                     public: this.publicUserProfile.public,
@@ -132,17 +143,15 @@ export default {
                         else{
                             $("#id_button_publishPictures").removeClass("btn-success")
                         }
-                        //enable other buttons if 'public' is true
-                        $("#id_button_publishClimadviceChecks").prop('disabled', false);                    
-                        $("#id_button_publishSocialMediaNames").prop('disabled', false);                    
-                        $("#id_button_publishPictures").prop('disabled', false);  
+                        //if one thing is public -> disable button to make all private
+                        if(this.publicUserProfile.public_climadvice_checks == true || this.publicUserProfile.public_social_media_names == true || this.publicUserProfile.public_pictures == true){
+                            $("#id_button_publishProfile").prop('disabled', true); 
+                        }else{
+                            $("#id_button_publishProfile").prop('disabled', false); 
+                        }
                     }else{
                         $("#id_button_publishProfile").removeClass("btn-success")
-                        $("#id_publishProfile_checkCircle").hide(); 
-                        //disable other buttons if 'public' is disabled
-                        $("#id_button_publishClimadviceChecks").prop('disabled', true);                    
-                        $("#id_button_publishSocialMediaNames").prop('disabled', true);                    
-                        $("#id_button_publishPictures").prop('disabled', true);                    
+                        $("#id_publishProfile_checkCircle").hide();                    
                     }
                 }
             } catch (e) {
