@@ -57,8 +57,8 @@
                 <div class="text-center mt-2">
                     <b>Die Größe der Hand beschreibt den positiven 
                     <nuxt-link class="text-dark" to="/platform/handprint">
-                        <span class="text-success">Climate</span>Master Handabruck.<br>
-                        Mehr groß = mehr gut!
+                        <u><span class="text-success">Climate</span>Master Handabruck.<br>
+                        Mehr groß = mehr gut!</u>
                     </nuxt-link>
                     </b>
                     <br>
