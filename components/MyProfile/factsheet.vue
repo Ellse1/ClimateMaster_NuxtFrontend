@@ -16,7 +16,7 @@
                         </div>
                         
                         <small id="id_message_typeAndSize_profilePicture" class="text-danger">
-                            jpg, png, max:2MB<br>
+                            jpg, png, max:6MB<br>
                         </small>
                         <small>
                             Bild hochladen
@@ -114,8 +114,11 @@
             </div>
 
             <div class="col-md-12 mt-4 text-center" >
-                <button id="id_button_save" class="btn btn-success mb-4 " style="width:90%" v-on:click="saveAddressAndSocialMediaInformation">Änderungen speichern</button>
-            
+                <button id="id_button_save" class="btn btn-success mb-2 " style="" v-on:click="saveAddressAndSocialMediaInformation">Änderungen speichern</button>
+
+                <nuxt-link class="btn btn-success mb-4" style="width:90%;" to="/account/myProfile?page=publish">Profil für andere sichtbar machen</nuxt-link>            
+
+
                 <notification :message="error" v-if="error" class="text-danger mt-3" />
                 <notification :message="success" v-if="success" class="text-success mt-3" />
             </div>
@@ -183,7 +186,7 @@ export default {
             const{data} = await this.$axios.post("user/getProfilePicture_ByCurrentUser");
             
             if(data.state == 'error'){
-                this.error = data.message;
+                this.error_profile_picture = data.message;
                 this.success = null;
             }
             else if(data.state == 'success'){
@@ -218,7 +221,7 @@ export default {
             //check client site, if size is to big
             var filesize = ((this.profilePicture.size/1024)/1024).toFixed(4); // MB
 
-            if(filesize <= 2){
+            if(filesize <= 6){
 
                 let formData = new FormData();
                 formData.append('profilePicture', this.profilePicture);
@@ -263,7 +266,7 @@ export default {
             }
             //If filesize to big:
             else{
-                this.error_profile_picture = "Das Bild ist zu groß und kann deshalb nicht hochgeladen werden."
+                this.error_profile_picture = "Das Bild ist zu groß (" + filesize + " MB)  und kann deshalb nicht hochgeladen werden. Maximal 6 MB sind erlaubt."
             }
 
             $("#id_div_loading").removeClass("loading-animation");
