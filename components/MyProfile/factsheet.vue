@@ -221,7 +221,7 @@ export default {
             //check client site, if size is to big
             var filesize = ((this.profilePicture.size/1024)/1024).toFixed(4); // MB
 
-            if(filesize <= 6){
+            if(filesize <= 8 ){
 
                 let formData = new FormData();
                 formData.append('profilePicture', this.profilePicture);
