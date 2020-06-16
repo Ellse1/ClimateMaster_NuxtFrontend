@@ -18,14 +18,13 @@
 </template>
 <script>
 import NavigationBar from '~/components/MainComponents/NavigationBar';
-import ogImage from '~/static/pictures/generalPictures/forsocialmediaposts.jpg';
 
 export default {
    head () {
     return {
       meta: [
         { hid: 'og:title', property: 'og:title', content: 'ClimateMaster' },
-        { hid: 'og:image', property: 'og:image', content: 'https://www.climate-master.com' + ogImage },
+        { hid: 'og:image', property: 'og:image', content: 'https://www.climate-master.com/images/general/forsocialmediaposts.jpg' },
         { hid: 'og:description', property: 'og:description', content: 'Finde hier die effizientesten Möglichkeiten klimafreundlich zu leben' }
       ]
     }
