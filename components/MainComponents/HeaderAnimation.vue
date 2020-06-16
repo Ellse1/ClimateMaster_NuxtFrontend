@@ -14,7 +14,7 @@
           </b>
         </h1>
 
-        <h4>Umweltfreundlich klimaneutral</h4>
+        <h4>Finde hier die effizientesten Möglichkeiten klimafreundlich zu leben</h4>
     </div>
 
 </template>

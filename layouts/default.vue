@@ -18,7 +18,16 @@
 </template>
 <script>
 import NavigationBar from '~/components/MainComponents/NavigationBar';
+import ogImage from '~/static/pictures/generalPictures/forsocialmediaposts.jpg';
+
 export default {
+   head () {
+    return {
+      meta: [
+        { hid: 'og:image', property: 'og:image', content: 'www.climate-master.com' + ogImage }
+      ]
+    }
+  },
   components:{
     NavigationBar,
   },
