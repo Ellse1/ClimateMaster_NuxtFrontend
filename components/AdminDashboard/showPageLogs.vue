@@ -54,7 +54,6 @@ export default {
                 const today = new Date();
                 if(today.getDate() != 1){
                     today.setDate(today.getDate() -1);
-                    alert(today.getDate());
                 }
 
 
