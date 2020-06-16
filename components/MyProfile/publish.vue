@@ -17,13 +17,13 @@
         </div>
         <br>
         <div class="row mb-4">
-            <div class="col mt-1">
+            <div class="col-md mt-1">
                 <button id="id_button_publishClimadviceChecks" class="btn btn-default border" v-on:click="publishClimadviceChecksButtonPressed()">Climadvice Checks anzeigen</button>
             </div>
-            <div class="col mt-1">
+            <div class="col-md mt-1">
                 <button id="id_button_publishPictures" class="btn btn-default border" v-on:click="publishPicturesButtonPressed()">Bilder anzeigen</button>
             </div>
-            <div class="col mt-1">
+            <div class="col-md mt-1">
                 <button id="id_button_publishSocialMediaNames" class="btn btn-default border" v-on:click="publishSocialMediaNamesButtonPressed()">Social Media Namen anzeigen</button>
             </div>
         </div>
