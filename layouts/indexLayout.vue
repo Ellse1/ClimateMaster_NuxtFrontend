@@ -46,7 +46,9 @@ export default {
   head () {
     return {
       meta: [
-        { hid: 'og:image', property: 'og:image', content: 'www.climate-master.com' + ogImage }
+        { hid: 'og:title', property: 'og:title', content: 'ClimateMaster' },
+        { hid: 'og:image', property: 'og:image', content: 'https://www.climate-master.com' + ogImage },
+        { hid: 'og:description', property: 'og:description', content: 'Finde hier die effizientesten Möglichkeiten klimafreundlich zu leben' }
       ]
     }
   },
