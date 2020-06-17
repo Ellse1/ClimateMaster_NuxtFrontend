@@ -1,6 +1,6 @@
 <template>
     <div class="text-center">
-        <co2calculationChart :key="keyToReloadCo2Calculation"/>
+        <co2calculationChart :key="keyToReloadCo2Calculation" @saveCO2Calculation="getCo2calculationFromChart"/>
 
         <button class="btn btn-default border m-3" data-toggle="collapse" data-target="#id_div_calculateEmissions" aria-expanded="false" aria-controls="id_div_calculateEmissions" id="id_button_collapse_calculationInput" v-on:click="scrollToCalculationInput()">
             CO2 Handabdruck vergrößern
@@ -20,7 +20,11 @@
                     <b>Viel Spaß beim Berechnen!</b>
                 </p>
 
-                <a target="_blanc" href="https://uba.co2-rechner.de/de_DE/" class="btn btn-default border">CO2 Berechnen <b>&rsaquo;&rsaquo;</b></a>
+                <!-- if there is already a co2calculation -> link to uba with this calculation -->
+                <a v-if="co2calculationFromChart == null" target="_blanc" href="https://uba.co2-rechner.de/de_DE/" class="btn btn-default border">CO2 Berechnen <b>&rsaquo;&rsaquo;</b></a>
+                
+                <a v-if="co2calculationFromChart != null" target="_blanc" :href="co2calculationFromChart.link_uba_co2calculation" class="btn btn-default border">CO2 Berechnen <b>&rsaquo;&rsaquo;</b></a>
+
                 <div>
                     <label class="mt-2">Link der Berechnung hier einfügen:</label>
 
@@ -65,12 +69,13 @@ export default {
     components:{
         co2calculationChart,
         notification,
-        keyToReloadCo2Calculation: 1
     },
     data(){
         return{
             error:null,
-            success:null
+            success:null,
+            co2calculationFromChart : null,
+            keyToReloadCo2Calculation: 1
         }
     },
     methods:{
@@ -95,6 +100,7 @@ export default {
                     $("#id_button_collapse_calculationInput").click();
                     //refresh co2calculation
                     this.keyToReloadCo2Calculation = this.keyToReloadCo2Calculation + 1;
+                    
                 }
                 else{
                     this.error = "Die Berechnung konnte nicht gespeichert werden.";
@@ -106,6 +112,9 @@ export default {
 
             $("#id_button_save").removeClass("loading-animation");
         },
+        getCo2calculationFromChart(co2calculation){
+            this.co2calculationFromChart = co2calculation;
+        }
     }
 }
 </script>
