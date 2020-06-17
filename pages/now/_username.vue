@@ -105,10 +105,12 @@
                 </div>
             </div>
 
+            <div class="" id="id_scrollTo">
 
+            </div>
 
             <!-- Notification -->
-            <notification v-if="error" :message="error" class="text-danger mt-2" />
+            <notification v-if="error" :message="error" class="text-danger mt-2"/>
             <notification v-if="success" :message="success" class="text-success mt-2" />
 
 
@@ -118,6 +120,7 @@
 <script>
 import notification from '~/components/MainComponents/Notification';
 import co2calculationChart from '~/components/MyClimateMasterActions/Resources/myCO2CalculationChart';
+var VueScrollTo = require('vue-scrollto');
 export default {
     scrollToTop: true,
     components:{
@@ -136,6 +139,10 @@ export default {
         };
     },
     async mounted(){
+        //Scroll to top
+        var scrollTo = VueScrollTo.scrollTo("#id_icon_profile_picture"); 
+
+
         $("#id_div_loading").addClass("loading-animation-green");
 
         try {
@@ -229,6 +236,8 @@ export default {
                 parameter: this.username
             });
         } catch (e) {}
+
+
     },
 
     methods:{
