@@ -10,7 +10,7 @@
                         
                         <div v-for="profile in climatemaster_profiles" v-bind:key="profile.id" class="climatemaster_profile_slideshow col">
                             <div class="">
-                                <nuxt-link :to="{name: 'now-username', params: { username:profile.username } }">
+                                <nuxt-link :to="'/now/'+ profile.username">
                                     <div class="">
                                         <div  :id="'id_div_profilePicture_' + profile.id" style="width:200px;height:200px;border-radius:50%;overflow:hidden;" class="border bg-dark mx-auto mt-2">
                                             <img :id="'id_profile_picture_' + profile.id" :src="'data:image/jfif;base64,' + profile.profile_picture_base64" v-on:load="setPictureToMiddle($event)">
