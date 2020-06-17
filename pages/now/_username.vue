@@ -239,6 +239,10 @@ export default {
 
 
     },
+    updated(){
+        //Scroll to top
+        var scrollTo = VueScrollTo.scrollTo("#id_icon_profile_picture"); 
+    },
 
     methods:{
 
@@ -281,6 +285,9 @@ export default {
 
             //Scroll to top of the page
             window.scrollTo(0, 0);
+
+            //Scroll to top
+            var scrollTo = VueScrollTo.scrollTo("#id_icon_profile_picture"); 
         }
     }
 }
