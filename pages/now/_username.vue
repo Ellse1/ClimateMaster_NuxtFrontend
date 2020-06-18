@@ -120,7 +120,6 @@
 <script>
 import notification from '~/components/MainComponents/Notification';
 import co2calculationChart from '~/components/MyClimateMasterActions/Resources/myCO2CalculationChart';
-var VueScrollTo = require('vue-scrollto');
 export default {
     scrollToTop: true,
     components:{
@@ -139,10 +138,6 @@ export default {
         };
     },
     async mounted(){
-        //Scroll to top
-        var scrollTo = VueScrollTo.scrollTo("#id_icon_profile_picture"); 
-
-
         $("#id_div_loading").addClass("loading-animation-green");
 
         try {
@@ -239,10 +234,6 @@ export default {
 
 
     },
-    updated(){
-        //Scroll to top
-        var scrollTo = VueScrollTo.scrollTo("#id_icon_profile_picture"); 
-    },
 
     methods:{
 
@@ -285,9 +276,6 @@ export default {
 
             //Scroll to top of the page
             window.scrollTo(0, 0);
-
-            //Scroll to top
-            var scrollTo = VueScrollTo.scrollTo("#id_icon_profile_picture"); 
         }
     }
 }
