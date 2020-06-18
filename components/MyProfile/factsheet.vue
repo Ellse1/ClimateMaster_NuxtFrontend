@@ -36,11 +36,17 @@
                 </label>
                 <input type="file" class="mt-2" ref="image" id="id_profilePicture" name="profilePicture" v-on:change="handleImageUpload" style="display:none;" accept="image/*"/>
                 
+         
+
+
                 <!-- Notification for profile picture -->
                 <notification :message="error_profile_picture" v-if="error_profile_picture" class="text-danger mt-3" />
                 <notification :message="success_profile_picture" v-if="success_profile_picture" class="text-success mt-3" />
 
-            
+                <!-- Message if no profile picture is there -->
+                <div class="text-danger" v-if="profile_picture_name == null && profile_picture_base64_for_public_profile == null">
+                    Für das Anzeigen deines Profiles, brauchst du ein Profilbild
+                </div>    
             </div>
 
         
