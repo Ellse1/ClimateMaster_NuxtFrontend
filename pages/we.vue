@@ -21,7 +21,7 @@
                         Möglichkeit zur Treibhausgasreduktion und der individuellen Beratung für die persönliche Klimaschutzbilanz.
                         Uns geht es dabei keineswegs um Geld, sondern um wirkungsvollen Klimaschutz. 
                         ClimateMaster gibt es nur aus der Vision heraus, Klimaschutz noch wirkungsvoller voran zu treiben.
-                        Das Beste für solch eine Unternehmung wäre eine gemeinnützige Gesellschaft mit beschränkter Handlung (gGmbH).
+                        Die beste Rechtsform für solch eine Unternehmung wäre eine gemeinnützige Gesellschaft mit beschränkter Handlung (gGmbH).
                         Leider haben wir aktuell nicht die betriebswirtschaftlichen Resourcen, um solch eine Gesellschaft zu gründen.
                     </p>
 
