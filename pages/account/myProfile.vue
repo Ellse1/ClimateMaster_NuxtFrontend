@@ -21,7 +21,7 @@
 
                 <div class="col-md-9 mt-4">
                     <!-- Individual myProfile componend -->
-                    <component v-bind:is="openedComponent"/>
+                    <component v-bind:is="openedComponent" :public_user_profile="publicUserProfile" @public_user_profile_changed="public_user_profile_changed"/>
 
                 </div>
             </div>
@@ -49,7 +49,8 @@ export default {
     },
     data(){
         return {
-            openedComponent: 'factsheet'
+            openedComponent: 'factsheet',
+            publicUserProfile : null
         }
     },
     watch:{
@@ -61,9 +62,25 @@ export default {
             }
         }
     },
-    mounted(){
+    async mounted(){
         if(this.$route.query.page != undefined){
             this.openedComponent = this.$route.query.page;
+        }
+
+        //Get public profile
+        try {
+            const{data} = await this.$axios.post('publicUserProfile/getPublicUserProfile_ByCurrentUser');
+            if(data.state == "error"){}
+            else if(data.state == "success"){
+                this.publicUserProfile = data.data;
+            }else{}
+        } catch (error) {
+            
+        }
+    },
+    methods:{
+        public_user_profile_changed(public_user_profile_from_child){
+            this.publicUserProfile = public_user_profile_from_child;
         }
     }
 }

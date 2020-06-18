@@ -1,6 +1,16 @@
 <template>
     <div>
         <div class="container bg-light pt-2">
+
+            <!-- Show link to make profile public  -->
+            <div v-if="public_user_profile != null && profile_picture_name != null" class="mb-3 text-center">
+                <div v-if="public_user_profile.public == false">
+                    <nuxt-link  style="width:90%;" to="/account/myProfile?page=publish">
+                        Profil sichtbar machen
+                        <font-awesome-icon icon="check-circle" style="font-size:20px;" />
+                    </nuxt-link>            
+                </div>
+            </div>
             
             <!-- For profile picture -->
             <div class="text-center ">
@@ -21,8 +31,8 @@
                         <small>
                             Bild hochladen
                         </small>
-                        
                     </div>
+
                 </label>
                 <input type="file" class="mt-2" ref="image" id="id_profilePicture" name="profilePicture" v-on:change="handleImageUpload" style="display:none;" accept="image/*"/>
                 
@@ -116,9 +126,6 @@
             <div class="col-md-12 mt-4 text-center" >
                 <button id="id_button_save" class="btn btn-success mb-2 " style="" v-on:click="saveAddressAndSocialMediaInformation">Änderungen speichern</button>
 
-                <nuxt-link class="btn btn-success mb-4" style="width:90%;" to="/account/myProfile?page=publish">Profil für andere sichtbar machen</nuxt-link>            
-
-
                 <notification :message="error" v-if="error" class="text-danger mt-3" />
                 <notification :message="success" v-if="success" class="text-success mt-3" />
             </div>
@@ -129,6 +136,7 @@
 import notification from "~/components/MainComponents/Notification"
 
 export default {
+    props: ['public_user_profile'],
     components:{
         notification,
     },
@@ -169,7 +177,7 @@ export default {
                 this.lastname = data.data.lastname;
                 this.username = data.data.username;
                 this.email = data.data.email,
-                this.profile_picture_name = data.data.profilePicture;
+                this.profile_picture_name = data.data.profile_picture_name;
                 this.street = data.data.street;
                 this.house_number = data.data.house_number;
                 this.postcode = data.data.postcode;

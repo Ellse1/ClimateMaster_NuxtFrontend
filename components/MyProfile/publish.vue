@@ -41,6 +41,7 @@
 import notification from '~/components/MainComponents/Notification';
 
 export default {
+    props:['public_user_profile'],
     components:{
         notification
     },
@@ -53,46 +54,43 @@ export default {
     },
     async mounted(){
         $("#id_button_publishProfile").addClass('loading-animation-green');
-        try {
-            const{data} = await this.$axios.post("publicUserProfile/getPublicUserProfile_ByCurrentUser");
-            if(data.state == "error"){
 
-            }
-            else if(data.state == "success"){
-                this.publicUserProfile = data.data;
-                //show buttons in green if they are enabled
-                if(this.publicUserProfile.public == true){
-                    $("#id_button_publishProfile").addClass("btn-success")
-                    $("#id_publishProfile_checkCircle").show();
-                    if(this.publicUserProfile.public_climadvice_checks == true){
-                        $("#id_button_publishClimadviceChecks").addClass("btn-success")
-                    }
-                    if(this.publicUserProfile.public_social_media_names == true){
-                        $("#id_button_publishSocialMediaNames").addClass("btn-success")
-                    }
-                    if(this.publicUserProfile.public_pictures == true){
-                        $("#id_button_publishPictures").addClass("btn-success")
-                    }
-
-                    //if one thing is public -> disable button to make all private
-                    if(this.publicUserProfile.public_climadvice_checks == true || this.publicUserProfile.public_social_media_names == true || this.publicUserProfile.public_pictures == true){
-                        $("#id_button_publishProfile").prop('disabled', true); 
-                    }else{
-                        $("#id_button_publishProfile").prop('disabled', false); 
-                    }
-
-
+        // check if i can get the public_user_profile from the parent component
+        if(this.public_user_profile != null){
+            this.publicUserProfile = this.public_user_profile;
+        }else{
+            try {
+                const{data} = await this.$axios.post("publicUserProfile/getPublicUserProfile_ByCurrentUser");
+                if(data.state == "error"){ }
+                else if(data.state == "success"){
+                    this.publicUserProfile = data.data;  
                 }
-                else{
-                 
-                }   
-            }
-            else{
-
-            }
-        } catch (error) {
-            
+                else{}
+            } catch (error) {}
         }
+
+        //show buttons in green if they are enabled
+        if(this.publicUserProfile.public == true){
+            $("#id_button_publishProfile").addClass("btn-success")
+            $("#id_publishProfile_checkCircle").show();
+            if(this.publicUserProfile.public_climadvice_checks == true){
+                $("#id_button_publishClimadviceChecks").addClass("btn-success")
+            }
+            if(this.publicUserProfile.public_social_media_names == true){
+                $("#id_button_publishSocialMediaNames").addClass("btn-success")
+            }
+            if(this.publicUserProfile.public_pictures == true){
+                $("#id_button_publishPictures").addClass("btn-success")
+            }
+
+            //if one thing is public -> disable button to make all private
+            if(this.publicUserProfile.public_climadvice_checks == true || this.publicUserProfile.public_social_media_names == true || this.publicUserProfile.public_pictures == true){
+                $("#id_button_publishProfile").prop('disabled', true); 
+            }else{
+                $("#id_button_publishProfile").prop('disabled', false); 
+            }
+        }
+        else{} 
 
         $("#id_button_publishProfile").removeClass('loading-animation-green');
 
@@ -149,10 +147,15 @@ export default {
                         }else{
                             $("#id_button_publishProfile").prop('disabled', false); 
                         }
+
                     }else{
                         $("#id_button_publishProfile").removeClass("btn-success")
                         $("#id_publishProfile_checkCircle").hide();                    
                     }
+
+                    //send new public_user_profile back to parent (MyProfile)
+                    this.$emit("public_user_profile_changed", this.publicUserProfile);
+
                 }
             } catch (e) {
                 

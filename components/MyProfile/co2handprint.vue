@@ -1,5 +1,17 @@
 <template>
     <div class="text-center">
+        
+        <!-- Show link to make handprint public  -->
+        <div v-if="public_user_profile != null && co2calculationFromChart != null" class=" mb-3">
+            <div v-if="public_user_profile.public == false">
+                <nuxt-link  style="width:90%;" to="/account/myProfile?page=publish">
+                    CO2 Handabdruck sichtbar machen
+                    <font-awesome-icon icon="check-circle" style="font-size:20px;" />
+                </nuxt-link>            
+            </div>
+        </div>
+
+
         <co2calculationChart :key="keyToReloadCo2Calculation" @saveCO2Calculation="getCo2calculationFromChart"/>
 
         <button class="btn btn-default border m-3" data-toggle="collapse" data-target="#id_div_calculateEmissions" aria-expanded="false" aria-controls="id_div_calculateEmissions" id="id_button_collapse_calculationInput" v-on:click="scrollToCalculationInput()">
@@ -7,7 +19,6 @@
         </button>
 
     	<div id="id_div_to_scroll_to">
-
             
             <div class="text-center collapse" id="id_div_calculateEmissions">
                 <h4>CO2 Handabdruck berechnen</h4>
@@ -66,6 +77,7 @@ import notification from '~/components/MainComponents/Notification';
 var VueScrollTo = require('vue-scrollto');
 
 export default {
+    props: ['public_user_profile'],
     components:{
         co2calculationChart,
         notification,

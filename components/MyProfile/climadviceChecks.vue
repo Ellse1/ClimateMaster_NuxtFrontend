@@ -1,5 +1,15 @@
 <template>
-    <div class="pb-3">
+    <div class="">
+        
+        <!-- Show link to make handprint public  -->
+        <div v-if="public_user_profile != null && climadvices_with_climadviceUserChecks != null" class="mb-3 text-center">
+            <div v-if="public_user_profile.public_climadvice_checks != true && climadvices_with_climadviceUserChecks.length >= 1">
+                <nuxt-link  style="width:90%;" to="/account/myProfile?page=publish">
+                    ClimadviceChecks sichtbar machen
+                    <font-awesome-icon icon="check-circle" style="font-size:20px;" />
+                </nuxt-link>            
+            </div>
+        </div>
 
         <span id="id_span_loading"></span>
 
@@ -43,7 +53,7 @@
         </div>
 
         <!-- Get more ClimadviceUserChecks -->
-        <div v-if="climadvices_with_climadviceUserChecks != null" class="text-center">
+        <div v-if="climadvices_with_climadviceUserChecks != null" class="text-center mb-3">
             <div v-if="climadvices_with_climadviceUserChecks.length >= 1">
                 Schließe weitere ClimadviceChecks ab<br>
                 <nuxt-link  to="/climadvices" class="btn btn-success">Climadvices</nuxt-link>
@@ -61,6 +71,7 @@
 <script>
 import notification from '~/components/MainComponents/Notification';
 export default {
+    props: ['public_user_profile'],
     components:{
         notification
     },

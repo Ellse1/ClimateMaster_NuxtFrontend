@@ -1,6 +1,19 @@
 <template>
     <div class="text-center">
 
+
+        <!-- Show link to make handprint public  -->
+        <div v-if="public_user_profile != null" class="mb-3 text-center">
+            <div v-if="public_user_profile.public != true">
+                <nuxt-link  style="width:90%;" to="/account/myProfile?page=publish">
+                    Profil sichtbar machen
+                    <font-awesome-icon icon="check-circle" style="font-size:20px;" />
+                </nuxt-link>            
+            </div>
+        </div>
+
+
+
         <span id="id_span_loading_animation" ></span>
 
         <div class="row mx-auto" v-if="publicUserProfile != null">
@@ -48,6 +61,7 @@
 import notification from '~/components/MainComponents/Notification';
 
 export default {
+    props: ['public_user_profile'],
     components:{
         notification
     },
@@ -60,26 +74,31 @@ export default {
         //Get the public profile
         $("#id_span_loading_animation").addClass('loading-animation-green');
 
-        try {
-            const{data} = await this.$axios.post("publicUserProfile/getPublicUserProfile_ByCurrentUser");
+        // check if i can get the public_user_profile from the parent component
+        if(this.public_user_profile != null){
+            this.publicUserProfile = this.public_user_profile;
+        }else{
 
-            //If current User has publicUserProfile: 
-            if(data.state == "success"){
-                this.publicUserProfile = data.data;
-                //set 0 to false, 1 to true -> for toggle (toggle public)
-                this.publicUserProfile.public = !!+this.publicUserProfile.public
-            }
-            //if current User has no publicUserProfile
-            else if(data.state == "error"){
-                this.publicUserProfile = {
-                    'public' : false
+            try {
+                const{data} = await this.$axios.post("publicUserProfile/getPublicUserProfile_ByCurrentUser");
+
+                //If current User has publicUserProfile: 
+                if(data.state == "success"){
+                    this.publicUserProfile = data.data;
+                    //set 0 to false, 1 to true -> for toggle (toggle public)
+                    this.publicUserProfile.public = !!+this.publicUserProfile.public
                 }
+                //if current User has no publicUserProfile
+                else if(data.state == "error"){
+                    this.publicUserProfile = {
+                        'public' : false
+                    }
+                }
+                else{}
+            } catch (e) {
+                
             }
-            else{}
-        } catch (e) {
-            
         }
-
         $("#id_span_loading_animation").removeClass('loading-animation-green');
 
     },
