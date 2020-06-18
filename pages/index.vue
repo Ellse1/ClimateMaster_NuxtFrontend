@@ -91,9 +91,56 @@
 
         </client-only>
 
-
         <!-- Climatemaster Profile Integration -->
         <publicUsersShow />
+
+
+        <!-- Contact Me  -->
+        <div class="bg-light rounded mt-5 p-4">
+          <h4>Klimaschutzberatung</h4>
+          <h4>kostenlos - transparent - wirkungsvoll</h4>
+          <div class="row mt-4">
+              <div class="col-md-6 mt-3">
+                  <img class="img-fluid" src="~/static/pictures/forSpecialSites/index/Elias.jpg" />
+              </div>
+              <div class="col-md-6 mt-3">
+                  Ich, Elias Singer berate dich sehr gerne nach bestem Wissen und Gewissen zu Klimaschutzmöglichkeiten
+                  rund um das private Leben. Ich orientiere mich dabei an den Handlungsvorschlägen des CO2 Rechners
+                  des Umweltbundesamts und deren Wirkung auf die persönliche Klimaschutzbilanz.
+                   Gerne könen wir gemeinsam deinen
+                  <nuxt-link to="/platform/handprint" class="text-dark"><u>Klimaschutz Handabdruck</u></nuxt-link>
+                  berechnen und optimieren. Über eine Nachricht von dir und gemeinsame Anstrengungen für mehr Klimaschutz im Alltag
+                  freue ich mich sehr.
+
+                  <div class="mt-5 text-left">
+                      <div class="row">
+                        <div class="col text-center">
+                          <font-awesome-icon icon="envelope-open" class="text-success"  style="font-size:30px;"/>     
+                        </div>
+                        <div class="col">
+                          elias.singer@climate-master.com
+                        </div>
+                      </div>
+                      <div class="row mt-3">
+                        <div class="col text-center">
+                          <font-awesome-icon icon="phone" class="text-success"  style="font-size:30px;"/>     
+                        </div>
+                        <div class="col">
+                          +49 176 43326722
+                        </div>
+                      </div>
+                      <div class="row mt-3">
+                        <div class="col text-center">
+                            <font-awesome-icon icon="sms" class="text-success" style="font-size:30px;" />
+                        </div>
+                        <div class="col">
+                            +49 176 43326722 (Auch Whatsapp)
+                        </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+        </div>
 
         <!-- Links to the social media platforms -->
         <div class="mx-auto mb-5 col-md-6 text-center mt-4 rounded border border-success p-2" style="background-color:rgba(247, 247, 247, 0.3)">

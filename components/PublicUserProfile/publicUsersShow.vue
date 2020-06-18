@@ -1,12 +1,12 @@
 <template>
     <div>
-        <div class="container">
+        <div class="container mt-5">
 
-            <h2 class="font-weight-light" v-if="climatemaster_profiles.length >= 1">ClimateMaster</h2>
+            <h2 class="font-weight-light" v-if="climatemaster_profiles.length >= 1">Klimaschutz Vorreiter</h2>
 
             <div class="row mx-auto my-auto">
                 <!-- maby Problem here -->
-                <div id="id_div_carousel_climatemaster_profiles" class="row w-100">
+                <div id="id_div_carousel_climatemaster_profiles" class="row mt-2 w-100">
                         
                         <div v-for="profile in climatemaster_profiles" v-bind:key="profile.id" class="climatemaster_profile_slideshow col">
                             <div class="">
