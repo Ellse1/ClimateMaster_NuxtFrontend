@@ -98,7 +98,7 @@
         <!-- Contact Me  -->
         <div class="bg-light rounded mt-5 p-4">
           <h4>Klimaschutzberatung</h4>
-          <h4>kostenlos - transparent - wirkungsvoll</h4>
+          <h4>transparent und wirkungsvoll</h4>
           <div class="row mt-4">
               <div class="col-md-6 mt-3">
                   <img class="img-fluid" src="~/static/pictures/forSpecialSites/index/Elias.jpg" />
