@@ -104,13 +104,16 @@
                   <img class="img-fluid" src="~/static/pictures/forSpecialSites/index/Elias.jpg" />
               </div>
               <div class="col-md-6 mt-3">
-                  Ich, Elias Singer berate dich sehr gerne nach bestem Wissen und Gewissen zu Klimaschutzmöglichkeiten
+                  Ich, Elias Singer berate Sie sehr gerne nach bestem Wissen und Gewissen zu Klimaschutzmöglichkeiten
                   rund um das private Leben. Ich orientiere mich dabei an den Handlungsvorschlägen des CO2 Rechners
                   des Umweltbundesamts und deren Wirkung auf die persönliche Klimaschutzbilanz.
-                   Gerne könen wir gemeinsam deinen
+                   Gerne können wir gemeinsam Ihren
                   <nuxt-link to="/platform/handprint" class="text-dark"><u>Klimaschutz Handabdruck</u></nuxt-link>
-                  berechnen und optimieren. Über eine Nachricht von dir und gemeinsame Anstrengungen für mehr Klimaschutz im Alltag
-                  freue ich mich sehr.
+                  berechnen und optimieren. Über eine Nachricht von Ihnen und gemeinsame Anstrengungen für mehr Klimaschutz im Alltag
+                  freue ich mich sehr. Einfach unverbindlich anschreiben oder anrufen.
+
+
+
 
                   <div class="mt-5 text-left">
                       <div class="row">
@@ -138,12 +141,26 @@
                         </div>
                       </div>
                   </div>
+
               </div>
           </div>
+
+          <!-- <div class="row">
+            <div class="col">
+              <font-awesome-icon icon="envelope-open" class="text-success"  style="font-size:30px;"/>     
+              elias.singer@climate-master.com
+            </div>
+            <div class="col">
+              <font-awesome-icon icon="phone" class="text-success"  style="font-size:30px;"/>     
+              0176 43326722 (Auch Whatsapp)
+            </div>
+          </div> -->
+
+
         </div>
 
         <!-- Links to the social media platforms -->
-        <div class="mx-auto mb-5 col-md-6 text-center mt-4 rounded border border-success p-2" style="background-color:rgba(247, 247, 247, 0.3)">
+        <div class="mx-auto mb-5 col-md-6 text-center mt-5 rounded border border-success p-2" style="background-color:rgba(247, 247, 247, 0.3)">
             <h4>Online</h4>
             <div class="row">
                 <div class="col text-center">
