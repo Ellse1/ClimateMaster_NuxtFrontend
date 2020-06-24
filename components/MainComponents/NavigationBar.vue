@@ -26,6 +26,7 @@
                             <div class="dropdown-menu bg-white border-0 text-center" aria-labelledby="dropdownCompany">
                                 <nuxt-link to="/we" class="dropdown-item">Wir</nuxt-link>
                                 <nuxt-link to="/platform" class="dropdown-item">Die Plattform</nuxt-link>
+                                <nuxt-link to="/projects" class="dropdown-item">Projekte</nuxt-link>
                             </div>
                         </div>
 
