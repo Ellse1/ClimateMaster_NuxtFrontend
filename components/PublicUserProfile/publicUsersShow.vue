@@ -2,8 +2,8 @@
     <div>
         <div class="container mt-5">
 
-            <h2 class="font-weight-light" v-if="climatemaster_profiles.length >= 1">Klimaschutz Vorreiter</h2>
-
+            <h2 class="font-weight-light" v-if="climatemaster_profiles.length >= 1">Klimaschutz-Vorreiter</h2>
+            <nuxt-link to="/platform/become-climatemaster">Klimaschutz-Vorreiter werden</nuxt-link>
             <div class="row mx-auto my-auto">
                 <!-- maby Problem here -->
                 <div id="id_div_carousel_climatemaster_profiles" class="row mt-2 w-100">

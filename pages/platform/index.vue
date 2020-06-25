@@ -59,6 +59,20 @@
                     </nuxt-link>
                 </div>
             </div>
+            <div class="col-md-6 mt-3">
+                <div class="container h-100">
+                    <nuxt-link to="/platform/become-climatemaster" class="h-100">
+                        <div class="card h-100 cursor-pointer">
+                            <div style="">
+                                <h4 class="text-dark mt-4">Wie werde ich Klimaschutz-Vorreiter, <span class="text-success">Climate</span>Master oder <span class="text-success">Climate</span>Master starter?</h4>
+                            </div>
+                            <div class="card-body">
+                                <img style="mx-auto;max-height:160px;" class="img-fluid" src="~/static/pictures/forSpecialSites/theplatform/becomeClimateMaster/become-climatemaster.png"/>
+                            </div>
+                        </div>
+                    </nuxt-link>
+                </div>
+            </div>
         </div>
 
     </div>

@@ -53,7 +53,7 @@
                             <!-- if logged in -->
                             <div class="dropdown-menu dropdown-menu-right bg-light" v-if="loggedIn === true" aria-labelledby="dropdown04">
                                 <nuxt-link to="/account/myProfile?page=factsheet" class="dropdown-item">Mein Profil</nuxt-link>
-                                <nuxt-link to="/account/myClimateMaster" class="dropdown-item" >ClimateMaster werden</nuxt-link>
+                                <nuxt-link to="/account/myClimateMaster" class="dropdown-item" ><span class="text-success">Climate</span>Master werden</nuxt-link>
                                 <nuxt-link to="/account/myProfile?page=co2handprint" class="dropdown-item" >CO2 Handabruck vergrößern</nuxt-link>
                                 <!-- If admin -->
                                 <nuxt-link v-if="user.role === 'admin'" to="/admin/dashboard" class="dropdown-item">Admin Dashboard</nuxt-link>
