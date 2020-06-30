@@ -96,6 +96,7 @@
                     <!-- Conclusion -->
                     <div class="text-center mt-2">
                         <b v-if="total_handprint">{{total_handprint}}</b> <br>
+                        Tonnen CO2 vermieden!<br>
                         <font-awesome-icon id="id_hand_ClimateMaster_Handprint" icon="hand-paper" class="text-success mt-2" style="font-size:0px;"/>     
                         <br>
                         <b>Die Größe der Hand beschreibt den positiven 
