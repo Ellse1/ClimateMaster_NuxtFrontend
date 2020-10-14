@@ -62,6 +62,16 @@
                                </div>
                             </div>
                         </div>
+
+
+                        <!-- If fulscreen is not active -->
+                        <div v-if="fullscreen_activated == false" class="nav-item ml-md-5 fullscreenButton" v-on:click="activateFullscreen">
+                            <font-awesome-icon icon="expand" class="text-success" style="font-size:30px;" />
+                        </div>
+                        <div v-if="fullscreen_activated == true" class="nav-item ml-md-5 fullscreenButton" v-on:click="deactivateFullscreen">
+                            <font-awesome-icon icon="compress" class="text-success" style="font-size:30px;" />                            
+                        </div>
+
                         </client-only>
                     </div>
             </div>
@@ -81,6 +91,11 @@ export default {
             // var isExpanded = $('navbarCollapse').attr('aria-expanded') === true;
             // alert(isExpanded);
             // $('.navbar-toggler').click();
+        }
+    },
+    data(){
+        return {
+            fullscreen_activated : false
         }
     },
     mounted(){
@@ -109,15 +124,54 @@ export default {
             }
             prevScrollpos = currentScrollPos;
         }
+
+        //check if at the moment fullscreen is activated
+        if (document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement){
+            this.fullscreen_activated = true;
+        }else{
+            this.fullscreen_activated = false;
+        }
+    
     },
     methods: {
         logout(){
             this.$auth.logout();
+        },
+        activateFullscreen(){
+            var elem = document.documentElement;
+            if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+            } else if (elem.mozRequestFullScreen) { /* Firefox */
+                elem.mozRequestFullScreen();
+            } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                elem.webkitRequestFullscreen();
+            } else if (elem.msRequestFullscreen) { /* IE/Edge */
+                elem.msRequestFullscreen();
+            }
+
+            this.fullscreen_activated = true;
+        },
+        deactivateFullscreen(){
+            if (document.exitFullscreen) {
+                document.exitFullscreen();
+            } else if (document.mozCancelFullScreen) { /* Firefox */
+                document.mozCancelFullScreen();
+            } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+                document.webkitExitFullscreen();
+            } else if (document.msExitFullscreen) { /* IE/Edge */
+                document.msExitFullscreen();
+            }
+            this.fullscreen_activated = false;
         }
     }
 }
 </script>
 <style scoped>
+
+.fullscreenButton{
+    cursor: pointer;
+}
+
 #navbar {
     background-color: transparent;
     transition: top 0.3s; /* Transition effect when sliding down (and up) */
