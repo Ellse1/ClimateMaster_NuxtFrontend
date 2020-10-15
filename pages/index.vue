@@ -97,23 +97,18 @@
 
         <!-- Contact Me  -->
         <div class="bg-light rounded mt-5 p-4">
-          <h4>Klimaschutzberatung</h4>
-          <h4>transparent und wirkungsvoll</h4>
+          <h4>Du willst das Klima schützen,</h4>
+          <h4>weißt aber nicht, wo du anfangen sollst?</h4>
           <div class="row mt-4">
               <div class="col-md-6 mt-3">
                   <img class="img-fluid" src="~/static/pictures/forSpecialSites/index/Elias.jpg" />
               </div>
               <div class="col-md-6 mt-3">
-                  Ich, Elias Singer berate Sie sehr gerne nach bestem Wissen und Gewissen zu Klimaschutzmöglichkeiten
-                  rund um das private Leben. Ich orientiere mich dabei an den Handlungsvorschlägen des CO2 Rechners
-                  des Umweltbundesamts und deren Wirkung auf die persönliche Klimaschutzbilanz.
-                   Gerne können wir gemeinsam Ihren
-                  <nuxt-link to="/platform/handprint" class="text-dark"><u>Klimaschutz Handabdruck</u></nuxt-link>
-                  berechnen und optimieren. Über eine Nachricht von Ihnen und gemeinsame Anstrengungen für mehr Klimaschutz im Alltag
-                  freue ich mich sehr. Einfach unverbindlich anschreiben oder anrufen.
-
-
-
+                  Ich, Elias Singer berate Sie sehr gerne zu Klimaschutzmöglichkeiten
+                  rund um das private Leben.
+                  Zusammen evaluieren wir für Sie die individuell effizientesten Möglichkeiten, das Klima wirkungsvoll zu schützen.
+                  Schreiben Sie mich an, dann könnnen wir eine Videokonferenz oder ein Telefonat vereinbaren.
+                  Bis bald.
 
                   <div class="mt-5 text-left">
                       <div class="row">
@@ -129,32 +124,50 @@
                           <font-awesome-icon icon="phone" class="text-success"  style="font-size:30px;"/>     
                         </div>
                         <div class="col">
-                          +49 176 43326722
+                          +49 176 43326722 (Auch Whatsapp und Telegram)
                         </div>
                       </div>
-                      <div class="row mt-3">
-                        <div class="col text-center">
-                            <font-awesome-icon icon="sms" class="text-success" style="font-size:30px;" />
-                        </div>
-                        <div class="col">
-                            +49 176 43326722 (Auch Whatsapp)
-                        </div>
-                      </div>
+                      
                   </div>
+
+
+
+
+                  <client-only>
+                    <!-- Contactform -->
+                    <div class="mt-4 ">
+                      <p class="text-left">
+                        <b>Nachricht hinterlassen</b>
+                      </p>
+                      <form @submit.prevent="sendMessageFromContactForm" class="text-center" id="id_form_contact" >
+                          <!-- If not logged in  -->
+                          <div class="form-group">
+                            <input class="form-control  mx-auto" type="email"  v-model="contactForm_email" placeholder="Ihre email" required>
+                          </div>
+                       
+                          <div class="form-group">
+                            <textarea class="form-control  mx-auto" v-model="contactForm_content" rows="3" placeholder="Wir freuen uns über Ihre Nachricht" required></textarea>
+                          </div>
+                          <button type="submit" class="btn btn-default border" id="id_button_sendmessage">
+                              Nachricht senden
+                          </button>
+                      </form>
+                    </div>
+
+                    <!-- notification if message sendet -->
+                    <notification :message="error" v-if="error" class="text-danger mt-2" />
+                    <notification :message="success" v-if="success" class="text-success mt-2" />
+
+                    <!-- button to show the write new message -->
+                    <button id="id_button_show_contact_form" style="display:none;" class="btn btn-default border" v-on:click="showContactForm">Neue Nachricht schreiben</button>
+
+                  </client-only>
 
               </div>
           </div>
 
-          <!-- <div class="row">
-            <div class="col">
-              <font-awesome-icon icon="envelope-open" class="text-success"  style="font-size:30px;"/>     
-              elias.singer@climate-master.com
-            </div>
-            <div class="col">
-              <font-awesome-icon icon="phone" class="text-success"  style="font-size:30px;"/>     
-              0176 43326722 (Auch Whatsapp)
-            </div>
-          </div> -->
+
+
 
 
         </div>
@@ -196,18 +209,78 @@
  <script>
 import fontawesome from '@fortawesome/free-solid-svg-icons';
 import publicUsersShow from '~/components/PublicUserProfile/publicUsersShow';
+import notification from '~/components/MainComponents/Notification';
 export default {
   layout: 'indexLayout',
+  data(){
+      return{
+          error: null,
+          success: null,
+          contactForm_email: null,
+          contactForm_content: null,
+      };
+  },
   components:{
-    publicUsersShow
+    publicUsersShow,
+    notification
   },
   mounted(){
+
+    // If user is logged in -> set his email in contact form
+    if(this.loggedIn == true){
+      this.contactForm_email = this.user.email;
+    }
+
+
     //add PageLog
       try {
           const{data} = this.$axios.post('pageLog/addPageLog', {
               page: this.$route.fullPath
           });
       } catch (e) {}
+  },
+  methods:{
+    async sendMessageFromContactForm(){
+
+        $("#id_button_sendmessage").addClass('loading-animation-green');
+
+        try {
+          const{data} = await this.$axios.post('emailMessage/store', {
+              email: this.contactForm_email,
+              message: this.contactForm_content
+          });
+
+          if(data.state == 'error'){
+            this.success = null;
+            this.error = data.message;
+          }
+          else if(data.state == 'success'){
+            this.error = null;
+            this.success = data.message;
+            this.contactForm_email = null;
+            this.contactForm_content = null;
+
+            // Hide form, show button to shot form again
+            $("#id_form_contact").hide();
+            $("#id_button_show_contact_form").show();
+          }
+          else{
+            this.error = "Nachricht konnte nicht gesendet werden."
+          }
+
+        } catch (e) {
+            this.error = "Nachricht konnte nicht gesendet werden, versuchen Sie es später noch einmal."
+        }
+
+        $("#id_button_sendmessage").removeClass('loading-animation-green');
+
+    },
+    showContactForm(){
+        this.error = null;
+        this.success = null;
+        $("#id_form_contact").show();
+        $("#id_button_show_contact_form").hide();
+    }
   }
 }
  </script>
