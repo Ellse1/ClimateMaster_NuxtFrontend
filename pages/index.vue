@@ -104,10 +104,10 @@
                   <img class="img-fluid" src="~/static/pictures/forSpecialSites/index/Elias.jpg" />
               </div>
               <div class="col-md-6 mt-3">
-                  Ich, Elias Singer berate Sie sehr gerne zu Klimaschutzmöglichkeiten
+                  Wir berate Sie sehr gerne zu Klimaschutzmöglichkeiten
                   rund um das private Leben.
                   Zusammen evaluieren wir für Sie die individuell effizientesten Möglichkeiten, das Klima wirkungsvoll zu schützen.
-                  Schreiben Sie mich an, dann könnnen wir eine Videokonferenz oder ein Telefonat vereinbaren.
+                  Schreiben Sie uns an, dann könnnen wir eine Videokonferenz oder ein Telefonat vereinbaren.
                   Bis bald.
 
                   <div class="mt-5 text-left">
