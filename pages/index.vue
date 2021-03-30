@@ -9,7 +9,7 @@
                   <nuxt-link id="id_button_link" class="btn btn-default mt-3 pl-5 pr-5" to="/we"><span>Wir</span></nuxt-link> -->
 
                   <div class="rounded p-3" style="background-color:rgba(247, 247, 247, 0.5)">
-                      <h2>Werde <span class="text-success">Climate</span>Master 2020</h2>
+                      <h2>Werde <span class="text-success">Climate</span>Master 2021</h2>
                   </div>
                   <!-- <div class="row">
                     <div class="col">
