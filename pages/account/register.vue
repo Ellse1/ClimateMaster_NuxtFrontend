@@ -5,7 +5,7 @@
                 <div style="margin-top:30%;">
                     <h1>Register now and become</h1>
                     <h1 class="display-3"><b><span class="text-success">Climate</span>Master</b></h1>
-                    <h1 class="display-3"><b>2020</b></h1>
+                    <h1 class="display-3"><b>2021</b></h1>
                 </div>
             </div>
             <div class="col">
