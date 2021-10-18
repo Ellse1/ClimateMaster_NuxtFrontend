@@ -42,7 +42,7 @@
 
                     <p>
                         Schicke uns danach einfach die entsprechende Spendenbescheinigung und deinen Benutzernamen ({{user.username}}) an elias.singer@climate-master.com.
-                        Wir schicken dir nach einer Überprüfung dann eine Bestätigung und schalten dich als <span class="text-success">Climate</span>Master 2020 frei.
+                        Wir schicken dir nach einer Überprüfung dann eine Bestätigung und schalten dich als <span class="text-success">Climate</span>Master 2021 frei.
                     </p>
                     
                     <a href="#" onclick="return false;" v-on:click="showInfoToPay">Mehr Info</a>

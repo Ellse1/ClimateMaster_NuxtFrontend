@@ -1,6 +1,6 @@
 const webpack = require("webpack");
 export default {
-  mode: 'universal',
+  target: 'static',
   /*
   ** Headers of the page
   */
@@ -44,6 +44,7 @@ export default {
   ** Nuxt.js dev-modules
   */
   buildModules: [
+    '@nuxtjs/pwa',
   ],
   /*
   ** Nuxt.js modules
@@ -55,6 +56,7 @@ export default {
     '@nuxtjs/auth',
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
+    '@nuxtjs/pwa',
     // Fontawsome for icons
     ['nuxt-fontawesome', {
       component: 'font-awesome-icon', 
@@ -110,5 +112,7 @@ export default {
     extend (config, ctx) {
 
     }
+  },
+  pwa:{
   }
 }

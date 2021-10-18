@@ -5,7 +5,7 @@
         <div class="bg-light border border-success text-center p-3">
             <h4>Werde Klimaneutral</h4>
             Hallo {{user.firstname}},<br>
-            Diese Seite hilft dir dabei 2020 Klimaneutral und ClimateMaster zu werden. Konkret bedeutet das, dass
+            Diese Seite hilft dir dabei 2021 Klimaneutral und ClimateMaster zu werden. Konkret bedeutet das, dass
             durch deinen Lebensstil nicht mehr Treibhausgase in die Atmosphäre gelangen, als du auch wieder verhinderst.
             Folge diesen 6 Schritten, um deinen persönlichen Treibhausgasausstoß zu verringern und klimaneutral zu werden.
             Bei Fragen oder Anregungen freuen wir uns über eine E-Mail an elias.singer@climate-master.com.<br>

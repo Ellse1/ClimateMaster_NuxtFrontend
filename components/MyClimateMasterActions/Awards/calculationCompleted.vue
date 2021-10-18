@@ -25,7 +25,7 @@
                     <h2>Du bist <span class="text-success">Climate</span>Master Starter</h2>
                     Weil du weniger als 9 Tonnen CO2 Äquivalent im Jahr verursachst, 
                     bist du <span class="text-success">Climate</span>Master Starter.
-                    Du kannst deine Berechnung veröffentlichen, um Freunden zu zeigen, wie man 2020 klimafreundlich leben kann.
+                    Du kannst deine Berechnung veröffentlichen, um Freunden zu zeigen, wie man 2021 klimafreundlich leben kann.
                     Dies ist unter "Mein Profil" möglich.
                 </div>
                 <div v-else>

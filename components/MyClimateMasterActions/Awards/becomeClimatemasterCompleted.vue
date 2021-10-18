@@ -15,7 +15,7 @@
                 </div>
                 <br>
                 <p>Vielen Dank für deinen groooßen Einsatz bei persönlichem Klimaschutz!!</p>
-                <h4>Du bist <span class="text-success">Climate</span>Master 2020</h4>
+                <h4>Du bist <span class="text-success">Climate</span>Master 2021</h4>
                 <button class="btn btn-success mt-5 mb-3 px-5" v-on:click="nextCongratulation('id_div_congratulation_4_1', 'id_div_congratulation_4_2')">weiter</button>
             </div>
 

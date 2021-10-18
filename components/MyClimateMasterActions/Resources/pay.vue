@@ -6,7 +6,7 @@
                 
                 <div class="text-left">
                     Lieber {{user.firstname}}, <br>
-                    Sehr cool, dass du ClimateMaster 2020 wirst und damit die Umwelt schützt und eine nachhaltigere Entwicklung
+                    Sehr cool, dass du ClimateMaster 2021 wirst und damit die Umwelt schützt und eine nachhaltigere Entwicklung
                     förderst. Mit einer Direktspende an die gemeinnützige GmbH Atmosfair, kannst du Klimaschutzprojekte finanziell
                      unterstützen und die von dir ausgestoßene Menge CO2 wieder kompensieren:
                     <br><br>
@@ -22,7 +22,7 @@
                         <p>
                             Spende den entsprechenden Betrag für deine individuelle CO2 Kompensation und schicke
                             uns einfach den entsprechenden Beleg und deinen Benutzernamen an elias.singer@climate-master.com.
-                            Wir schicken dir dann eine Bestätigung und schalten dich als ClimateMaster 2020 frei.
+                            Wir schicken dir dann eine Bestätigung und schalten dich als ClimateMaster 2021 frei.
                             <ul class="mt-3">
                                 <li><a class="btn btn-success" target="_blanc" href="https://www.atmosfair.de/de/spenden/">Hier spenden</a></li>
                                 <li>Betrag: <b>{{total_price}}€</b></li>

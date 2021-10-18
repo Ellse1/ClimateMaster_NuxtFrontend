@@ -20,7 +20,7 @@
 
                 <!-- ClimateMaster Text -->
                 <div style="position:absolute;bottom:10px;background-color:rgba(247, 247, 247, 0.3)" class="w-100 mx-auto">
-                    <h2 id="id_h2_climatemaster_heading"><span class="text-success">Climate</span>Master 2020</h2>
+                    <h2 id="id_h2_climatemaster_heading"><span class="text-success">Climate</span>Master 2021</h2>
                     <h6 id="id_h6_climateneutral">Umweltfreundlich klimaneutral</h6>
                 </div>
             </div>
