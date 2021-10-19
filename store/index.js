@@ -1,3 +1,13 @@
+export const getters = {
+  loggedIn(state) {
+    return state.auth.loggedIn
+  },
+  
+  user(state) {
+    return state.auth.user
+  }
+}
+
 /*export const state = () => ({
     counter: 0
   })
@@ -8,17 +18,17 @@
     }
   }*/
   // auth.js
-export const state = () => ({
+/*export const state = () => ({
   busy: false,
   loggedIn: false,
   strategy: "local",
   user: false,
-  })
-export const getters = {
+  })*/
+/*export const getters = {
   loggedIn (state) {
       return state.loggedIn
   },
   user (state) {
       return state.user
   }
-}
+}*/
