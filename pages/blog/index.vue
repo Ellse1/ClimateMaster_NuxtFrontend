@@ -21,7 +21,7 @@
                         <small>{{blogPost.created_at}}</small>
                         <!-- link to edit / delete-->
                         <client-only>
-                        <div class="row" v-if="user.role === 'admin'">
+                        <div class="row" v-if="user != null && user.role === 'admin'">
                             <div class="col text-center">
                                 <nuxt-link :to="{name: 'blog-editPost-id', params: {id: blogPost.id}}" class="btn btn-default border">Bearbeiten</nuxt-link>
                             </div>
@@ -36,7 +36,7 @@
 
             <!-- Link to add post -->
             <client-only>
-            <div class="col-md-4 mt-3" v-if="user.role === 'admin'">
+            <div class="col-md-4 mt-3" v-if="user != null && user.role === 'admin'">
                 <div class="card">
                     <div class="card-body text-center">
                         <div class="bg-light">

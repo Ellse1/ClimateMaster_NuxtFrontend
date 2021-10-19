@@ -66,7 +66,7 @@ export default {
         }
     },
     mounted(){
-        if(this.user.role != 'admin'){
+        if(this.user != null && this.user.role != 'admin'){
             this.$router.push("/");
         }
     },

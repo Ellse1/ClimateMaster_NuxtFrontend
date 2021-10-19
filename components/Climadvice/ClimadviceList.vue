@@ -54,7 +54,7 @@
 
                     <client-only>
                     <!-- If admin -->
-                    <div class="card-footer text-center" v-if="user.role === 'admin'">
+                    <div class="card-footer text-center" v-if="user != null && user.role === 'admin'">
                         <button v-on:click="editClimadvice(climadvice)" class="btn btn-default border">Bearbeiten</button>
                         <button v-on:click="deleteClimadvice(climadvice)" class="btn btn-default border">Löschen</button>
                     </div>
@@ -64,7 +64,7 @@
 
             <client-only>
                 <!--If admin ->  To add a climadvice -->
-                <climadviceAdd id="id_climadviceAdd" v-if="user.role === 'admin'" @climadviceAdded="climadviceAdded"/>
+                <climadviceAdd id="id_climadviceAdd" v-if="user != null && user.role === 'admin'" @climadviceAdded="climadviceAdded"/>
             </client-only>
         </div>
 

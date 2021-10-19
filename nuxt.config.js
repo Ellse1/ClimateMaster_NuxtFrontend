@@ -75,8 +75,8 @@ export default {
   */
   axios: {
     https: false,
-    //baseURL: '/ClimateMaster_LaravelAPI/public/api'
-    baseURL: 'http://localhost:8000/api',
+    baseURL: '/ClimateMaster_LaravelAPI/public/api'
+    //baseURL: 'http://localhost:8000/api',
     //browserBaseURL: 'http://www.climate-master.com/api',
   },
 

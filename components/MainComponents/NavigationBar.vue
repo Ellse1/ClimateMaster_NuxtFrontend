@@ -56,7 +56,7 @@
                                 <nuxt-link to="/account/myClimateMaster" class="dropdown-item" ><span class="text-success">Climate</span>Master werden</nuxt-link>
                                 <nuxt-link to="/account/myProfile?page=co2handprint" class="dropdown-item" >CO2 Handabruck vergrößern</nuxt-link>
                                 <!-- If admin -->
-                                <nuxt-link v-if="user.role === 'admin'" to="/admin/dashboard" class="dropdown-item">Admin Dashboard</nuxt-link>
+                                <nuxt-link v-if="user != null && user.role === 'admin'" to="/admin/dashboard" class="dropdown-item">Admin Dashboard</nuxt-link>
                                 <div class="text-center">
                                     <button class="btn btn-default"  v-on:click="logout()">Ausloggen</button>
                                </div>

@@ -18,7 +18,7 @@
                     </nuxt-link>
                     <!-- Link to edit (if admin) -->
                     <div v-if="loggedIn">
-                        <nuxt-link :to="'/projects/edit/' + project.id" v-if="user.role == 'admin'">bearbeiten</nuxt-link>
+                        <nuxt-link :to="'/projects/edit/' + project.id" v-if="user != null && user.role == 'admin'">bearbeiten</nuxt-link>
                     </div>
                 </div>
             </div>
@@ -36,7 +36,7 @@
             <!-- Link to create new Project -->
             <div v-if="loggedIn" class="mt-3">
                 <div>
-                    <nuxt-link to="/projects/create" v-if="user.role == 'admin'">Projekt erstellen</nuxt-link>
+                    <nuxt-link to="/projects/create" v-if="user != null && user.role == 'admin'">Projekt erstellen</nuxt-link>
                 </div>
             </div>
         </div>
